@@ -22,10 +22,10 @@ const Pagina3 = () => {
       <div className="grid grid-cols-[188px_auto_240px] gap-4 flex-grow"> {/* Ajustamos las columnas */}
         {/* Proyectos (Columna 1, Fila 1) */}
         <div className="bg-green-100 p-2 rounded-md h-60 w-222"> {/* Quitamos w-188 porque ya está definido en grid-cols */}
-          <h2 className="text-lg font-bold text-center">Proyectos</h2>
+          <h2 className="text-lg font-bold text-center" onClick={() => navigate('/Proyectos')}>Proyectos</h2>
           <div className="grid grid-cols-2 grid-rows-2 gap-3 mt-2 h-95">
             <div className="bg-blue-100 p-2 text-center content-center">Tutorial guiado</div>
-            <div  className="bg-red-100 p-2 rounded-br-md text-center content-center" onClick={() => navigate('/Proyectos')}>Proyectos 1 de 5</div>
+            <div  className="bg-red-100 p-2 rounded-br-md text-center content-center" >Proyectos 1 de 5</div>
           </div>
         </div>
 
