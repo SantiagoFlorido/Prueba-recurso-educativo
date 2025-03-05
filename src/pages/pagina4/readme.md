@@ -1,0 +1,1 @@
+aqui iran cada uno de los componentes separados por talleres/proyectos/temas 
