@@ -68,7 +68,7 @@ const Pagina3 = () => {
 
         {/* Imagen Temas del Proyecto (Columna 1-2, Fila 2) */}
         <div className="col-span-2 bg-gray-100 p-2 rounded-lg h-45 text-center content-center">
-          <img src="src/image/temas-proyectos.png" alt="Temas del proyecto" className="w-full h-24 object-cover rounded-md" />
+          <img src="public/image/temas-proyectos.png" alt="Temas del proyecto" className="w-full h-24 object-cover rounded-md" />
         </div>
 
         {/* Créditos (Columna 1-2, Fila 3) */}
