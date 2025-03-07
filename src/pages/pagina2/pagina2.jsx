@@ -15,7 +15,7 @@ const Pagina2 = () => {
           {/* Imagen de la izquierda */}
           <div className="bg-gray-100 p-4 rounded-lg flex-1">
             <img
-              src="public/image/animaciones/ConexionAnimacion.gif" // Ruta de la animación plug and play
+              src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741304025/ConexionAnimacion_njz2gw.gif" // Ruta de la animación plug and play
               alt="Conexión Plug and Play animación "
               className="w-full h-70 object-cover rounded-md"
             />
@@ -24,7 +24,7 @@ const Pagina2 = () => {
           {/* Imagen de la derecha */}
           <div className="bg-gray-100 p-4 rounded-lg flex-1">
             <img
-              src="public/image/animaciones/proyectofuncionando.gif" // Ruta de la animación proyecto funcionando
+              src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305003/proyectofuncionando_fyeqnh.gif" // Ruta de la animación proyecto funcionando
               alt="Proyecto funcionando video"
               className="w-full h-70 object-cover rounded-md"
             />

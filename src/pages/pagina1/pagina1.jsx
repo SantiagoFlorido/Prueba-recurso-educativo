@@ -11,23 +11,23 @@ const pagina1 = () => {
   // Datos de las imágenes y descripciones
   const slides = [
     {
-      image: 'public/image/portadaTalleres/mapa.webp',
+      image: 'https://res.cloudinary.com/dufzsv87k/image/upload/v1741305069/mapa_igu9fc.webp',
       description: 'Taller 1: El viaje de Pedro',
     },
     {
-      image: 'public/image/portadaTalleres/piezas.webp',
+      image: 'https://res.cloudinary.com/dufzsv87k/image/upload/v1741305069/piezas_nemtfi.webp',
       description: 'Taller 2: Armando un Mbot',
     },
     {
-      image: 'public/image/portadaTalleres/conectar.webp',
+      image: 'https://res.cloudinary.com/dufzsv87k/image/upload/v1741305067/conectar_iv5sdj.webp',
       description: 'Taller 3: Conectando un Mbot',
     },
     {
-      image: 'public/image/portadaTalleres/sensor4.webp',
+      image: 'https://res.cloudinary.com/dufzsv87k/image/upload/v1741305070/sensor4_yxeq9c.webp',
       description: 'Taller 4: Programando el sensor de ultrasonido de nuestro Mbot',
     },
     {
-      image: 'public/image/portadaTalleres/linea5.webp',
+      image: 'https://res.cloudinary.com/dufzsv87k/image/upload/v1741305068/linea5_ixd3hm.webp',
       description: 'Taller 5: Programando el seguidor de linea de nuestro Mbot',
     },
   ];
@@ -54,7 +54,7 @@ const pagina1 = () => {
       {/* Título y logo */}
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Recurso Educativo Digital</h1>
-        <img src="public/image/logosU/logo-titulo.png" alt="Logo 1" className="h-12" />
+        <img src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305038/logo-titulo_gtcapj.png" alt="Logo 1" className="h-12" />
       </div>
 
       {/* Slider de imágenes */}
