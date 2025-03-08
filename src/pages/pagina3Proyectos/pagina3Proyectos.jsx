@@ -19,7 +19,7 @@ const Pagina3Proyectos = () => {
               <h2 className="text-xl font-semibold">Tema 1</h2>
             </div>
             <div className="h-64 flex items-center justify-center"> {/* Aumenté la altura a h-64 */}
-              <img src="ruta/a/tu/imagen1.gif" alt="Animación 1" className="w-full h-full object-cover" />
+              <img src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305069/mapa_igu9fc.webp" alt="Animación 1" className="w-full h-full object-cover" />
             </div>
           </div>
 

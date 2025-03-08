@@ -36,14 +36,18 @@ const Pagina4Descripcion1 = () => {
           {/* Imagen, video y guion */}
           <div className="border flex-1 mb-4">
             <div className="bg-gray-200 h-full flex items-center justify-center">
-              <p>Imagen, video y guion</p>
+              <img
+                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305069/mapa_igu9fc.webp" // Ruta de la animación proyecto funcionando
+                alt="Imagen, video y guion"
+                className="w-full h-70 object-cover rounded-md"
+              />
             </div>
           </div>
 
           {/* Botones en la parte inferior */}
           <div className="flex space-x-4">
             <button onClick={() => navigate('/Proyectos')} className="bg-green-600 text-white px-4 py-2 rounded shadow-lg hover:bg-green-700 transition-colors w-80">Regresar</button>
-            <button onClick={() => navigate('/')} className="bg-green-600 text-white px-4 py-2 rounded shadow-lg hover:bg-green-700 transition-colors w-80">Iniciar</button>
+            <button onClick={() => navigate('/Contenido1')} className="bg-green-600 text-white px-4 py-2 rounded shadow-lg hover:bg-green-700 transition-colors w-80">Iniciar</button>
           </div>
         </div>
       </div>
