@@ -14,7 +14,7 @@ const Pagina3 = () => {
             <button className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm">Log in</button>
             <button className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm">Log up</button>
           </div>
-          <button className="bg-gray-200 px-3 py-1 rounded-lg text-sm">Close</button>
+          <button className="bg-gray-200 px-3 py-1 rounded-lg text-sm" onClick={() => navigate('/')}>Close</button>
         </div>
       </div>
 
