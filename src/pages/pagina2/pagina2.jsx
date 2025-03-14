@@ -6,18 +6,18 @@ const Pagina2 = () => {
   return (
     <div className="bg-white p-4 h-screen flex flex-col">
       {/* Título */}
-      <h1 className="text-2xl font-bold text-center mb-6">Formas de conexión</h1>
+      <h1 className="text-xl md:text-2xl font-bold text-center mb-4 md:mb-6">Formas de conexión</h1>
 
       {/* Contenido principal */}
       <div className="flex-grow flex flex-col items-center justify-center">
         {/* Contenedor para las imágenes en fila */}
-        <div className="flex space-x-4 mb-6">
+        <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mb-4 md:mb-6 w-full max-w-4xl px-4">
           {/* Imagen de la izquierda */}
           <div className="bg-gray-100 p-4 rounded-lg flex-1">
             <img
               src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741304025/ConexionAnimacion_njz2gw.gif" // Ruta de la animación plug and play
-              alt="Conexión Plug and Play animación "
-              className="w-full h-70 object-cover rounded-md"
+              alt="Conexión Plug and Play animación"
+              className="w-full h-40 md:h-70 object-cover rounded-md"
             />
           </div>
 
@@ -26,29 +26,30 @@ const Pagina2 = () => {
             <img
               src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305003/proyectofuncionando_fyeqnh.gif" // Ruta de la animación proyecto funcionando
               alt="Proyecto funcionando video"
-              className="w-full h-70 object-cover rounded-md"
+              className="w-full h-40 md:h-70 object-cover rounded-md"
             />
           </div>
         </div>
 
         {/* Texto descriptivo */}
-        <p className="text-center text-lg mb-6">
+        <p className="text-center text-base md:text-lg mb-4 md:mb-6 px-4">
           Conexión a dispositivos Plug and Play y un proyecto funcionando
         </p>
 
         {/* Referencias y patterns */}
-        <div className="bg-gray-100 p-4 rounded-lg">
-          <h2 className="text-xl font-bold text-center mb-4">Referencias y patterns</h2>
-          <p className="text-center text-sm">
+        <div className="bg-gray-100 p-4 rounded-lg w-full max-w-4xl mx-4">
+          <h2 className="text-lg md:text-xl font-bold text-center mb-2 md:mb-4">Referencias y patterns</h2>
+          <p className="text-center text-xs md:text-sm">
             Aquí puedes agregar las referencias y patterns relacionados con la conexión Plug and Play.
           </p>
         </div>
       </div>
 
       {/* Pie de página */}
-      <div className="mt-6 text-center">
+      <div className="mt-4 md:mt-6 text-center">
         <p className="text-xs text-green-600">www.ucundinamarca.edu.co | Vigilada Mineducación</p>
       </div>
+
       {/* Botón "Siguiente" */}
       <button
         onClick={() => navigate('/Principal')}
@@ -56,6 +57,7 @@ const Pagina2 = () => {
       >
         Siguiente
       </button>
+
       {/* Botón "Regresar" */}
       <button
         onClick={() => navigate('/')}

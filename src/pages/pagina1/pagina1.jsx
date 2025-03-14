@@ -5,8 +5,8 @@ import 'swiper/css/pagination'; // Estilos para la paginación (opcional)
 import { Autoplay, Navigation } from 'swiper/modules'; // Módulos de Swiper
 import { useNavigate } from 'react-router-dom';
 
-const pagina1 = () => {
-    const navigate = useNavigate();
+const Pagina1 = () => {
+  const navigate = useNavigate();
 
   // Datos de las imágenes y descripciones
   const slides = [
@@ -52,9 +52,13 @@ const pagina1 = () => {
   return (
     <div className="bg-white p-4 h-screen flex flex-col">
       {/* Título y logo */}
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Recurso Educativo Digital</h1>
-        <img src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305038/logo-titulo_gtcapj.png" alt="Logo 1" className="h-12" />
+      <div className="flex justify-between items-center mb-4 md:mb-6">
+        <h1 className="text-xl md:text-2xl font-bold">Recurso Educativo Digital</h1>
+        <img
+          src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305038/logo-titulo_gtcapj.png"
+          alt="Logo 1"
+          className="h-10 md:h-12"
+        />
       </div>
 
       {/* Slider de imágenes */}
@@ -77,9 +81,9 @@ const pagina1 = () => {
                 <img
                   src={slide.image}
                   alt={`Descripción ${index + 1}`}
-                  className="w-full h-110 object-cover rounded-md"
+                  className="w-full h-64 md:h-110 object-cover rounded-md"
                 />
-                <p className="mt-2 text-center text-sm">{slide.description}</p>
+                <p className="mt-2 text-center text-sm md:text-base">{slide.description}</p>
               </div>
             </SwiperSlide>
           ))}
@@ -101,8 +105,8 @@ const pagina1 = () => {
       </div>
 
       {/* Pie de página */}
-      <div className="mt-6 text-center">
-        <p className="text-xs text-green-600">www.ucundinamarca.edu.co | Vigilado minieducación</p>
+      <div className="mt-4 md:mt-6 text-center">
+        <p className="text-xs md:text-sm text-green-600">www.ucundinamarca.edu.co | Vigilado minieducación</p>
       </div>
 
       {/* Botón "Siguiente" */}
@@ -116,4 +120,4 @@ const pagina1 = () => {
   );
 };
 
-export default pagina1;
+export default Pagina1;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Pagina4Informacion1 = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
 
   // Datos para cada slide (imagen y texto)
@@ -45,53 +45,58 @@ const Pagina4Informacion1 = () => {
   };
 
   return (
-    <div className="w-[1369px] h-[642px] flex flex-col md:flex-row p-4 bg-white relative gap-4">
+    <div className="w-full min-h-screen flex flex-col md:flex-row p-4 bg-white gap-4 relative">
       {/* Columna izquierda */}
-      <div className="w-full md:w-1/2 p-0 gap-4 flex flex-col h-137.5">
+      <div className="w-full md:w-1/2 flex flex-col gap-4">
         {/* Introducción arriba a la izquierda */}
-        <div className="border h-[50px] flex justify-center items-center rounded-md">
-          <h2 className="text-2xl font-bold ">Introducción</h2>
+        <div className="border h-16 flex justify-center items-center rounded-md">
+          <h2 className="text-2xl font-bold">Introducción</h2>
         </div>
 
         {/* Texto debajo de Introducción, centrado en la columna izquierda */}
-        <div className="border h-[484px] flex justify-center items-center rounded-md">
-          <p className="text-gray-700">{slides[activeIndex].text}</p>
+        <div className="border flex-1 flex justify-center items-center rounded-md p-4 overflow-y-auto max-h-[400px] md:max-h-[480px]">
+          <p className="text-gray-700 text-center">{slides[activeIndex].text}</p>
         </div>
       </div>
 
       {/* Columna derecha con la imagen */}
-      <div className="w-full md:w-1/2 p-4 border flex flex-col justify-center items-center h-[550px] rounded-md">
+      <div className="w-full md:w-1/2 border flex justify-center items-center rounded-md p-4 max-h-[400px] md:max-h-[560px]">
         {/* Imagen */}
         <img
           src={slides[activeIndex].image} // Imagen correspondiente al slide activo
           alt={`Imagen ${activeIndex + 1}`}
-          className="w-full h-auto"
+          className="w-full h-auto max-h-[300px] md:max-h-[400px] object-cover rounded-md"
         />
       </div>
 
+      {/* Botón de volver */}
+      <button
+        onClick={() => navigate('/Tema1')}
+        className="fixed md:absolute bottom-4 left-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors"
+      >
+        Volver
+      </button>
+
+      {/* Botón de créditos */}
+      <button
+        onClick={() => navigate('/Creditos')}
+        className="fixed md:absolute bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors"
+      >
+        Créditos
+      </button>
+
       {/* Círculos del slide abajo en el centro */}
-      <div className="absolute bottom-7 left-1/2 transform -translate-x-1/2 flex justify-center">
+      <div className="fixed md:absolute bottom-6 left-[calc(50%-80px)] flex justify-center">
         {slides.map((slide, index) => (
           <button
             key={slide.id}
             onClick={() => handleCircleClick(index)}
-            className={`w-4 h-4 rounded-full mx-1 ${
+            className={`w-4 h-4 rounded-full mx-1 hover:bg-gray-400 transition-colors ${
               index === activeIndex ? 'bg-green-500' : 'bg-gray-300'
             }`}
           ></button>
         ))}
       </div>
-
-      {/* Botón de volver */}
-      <div className="absolute bottom-4 left-4">
-        <button onClick={() => navigate('/Proyectos')} className="bg-green-500 text-white px-4 py-2 rounded">Volver</button>
-      </div>
-
-      {/* Botón de creditos */}
-      <div className="absolute bottom-4 right-4">
-        <button onClick={() => navigate('/Creditos')} className="bg-green-500 text-white px-4 py-2 rounded">Creditos</button>
-      </div>
-
     </div>
   );
 };

@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom';
 const Pagina3 = () => {
   const navigate = useNavigate();
   return (
-    <div className="bg-white p-4 w-[1369px] h-[642px] flex flex-col">
+    <div className="bg-white p-4 w-full min-h-screen flex flex-col">
       {/* Fila superior: Menú Principal, Log in/Log up y Close */}
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-bold ml-140 ">Menú Principal</h1>
+        <h1 className="text-xl md:text-2xl font-bold">Menú Principal</h1>
 
         <div className="flex items-center gap-2">
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col md:flex-row gap-2">
             <button className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm">Log in</button>
             <button className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm">Log up</button>
           </div>
@@ -19,31 +19,35 @@ const Pagina3 = () => {
       </div>
 
       {/* Contenedor con 3 columnas y 3 filas */}
-      <div className="grid grid-cols-[188px_auto_240px] gap-4 flex-grow"> {/* Ajustamos las columnas */}
+      <div className="grid grid-cols-1 md:grid-cols-[minmax(200px,_1fr)_minmax(100px,_0.3fr)_240px] gap-4 flex-grow">
         {/* Proyectos (Columna 1, Fila 1) */}
-        <div className="bg-green-100 p-2 rounded-md h-60 w-222"> {/* Quitamos w-188 porque ya está definido en grid-cols */}
+        <div className="bg-green-100 p-2 rounded-md hover:bg-green-200 transition-colors flex flex-col">
           <h2 className="text-lg font-bold text-center" onClick={() => navigate('/Proyectos')}>Proyectos</h2>
-          <div className="grid grid-cols-2 grid-rows-2 gap-3 mt-2 h-95">
-            <div className="bg-blue-100 p-2 text-center content-center">Tutorial guiado</div>
-            <div  className="bg-red-100 p-2 rounded-br-md text-center content-center" >Proyectos 1 de 5</div>
+          <div className="grid grid-cols-2 gap-3 mt-2 flex-grow">
+            <div className="bg-blue-100 p-2 text-center content-center flex items-center justify-center">
+              Tutorial guiado
+            </div>
+            <div className="bg-red-100 p-2 rounded-br-md text-center content-center flex items-center justify-center">
+              Proyectos 1 de 5
+            </div>
           </div>
         </div>
 
         {/* Recursos (Columna 2, Fila 1) */}
-        <div className="flex flex-col space-y-2 h-40 w-45 ml-auto"> {/* Agregamos ml-auto para alinear a la derecha */}
-          <div className="bg-gray-100 p-2 rounded-lg">
-            <h2 className="text-lg font-bold mb-2 h-23 text-center content-center">Recursos Gestor</h2>
+        <div className="flex flex-col space-y-2">
+          <div className="bg-gray-100 p-2 rounded-lg flex-grow flex items-center justify-center">
+            <h2 className="text-lg font-bold text-center">Recursos Gestor</h2>
           </div>
-          <div className="bg-gray-100 p-2 rounded-lg">
-            <h2 className="text-lg font-bold mb-2 h-23 text-center content-center">Recursos de apoyo</h2>
+          <div className="bg-gray-100 p-2 rounded-lg flex-grow flex items-center justify-center">
+            <h2 className="text-lg font-bold text-center">Recursos de apoyo</h2>
           </div>
         </div>
 
         {/* Proyectos Guardados (Columna 3, ocupa todas las filas) */}
-        <div className="row-span-3 bg-gray-100 p-2 rounded-lg"> {/* Quitamos w-60 */}
+        <div className="row-span-3 bg-gray-100 p-2 rounded-lg">
           <h2 className="text-lg font-bold mb-2 text-center">Proyectos Guardados</h2>
-          <div className="space-y-2 text-center content-center">
-            <div className="bg-white p-2 rounded-lg shadow-sm ">
+          <div className="space-y-2">
+            <div className="bg-white p-2 rounded-lg shadow-sm">
               <h3 className="font-semibold">Proyecto Guardado 1</h3>
               {/* Descripción del proyecto guardado 1 */}
             </div>
@@ -67,14 +71,18 @@ const Pagina3 = () => {
         </div>
 
         {/* Imagen Temas del Proyecto (Columna 1-2, Fila 2) */}
-        <div className="col-span-2 bg-gray-100 p-2 rounded-lg h-45 text-center content-center">
-          <img src="public/image/temas-proyectos.png" alt="Temas del proyecto" className="w-full h-24 object-cover rounded-md" />
+        <div className="col-span-1 md:col-span-2 bg-gray-100 p-2 rounded-lg">
+          <img
+            src="public/image/temas-proyectos.png"
+            alt="Temas del proyecto"
+            className="w-full h-24 object-cover rounded-md"
+          />
         </div>
 
         {/* Créditos (Columna 1-2, Fila 3) */}
-        <div className="col-span-2 bg-gray-100 p-2 rounded-lg h-20 text-center content-center">
-          <h2 className="text-lg font-bold">Créditos</h2>
-          <p className="text-sm">Aquí puedes agregar los créditos relacionados con los temas y proyectos.</p>
+        <div className="col-span-1 md:col-span-2 bg-gray-100 p-2 rounded-lg">
+          <h2 className="text-lg font-bold text-center">Créditos</h2>
+          <p className="text-sm text-center">Aquí puedes agregar los créditos relacionados con los temas y proyectos.</p>
         </div>
       </div>
     </div>
