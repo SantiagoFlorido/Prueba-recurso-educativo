@@ -6,12 +6,12 @@ const Pagina4Descripcion1 = () => {
   return (
     <div className="bg-white w-full h-screen p-4 md:p-8 flex flex-col">
       {/* Título centrado en la parte superior */}
-      <h1 className="border text-2xl md:text-3xl font-bold text-center mb-4 md:mb-6">Tema 1 + Historia</h1>
+      <h1 className="border text-2xl md:text-3xl font-bold text-center mb-4 md:mb-6 rounded-lg">Tema 1 + Historia</h1>
 
       {/* Contenedor principal */}
-      <div className="flex flex-col md:flex-row flex-1">
+      <div className="flex flex-col md:flex-row flex-1 ">
         {/* Contenedor izquierdo */}
-        <div className="border w-full md:w-1/2 pr-0 md:pr-4 mb-4 md:mb-0">
+        <div className="border w-full md:w-1/2 pr-0 md:pr-4 mb-4 md:mb-0 rounded-lg">
           <div className="mb-4 md:mb-6">
             <h2 className="text-lg md:text-xl font-semibold mb-2">Descripción</h2>
             <ul className="list-disc pl-5">
@@ -32,10 +32,10 @@ const Pagina4Descripcion1 = () => {
         </div>
 
         {/* Contenedor derecho */}
-        <div className="w-full md:w-1/2 pl-0 md:pl-4 flex flex-col">
+        <div className="w-full md:w-1/2 pl-0 md:pl-4 flex flex-col ">
           {/* Imagen, video y guion */}
-          <div className="border flex-1 mb-4">
-            <div className="bg-gray-200 h-48 md:h-full flex items-center justify-center">
+          <div className="border flex-1 mb-4 rounded-lg">
+            <div className="bg-gray-200 h-48 md:h-full flex items-center justify-center rounded-lg">
               <img
                 src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305069/mapa_igu9fc.webp" // Ruta de la animación proyecto funcionando
                 alt="Imagen, video y guion"
