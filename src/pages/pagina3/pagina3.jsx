@@ -11,9 +11,9 @@ const Pagina3 = () => {
 
         <div className="flex items-center gap-2">
           <div className="flex flex-col md:flex-row gap-2">
-            <button className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm">Cerrar Sesión</button>
+            <button className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-700" onClick={() => navigate('/')}>Cerrar Sesión</button>
           </div>
-          <button className="bg-gray-200 px-3 py-1 rounded-lg text-sm" onClick={() => navigate('/')}>Inicio</button>
+          <button className="bg-gray-200 px-3 py-1 rounded-lg text-sm hover:bg-gray-300" onClick={() => navigate('/')}>Inicio</button>
         </div>
       </div>
 
