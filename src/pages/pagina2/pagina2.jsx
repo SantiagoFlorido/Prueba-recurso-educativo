@@ -50,17 +50,18 @@ const Pagina2 = () => {
         <p className="text-xs text-green-600">www.ucundinamarca.edu.co | Vigilada Mineducación</p>
       </div>
 
-      {/* Botón "Siguiente" */}
+      {/* Botón "Siguiente" 
       <button
         onClick={() => navigate('/Principal')}
         className="fixed bottom-2 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-700 transition-colors"
       >
         Siguiente
       </button>
+      */}
 
       {/* Botón "Regresar" */}
       <button
-        onClick={() => navigate('/')}
+        onClick={() => navigate('/Principal')}
         className="fixed bottom-2 left-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-700 transition-colors"
       >
         Regresar

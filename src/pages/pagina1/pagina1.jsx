@@ -111,10 +111,10 @@ const Pagina1 = () => {
 
       {/* Botón "Siguiente" */}
       <button
-        onClick={() => navigate('/Conexión')}
+        onClick={() => navigate('/Login')}
         className="fixed bottom-2 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-700 transition-colors"
       >
-        Siguiente
+        Iniciar sección
       </button>
     </div>
   );

@@ -11,10 +11,9 @@ const Pagina3 = () => {
 
         <div className="flex items-center gap-2">
           <div className="flex flex-col md:flex-row gap-2">
-            <button className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm">Log in</button>
-            <button className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm">Log up</button>
+            <button className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm">Cerrar Sesión</button>
           </div>
-          <button className="bg-gray-200 px-3 py-1 rounded-lg text-sm" onClick={() => navigate('/')}>Close</button>
+          <button className="bg-gray-200 px-3 py-1 rounded-lg text-sm" onClick={() => navigate('/')}>Inicio</button>
         </div>
       </div>
 
@@ -24,8 +23,8 @@ const Pagina3 = () => {
         <div className="bg-green-100 p-2 rounded-md hover:bg-green-200 transition-colors flex flex-col">
           <h2 className="text-lg font-bold text-center" onClick={() => navigate('/Proyectos')}>Proyectos</h2>
           <div className="grid grid-cols-2 gap-3 mt-2 flex-grow">
-            <div className="bg-blue-100 p-2 text-center content-center flex items-center justify-center">
-              Tutorial guiado
+            <div className="bg-blue-100 p-2 text-center content-center flex items-center justify-center hover:bg-blue-200 transition-colors" onClick={() => navigate('/Conexión')}>
+              Formas de conexión
             </div>
             <div className="bg-red-100 p-2 rounded-br-md text-center content-center flex items-center justify-center">
               Proyectos 1 de 5

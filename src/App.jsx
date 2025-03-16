@@ -1,6 +1,10 @@
 import { Routes, Route } from 'react-router-dom'; // Importar Routes y Route para definir las rutas
 import './App.css';
 
+//importa el login
+import Login from './pages/Login/Login'; //importa el componente del login
+import Register from './pages/Login/Register'; //importa el componente de registro
+
 //paginas o rutas
 import Pagina1 from './pages/pagina1/pagina1'; // Importa el componente de la página Inicio
 import Pagina2 from './pages/pagina2/pagina2'; // importa el componente de la pagina de conexion (animacion)
@@ -25,6 +29,10 @@ function App() {
   return (
     <div className="App">
       <Routes>
+
+        {/*Ruta para el login*/}
+        <Route path='/Login' element={<Login />} />
+        <Route path='/Register' element={<Register />} />
 
         {/*Rutas pricipales*/}
         <Route path="/" element={<Pagina1 />} />
