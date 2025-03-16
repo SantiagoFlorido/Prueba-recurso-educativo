@@ -18,7 +18,7 @@ const Pagina3Proyectos = () => {
           {/* Tema 1 */}
           <div onClick={() => navigate('/Tema1')} className="border rounded-lg overflow-hidden">
             <div className="h-10 flex items-center justify-center bg-gray-100">
-              <h2 className="text-xl font-semibold">Tema 1</h2>
+              <h2 className="text-xl font-semibold">Taller 1: El viaje de Pedro</h2>
             </div>
             <div className="h-64 flex items-center justify-center">
               <img
@@ -32,11 +32,11 @@ const Pagina3Proyectos = () => {
           {/* Tema 2 */}
           <div onClick={() => navigate('/Tema2')} className="border rounded-lg overflow-hidden">
             <div className="h-10 flex items-center justify-center bg-gray-100">
-              <h2 className="text-xl font-semibold">Tema 2</h2>
+              <h2 className="text-xl font-semibold">Taller 2: Armando un Mbot</h2>
             </div>
             <div className="h-64 flex items-center justify-center">
               <img
-                src="ruta/a/tu/imagen2.gif"
+                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305069/piezas_nemtfi.webp"
                 alt="Animación 2"
                 className="w-full h-full object-cover"
               />
@@ -46,11 +46,11 @@ const Pagina3Proyectos = () => {
           {/* Tema 3 */}
           <div onClick={() => navigate('/Tema3')} className="border rounded-lg overflow-hidden">
             <div className="h-10 flex items-center justify-center bg-gray-100">
-              <h2 className="text-xl font-semibold">Tema 3</h2>
+              <h2 className="text-xl font-semibold">Taller 3: Conectando un Mbot</h2>
             </div>
             <div className="h-64 flex items-center justify-center">
               <img
-                src="ruta/a/tu/imagen3.gif"
+                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305067/conectar_iv5sdj.webp"
                 alt="Animación 3"
                 className="w-full h-full object-cover"
               />
@@ -60,11 +60,11 @@ const Pagina3Proyectos = () => {
           {/* Tema 4 */}
           <div onClick={() => navigate('/Tema4')} className="border rounded-lg overflow-hidden">
             <div className="h-10 flex items-center justify-center bg-gray-100">
-              <h2 className="text-xl font-semibold">Tema 4</h2>
+              <h2 className="text-xl font-semibold">Taller 4: Sensor de ultrasonido de nuestro Mbot</h2>
             </div>
             <div className="h-64 flex items-center justify-center">
               <img
-                src="ruta/a/tu/imagen4.gif"
+                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305070/sensor4_yxeq9c.webp"
                 alt="Animación 4"
                 className="w-full h-full object-cover"
               />
@@ -74,11 +74,11 @@ const Pagina3Proyectos = () => {
           {/* Tema 5 */}
           <div onClick={() => navigate('/Tema5')} className="border rounded-lg overflow-hidden">
             <div className="h-10 flex items-center justify-center bg-gray-100">
-              <h2 className="text-xl font-semibold">Tema 5</h2>
+              <h2 className="text-xl font-semibold">Taller 5: Seguidor de linea de nuestro Mbot</h2>
             </div>
             <div className="h-64 flex items-center justify-center">
               <img
-                src="ruta/a/tu/imagen5.gif"
+                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305068/linea5_ixd3hm.webp"
                 alt="Animación 5"
                 className="w-full h-full object-cover"
               />

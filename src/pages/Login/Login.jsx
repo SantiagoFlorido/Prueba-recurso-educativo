@@ -7,10 +7,10 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const navigate = useNavigate();
   return (
-    <div className='text-white h-[100vh] flex justify-center items-center bg-cover bg-center' style={{"backgroundImage": "url('')"}}>
+    <div className='text-white h-[100vh] flex justify-center items-center bg-cover bg-center' style={{"backgroundImage": "url('https://res.cloudinary.com/dufzsv87k/image/upload/v1742152924/fondoU.jpg')"}}>
 
       <div>
-        <div className="bg-[#0a492980] border border-[#007b3e] rounded-md p-8 shadow-lg">
+        <div className="bg-[#0e3f2788] border border-[#007b3e] rounded-md p-8 shadow-lg">
           <h1 className='text-4x1 text-[30px] text-[#009e4f] font-bold text-center mb-6'>Login</h1>
           {/*<form action="">*/}
             <div className='relative my-4'>
