@@ -72,7 +72,7 @@ const Pagina3 = () => {
         {/* Imagen Temas del Proyecto (Columna 1-2, Fila 2) */}
         <div className="col-span-1 md:col-span-2 bg-gray-100 p-2 rounded-lg">
           <img
-            src="public/image/temas-proyectos.png"
+            src="url_imagen_temas_proyectos"
             alt="Temas del proyecto"
             className="w-full h-24 object-cover rounded-md"
           />

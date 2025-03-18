@@ -1,9 +1,14 @@
 import { Routes, Route } from 'react-router-dom'; // Importar Routes y Route para definir las rutas
 import './App.css';
 
+//importa el rol
+import Rol from './pages/Login/SelecionarRol'
+
 //importa el login
-import Login from './pages/Login/Login'; //importa el componente del login
-import Register from './pages/Login/Register'; //importa el componente de registro
+import LoginEstudiante from './pages/Login/LoginEstudiante'; //importa el componente del login del estudiante
+import LoginDocente from './pages/Login/LoginDocente'; //importa el componente del login del docente
+import RegisterEstudiante from './pages/Login/RegisterEstudiante'; //importa el componente de registro del estudiante
+import RegisterDocente from './pages/Login/RegisterDocente'; //importa el componente de registro del docente
 
 //paginas o rutas
 import Pagina1 from './pages/pagina1/pagina1'; // Importa el componente de la página Inicio
@@ -13,13 +18,17 @@ import PaginaProyectos from './pages/pagina3Proyectos/pagina3Proyectos'; // impo
 
 //paginas a las descripcion de cada tema/taller/proyecto
 import Pagina4Descripcion1 from './pages/pagina4/tema1/pagina4Descripcion1'  // importa la descripcion del tema 1
-import Pagina4Descripcion2 from './pages/pagina4/tema2/pagina4Descripcion2'  // importa la descripcion del tema 1
-import Pagina4Descripcion3 from './pages/pagina4/tema3/pagina4Descripcion3'  // importa la descripcion del tema 1
-import Pagina4Descripcion4 from './pages/pagina4/tema4/pagina4Descripcion4'  // importa la descripcion del tema 1
-import Pagina4Descripcion5 from './pages/pagina4/tema5/pagina4Descripcion5'  // importa la descripcion del tema 1
+import Pagina4Descripcion2 from './pages/pagina4/tema2/pagina4Descripcion2'  // importa la descripcion del tema 2
+import Pagina4Descripcion3 from './pages/pagina4/tema3/pagina4Descripcion3'  // importa la descripcion del tema 3
+import Pagina4Descripcion4 from './pages/pagina4/tema4/pagina4Descripcion4'  // importa la descripcion del tema 4
+import Pagina4Descripcion5 from './pages/pagina4/tema5/pagina4Descripcion5'  // importa la descripcion del tema 5
 
 //paginas a la informacion/contenido de cada tema
 import Pagina4Informacion1 from './pages/pagina4/tema1/pagina4Informacion1'  //importa el contenido del tema 1
+import Pagina4Informacion2 from './pages/pagina4/tema2/pagina4Informacion2'  //importa el contenido del tema 2
+import Pagina4Informacion3 from './pages/pagina4/tema3/pagina4Informacion3'  //importa el contenido del tema 3
+import Pagina4Informacion4 from './pages/pagina4/tema4/pagina4Informacion4'  //importa el contenido del tema 4
+import Pagina4Informacion5 from './pages/pagina4/tema5/pagina4Informacion5'  //importa el contenido del tema 5
 
 
 //pagina de creditos
@@ -31,8 +40,13 @@ function App() {
       <Routes>
 
         {/*Ruta para el login*/}
-        <Route path='/Login' element={<Login />} />
-        <Route path='/Register' element={<Register />} />
+        <Route path='/Rol' element={<Rol />} />
+
+        {/*Ruta para el login*/}
+        <Route path='/Login/Student' element={<LoginEstudiante />} />
+        <Route path='/Login/Teacher' element={<LoginDocente />} />
+        <Route path='/Register/Student' element={<RegisterEstudiante />} />
+        <Route path='/Register/Teacher' element={<RegisterDocente />} />
 
         {/*Rutas pricipales*/}
         <Route path="/" element={<Pagina1 />} />
@@ -49,6 +63,10 @@ function App() {
 
         {/*Rutas por tema y contenido*/}
         <Route path='/Contenido1' element={<Pagina4Informacion1 />} />
+        <Route path='/Contenido2' element={<Pagina4Informacion2 />} />
+        <Route path='/Contenido3' element={<Pagina4Informacion3 />} />
+        <Route path='/Contenido4' element={<Pagina4Informacion4 />} />
+        <Route path='/Contenido5' element={<Pagina4Informacion5 />} />
 
         {/*Ruta para los creditos*/}
         <Route path='/Creditos' element={<Creditos />} />
