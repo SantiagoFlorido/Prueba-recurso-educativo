@@ -77,7 +77,7 @@ const Pagina1 = () => {
         >
           {slides.map((slide, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-gray-100 p-2 rounded-lg md:h-full h-175 flex flex-col justify-center">
+              <div className="bg-gray-100 p-2 rounded-lg h-full flex flex-col justify-center">
                 <img
                   src={slide.image}
                   alt={`Descripción ${index + 1}`}
