@@ -77,11 +77,11 @@ const Pagina1 = () => {
         >
           {slides.map((slide, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-gray-100 p-2 rounded-lg h-full flex flex-col justify-center">
+              <div className="bg-gray-100 p-2 rounded-lg md:h-full h-175 flex flex-col justify-center">
                 <img
                   src={slide.image}
                   alt={`Descripción ${index + 1}`}
-                  className="w-full h-64 md:h-110 object-cover rounded-md"
+                  className="w-full h-60 md:h-110 object-cover rounded-md"
                 />
                 <p className="mt-2 text-center text-sm md:text-base">{slide.description}</p>
               </div>
@@ -105,8 +105,10 @@ const Pagina1 = () => {
       </div>
 
       {/* Pie de página */}
-      <div className="mt-4 md:mt-6 text-center">
-        <p className="text-xs md:text-sm text-green-600">www.ucundinamarca.edu.co | Vigilado minieducación</p>
+      <div className="mt-4 md:mt-6 w-full">
+        <p className="text-xs md:text-sm text-green-600 text-left md:text-center max-w-[calc(100%-8rem)] md:max-w-none">
+          www.ucundinamarca.edu.co | Vigilado minieducación
+        </p>
       </div>
 
       {/* Botón "Siguiente" */}
@@ -114,7 +116,7 @@ const Pagina1 = () => {
         onClick={() => navigate('/Rol')}
         className="fixed bottom-2 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-700 transition-colors"
       >
-        Iniciar sección
+        Iniciar sesión
       </button>
     </div>
   );

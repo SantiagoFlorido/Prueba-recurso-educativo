@@ -9,39 +9,58 @@ const Pagina4Informacion5 = () => {
   const slides = [
     {
       id: 1,
-      image: "url_imagen_1", // Reemplaza con la URL de la imagen 1
-      text: "Texto correspondiente a la imagen 1",
+      image: "", // Imagen de los sensores de infrarrojos
+      text: "En este taller, aprenderemos a programar el mBot para seguir una línea utilizando sus sensores de infrarrojos. Estos sensores detectan cambios en el color de la superficie, lo que permite al mBot seguir una pista.",
     },
     {
       id: 2,
-      image: "url_imagen_2", // Reemplaza con la URL de la imagen 2
-      text: "Texto correspondiente a la imagen 2",
+      image: "", // Imagen de la pista de seguimiento
+      text: "Crearemos una pista en el suelo utilizando cinta adhesiva negra. La pista tendrá curvas y líneas rectas para que el mBot la siga. Aseguraremos que la pista sea lo suficientemente ancha para que los sensores de infrarrojos la detecten fácilmente.",
     },
     {
       id: 3,
-      image: "url_imagen_3", // Reemplaza con la URL de la imagen 3
-      text: "Texto correspondiente a la imagen 3",
+      image: "", // Imagen de configuración del sensor
+      text: "Configuraremos los sensores de infrarrojos en el mBot. Aseguraremos que estén correctamente conectados y listos para detectar la línea negra en la pista.",
     },
     {
       id: 4,
-      image: "url_imagen_4", // Reemplaza con la URL de la imagen 4
-      text: "Texto correspondiente a la imagen 4",
+      image: "", // Imagen de bloques de programación
+      text: "Programaremos el mBot para que siga la línea negra utilizando los sensores de infrarrojos. Si el mBot se desvía de la línea, ajustaremos su dirección para que vuelva a la pista.",
     },
     {
       id: 5,
-      image: "url_imagen_5", // Reemplaza con la URL de la imagen 5
-      text: "Texto correspondiente a la imagen 5",
+      image: "", // Imagen de luces y sonidos
+      text: "Mejoraremos el programa ajustando la velocidad del mBot y la sensibilidad de los sensores. También añadiremos funciones adicionales, como luces y sonidos, para indicar cuando el mBot cambia de dirección.",
     },
     {
       id: 6,
-      image: "url_imagen_6", // Reemplaza con la URL de la imagen 6
-      text: "Texto correspondiente a la imagen 6",
+      image: "", // Imagen de actividad práctica
+      text: "En esta actividad, los estudiantes programarán el mBot para que siga una pista con curvas y bifurcaciones. Competirán para ver quién logra que su mBot complete el recorrido más rápido y con mayor precisión.",
+    },
+    {
+      id: 7,
+      image: "", // Imagen de evaluación y cierre
+      text: "Revisaremos los programas creados por cada grupo y discutiremos cómo aplicamos los conceptos de programación. Destacaremos la importancia de los robots seguidores de línea en aplicaciones industriales y vehículos autónomos.",
     },
   ];
 
   // Función para manejar el cambio de slide
   const handleCircleClick = (index) => {
     setActiveIndex(index);
+  };
+
+  // Función para ir al slide anterior (no retrocede más allá del primer slide)
+  const handlePrevSlide = () => {
+    if (activeIndex > 0) {
+      setActiveIndex((prevIndex) => prevIndex - 1);
+    }
+  };
+
+  // Función para ir al siguiente slide (no avanza más allá del último slide)
+  const handleNextSlide = () => {
+    if (activeIndex < slides.length - 1) {
+      setActiveIndex((prevIndex) => prevIndex + 1);
+    }
   };
 
   return (
@@ -85,17 +104,44 @@ const Pagina4Informacion5 = () => {
         Créditos
       </button>
 
-      {/* Círculos del slide abajo en el centro */}
-      <div className="fixed md:absolute bottom-6 left-[calc(50%-80px)] flex justify-center">
-        {slides.map((slide, index) => (
-          <button
-            key={slide.id}
-            onClick={() => handleCircleClick(index)}
-            className={`w-4 h-4 rounded-full mx-1 hover:bg-gray-400 transition-colors ${
-              index === activeIndex ? 'bg-green-500' : 'bg-gray-300'
-            }`}
-          ></button>
-        ))}
+      {/* Navegación: Círculos en PC y flechas en móvil */}
+      <div className="fixed md:absolute bottom-4 left-1/2 transform -translate-x-1/2 flex justify-center items-center gap-4">
+        {/* Flecha izquierda (solo en móvil) */}
+        <button
+          onClick={handlePrevSlide}
+          className={`md:hidden px-4 py-2 rounded transition-colors ${
+            activeIndex === 0
+              ? 'bg-gray-300 cursor-not-allowed' // Deshabilitado en el primer slide
+              : 'bg-green-500 hover:bg-green-700' // Habilitado en otros slides
+          } text-white`}
+        >
+          ←
+        </button>
+
+        {/* Círculos de navegación (solo en PC) */}
+        <div className="hidden md:flex">
+          {slides.map((slide, index) => (
+            <button
+              key={slide.id}
+              onClick={() => handleCircleClick(index)}
+              className={`w-4 h-4 rounded-full mx-1 hover:bg-gray-400 transition-colors ${
+                index === activeIndex ? 'bg-green-500' : 'bg-gray-300'
+              }`}
+            ></button>
+          ))}
+        </div>
+
+        {/* Flecha derecha (solo en móvil) */}
+        <button
+          onClick={handleNextSlide}
+          className={`md:hidden px-4 py-2 rounded transition-colors left-[40%] transform -translate-x-1/4 ${
+            activeIndex === slides.length - 1
+              ? 'bg-gray-300 cursor-not-allowed' // Deshabilitado en el último slide
+              : 'bg-green-500 hover:bg-green-700' // Habilitado en otros slides
+          } text-white`}
+        >
+          →
+        </button>
       </div>
     </div>
   );

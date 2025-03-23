@@ -32,40 +32,33 @@ const Pagina2 = () => {
         </div>
 
         {/* Texto descriptivo */}
-        <p className="text-center text-base md:text-lg mb-4 md:mb-6 px-4">
+        <p className="text-center text-base md:text-lg mb-4 md:mb-2 px-4">
           Conexión a dispositivos Plug and Play y un proyecto funcionando
         </p>
 
         {/* Referencias y patterns */}
-        <div className="bg-gray-100 p-4 rounded-lg w-full max-w-4xl mx-4">
-          <h2 className="text-lg md:text-xl font-bold text-center mb-2 md:mb-4">Referencias y patterns</h2>
+        <div className="bg-gray-100 p-4 rounded-lg w-full max-w-4xl mx-4 mb-4 md:mb-8">
+          <h2 className="text-lg md:text-xl font-bold text-center mb-0 md:mb-0">Referencias y patterns</h2>
           <p className="text-center text-xs md:text-sm">
-            Aquí puedes agregar las referencias y patterns relacionados con la conexión Plug and Play.
+            Aquí puedes agregar las referencias y patterns relacionados con la conexión Plug and Play. 
           </p>
         </div>
       </div>
 
-      {/* Pie de página */}
-      <div className="mt-4 md:mt-6 text-center">
-        <p className="text-xs text-green-600">www.ucundinamarca.edu.co | Vigilada Mineducación</p>
-      </div>
-
-      {/* Botón "Siguiente" 
-      <button
-        onClick={() => navigate('/Principal')}
-        className="fixed bottom-2 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-700 transition-colors"
-      >
-        Siguiente
-      </button>
-      */}
-
       {/* Botón "Regresar" */}
       <button
         onClick={() => navigate('/Principal')}
-        className="fixed bottom-2 left-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-700 transition-colors"
+        className="mt-0 md:mt-0 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-700 transition-colors md:mx-auto md:w-200"
       >
         Regresar
       </button>
+
+      {/* Pie de página */}
+      <div className="mt-4 md:mt-6 w-full">
+        <p className="text-xs text-green-600 text-center pr-4 md:pr-0">
+          www.ucundinamarca.edu.co | Vigilada Mineducación
+        </p>
+      </div>
     </div>
   );
 };

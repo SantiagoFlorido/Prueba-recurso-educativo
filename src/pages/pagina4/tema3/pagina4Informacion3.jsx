@@ -9,39 +9,58 @@ const Pagina4Informacion3 = () => {
   const slides = [
     {
       id: 1,
-      image: "url_imagen_1", // Reemplaza con la URL de la imagen 1
-      text: "Texto correspondiente a la imagen 1",
+      image: "", // Imagen de la interfaz de mBlock
+      text: "En este taller, aprenderemos a programar el mBot para que se mueva utilizando las flechas del teclado. Conoceremos cómo conectar el mBot a la computadora y cómo usar mBlock para programar.",
     },
     {
       id: 2,
-      image: "url_imagen_2", // Reemplaza con la URL de la imagen 2
-      text: "Texto correspondiente a la imagen 2",
+      image: "", // Imagen de conexión del mBot
+      text: "Conectaremos el mBot a la computadora utilizando un cable USB o Bluetooth. Aseguraremos que la conexión sea exitosa y que el mBot esté listo para recibir comandos.",
     },
     {
       id: 3,
-      image: "url_imagen_3", // Reemplaza con la URL de la imagen 3
-      text: "Texto correspondiente a la imagen 3",
+      image: "", // Imagen de bloques de movimiento
+      text: "Programaremos el mBot para que se mueva en diferentes direcciones usando las flechas del teclado. Usaremos bloques como 'Mover hacia adelante', 'Mover hacia atrás', 'Girar a la izquierda' y 'Girar a la derecha'.",
     },
     {
       id: 4,
-      image: "url_imagen_4", // Reemplaza con la URL de la imagen 4
-      text: "Texto correspondiente a la imagen 4",
+      image: "", // Imagen de prueba del mBot
+      text: "Probaremos el programa en el mBot y observaremos cómo responde a las flechas del teclado. Realizaremos ajustes para mejorar el control, como cambiar la velocidad o la distancia de movimiento.",
     },
     {
       id: 5,
-      image: "url_imagen_5", // Reemplaza con la URL de la imagen 5
-      text: "Texto correspondiente a la imagen 5",
+      image: "", // Imagen de luces del mBot
+      text: "Mejoraremos el programa agregando funciones de luz. Programaremos el mBot para que encienda luces LED al moverse en diferentes direcciones.",
     },
     {
       id: 6,
-      image: "url_imagen_6", // Reemplaza con la URL de la imagen 6
-      text: "Texto correspondiente a la imagen 6",
+      image: "", // Imagen de circuito para el mBot
+      text: "Aplicaremos lo aprendido en un desafío práctico. Crearemos una pista en el salón y programaremos el mBot para que la recorra utilizando las flechas del teclado.",
+    },
+    {
+      id: 7,
+      image: "", // Imagen de evaluación y cierre
+      text: "Revisaremos los programas creados por cada grupo y discutiremos cómo aplicamos los conceptos de programación. Destacaremos la importancia de las habilidades STEM en la vida cotidiana.",
     },
   ];
 
   // Función para manejar el cambio de slide
   const handleCircleClick = (index) => {
     setActiveIndex(index);
+  };
+
+  // Función para ir al slide anterior (no retrocede más allá del primer slide)
+  const handlePrevSlide = () => {
+    if (activeIndex > 0) {
+      setActiveIndex((prevIndex) => prevIndex - 1);
+    }
+  };
+
+  // Función para ir al siguiente slide (no avanza más allá del último slide)
+  const handleNextSlide = () => {
+    if (activeIndex < slides.length - 1) {
+      setActiveIndex((prevIndex) => prevIndex + 1);
+    }
   };
 
   return (
@@ -85,17 +104,44 @@ const Pagina4Informacion3 = () => {
         Créditos
       </button>
 
-      {/* Círculos del slide abajo en el centro */}
-      <div className="fixed md:absolute bottom-6 left-[calc(50%-80px)] flex justify-center">
-        {slides.map((slide, index) => (
-          <button
-            key={slide.id}
-            onClick={() => handleCircleClick(index)}
-            className={`w-4 h-4 rounded-full mx-1 hover:bg-gray-400 transition-colors ${
-              index === activeIndex ? 'bg-green-500' : 'bg-gray-300'
-            }`}
-          ></button>
-        ))}
+      {/* Navegación: Círculos en PC y flechas en móvil */}
+      <div className="fixed md:absolute bottom-4 left-1/2 transform -translate-x-1/2 flex justify-center items-center gap-4">
+        {/* Flecha izquierda (solo en móvil) */}
+        <button
+          onClick={handlePrevSlide}
+          className={`md:hidden px-4 py-2 rounded transition-colors ${
+            activeIndex === 0
+              ? 'bg-gray-300 cursor-not-allowed' // Deshabilitado en el primer slide
+              : 'bg-green-500 hover:bg-green-700' // Habilitado en otros slides
+          } text-white`}
+        >
+          ←
+        </button>
+
+        {/* Círculos de navegación (solo en PC) */}
+        <div className="hidden md:flex">
+          {slides.map((slide, index) => (
+            <button
+              key={slide.id}
+              onClick={() => handleCircleClick(index)}
+              className={`w-4 h-4 rounded-full mx-1 hover:bg-gray-400 transition-colors ${
+                index === activeIndex ? 'bg-green-500' : 'bg-gray-300'
+              }`}
+            ></button>
+          ))}
+        </div>
+
+        {/* Flecha derecha (solo en móvil) */}
+        <button
+          onClick={handleNextSlide}
+          className={`md:hidden px-4 py-2 rounded transition-colors left-[40%] transform -translate-x-1/4 ${
+            activeIndex === slides.length - 1
+              ? 'bg-gray-300 cursor-not-allowed' // Deshabilitado en el último slide
+              : 'bg-green-500 hover:bg-green-700' // Habilitado en otros slides
+          } text-white`}
+        >
+          →
+        </button>
       </div>
     </div>
   );
