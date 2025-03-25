@@ -9,7 +9,7 @@ const Pagina4Informacion2 = () => {
   const slides = [
     {
       id: 1,
-      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1742834596/Imagenes%20Recurso%20Educativo/Taller%202%20slide%20desarrollo/introduccion.png", // Imagen del kit de mBot
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1742868925/Imagenes%20Recurso%20Educativo/Taller%202%20slide%20desarrollo/aq0ynh5o0njohdyqxrwz.png", // Imagen del kit de mBot
       text: "En este taller, aprenderemos a ensamblar el mBot, un robot educativo. Conoceremos sus componentes y las herramientas necesarias para construirlo.",
     },
     {
