@@ -9,38 +9,33 @@ const Pagina4Informacion5 = () => {
   const slides = [
     {
       id: 1,
-      image: "", // Imagen de los sensores de infrarrojos
-      text: "En este taller, aprenderemos a programar el mBot para seguir una línea utilizando sus sensores de infrarrojos. Estos sensores detectan cambios en el color de la superficie, lo que permite al mBot seguir una pista.",
+      image: "", // Imagen del sensor de ultrasonidos
+      text: "En este taller, aprenderemos a programar el mBot para detectar y evitar obstáculos utilizando su sensor de ultrasonidos. Este sensor mide distancias y nos permite tomar decisiones en tiempo real.",
     },
     {
       id: 2,
-      image: "", // Imagen de la pista de seguimiento
-      text: "Crearemos una pista en el suelo utilizando cinta adhesiva negra. La pista tendrá curvas y líneas rectas para que el mBot la siga. Aseguraremos que la pista sea lo suficientemente ancha para que los sensores de infrarrojos la detecten fácilmente.",
+      image: "", // Imagen de conexión del sensor
+      text: "Configuraremos el sensor de ultrasonidos en el mBot. Aseguraremos que esté correctamente conectado y listo para medir distancias.",
     },
     {
       id: 3,
-      image: "", // Imagen de configuración del sensor
-      text: "Configuraremos los sensores de infrarrojos en el mBot. Aseguraremos que estén correctamente conectados y listos para detectar la línea negra en la pista.",
+      image: "", // Imagen de bloques de programación
+      text: "Programaremos el mBot para que detecte obstáculos utilizando el sensor de ultrasonidos. Si detecta un objeto a menos de 10 cm, el mBot retrocederá o girará para evitarlo.",
     },
     {
       id: 4,
-      image: "", // Imagen de bloques de programación
-      text: "Programaremos el mBot para que siga la línea negra utilizando los sensores de infrarrojos. Si el mBot se desvía de la línea, ajustaremos su dirección para que vuelva a la pista.",
+      image: "", // Imagen de luces y sonidos
+      text: "Mejoraremos el programa añadiendo comportamientos adicionales, como cambios de dirección aleatorios, ajustes de velocidad y alertas sonoras o visuales cuando se detecte un obstáculo.",
     },
     {
       id: 5,
-      image: "", // Imagen de luces y sonidos
-      text: "Mejoraremos el programa ajustando la velocidad del mBot y la sensibilidad de los sensores. También añadiremos funciones adicionales, como luces y sonidos, para indicar cuando el mBot cambia de dirección.",
+      image: "", // Imagen de actividad práctica
+      text: "En esta actividad, programaremos el mBot para que navegue por un espacio lleno de obstáculos sin chocar. Aplicaremos todo lo aprendido sobre detección y evitación de obstáculos.",
     },
     {
       id: 6,
-      image: "", // Imagen de actividad práctica
-      text: "En esta actividad, los estudiantes programarán el mBot para que siga una pista con curvas y bifurcaciones. Competirán para ver quién logra que su mBot complete el recorrido más rápido y con mayor precisión.",
-    },
-    {
-      id: 7,
       image: "", // Imagen de evaluación y cierre
-      text: "Revisaremos los programas creados por cada grupo y discutiremos cómo aplicamos los conceptos de programación. Destacaremos la importancia de los robots seguidores de línea en aplicaciones industriales y vehículos autónomos.",
+      text: "Revisaremos los programas creados por cada grupo y discutiremos cómo aplicamos los conceptos de programación. Destacaremos la importancia de los sensores en la robótica y su aplicación en el mundo real.",
     },
   ];
 
@@ -90,7 +85,7 @@ const Pagina4Informacion5 = () => {
 
       {/* Botón de volver */}
       <button
-        onClick={() => navigate('/Tema5')}
+        onClick={() => navigate('/Tema4')}
         className="fixed md:absolute bottom-4 left-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors"
       >
         Volver

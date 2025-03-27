@@ -20,15 +20,17 @@ import PaginaProyectos from './pages/pagina3Proyectos/pagina3Proyectos'; // impo
 import Pagina4Descripcion1 from './pages/pagina4/tema1/pagina4Descripcion1'  // importa la descripcion del tema 1
 import Pagina4Descripcion2 from './pages/pagina4/tema2/pagina4Descripcion2'  // importa la descripcion del tema 2
 import Pagina4Descripcion3 from './pages/pagina4/tema3/pagina4Descripcion3'  // importa la descripcion del tema 3
-import Pagina4Descripcion4 from './pages/pagina4/tema4/pagina4Descripcion4'  // importa la descripcion del tema 4
+import Pagina4Descripcion4 from './pages/pagina4/tema4/pagina4Descripcion4'; // importa la descripcion del tema 4
 import Pagina4Descripcion5 from './pages/pagina4/tema5/pagina4Descripcion5'  // importa la descripcion del tema 5
+import Pagina4Descripcion6 from './pages/pagina4/tema6/pagina4Descripcion6'  // importa la descripcion del tema 6
 
 //paginas a la informacion/contenido de cada tema
 import Pagina4Informacion1 from './pages/pagina4/tema1/pagina4Informacion1'  //importa el contenido del tema 1
 import Pagina4Informacion2 from './pages/pagina4/tema2/pagina4Informacion2'  //importa el contenido del tema 2
 import Pagina4Informacion3 from './pages/pagina4/tema3/pagina4Informacion3'  //importa el contenido del tema 3
-import Pagina4Informacion4 from './pages/pagina4/tema4/pagina4Informacion4'  //importa el contenido del tema 4
+import Pagina4Informacion4 from './pages/pagina4/tema4/pagina4Informacion4'; //importa el contenido del tema 4
 import Pagina4Informacion5 from './pages/pagina4/tema5/pagina4Informacion5'  //importa el contenido del tema 5
+import Pagina4Informacion6 from './pages/pagina4/tema6/pagina4Informacion6'  //importa el contenido del tema 6
 
 
 //pagina de creditos
@@ -60,6 +62,7 @@ function App() {
         <Route path='/Tema3' element={<Pagina4Descripcion3 />} />
         <Route path='/Tema4' element={<Pagina4Descripcion4 />} />
         <Route path='/Tema5' element={<Pagina4Descripcion5 />} />
+        <Route path='/Tema6' element={<Pagina4Descripcion6 />} />
 
         {/*Rutas por tema y contenido*/}
         <Route path='/Contenido1' element={<Pagina4Informacion1 />} />
@@ -67,6 +70,7 @@ function App() {
         <Route path='/Contenido3' element={<Pagina4Informacion3 />} />
         <Route path='/Contenido4' element={<Pagina4Informacion4 />} />
         <Route path='/Contenido5' element={<Pagina4Informacion5 />} />
+        <Route path='/Contenido6' element={<Pagina4Informacion6 />} />
 
         {/*Ruta para los creditos*/}
         <Route path='/Creditos' element={<Creditos />} />

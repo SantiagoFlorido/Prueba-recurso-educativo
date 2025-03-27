@@ -46,7 +46,7 @@ const Pagina3Proyectos = () => {
           {/* Tema 3 */}
           <div onClick={() => navigate('/Tema3')} className="border rounded-lg overflow-hidden">
             <div className="h-10 flex items-center justify-center bg-gray-100">
-              <h2 className="text-xl font-semibold">Taller 3: Conectando un Mbot</h2>
+              <h2 className="text-xl font-semibold">Taller 3: Conectar un Mbot al PC</h2>
             </div>
             <div className="h-64 flex items-center justify-center">
               <img
@@ -60,7 +60,21 @@ const Pagina3Proyectos = () => {
           {/* Tema 4 */}
           <div onClick={() => navigate('/Tema4')} className="border rounded-lg overflow-hidden">
             <div className="h-10 flex items-center justify-center bg-gray-100">
-              <h2 className="text-xl font-semibold">Taller 4: Sensor de ultrasonido de nuestro Mbot</h2>
+              <h2 className="text-xl font-semibold">Taller 4: Conectar un Mbot al Celular</h2>
+            </div>
+            <div className="h-64 flex items-center justify-center">
+              <img
+                src=""
+                alt="Animación 4"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Tema 5 */}
+          <div onClick={() => navigate('/Tema5')} className="border rounded-lg overflow-hidden">
+            <div className="h-10 flex items-center justify-center bg-gray-100">
+              <h2 className="text-xl font-semibold">Taller 5: Evitar objetos con el Mbot</h2>
             </div>
             <div className="h-64 flex items-center justify-center">
               <img
@@ -71,10 +85,10 @@ const Pagina3Proyectos = () => {
             </div>
           </div>
 
-          {/* Tema 5 */}
-          <div onClick={() => navigate('/Tema5')} className="border rounded-lg overflow-hidden">
+          {/* Tema 6 */}
+          <div onClick={() => navigate('/Tema6')} className="border rounded-lg overflow-hidden">
             <div className="h-10 flex items-center justify-center bg-gray-100">
-              <h2 className="text-xl font-semibold">Taller 5: Seguidor de linea de nuestro Mbot</h2>
+              <h2 className="text-xl font-semibold">Taller 6: Seguir lineas con el Mbot</h2>
             </div>
             <div className="h-64 flex items-center justify-center">
               <img
