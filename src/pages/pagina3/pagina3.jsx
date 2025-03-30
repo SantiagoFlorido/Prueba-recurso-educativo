@@ -11,16 +11,16 @@ const Pagina3 = () => {
 
         <div className="flex items-center gap-2">
           <div className="flex flex-col md:flex-row gap-2">
-            <button className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-700" onClick={() => navigate('/')}>Cerrar Sesión</button>
+            <button className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-700 cursor-pointer" onClick={() => navigate('/')}>Cerrar Sesión</button>
           </div>
-          <button className="bg-gray-200 px-3 py-1 rounded-lg text-sm hover:bg-gray-300" onClick={() => navigate('/')}>Inicio</button>
+          <button className="bg-gray-200 px-3 py-1 rounded-lg text-sm hover:bg-gray-300 cursor-pointer" onClick={() => navigate('/')}>Inicio</button>
         </div>
       </div>
 
       {/* Contenedor con 3 columnas y 3 filas */}
       <div className="grid grid-cols-1 md:grid-cols-[minmax(200px,_1fr)_minmax(100px,_0.3fr)_240px] gap-4 flex-grow">
         {/* Proyectos (Columna 1, Fila 1) */}
-        <div className="bg-green-100 p-2 rounded-md hover:bg-green-200 transition-colors flex flex-col">
+        <div className="bg-green-100 p-2 rounded-md hover:bg-green-200 transition-colors flex flex-col min-h-[180px] cursor-pointer">
           <h2 className="text-lg font-bold text-center" onClick={() => navigate('/Proyectos')}>Proyectos</h2>
           <div className="grid grid-cols-2 gap-3 mt-2 flex-grow">
             <div className="bg-blue-100 p-2 text-center content-center flex items-center justify-center hover:bg-blue-200 transition-colors" onClick={() => navigate('/Conexión')}>
@@ -33,12 +33,12 @@ const Pagina3 = () => {
         </div>
 
         {/* Recursos (Columna 2, Fila 1) */}
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col space-y-2 min-h-[180px] cursor-pointer">
           <div className="bg-gray-100 p-2 rounded-lg flex-grow flex items-center justify-center">
             <h2 className="text-lg font-bold text-center">Recursos Gestor</h2>
           </div>
-          <div className="bg-gray-100 p-2 rounded-lg flex-grow flex items-center justify-center">
-            <h2 className="text-lg font-bold text-center">Recursos de apoyo</h2>
+          <div className="bg-gray-100 p-2 rounded-lg flex-grow flex items-center justify-center hover:bg-gray-200">
+            <h2 className="text-lg font-bold text-center ">Recursos de apoyo</h2>
           </div>
         </div>
 
@@ -48,33 +48,28 @@ const Pagina3 = () => {
           <div className="space-y-2">
             <div className="bg-white p-2 rounded-lg shadow-sm">
               <h3 className="font-semibold">Proyecto Guardado 1</h3>
-              {/* Descripción del proyecto guardado 1 */}
             </div>
             <div className="bg-white p-2 rounded-lg shadow-sm">
               <h3 className="font-semibold">Proyecto Guardado 2</h3>
-              {/* Descripción del proyecto guardado 2 */}
             </div>
             <div className="bg-white p-2 rounded-lg shadow-sm">
               <h3 className="font-semibold">Proyecto Guardado 3</h3>
-              {/* Descripción del proyecto guardado 3 */}
             </div>
             <div className="bg-white p-2 rounded-lg shadow-sm">
               <h3 className="font-semibold">Proyecto Guardado 4</h3>
-              {/* Descripción del proyecto guardado 4 */}
             </div>
             <div className="bg-white p-2 rounded-lg shadow-sm">
               <h3 className="font-semibold">Proyecto Guardado 5</h3>
-              {/* Descripción del proyecto guardado 5 */}
             </div>
           </div>
         </div>
 
         {/* Imagen Temas del Proyecto (Columna 1-2, Fila 2) */}
-        <div className="col-span-1 md:col-span-2 bg-gray-100 p-2 rounded-lg">
+        <div className="col-span-1 md:col-span-2 bg-gray-100 p-2 rounded-lg md:h-full [&:has(+_div)]:mb-1">
           <img
-            src="url_imagen_temas_proyectos"
+            src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743284192/Imagenes%20Recurso%20Educativo/Banner%20menu%20principal/vr8kxu1robbc9h0jxef6.jpg"
             alt="Temas del proyecto"
-            className="w-full h-24 object-cover rounded-md"
+            className="w-full h-full object-fill rounded-md"
           />
         </div>
 
