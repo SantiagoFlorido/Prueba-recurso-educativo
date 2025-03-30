@@ -48,7 +48,7 @@ const Pagina2 = () => {
       {/* Botón "Regresar" */}
       <button
         onClick={() => navigate('/Principal')}
-        className="mt-0 md:mt-0 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-700 transition-colors md:mx-auto md:w-200"
+        className="cursor-pointer mt-0 md:mt-0 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-700 transition-colors md:mx-auto md:w-200"
       >
         Regresar
       </button>

@@ -122,13 +122,13 @@ const Pagina1 = () => {
         {/* Botones personalizados de navegación */}
         <button
           onClick={handlePrev}
-          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-green-600 text-white p-2 rounded-full shadow-lg hover:bg-green-700 transition-colors z-10"
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-green-600 text-white p-2 rounded-full shadow-lg hover:bg-green-700 transition-colors z-10 cursor-pointer"
         >
           &lt; {/* Flecha izquierda */}
         </button>
         <button
           onClick={handleNext}
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-green-600 text-white p-2 rounded-full shadow-lg hover:bg-green-700 transition-colors z-10"
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-green-600 text-white p-2 rounded-full shadow-lg hover:bg-green-700 transition-colors z-10 cursor-pointer"
         >
           &gt; {/* Flecha derecha */}
         </button>
@@ -144,7 +144,7 @@ const Pagina1 = () => {
       {/* Botón "Siguiente" */}
       <button
         onClick={() => navigate('/Rol')}
-        className="fixed bottom-2 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-700 transition-colors"
+        className="fixed bottom-2 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-700 transition-colors cursor-pointer"
       >
         Iniciar sesión
       </button>

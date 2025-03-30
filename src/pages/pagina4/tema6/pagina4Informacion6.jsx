@@ -91,7 +91,7 @@ const Pagina4Informacion5 = () => {
       {/* Botón de volver */}
       <button
         onClick={() => navigate('/Tema5')}
-        className="fixed md:absolute bottom-4 left-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors"
+        className="fixed md:absolute bottom-4 left-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors cursor-pointer"
       >
         Volver
       </button>
@@ -99,7 +99,7 @@ const Pagina4Informacion5 = () => {
       {/* Botón de créditos */}
       <button
         onClick={() => navigate('/Creditos')}
-        className="fixed md:absolute bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors"
+        className="fixed md:absolute bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors cursor-pointer"
       >
         Créditos
       </button>
@@ -125,7 +125,7 @@ const Pagina4Informacion5 = () => {
               key={slide.id}
               onClick={() => handleCircleClick(index)}
               className={`w-4 h-4 rounded-full mx-1 hover:bg-gray-400 transition-colors ${
-                index === activeIndex ? 'bg-green-500' : 'bg-gray-300'
+                index === activeIndex ? 'bg-green-500 cursor-pointer' : 'bg-gray-300 cursor-pointer'
               }`}
             ></button>
           ))}

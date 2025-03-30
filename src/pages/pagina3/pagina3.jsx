@@ -33,12 +33,18 @@ const Pagina3 = () => {
         </div>
 
         {/* Recursos (Columna 2, Fila 1) */}
-        <div className="flex flex-col space-y-2 min-h-[180px] cursor-pointer">
-          <div className="bg-gray-100 p-2 rounded-lg flex-grow flex items-center justify-center">
+        <div className="flex flex-col space-y-2 min-h-[180px]">
+          <div 
+            className="bg-gray-100 p-2 rounded-lg flex-grow flex items-center justify-center hover:bg-gray-200 cursor-pointer"
+            onClick={() => window.open('https://drive.google.com/drive/folders/1BRRCv8quGLVnSsB9ndCHO7cdWUf9sh3-?usp=sharing', '_blank', 'noopener,noreferrer')}   
+          >
             <h2 className="text-lg font-bold text-center">Recursos Gestor</h2>
           </div>
-          <div className="bg-gray-100 p-2 rounded-lg flex-grow flex items-center justify-center hover:bg-gray-200">
-            <h2 className="text-lg font-bold text-center ">Recursos de apoyo</h2>
+          <div 
+            className="bg-gray-100 p-2 rounded-lg flex-grow flex items-center justify-center hover:bg-gray-200 cursor-pointer"
+            onClick={() => window.open('https://drive.google.com/drive/folders/1_ziaHW8TNaqfAI8Tcc5e2UBrzhm8Gl6N?usp=sharing', '_blank', 'noopener,noreferrer')}
+          >
+            <h2 className="text-lg font-bold text-center">Recursos de apoyo</h2>
           </div>
         </div>
 
@@ -46,19 +52,19 @@ const Pagina3 = () => {
         <div className="row-span-3 bg-gray-100 p-2 rounded-lg">
           <h2 className="text-lg font-bold mb-2 text-center">Proyectos Guardados</h2>
           <div className="space-y-2">
-            <div className="bg-white p-2 rounded-lg shadow-sm">
+            <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
               <h3 className="font-semibold">Proyecto Guardado 1</h3>
             </div>
-            <div className="bg-white p-2 rounded-lg shadow-sm">
+            <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
               <h3 className="font-semibold">Proyecto Guardado 2</h3>
             </div>
-            <div className="bg-white p-2 rounded-lg shadow-sm">
+            <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
               <h3 className="font-semibold">Proyecto Guardado 3</h3>
             </div>
-            <div className="bg-white p-2 rounded-lg shadow-sm">
+            <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
               <h3 className="font-semibold">Proyecto Guardado 4</h3>
             </div>
-            <div className="bg-white p-2 rounded-lg shadow-sm">
+            <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
               <h3 className="font-semibold">Proyecto Guardado 5</h3>
             </div>
           </div>

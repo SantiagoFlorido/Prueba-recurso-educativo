@@ -18,18 +18,18 @@ const Pagina4Descripcion5 = () => {
           <div className="mb-4 md:mb-6">
             <h2 className="text-lg md:text-xl mb-2 font-bold">Descripción</h2>
             <p className="text-gray-700 mb-4">
-            Este taller enseña a los estudiantes de 6to grado a programar el mBot para detectar y evitar obstáculos utilizando el sensor de ultrasonidos. A través de actividades prácticas, los niños aprenderán a configurar el sensor, programar comportamientos condicionales (como retroceder o girar al detectar un obstáculo) y mejorar el programa con funciones adicionales, como cambios de dirección, ajustes de velocidad y alertas sonoras. El taller culmina con una actividad práctica en la que los estudiantes ponen a prueba sus programas en un espacio con obstáculos.
+              Este taller enseña a los estudiantes de 6to grado a conectar y controlar el mBot mediante la aplicación MakeBlock en dispositivos móviles. Los participantes aprenderán a emparejar el robot vía Bluetooth, explorarán las funciones básicas de la aplicación y completarán un circuito práctico en el aula. El taller combina conceptos de programación básica con interacción física con el robot.
             </p>
             <ul className="list-disc pl-5 text-gray-700">
-              <li><strong>Duración:</strong> 85 minutos (1 hora y 25 minutos).</li>
+              <li><strong>Duración:</strong> 60 minutos (1 hora).</li>
               
               <li>
                 <strong>Materiales:</strong>
                 <ul className="list-disc pl-5">
-                  <li>Computadoras con mBlock instalado.</li>
-                  <li>mBot con sensor de ultrasonidos conectado.</li>
-                  <li>Cable USB o conexión Bluetooth para conectar el mBot a la computadora.</li>
-                  <li>Obstáculos pequeños (cajas, libros, etc.).</li>
+                  <li>Dispositivos móviles con la aplicación MakeBlock instalada</li>
+                  <li>mBot ensamblado y cargado</li>
+                  <li>Espacio despejado para el circuito de práctica</li>
+                  <li>Conexión Bluetooth habilitada en todos los dispositivos</li>
                 </ul>
               </li>
             </ul>
@@ -38,25 +38,25 @@ const Pagina4Descripcion5 = () => {
           {/* Sección de Nivel de Dificultad, Objetivos y Finalidades */}
           <div className="mb-4 md:mb-6">
             <h2 className="text-lg md:text-xl font-semibold mb-2">
-              Nivel de dificultad: <span className="text-orange-400">INTERMEDIO</span>
+              Nivel de dificultad: <span className="text-blue-400">FÁCIL</span>
             </h2>
             <ul className="list-disc pl-5 text-gray-700">
               <li>
                 <strong>Objetivos:</strong>
                 <ul className="list-disc pl-5">
-                  <li>Enseñar a los estudiantes a configurar y utilizar el sensor de ultrasonidos del mBot.</li>
-                  <li>Programar el mBot para detectar obstáculos y tomar decisiones (retroceder, girar, etc.) en función de la distancia medida.</li>
-                  <li>Mejorar el programa con comportamientos adicionales, como cambios de dirección, ajustes de velocidad y alertas sonoras.</li>
-                  <li>Aplicar lo aprendido en una actividad práctica que simule un entorno con obstáculos.</li>
+                  <li>Enseñar a emparejar el mBot con dispositivos móviles vía Bluetooth</li>
+                  <li>Explorar la interfaz de la aplicación MakeBlock (menú principal, secciones de movimiento, trayectorias y piano)</li>
+                  <li>Realizar conexión exitosa siguiendo los pasos: selección de icono Bluetooth y acercamiento al robot</li>
+                  <li>Completar un circuito práctico dentro del aula usando los controles básicos</li>
                 </ul>
               </li>
               <li>
                 <strong>Finalidades:</strong>
                 <ul className="list-disc pl-5">
-                  <li>Desarrollar habilidades avanzadas de programación y uso de sensores en robótica.</li>
-                  <li>Fomentar el pensamiento lógico y la resolución de problemas mediante la programación condicional.</li>
-                  <li>Integrar conceptos de tecnología y robótica en actividades prácticas.</li>
-                  <li>Preparar a los estudiantes para programar funciones más complejas del mBot en futuras sesiones.</li>
+                  <li>Familiarizar a los estudiantes con el control remoto de robots mediante apps móviles</li>
+                  <li>Desarrollar habilidades de conexión inalámbrica y configuración básica</li>
+                  <li>Promover la exploración autónoma de las funciones de la aplicación</li>
+                  <li>Preparar para sesiones más avanzadas de programación por bloques</li>
                 </ul>
               </li>
             </ul>
@@ -65,48 +65,52 @@ const Pagina4Descripcion5 = () => {
           {/* Sección de Resumen de habilidades STEM aplicadas */}
           <div className="mb-4 md:mb-6">
             <h2 className="text-lg md:text-xl font-semibold mb-2">Resumen de habilidades STEM aplicadas: </h2>
-            {/* Habilidad: Ciencia */}
-            <div className="mb-4">
-              <h3 className="text-md font-semibold text-blue-600">Ciencia</h3>
-              <p className="text-gray-700">
-                - Exploración de principios físicos, como la medición de distancias mediante ondas ultrasónicas.
-              </p>
-              <p className="text-gray-700">
-                - Uso del sensor de ultrasonidos para interactuar con el entorno.
-              </p>
-            </div>
             {/* Habilidad: Tecnología */}
             <div className="mb-4">
               <h3 className="text-md font-semibold text-blue-600">Tecnología</h3>
               <p className="text-gray-700">
-               - Uso de mBlock para programar el mBot.
+                - Configuración y uso de conexión Bluetooth entre dispositivos
               </p>
               <p className="text-gray-700">
-                - Configuración y uso del sensor de ultrasonidos.
+                - Navegación por la interfaz de la aplicación MakeBlock (menú principal, controles de movimiento)
               </p>
               <p className="text-gray-700">
-                - Conexión del mBot a la computadora (USB o Bluetooth).
+                - Control remoto del mBot mediante interfaz táctil
               </p>
             </div>
+            
             {/* Habilidad: Ingeniería */}
             <div className="mb-4">
               <h3 className="text-md font-semibold text-blue-600">Ingeniería</h3>
               <p className="text-gray-700">
-                - Diseño de un programa que toma decisiones basadas en la detección de obstáculos.
+                - Solución de problemas de conexión Bluetooth
               </p>
               <p className="text-gray-700">
-                - Resolución de problemas durante la programación y las pruebas.
+                - Ajuste de parámetros básicos para control preciso del robot
               </p>
             </div>
+            
             {/* Habilidad: Matemáticas */}
             <div className="mb-4">
               <h3 className="text-md font-semibold text-blue-600">Matemáticas</h3>
               <p className="text-gray-700">
-                - Uso de condiciones lógicas (si... entonces) para programar comportamientos.
+                - Estimación de distancias para el circuito práctico
               </p>
               <p className="text-gray-700">
-                - Aplicación de conceptos de distancia y medición en la programación.
+                - Cálculo de trayectorias básicas mediante controles direccionales
               </p>
+            </div>
+            
+            {/* Pasos de conexión destacados */}
+            <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+              <h3 className="text-md font-semibold text-blue-700 mb-2">Pasos clave para conectar el mBot:</h3>
+              <ol className="list-decimal pl-5 space-y-2">
+                <li>Abrir la aplicación MakeBlock y seleccionar el icono de Bluetooth</li>
+                <li>Encender el mBot y colocarlo cerca del dispositivo móvil (máximo 1 metro)</li>
+                <li>Seleccionar el mBot en la lista de dispositivos disponibles</li>
+                <li>Esperar la confirmación de conexión en la aplicación</li>
+                <li>Explorar las secciones de: Movimiento, Trayectorias y Piano</li>
+              </ol>
             </div>
           </div>
         </div>
@@ -128,13 +132,13 @@ const Pagina4Descripcion5 = () => {
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
             <button
               onClick={() => navigate('/Proyectos')}
-              className="bg-green-600 text-white px-4 py-2 rounded shadow-lg hover:bg-green-700 transition-colors w-full md:w-80"
+              className="bg-green-600 text-white px-4 py-2 rounded shadow-lg hover:bg-green-700 transition-colors w-full md:w-80 cursor-pointer"
             >
               Regresar
             </button>
             <button
               onClick={() => navigate('/Contenido4')}
-              className="bg-green-600 text-white px-4 py-2 rounded shadow-lg hover:bg-green-700 transition-colors w-full md:w-80"
+              className="bg-green-600 text-white px-4 py-2 rounded shadow-lg hover:bg-green-700 transition-colors w-full md:w-80 cursor-pointer"
             >
               Iniciar
             </button>

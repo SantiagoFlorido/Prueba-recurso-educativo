@@ -111,13 +111,13 @@ const Pagina4Descripcion1 = () => {
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
             <button
               onClick={() => navigate('/Proyectos')}
-              className="bg-green-600 text-white px-4 py-2 rounded shadow-lg hover:bg-green-700 transition-colors w-full md:w-80"
+              className="bg-green-600 text-white px-4 py-2 rounded shadow-lg hover:bg-green-700 transition-colors w-full md:w-80 cursor-pointer"
             >
               Regresar
             </button>
             <button
               onClick={() => navigate('/Contenido1')}
-              className="bg-green-600 text-white px-4 py-2 rounded shadow-lg hover:bg-green-700 transition-colors w-full md:w-80"
+              className="bg-green-600 text-white px-4 py-2 rounded shadow-lg hover:bg-green-700 transition-colors w-full md:w-80 cursor-pointer"
             >
               Iniciar
             </button>

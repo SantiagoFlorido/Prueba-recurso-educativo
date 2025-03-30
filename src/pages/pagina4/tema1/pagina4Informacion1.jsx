@@ -151,7 +151,7 @@ const Pagina4Informacion1 = () => {
           src={slides[activeIndex].image}
           alt={`Imagen ${activeIndex + 1}`}
           className={`w-full h-auto max-h-[300px] md:max-h-[400px] object-fill rounded-md ${
-            activeIndex === slides.length - 1 ? 'cursor-pointer hover:opacity-90' : ''
+            activeIndex === slides.length - 1 ? 'cursor-pointer hover:opacity-80' : ''
           }`}
           onClick={handleDownloadImage}
         />
@@ -160,7 +160,7 @@ const Pagina4Informacion1 = () => {
       {/* Botón de volver */}
       <button
         onClick={() => navigate('/Tema1')}
-        className="fixed md:absolute bottom-4 left-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors"
+        className="fixed md:absolute bottom-4 left-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors cursor-pointer"
       >
         Volver
       </button>
@@ -168,17 +168,17 @@ const Pagina4Informacion1 = () => {
       {/* Botón de créditos */}
       <button
         onClick={() => navigate('/Creditos')}
-        className="fixed md:absolute bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors"
+        className="fixed md:absolute bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors cursor-pointer"
       >
         Créditos
       </button>
 
       {/* Navegación: Círculos en PC y flechas en móvil */}
-      <div className="fixed md:absolute bottom-4 left-1/2 transform -translate-x-1/2 flex justify-center items-center gap-4">
+      <div className="fixed md:absolute bottom-4 left-1/2 transform -translate-x-1/2 flex justify-center items-center gap-4 ">
         {/* Flecha izquierda (solo en móvil) */}
         <button
           onClick={handlePrevSlide}
-          className={`md:hidden px-4 py-2 rounded transition-colors ${
+          className={`md:hidden px-4 py-2 rounded transition-colors  ${
             activeIndex === 0
               ? 'bg-gray-300 cursor-not-allowed'
               : 'bg-green-500 hover:bg-green-700'
@@ -188,13 +188,13 @@ const Pagina4Informacion1 = () => {
         </button>
 
         {/* Círculos de navegación (solo en PC) */}
-        <div className="hidden md:flex">
+        <div className="hidden md:flex ">
           {slides.map((slide, index) => (
             <button
               key={slide.id}
               onClick={() => handleCircleClick(index)}
               className={`w-4 h-4 rounded-full mx-1 hover:bg-gray-400 transition-colors ${
-                index === activeIndex ? 'bg-green-500' : 'bg-gray-300'
+                index === activeIndex ? 'bg-green-500 cursor-pointer' : 'bg-gray-300 cursor-pointer'
               }`}
             ></button>
           ))}
