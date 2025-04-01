@@ -58,7 +58,7 @@ const RegisterStudent = () => {
   return (
     <div className='text-white h-[100vh] flex justify-center items-center bg-cover bg-center bg-gray-200'>
       <div className="bg-gray-100 rounded-md p-5">
-        <h1 className='text-4x1 text-[30px] text-[#009e4f] font-bold text-center mb-6'>Registrar Estudiante</h1>
+        <h1 className='text-4x1 text-[30px] text-[#009e4f] font-bold text-center mb-6'>Registrar</h1>
         {error && (
           <div className="mb-4 p-2 bg-red-100 text-red-700 rounded text-center">
             {error}
