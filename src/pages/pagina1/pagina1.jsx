@@ -8,6 +8,9 @@ import { useNavigate } from 'react-router-dom';
 const Pagina1 = () => {
   const navigate = useNavigate();
 
+  // Verificar si hay sesión activa
+  const isLoggedIn = localStorage.getItem('studentUser') || localStorage.getItem('teacherUser');
+
   // Datos de las imágenes y descripciones
   const slides = [
     {
@@ -56,68 +59,68 @@ const Pagina1 = () => {
     <div className="bg-white p-4 h-screen flex flex-col">
       {/* Título y logo */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 md:mb-6">
-  <div className="flex items-center gap-2 md:gap-0 w-full md:w-auto">
-    <h1 className="text-xl md:text-2xl font-bold break-words mr-2 md:mr-0  w-1/2 md:w-auto">
-      Recurso Educativo Digital
-    </h1>
-    {/* Logos en mobile (aparecen junto al título) */}
-    <div className="flex items-center gap-2 md:hidden">
-      <img
-        src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743288905/logoeludec_qcilsr.png"
-        alt="Logo 1"
-        className="h-8"
-      />
-      <img
-        src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305038/logo-titulo_gtcapj.png"
-        alt="Logo 2"
-        className="h-8"
-      />
-    </div>
-  </div>
-  
-  {/* Logos en desktop (aparecen a la derecha) */}
-  <div className="hidden md:flex items-center gap-4">
-    <img
-      src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743288905/logoeludec_qcilsr.png"
-      alt="Logo 1"
-      className="h-16"
-    />
-    <img
-      src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305038/logo-titulo_gtcapj.png"
-      alt="Logo 2"
-      className="h-14"
-    />
-  </div>
-</div>
+        <div className="flex items-center gap-2 md:gap-0 w-full md:w-auto">
+          <h1 className="text-xl md:text-2xl font-bold break-words mr-2 md:mr-0  w-1/2 md:w-auto">
+            Recurso Educativo Digital
+          </h1>
+          {/* Logos en mobile (aparecen junto al título) */}
+          <div className="flex items-center gap-2 md:hidden">
+            <img
+              src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743288905/logoeludec_qcilsr.png"
+              alt="Logo 1"
+              className="h-8"
+            />
+            <img
+              src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305038/logo-titulo_gtcapj.png"
+              alt="Logo 2"
+              className="h-8"
+            />
+          </div>
+        </div>
+        
+        {/* Logos en desktop (aparecen a la derecha) */}
+        <div className="hidden md:flex items-center gap-4">
+          <img
+            src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743288905/logoeludec_qcilsr.png"
+            alt="Logo 1"
+            className="h-16"
+          />
+          <img
+            src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305038/logo-titulo_gtcapj.png"
+            alt="Logo 2"
+            className="h-14"
+          />
+        </div>
+      </div>
 
       {/* Slider de imágenes */}
       <div className="flex-grow relative">
-      <Swiper
-        ref={swiperRef}
-        spaceBetween={30}
-        slidesPerView={1}
-        loop={true}  
-        autoplay={{
-          delay: 2000,
-          disableOnInteraction: false,
-        }}
-        navigation={true}
-        modules={[Autoplay, Navigation]}
-        className="h-full"
-      >
-        {slides.map((slide, index) => (
-          <SwiperSlide key={index}>
-            <div className="bg-gray-100 p-2 rounded-lg h-full flex flex-col justify-center">
-              <img
-                src={slide.image}
-                alt={`Descripción ${index + 1}`}
-                className="w-full h-60 md:h-110 object-cover rounded-md"
-              />
-              <p className="mt-2 text-center text-sm md:text-base">{slide.description}</p>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+        <Swiper
+          ref={swiperRef}
+          spaceBetween={30}
+          slidesPerView={1}
+          loop={true}  
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+          }}
+          navigation={true}
+          modules={[Autoplay, Navigation]}
+          className="h-full"
+        >
+          {slides.map((slide, index) => (
+            <SwiperSlide key={index}>
+              <div className="bg-gray-100 p-2 rounded-lg h-full flex flex-col justify-center">
+                <img
+                  src={slide.image}
+                  alt={`Descripción ${index + 1}`}
+                  className="w-full h-60 md:h-110 object-cover rounded-md"
+                />
+                <p className="mt-2 text-center text-sm md:text-base">{slide.description}</p>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
         {/* Botones personalizados de navegación */}
         <button
@@ -143,10 +146,10 @@ const Pagina1 = () => {
 
       {/* Botón "Siguiente" */}
       <button
-        onClick={() => navigate('/Rol')}
+        onClick={() => isLoggedIn ? navigate('/Principal') : navigate('/Rol')}
         className="fixed bottom-2 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-700 transition-colors cursor-pointer"
       >
-        Iniciar sesión
+        {isLoggedIn ? 'Continuar' : 'Iniciar sesión'}
       </button>
     </div>
   );

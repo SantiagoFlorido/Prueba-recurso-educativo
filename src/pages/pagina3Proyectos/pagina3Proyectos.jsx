@@ -3,6 +3,22 @@ import { useNavigate } from 'react-router-dom';
 
 const Pagina3Proyectos = () => {
   const navigate = useNavigate();
+
+  const handleTopicClick = (topicNumber) => {
+    // Obtener datos del usuario
+    const userData = JSON.parse(localStorage.getItem('studentUser') || localStorage.getItem('teacherUser'));
+    
+    // Verificar si es docente
+    const isTeacher = userData?.rol?.toLowerCase() === 'docente';
+    
+    // Navegar según el rol
+    if (isTeacher) {
+      navigate(`/Tema${topicNumber}`);
+    } else {
+      navigate(`/Contenido${topicNumber}`);
+    }
+  };
+
   return (
     <div className="bg-white flex flex-col md:flex-row">
       {/* Rectángulo izquierdo con el texto "Proyectos" */}
@@ -16,7 +32,7 @@ const Pagina3Proyectos = () => {
       <div className="w-full md:w-3/4 p-4 overflow-y-auto md:ml-[25%] pb-20 md:pb-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-center content-center">
           {/* Tema 1 */}
-          <div onClick={() => navigate('/Tema1')} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
+          <div onClick={() => handleTopicClick(1)} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
             <div className="h-10 flex items-center justify-center bg-gray-100">
               <h2 className="text-xl font-semibold">Taller 1: El viaje de Pedro</h2>
             </div>
@@ -30,7 +46,7 @@ const Pagina3Proyectos = () => {
           </div>
 
           {/* Tema 2 */}
-          <div onClick={() => navigate('/Tema2')} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
+          <div onClick={() => handleTopicClick(2)} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
             <div className="h-10 flex items-center justify-center bg-gray-100">
               <h2 className="text-xl font-semibold">Taller 2: Armando un Mbot</h2>
             </div>
@@ -44,7 +60,7 @@ const Pagina3Proyectos = () => {
           </div>
 
           {/* Tema 3 */}
-          <div onClick={() => navigate('/Tema3')} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
+          <div onClick={() => handleTopicClick(3)} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
             <div className="h-10 flex items-center justify-center bg-gray-100">
               <h2 className="text-xl font-semibold">Taller 3: Conectar un Mbot al PC</h2>
             </div>
@@ -58,7 +74,7 @@ const Pagina3Proyectos = () => {
           </div>
 
           {/* Tema 4 */}
-          <div onClick={() => navigate('/Tema4')} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
+          <div onClick={() => handleTopicClick(4)} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
             <div className="h-10 flex items-center justify-center bg-gray-100">
               <h2 className="text-xl font-semibold">Taller 4: Conectar un Mbot al Celular</h2>
             </div>
@@ -72,7 +88,7 @@ const Pagina3Proyectos = () => {
           </div>
 
           {/* Tema 5 */}
-          <div onClick={() => navigate('/Tema5')} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
+          <div onClick={() => handleTopicClick(5)} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
             <div className="h-10 flex items-center justify-center bg-gray-100">
               <h2 className="text-xl font-semibold">Taller 5: Evitar objetos con el Mbot</h2>
             </div>
@@ -86,7 +102,7 @@ const Pagina3Proyectos = () => {
           </div>
 
           {/* Tema 6 */}
-          <div onClick={() => navigate('/Tema6')} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
+          <div onClick={() => handleTopicClick(6)} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
             <div className="h-10 flex items-center justify-center bg-gray-100">
               <h2 className="text-xl font-semibold">Taller 6: Seguir lineas con el Mbot</h2>
             </div>

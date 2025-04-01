@@ -9,38 +9,63 @@ const Pagina4Informacion3 = () => {
   const slides = [
     {
       id: 1,
-      image: "", // Imagen de la interfaz de mBlock
-      text: "En este taller, aprenderemos a programar el mBot para que se mueva utilizando las flechas del teclado. Conoceremos cómo conectar el mBot a la computadora y cómo usar mBlock para programar.",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743474264/taller3slide1.png", // Imagen de la interfaz de mBlock
+      text: "En este taller Pedro el panda nos enseñara a como conectar el mbot a nuestra computadora y asi mismo nos enseñara a moverlo usando las flechas del teclado, ¿estas listo?",
     },
     {
       id: 2,
-      image: "", // Imagen de conexión del mBot
-      text: "Conectaremos el mBot a la computadora utilizando un cable USB o Bluetooth. Aseguraremos que la conexión sea exitosa y que el mBot esté listo para recibir comandos.",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743474264/taller3slide2.png", // Imagen de conexión del mBot
+      text: "Pedros nos dijo que necesitariamos estas herramientas, tener nuestro Mbot armado como se hizo en el anterior taller y tener el cable usb o conector Bluetooth que viene dentro del kit del Mbot",
     },
     {
       id: 3,
-      image: "", // Imagen de bloques de movimiento
-      text: "Programaremos el mBot para que se mueva en diferentes direcciones usando las flechas del teclado. Usaremos bloques como 'Mover hacia adelante', 'Mover hacia atrás', 'Girar a la izquierda' y 'Girar a la derecha'.",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743474265/taller3slide3.png", // Imagen de bloques de movimiento
+      text: "Ahora Pedro necesita que tengamos abierto nuestra aplicacion Mblock, ¿Ya la abriste?",
     },
     {
       id: 4,
-      image: "", // Imagen de prueba del mBot
-      text: "Probaremos el programa en el mBot y observaremos cómo responde a las flechas del teclado. Realizaremos ajustes para mejorar el control, como cambiar la velocidad o la distancia de movimiento.",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743474265/taller3slide4.png", // Imagen de prueba del mBot
+      text: "Pon mucha atencion a Pedro, nos esta enseñando como funcionan estas herramientas para conectar nuestro Mbot",
     },
     {
       id: 5,
-      image: "", // Imagen de luces del mBot
-      text: "Mejoraremos el programa agregando funciones de luz. Programaremos el mBot para que encienda luces LED al moverse en diferentes direcciones.",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743474265/taller3slide5.png", // Imagen de luces del mBot
+      text: "Escucha con atencion a pedro, nos esta indicando como conectar el cable usb al Mbot y a nuestro computador",
     },
     {
       id: 6,
-      image: "", // Imagen de circuito para el mBot
-      text: "Aplicaremos lo aprendido en un desafío práctico. Crearemos una pista en el salón y programaremos el mBot para que la recorra utilizando las flechas del teclado.",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743474264/taller3slide6.png", // Imagen de circuito para el mBot
+      text: "Mira como Pedro tomo el conector Bluetooth y lo conecto a su computadora, deberiamos de hacer lo mismo",
     },
     {
       id: 7,
-      image: "", // Imagen de evaluación y cierre
-      text: "Revisaremos los programas creados por cada grupo y discutiremos cómo aplicamos los conceptos de programación. Destacaremos la importancia de las habilidades STEM en la vida cotidiana.",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743474264/taller3slide7.png", // Imagen de evaluación y cierre
+      text: "Observa con atencion, Pedro nos va a enseñar a conectar el Mbot",
+    },
+    {
+      id: 8,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743474693/taller3slide8.png", // Imagen de evaluación y cierre
+      text: "En este caso parece que Pedro hara la conexion por cable, observa como seleciono la opcion por usb, y recuerda muy bien que nuestro Mbot debe estar encendido y daremos un click en conectar",
+    },
+    {
+      id: 9,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743474264/taller3slide9.png", // Imagen de evaluación y cierre
+      text: "Observa como Pedro conecto con exito su Mbot, veamos si tambien nosotros podemos hacerlo como el y verificamos nuestra conexión.",
+    },
+    {
+      id: 10,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743474264/taller3slide10.png", // Imagen de evaluación y cierre
+      text: "Pedro tomo unos bloques del area de bloques, observa con atencion que bloques hay que usar para mover nuestro Mbot.",
+    },
+    {
+      id: 11,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743474264/taller3slide11.png", // Imagen de evaluación y cierre
+      text: "Mira como Pedro hizo mas de estos bloques y ahora su Mbot tiene muchas funciones para hacer con varios botones del teclado muchas cosas.",
+    },
+    {
+      id: 12,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743474264/taller3slide12.png", // Imagen de evaluación y cierre
+      text: "Ya deberiamos de saber como programar nuestro Mbot, pon mucha atención ya que es hora de lograr un desafio con lo aprendido.",
     },
   ];
 
@@ -84,7 +109,7 @@ const Pagina4Informacion3 = () => {
         <img
           src={slides[activeIndex].image} // Imagen correspondiente al slide activo
           alt={`Imagen ${activeIndex + 1}`}
-          className="w-full h-auto max-h-[300px] md:max-h-[400px] object-cover rounded-md"
+          className="w-full h-auto max-h-[300px] md:max-h-[400px] object-fill rounded-md"
         />
       </div>
 

@@ -3,6 +3,15 @@ import { useNavigate } from 'react-router-dom';
 
 const Pagina3 = () => {
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Limpiar localStorage
+    localStorage.removeItem('studentUser');
+    localStorage.removeItem('teacherUser');
+    // Redirigir a la página de inicio
+    navigate('/');
+  };
+
   return (
     <div className="bg-white p-4 w-full min-h-screen flex flex-col">
       {/* Fila superior: Menú Principal, Log in/Log up y Close */}
@@ -11,7 +20,12 @@ const Pagina3 = () => {
 
         <div className="flex items-center gap-2">
           <div className="flex flex-col md:flex-row gap-2">
-            <button className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-700 cursor-pointer" onClick={() => navigate('/')}>Cerrar Sesión</button>
+            <button 
+              className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-700 cursor-pointer" 
+              onClick={handleLogout}
+            >
+              Cerrar Sesión
+            </button>
           </div>
           <button className="bg-gray-200 px-3 py-1 rounded-lg text-sm hover:bg-gray-300 cursor-pointer" onClick={() => navigate('/')}>Inicio</button>
         </div>
@@ -21,13 +35,13 @@ const Pagina3 = () => {
       <div className="grid grid-cols-1 md:grid-cols-[minmax(200px,_1fr)_minmax(100px,_0.3fr)_240px] gap-4 flex-grow">
         {/* Proyectos (Columna 1, Fila 1) */}
         <div className="bg-green-100 p-2 rounded-md hover:bg-green-200 transition-colors flex flex-col min-h-[180px] cursor-pointer">
-          <h2 className="text-lg font-bold text-center" onClick={() => navigate('/Proyectos')}>Proyectos</h2>
+          <h2 className="text-lg font-bold text-center" >Proyectos</h2>
           <div className="grid grid-cols-2 gap-3 mt-2 flex-grow">
-            <div className="bg-blue-100 p-2 text-center content-center flex items-center justify-center hover:bg-blue-200 transition-colors" onClick={() => navigate('/Conexión')}>
+            <div className="bg-blue-100 p-2 text-center rounded-md content-center flex items-center justify-center hover:bg-blue-200 transition-colors" onClick={() => navigate('/Conexión')}>
               Formas de conexión
             </div>
-            <div className="bg-red-100 p-2 rounded-br-md text-center content-center flex items-center justify-center">
-              Proyectos 1 de 5
+            <div className="bg-red-100 p-2 rounded-md text-center content-center flex items-center justify-center hover:bg-red-200 transition-colors" onClick={() => navigate('/Proyectos')}>
+              Proyectos 0 de 6
             </div>
           </div>
         </div>
@@ -66,6 +80,9 @@ const Pagina3 = () => {
             </div>
             <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
               <h3 className="font-semibold">Proyecto Guardado 5</h3>
+            </div>
+            <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
+              <h3 className="font-semibold">Proyecto Guardado 6</h3>
             </div>
           </div>
         </div>
