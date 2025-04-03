@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Pagina4Descripcion5 = () => {
+const Pagina4Descripcion6 = () => {
   const navigate = useNavigate();
   return (
     <div className="bg-white w-full h-screen p-4 md:p-8 flex flex-col">
@@ -118,9 +118,9 @@ const Pagina4Descripcion5 = () => {
           <div className="border flex-1 mb-4 rounded-lg overflow-hidden">
             <div className="bg-gray-200 h-48 md:h-full flex items-center justify-center rounded-lg">
               <img
-                src=""
+                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743643709/taller6slide1_k7u8lp.png"
                 alt="Imagen, video y guion"
-                className="w-full h-full object-cover rounded-md"
+                className="w-full h-full object-fill rounded-md"
               />
             </div>
           </div>
@@ -134,7 +134,7 @@ const Pagina4Descripcion5 = () => {
               Regresar
             </button>
             <button
-              onClick={() => navigate('/Contenido5')}
+              onClick={() => navigate('/Contenido6')}
               className="bg-green-600 text-white px-4 py-2 rounded shadow-lg hover:bg-green-700 transition-colors w-full md:w-80 cursor-pointer"
             >
               Iniciar
@@ -146,4 +146,4 @@ const Pagina4Descripcion5 = () => {
   );
 };
 
-export default Pagina4Descripcion5;
+export default Pagina4Descripcion6;

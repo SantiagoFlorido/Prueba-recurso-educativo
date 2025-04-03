@@ -100,7 +100,7 @@ const Pagina4Descripcion1 = () => {
           <div className="border flex-1 mb-4 rounded-lg overflow-hidden">
             <div className="bg-gray-200 h-48 md:h-full flex items-center justify-center rounded-lg">
               <img
-                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743284865/Imagenes%20Recurso%20Educativo/Taller%201%20slide%20desarrollo/pioz3atazeencxrep6qh.png"
+                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743639636/taller1slide1.png"
                 alt="Imagen, video y guion"
                 className="w-full h-full object-fill rounded-md"
               />

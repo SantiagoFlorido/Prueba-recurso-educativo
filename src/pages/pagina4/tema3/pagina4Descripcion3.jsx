@@ -117,7 +117,7 @@ const Pagina4Descripcion3 = () => {
           <div className="border flex-1 mb-4 rounded-lg overflow-hidden">
             <div className="bg-gray-200 h-48 md:h-full flex items-center justify-center rounded-lg">
               <img
-                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743474264/taller3slide1.png"
+                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743642677/taller3slide1_mpouhp.png"
                 alt="Imagen, video y guion"
                 className="w-full h-full object-fill rounded-md"
               />

@@ -117,9 +117,9 @@ const Pagina4Descripcion5 = () => {
           <div className="border flex-1 mb-4 rounded-lg overflow-hidden">
             <div className="bg-gray-200 h-48 md:h-full flex items-center justify-center rounded-lg">
               <img
-                src="" /*imagen*/
+                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743643140/taller5slide1_bmti5o.png" /*imagen*/
                 alt="Imagen, video y guion"
-                className="w-full h-full object-cover rounded-md"
+                className="w-full h-full object-fill rounded-md"
               />
             </div>
           </div>
@@ -133,7 +133,7 @@ const Pagina4Descripcion5 = () => {
               Regresar
             </button>
             <button
-              onClick={() => navigate('/Contenido4')}
+              onClick={() => navigate('/Contenido5')}
               className="bg-green-600 text-white px-4 py-2 rounded shadow-lg hover:bg-green-700 transition-colors w-full md:w-80 cursor-pointer"
             >
               Iniciar

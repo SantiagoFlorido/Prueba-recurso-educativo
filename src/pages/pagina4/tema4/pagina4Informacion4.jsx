@@ -9,33 +9,53 @@ const Pagina4Informacion5 = () => {
   const slides = [
     {
       id: 1,
-      image: "", // Imagen del sensor de ultrasonidos
-      text: "En este taller, aprenderemos a programar el mBot para detectar y evitar obstáculos utilizando su sensor de ultrasonidos. Este sensor mide distancias y nos permite tomar decisiones en tiempo real.",
+      image: "", 
+      text: "",
     },
     {
       id: 2,
-      image: "", // Imagen de conexión del sensor
-      text: "Configuraremos el sensor de ultrasonidos en el mBot. Aseguraremos que esté correctamente conectado y listo para medir distancias.",
+      image: "", 
+      text: "",
     },
     {
       id: 3,
-      image: "", // Imagen de bloques de programación
-      text: "Programaremos el mBot para que detecte obstáculos utilizando el sensor de ultrasonidos. Si detecta un objeto a menos de 10 cm, el mBot retrocederá o girará para evitarlo.",
+      image: "", 
+      text: "",
     },
     {
       id: 4,
-      image: "", // Imagen de luces y sonidos
-      text: "Mejoraremos el programa añadiendo comportamientos adicionales, como cambios de dirección aleatorios, ajustes de velocidad y alertas sonoras o visuales cuando se detecte un obstáculo.",
+      image: "", 
+      text: "",
     },
     {
       id: 5,
-      image: "", // Imagen de actividad práctica
-      text: "En esta actividad, programaremos el mBot para que navegue por un espacio lleno de obstáculos sin chocar. Aplicaremos todo lo aprendido sobre detección y evitación de obstáculos.",
+      image: "", 
+      text: "",
     },
     {
       id: 6,
-      image: "", // Imagen de evaluación y cierre
-      text: "Revisaremos los programas creados por cada grupo y discutiremos cómo aplicamos los conceptos de programación. Destacaremos la importancia de los sensores en la robótica y su aplicación en el mundo real.",
+      image: "", 
+      text: "",
+    },
+    {
+      id: 7,
+      image: "", 
+      text: "",
+    },
+    {
+      id: 8,
+      image: "", 
+      text: "",
+    },
+    {
+      id: 9,
+      image: "", 
+      text: "",
+    },
+    {
+      id: 10,
+      image: "", 
+      text: "",
     },
   ];
 
@@ -61,7 +81,7 @@ const Pagina4Informacion5 = () => {
   return (
     <div className="w-full min-h-screen flex flex-col md:flex-row p-4 bg-white gap-4 relative">
       {/* Columna izquierda */}
-      <div className="w-full md:w-1/2 flex flex-col gap-4">
+      <div className="w-full md:w-1/4 flex flex-col gap-4">
         {/* Introducción arriba a la izquierda */}
         <div className="border h-16 flex justify-center items-center rounded-md">
           <h2 className="text-2xl font-bold">Introducción</h2>
@@ -74,12 +94,12 @@ const Pagina4Informacion5 = () => {
       </div>
 
       {/* Columna derecha con la imagen */}
-      <div className="w-full md:w-1/2 border flex justify-center items-center rounded-md p-4 max-h-[400px] md:max-h-[560px]">
+      <div className="w-full md:w-3/4 border flex justify-center items-center rounded-md p-4 max-h-[400px] md:max-h-[560px]">
         {/* Imagen */}
         <img
           src={slides[activeIndex].image} // Imagen correspondiente al slide activo
           alt={`Imagen ${activeIndex + 1}`}
-          className="w-full h-auto max-h-[300px] md:max-h-[400px] object-cover rounded-md"
+          className="w-full h-auto max-h-[300px] md:max-h-[600px] object-fill rounded-md"
         />
       </div>
 

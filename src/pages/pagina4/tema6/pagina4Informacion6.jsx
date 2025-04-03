@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Pagina4Informacion5 = () => {
+const Pagina4Informacion6 = () => {
   const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -9,38 +9,88 @@ const Pagina4Informacion5 = () => {
   const slides = [
     {
       id: 1,
-      image: "", // Imagen de los sensores de infrarrojos
-      text: "En este taller, aprenderemos a programar el mBot para seguir una línea utilizando sus sensores de infrarrojos. Estos sensores detectan cambios en el color de la superficie, lo que permite al mBot seguir una pista.",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643709/taller6slide1_k7u8lp.png", 
+      text: "",
     },
     {
       id: 2,
-      image: "", // Imagen de la pista de seguimiento
-      text: "Crearemos una pista en el suelo utilizando cinta adhesiva negra. La pista tendrá curvas y líneas rectas para que el mBot la siga. Aseguraremos que la pista sea lo suficientemente ancha para que los sensores de infrarrojos la detecten fácilmente.",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643712/taller6slide2_u2hzcm.png", 
+      text: "",
     },
     {
       id: 3,
-      image: "", // Imagen de configuración del sensor
-      text: "Configuraremos los sensores de infrarrojos en el mBot. Aseguraremos que estén correctamente conectados y listos para detectar la línea negra en la pista.",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643711/taller6slide3_db2iow.png", 
+      text: "",
     },
     {
       id: 4,
-      image: "", // Imagen de bloques de programación
-      text: "Programaremos el mBot para que siga la línea negra utilizando los sensores de infrarrojos. Si el mBot se desvía de la línea, ajustaremos su dirección para que vuelva a la pista.",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643728/taller6slide4_bpm7n1.png", 
+      text: "",
     },
     {
       id: 5,
-      image: "", // Imagen de luces y sonidos
-      text: "Mejoraremos el programa ajustando la velocidad del mBot y la sensibilidad de los sensores. También añadiremos funciones adicionales, como luces y sonidos, para indicar cuando el mBot cambia de dirección.",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643719/taller6slide5_ptgm16.png", 
+      text: "",
     },
     {
       id: 6,
-      image: "", // Imagen de actividad práctica
-      text: "En esta actividad, los estudiantes programarán el mBot para que siga una pista con curvas y bifurcaciones. Competirán para ver quién logra que su mBot complete el recorrido más rápido y con mayor precisión.",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643722/taller6slide6_izj31g.png", 
+      text: "",
     },
     {
       id: 7,
-      image: "", // Imagen de evaluación y cierre
-      text: "Revisaremos los programas creados por cada grupo y discutiremos cómo aplicamos los conceptos de programación. Destacaremos la importancia de los robots seguidores de línea en aplicaciones industriales y vehículos autónomos.",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643718/taller6slide7_v3sqs8.png", 
+      text: "",
+    },
+    {
+      id: 8,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643724/taller6slide8_pkcgca.png", 
+      text: "",
+    },
+    {
+      id: 9,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643723/taller6slide9_u30qaq.png", 
+      text: "",
+    },
+    {
+      id: 10,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643662/taller6slide10_n6abmj.png", 
+      text: "",
+    },
+    {
+      id: 11,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643702/taller6slide11_qrixxh.png", 
+      text: "",
+    },
+    {
+      id: 12,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643703/taller6slide12_fj7jm5.png", 
+      text: "",
+    },
+    {
+      id: 13,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643704/taller6slide13_cfisbf.png", 
+      text: "",
+    },
+    {
+      id: 14,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643706/taller6slide14_x91tzt.png", 
+      text: "",
+    },
+    {
+      id: 15,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643714/taller6slide15_tqcllr.png", 
+      text: "",
+    },
+    {
+      id: 16,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643715/taller6slide16_ykaiso.png", 
+      text: "",
+    },
+    {
+      id: 17,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643708/taller6slide17_wz2uws.png", 
+      text: "",
     },
   ];
 
@@ -66,7 +116,7 @@ const Pagina4Informacion5 = () => {
   return (
     <div className="w-full min-h-screen flex flex-col md:flex-row p-4 bg-white gap-4 relative">
       {/* Columna izquierda */}
-      <div className="w-full md:w-1/2 flex flex-col gap-4">
+      <div className="w-full md:w-1/4 flex flex-col gap-4">
         {/* Introducción arriba a la izquierda */}
         <div className="border h-16 flex justify-center items-center rounded-md">
           <h2 className="text-2xl font-bold">Introducción</h2>
@@ -79,18 +129,18 @@ const Pagina4Informacion5 = () => {
       </div>
 
       {/* Columna derecha con la imagen */}
-      <div className="w-full md:w-1/2 border flex justify-center items-center rounded-md p-4 max-h-[400px] md:max-h-[560px]">
+      <div className="w-full md:w-3/4 border flex justify-center items-center rounded-md p-4 max-h-[400px] md:max-h-[560px]">
         {/* Imagen */}
         <img
           src={slides[activeIndex].image} // Imagen correspondiente al slide activo
           alt={`Imagen ${activeIndex + 1}`}
-          className="w-full h-auto max-h-[300px] md:max-h-[400px] object-cover rounded-md"
+          className="w-full h-auto max-h-[300px] md:max-h-[600px] object-fill rounded-md"
         />
       </div>
 
       {/* Botón de volver */}
       <button
-        onClick={() => navigate('/Tema5')}
+        onClick={() => navigate('/Tema6')}
         className="fixed md:absolute bottom-4 left-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors cursor-pointer"
       >
         Volver
@@ -147,4 +197,4 @@ const Pagina4Informacion5 = () => {
   );
 };
 
-export default Pagina4Informacion5;
+export default Pagina4Informacion6;

@@ -9,33 +9,83 @@ const Pagina4Informacion5 = () => {
   const slides = [
     {
       id: 1,
-      image: "", // Imagen del sensor de ultrasonidos
-      text: "En este taller, aprenderemos a programar el mBot para detectar y evitar obstáculos utilizando su sensor de ultrasonidos. Este sensor mide distancias y nos permite tomar decisiones en tiempo real.",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643140/taller5slide1_bmti5o.png", 
+      text: "",
     },
     {
       id: 2,
-      image: "", // Imagen de conexión del sensor
-      text: "Configuraremos el sensor de ultrasonidos en el mBot. Aseguraremos que esté correctamente conectado y listo para medir distancias.",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643142/taller5slide2_i7zdjd.png", 
+      text: "",
     },
     {
       id: 3,
-      image: "", // Imagen de bloques de programación
-      text: "Programaremos el mBot para que detecte obstáculos utilizando el sensor de ultrasonidos. Si detecta un objeto a menos de 10 cm, el mBot retrocederá o girará para evitarlo.",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643146/taller5slide3_ljubm2.png", 
+      text: "",
     },
     {
       id: 4,
-      image: "", // Imagen de luces y sonidos
-      text: "Mejoraremos el programa añadiendo comportamientos adicionales, como cambios de dirección aleatorios, ajustes de velocidad y alertas sonoras o visuales cuando se detecte un obstáculo.",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643143/taller5slide4_qpknwe.png", 
+      text: "",
     },
     {
       id: 5,
-      image: "", // Imagen de actividad práctica
-      text: "En esta actividad, programaremos el mBot para que navegue por un espacio lleno de obstáculos sin chocar. Aplicaremos todo lo aprendido sobre detección y evitación de obstáculos.",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643148/taller5slide5_wy0rzx.png", 
+      text: "",
     },
     {
       id: 6,
-      image: "", // Imagen de evaluación y cierre
-      text: "Revisaremos los programas creados por cada grupo y discutiremos cómo aplicamos los conceptos de programación. Destacaremos la importancia de los sensores en la robótica y su aplicación en el mundo real.",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643149/taller5slide6_okro00.png", 
+      text: "",
+    },
+    {
+      id: 7,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643127/taller5slide7_fqe8ty.png", 
+      text: "",
+    },
+    {
+      id: 8,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643128/taller5slide8_lmqkct.png", 
+      text: "",
+    },
+    {
+      id: 9,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643128/taller5slide9_kxo9aq.png", 
+      text: "",
+    },
+    {
+      id: 10,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643130/taller5slide10_bgisov.png", 
+      text: "",
+    },
+    {
+      id: 11,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643132/taller5slide11_e79imv.png", 
+      text: "",
+    },
+    {
+      id: 12,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643133/taller5slide12_nmyzge.png", 
+      text: "",
+    },
+    {
+      id: 13,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643135/taller5slide13_ctnhkh.png", 
+      text: "",
+    },
+    {
+      id: 14,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643135/taller5slide14_c18asj.png", 
+      text: "",
+    },
+    {
+      id: 15,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643137/taller5slide15_dgdnmi.png", 
+      text: "",
+    },
+    {
+      id: 16,
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643139/taller5slide16_wamvr4.png", 
+      text: "",
     },
   ];
 
@@ -61,7 +111,7 @@ const Pagina4Informacion5 = () => {
   return (
     <div className="w-full min-h-screen flex flex-col md:flex-row p-4 bg-white gap-4 relative">
       {/* Columna izquierda */}
-      <div className="w-full md:w-1/2 flex flex-col gap-4">
+      <div className="w-full md:w-1/4 flex flex-col gap-4">
         {/* Introducción arriba a la izquierda */}
         <div className="border h-16 flex justify-center items-center rounded-md">
           <h2 className="text-2xl font-bold">Introducción</h2>
@@ -74,18 +124,18 @@ const Pagina4Informacion5 = () => {
       </div>
 
       {/* Columna derecha con la imagen */}
-      <div className="w-full md:w-1/2 border flex justify-center items-center rounded-md p-4 max-h-[400px] md:max-h-[560px]">
+      <div className="w-full md:w-3/4 border flex justify-center items-center rounded-md p-4 max-h-[400px] md:max-h-[560px]">
         {/* Imagen */}
         <img
           src={slides[activeIndex].image} // Imagen correspondiente al slide activo
           alt={`Imagen ${activeIndex + 1}`}
-          className="w-full h-auto max-h-[300px] md:max-h-[400px] object-cover rounded-md"
+          className="w-full h-auto max-h-[300px] md:max-h-[600px] object-fill rounded-md"
         />
       </div>
 
       {/* Botón de volver */}
       <button
-        onClick={() => navigate('/Tema4')}
+        onClick={() => navigate('/Tema5')}
         className="fixed md:absolute bottom-4 left-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors cursor-pointer"
       >
         Volver
