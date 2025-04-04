@@ -131,7 +131,7 @@ const Pagina1 = () => {
       </div>
 
       {/* Pie de página fijo en la parte inferior */}
-      <div className="mb-2 py-2 w-full">
+      <div className="mb-6 py-2 w-full">
         <p className="text-sm text-green-600 text-center">
           www.ucundinamarca.edu.co | Vigilado minieducación (poner los contactos)
         </p>
