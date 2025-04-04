@@ -27,6 +27,8 @@ import Pagina4Descripcion3 from './pages/pagina4/tema3/pagina4Descripcion3';
 import Pagina4Descripcion4 from './pages/pagina4/tema4/pagina4Descripcion4';
 import Pagina4Descripcion5 from './pages/pagina4/tema5/pagina4Descripcion5';
 import Pagina4Descripcion6 from './pages/pagina4/tema6/pagina4Descripcion6';
+import Pagina4Descripcion7 from './pages/pagina4/tema7/pagina4Descripcion7';
+import Pagina4Descripcion8 from './pages/pagina4/tema8/pagina4Descripcion8';
 
 // Importar páginas de contenido (accesibles para ambos)
 import Pagina4Informacion1 from './pages/pagina4/tema1/pagina4Informacion1';
@@ -35,6 +37,8 @@ import Pagina4Informacion3 from './pages/pagina4/tema3/pagina4Informacion3';
 import Pagina4Informacion4 from './pages/pagina4/tema4/pagina4Informacion4';
 import Pagina4Informacion5 from './pages/pagina4/tema5/pagina4Informacion5';
 import Pagina4Informacion6 from './pages/pagina4/tema6/pagina4Informacion6';
+import Pagina4Informacion7 from './pages/pagina4/tema7/pagina4Informacion7';
+import Pagina4Informacion8 from './pages/pagina4/tema8/pagina4Informacion8';
 
 function App() {
   return (
@@ -65,6 +69,8 @@ function App() {
           <Route path='/Contenido4' element={<Pagina4Informacion4 />} />
           <Route path='/Contenido5' element={<Pagina4Informacion5 />} />
           <Route path='/Contenido6' element={<Pagina4Informacion6 />} />
+          <Route path='/Contenido7' element={<Pagina4Informacion7 />} />
+          <Route path='/Contenido8' element={<Pagina4Informacion8 />} />
 
           {/* Rutas exclusivas para docentes */}
           <Route element={<ProtectedRoute allowedRoles={['docente']} />}>
@@ -74,6 +80,8 @@ function App() {
             <Route path='/Tema4' element={<Pagina4Descripcion4 />} />
             <Route path='/Tema5' element={<Pagina4Descripcion5 />} />
             <Route path='/Tema6' element={<Pagina4Descripcion6 />} />
+            <Route path='/Tema7' element={<Pagina4Descripcion7 />} />
+            <Route path='/Tema8' element={<Pagina4Descripcion8 />} />
           </Route>
         </Route>
 

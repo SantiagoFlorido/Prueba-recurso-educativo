@@ -14,6 +14,10 @@ const Pagina1 = () => {
   // Datos de las imágenes y descripciones
   const slides = [
     {
+      image: '',
+      description: 'Bienvenido a (Nombre del proyecto)',
+    },
+    {
       image: 'https://res.cloudinary.com/dufzsv87k/image/upload/v1741305069/mapa_igu9fc.webp',
       description: 'Taller 1: El viaje de Pedro',
     },
@@ -37,6 +41,14 @@ const Pagina1 = () => {
       image: 'https://res.cloudinary.com/dufzsv87k/image/upload/v1741305068/linea5_ixd3hm.webp',
       description: 'Taller 6: Programando el seguidor de linea de nuestro Mbot',
     },
+    {
+      image: '',
+      description: 'Taller 7: ',
+    },
+    {
+      image: '',
+      description: 'Taller 8: ',
+    },
   ];
 
   // Referencia para controlar Swiper
@@ -58,55 +70,41 @@ const Pagina1 = () => {
   return (
     <div className="bg-white p-4 h-screen flex flex-col">
       {/* Título y logo */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 md:mb-6">
-        <div className="flex items-center gap-2 md:gap-0 w-full md:w-auto">
-          <h1 className="text-xl md:text-2xl font-bold break-words mr-2 md:mr-0  w-1/2 md:w-auto">
-            Recurso Educativo Digital
-          </h1>
-          {/* Logos en mobile (aparecen junto al título) */}
-          <div className="flex items-center gap-2 md:hidden">
-            <img
-              src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743288905/logoeludec_qcilsr.png"
-              alt="Logo 1"
-              className="h-8"
-            />
-            <img
-              src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305038/logo-titulo_gtcapj.png"
-              alt="Logo 2"
-              className="h-8"
-            />
-          </div>
-        </div>
-        
-        {/* Logos en desktop (aparecen a la derecha) */}
-        <div className="hidden md:flex items-center gap-4">
-          <img
-            src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743288905/logoeludec_qcilsr.png"
-            alt="Logo 1"
-            className="h-16"
-          />
+      <div className="flex flex-row justify-between items-center mb-4 md:mb-6">
+        {/* Logos */}
+        <div className="flex items-center gap-4">
           <img
             src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305038/logo-titulo_gtcapj.png"
-            alt="Logo 2"
-            className="h-14"
+            alt="Logo Universidad"
+            className="h-11 md:h-15"
+          />
+          <img
+            src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743288905/logoeludec_qcilsr.png"
+            alt="Logo Semillero"
+            className="h-10 md:h-14"
           />
         </div>
+
+        {/* Botón "Siguiente" */}
+        <button
+          onClick={() => isLoggedIn ? navigate('/Principal') : navigate('/Rol')}
+          className="bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-700 transition-colors cursor-pointer"
+        >
+          {isLoggedIn ? 'Continuar' : 'Iniciar sesión'}
+        </button>
       </div>
 
       {/* Slider de imágenes */}
-      <div className="flex-grow relative">
+      <div className=" relative flex justify-center">
         <Swiper
           ref={swiperRef}
           spaceBetween={30}
           slidesPerView={1}
           loop={true}  
-          autoplay={{
-            delay: 2000,
-            disableOnInteraction: false,
-          }}
+          
           navigation={true}
           modules={[Autoplay, Navigation]}
-          className="h-full"
+          className="h-70 md:h-full"
         >
           {slides.map((slide, index) => (
             <SwiperSlide key={index}>
@@ -139,18 +137,10 @@ const Pagina1 = () => {
 
       {/* Pie de página */}
       <div className="mt-4 md:mt-6 w-full">
-        <p className="text-xs md:text-sm text-green-600 text-left md:text-center max-w-[calc(100%-8rem)] md:max-w-none">
-          www.ucundinamarca.edu.co | Vigilado minieducación
+        <p className="text-sm text-green-600 text-center ">
+          www.ucundinamarca.edu.co | Vigilado minieducación (poner los contactos)
         </p>
       </div>
-
-      {/* Botón "Siguiente" */}
-      <button
-        onClick={() => isLoggedIn ? navigate('/Principal') : navigate('/Rol')}
-        className="fixed bottom-2 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-700 transition-colors cursor-pointer"
-      >
-        {isLoggedIn ? 'Continuar' : 'Iniciar sesión'}
-      </button>
     </div>
   );
 };

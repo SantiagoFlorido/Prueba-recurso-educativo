@@ -115,6 +115,34 @@ const Pagina3Proyectos = () => {
             </div>
           </div>
 
+          {/* Tema 7 */}
+          <div onClick={() => handleTopicClick(7)} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
+            <div className="h-10 flex items-center justify-center bg-gray-100">
+              <h2 className="text-xl font-semibold">Taller 7: </h2>
+            </div>
+            <div className="h-64 flex items-center justify-center">
+              <img
+                src=""
+                alt="Animación 7"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Tema 8 */}
+          <div onClick={() => handleTopicClick(8)} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
+            <div className="h-10 flex items-center justify-center bg-gray-100">
+              <h2 className="text-xl font-semibold">Taller 8: </h2>
+            </div>
+            <div className="h-64 flex items-center justify-center">
+              <img
+                src=""
+                alt="Animación 8"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
           {/* Tema 6: Ícono de agregar (comentado) 
           <div
             onClick={() => navigate('/AgregarTaller')}
