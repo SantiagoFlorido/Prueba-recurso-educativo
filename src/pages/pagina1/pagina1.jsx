@@ -70,12 +70,12 @@ const Pagina1 = () => {
           <img
             src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305038/logo-titulo_gtcapj.png"
             alt="Logo Universidad"
-            className="h-11 md:h-15"
+            className="h-10 md:h-15"
           />
           <img
             src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743288905/logoeludec_qcilsr.png"
             alt="Logo Semillero"
-            className="h-10 md:h-14"
+            className="h-9 md:h-14"
           />
         </div>
 
@@ -131,7 +131,7 @@ const Pagina1 = () => {
       </div>
 
       {/* Pie de página fijo en la parte inferior */}
-      <div className="mt-auto py-2 w-full">
+      <div className="mb-2 py-2 w-full">
         <p className="text-sm text-green-600 text-center">
           www.ucundinamarca.edu.co | Vigilado minieducación (poner los contactos)
         </p>
