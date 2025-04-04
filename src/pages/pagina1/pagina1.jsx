@@ -89,7 +89,7 @@ const Pagina1 = () => {
 
       {/* Contenedor principal con slider */}
       <div className="flex-1 flex flex-col">
-        <div className="relative flex-1 flex justify-center">
+        <div className="relative flex-1 flex justify-center ">
           <Swiper
             ref={swiperRef}
             spaceBetween={30}
@@ -105,7 +105,7 @@ const Pagina1 = () => {
                   <img
                     src={slide.image}
                     alt={`Descripción ${index + 1}`}
-                    className="w-full h-full max-h-[55vh] object-cover rounded-md"
+                    className="w-full h-full max-h-[55vh] object-cover rounded-md md:max-h-[120vh] md:h-110"
                   />
                   <p className="mt-2 text-center text-sm md:text-base">{slide.description}</p>
                 </div>
