@@ -90,7 +90,7 @@ const Pagina1 = () => {
       {/* Contenedor principal con slider centrado */}
       <div className="flex-1 flex flex-col justify-center relative">
         {/* Slider de imágenes */}
-        <div className="relative flex justify-center h-70 md:h-full">
+        <div className="relative flex justify-center h-[65vh] md:h-full">
           <Swiper
             ref={swiperRef}
             spaceBetween={30}
@@ -98,7 +98,7 @@ const Pagina1 = () => {
             loop={true}
             navigation={true}
             modules={[Autoplay, Navigation]}
-            className="h-full w-full "
+            className="h-full w-full"
           >
             {slides.map((slide, index) => (
               <SwiperSlide key={index}>
@@ -106,7 +106,7 @@ const Pagina1 = () => {
                   <img
                     src={slide.image}
                     alt={`Descripción ${index + 1}`}
-                    className="w-full h-full max-h-[70vh] object-cover rounded-md"
+                    className="w-full h-full object-cover rounded-md"
                   />
                   <p className="mt-2 text-center text-sm md:text-base">{slide.description}</p>
                 </div>
@@ -131,7 +131,7 @@ const Pagina1 = () => {
       </div>
 
       {/* Pie de página fijo en la parte inferior */}
-      <div className="mb-6 py-2 w-full">
+      <div className="py-2 w-full">
         <p className="text-sm text-green-600 text-center">
           www.ucundinamarca.edu.co | Vigilado minieducación (poner los contactos)
         </p>
