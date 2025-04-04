@@ -87,10 +87,9 @@ const Pagina1 = () => {
         </button>
       </div>
 
-      {/* Contenedor principal con slider centrado */}
-      <div className="flex-1 flex flex-col justify-center relative">
-        {/* Slider de imágenes */}
-        <div className="relative flex justify-center h-[65vh] md:h-full">
+      {/* Contenedor principal con slider */}
+      <div className="flex-1 flex flex-col">
+        <div className="relative flex-1 flex justify-center">
           <Swiper
             ref={swiperRef}
             spaceBetween={30}
@@ -106,7 +105,7 @@ const Pagina1 = () => {
                   <img
                     src={slide.image}
                     alt={`Descripción ${index + 1}`}
-                    className="w-full h-full object-cover rounded-md"
+                    className="w-full h-full max-h-[55vh] object-cover rounded-md"
                   />
                   <p className="mt-2 text-center text-sm md:text-base">{slide.description}</p>
                 </div>
@@ -130,7 +129,7 @@ const Pagina1 = () => {
         </div>
       </div>
 
-      {/* Pie de página fijo en la parte inferior */}
+      {/* Pie de página */}
       <div className="py-2 w-full">
         <p className="text-sm text-green-600 text-center">
           www.ucundinamarca.edu.co | Vigilado minieducación (poner los contactos)
