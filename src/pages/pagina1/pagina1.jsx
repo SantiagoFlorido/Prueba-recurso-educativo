@@ -70,12 +70,12 @@ const Pagina1 = () => {
           <img
             src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305038/logo-titulo_gtcapj.png"
             alt="Logo Universidad"
-            className="h-10 md:h-15"
+            className="h-9 md:h-15"
           />
           <img
             src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743288905/logoeludec_qcilsr.png"
             alt="Logo Semillero"
-            className="h-9 md:h-14"
+            className="h-8 md:h-14"
           />
         </div>
 
