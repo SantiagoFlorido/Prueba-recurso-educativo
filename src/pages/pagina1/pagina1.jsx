@@ -104,7 +104,7 @@ const Pagina1 = () => {
                 <div className="bg-gray-100 p-2 rounded-lg h-full flex flex-col justify-center">
                   <img
                     src={slide.image}
-                    alt={`Descripción ${index + 1}`}
+                    alt={`Banner explicativo ${index + 1}`}
                     className="w-full h-full max-h-[55vh] object-cover rounded-md md:max-h-[120vh] md:h-110"
                   />
                   <p className="mt-2 text-center text-sm md:text-base">{slide.description}</p>
