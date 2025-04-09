@@ -4,18 +4,59 @@ import { useNavigate } from 'react-router-dom';
 const Pagina3Proyectos = () => {
   const navigate = useNavigate();
 
-  const handleTopicClick = (topicNumber) => {
-    // Obtener datos del usuario
+  // Función para crear o actualizar la relación usuario-taller
+  const handleTallerUsuario = async (userId, tallerId) => {
+    try {
+      // Primero intentamos crear/actualizar la relación
+      const response = await fetch('https://prueba-api-recurso-educativo.onrender.com/api/v1/usuarios-talleres', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id_usuario: userId,
+          id_taller: tallerId,
+          estadoabierto: 'abierto',
+          estadofinal: 'nofinalizado'
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al actualizar el taller');
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Error al manejar la relación usuario-taller:', error);
+      throw error;
+    }
+  };
+
+  const handleTopicClick = async (topicNumber) => {
     const userData = JSON.parse(localStorage.getItem('studentUser') || localStorage.getItem('teacherUser'));
     
-    // Verificar si es docente
+    if (!userData?.id) {
+      console.error('No se encontró ID de usuario en los datos locales');
+      alert('No se pudo identificar tu usuario. Por favor, inicia sesión nuevamente.');
+      return;
+    }
+  
     const isTeacher = userData?.rol?.toLowerCase() === 'docente';
-    
-    // Navegar según el rol
-    if (isTeacher) {
-      navigate(`/Tema${topicNumber}`);
-    } else {
-      navigate(`/Contenido${topicNumber}`);
+  
+    try {
+      // 1. Crear/actualizar la relación usuario-taller
+      await handleTallerUsuario(userData.id, topicNumber);
+
+      // 2. Navegar según el rol
+      if (isTeacher) {
+        navigate(`/Tema${topicNumber}`);
+      } else {
+        navigate(`/Contenido${topicNumber}`);
+      }
+  
+    } catch (error) {
+      console.error('Error:', error);
+      alert(`Error: ${error.message || 'No se pudo iniciar el taller'}`);
     }
   };
 
@@ -142,32 +183,6 @@ const Pagina3Proyectos = () => {
               />
             </div>
           </div>
-
-          {/* Tema 6: Ícono de agregar (comentado) 
-          <div
-            onClick={() => navigate('/AgregarTaller')}
-            className="border rounded-lg overflow-hidden hover:bg-green-100 hover:shadow-lg transition-all duration-300 cursor-pointer"
-          >
-            <div className="h-10 flex items-center justify-center bg-gray-100">
-              <h2 className="text-xl font-semibold">Agregar Taller</h2>
-            </div>
-            <div className="h-64 flex items-center justify-center bg-gray-100 ">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-16 w-16 text-green-400 hover:text-green-600"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 4v16m8-8H4"
-                />
-              </svg>
-            </div>
-          </div>*/}
         </div>
       </div>
 
