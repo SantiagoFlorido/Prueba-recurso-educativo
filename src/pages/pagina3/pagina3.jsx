@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaQuestionCircle, FaBars, FaTimes } from 'react-icons/fa';
 import axios from 'axios';
+import { PulseLoader } from 'react-spinners';
 
 const Pagina3 = () => {
   const navigate = useNavigate();
@@ -9,26 +10,50 @@ const Pagina3 = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [userRole, setUserRole] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [completedWorkshops, setCompletedWorkshops] = useState(0);
+  const [savedWorkshops, setSavedWorkshops] = useState([]);
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
-    const fetchUserRole = async () => {
+    const fetchUserData = async () => {
       try {
         const studentUser = localStorage.getItem('studentUser');
         const teacherUser = localStorage.getItem('teacherUser');
+        let userData;
         
         if (teacherUser) {
+          userData = JSON.parse(teacherUser);
           setUserRole('docente');
         } else if (studentUser) {
+          userData = JSON.parse(studentUser);
           setUserRole('estudiante');
         }
+
+        if (userData?.id) {
+          setUserId(userData.id);
+          
+          // Obtener todos los talleres del usuario
+          const response = await axios.get(`https://prueba-api-recurso-educativo.onrender.com/api/v1/usuarios-talleres`);
+          const userWorkshops = response.data.filter(workshop => workshop.id_usuario === userData.id);
+          
+          // Contar talleres finalizados (estadofinal = 'finalizado')
+          const finalizados = userWorkshops.filter(workshop => workshop.estadofinal === 'finalizado');
+          setCompletedWorkshops(finalizados.length);
+
+          // Obtener talleres iniciados pero no finalizados (estadoabierto = 'abierto' y estadofinal = 'nofinalizado')
+          const guardados = userWorkshops.filter(workshop => 
+            workshop.estadoabierto === 'abierto' && workshop.estadofinal === 'nofinalizado'
+          );
+          setSavedWorkshops(guardados);
+        }
       } catch (error) {
-        console.error('Error al obtener el rol del usuario:', error);
+        console.error('Error al obtener datos del usuario:', error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchUserRole();
+    fetchUserData();
   }, []);
 
   const handleLogout = () => {
@@ -45,8 +70,20 @@ const Pagina3 = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleWorkshopClick = (workshopId) => {
+    if (userRole === 'docente') {
+      navigate(`/Tema${workshopId}`);
+    } else {
+      navigate(`/Contenido${workshopId}`);
+    }
+  };
+
   if (loading) {
-    return <div className="flex justify-center items-center min-h-screen">Cargando...</div>;
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <PulseLoader color="#16a34a" size={15} margin={5} />
+      </div>
+    );
   }
 
   return (
@@ -99,7 +136,7 @@ const Pagina3 = () => {
       <div className="grid grid-cols-1 md:grid-cols-[minmax(200px,_1fr)_minmax(100px,_0.3fr)] gap-4 flex-grow relative">
         {/* Proyectos (Columna 1, Fila 1) */}
         <div className="flex items-center justify-center bg-gray-100 p-2 rounded-md hover:bg-gray-200 transition-colors min-h-[180px] cursor-pointer text-lg font-bold text-center" onClick={() => navigate('/Proyectos')}>
-          {showHelp ? "Banner que indica la funcion del boton" : "Proyectos 0 de 6"}
+          {showHelp ? "Banner que indica la funcion del boton" : `Proyectos terminados ${completedWorkshops} de 8`}
         </div>
 
         {/* Recursos (Columna 2, Fila 1) */}
@@ -139,70 +176,48 @@ const Pagina3 = () => {
 
         {/* Mobile: Proyectos Guardados (Debajo de los botones) */}
         <div className="md:hidden bg-gray-100 p-2 rounded-lg">
-          <h2 className="text-lg font-bold mb-2 text-center">Proyectos Guardados</h2>
-          <div className="space-y-2">
-            <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
-              <h3 className="font-semibold">Proyecto Guardado 1</h3>
+          <h2 className="text-lg font-bold mb-2 text-center">
+            {savedWorkshops.length > 0 ? "Proyectos Guardados" : "Aún no tienes proyectos guardados"}
+          </h2>
+          {savedWorkshops.length > 0 && (
+            <div className="space-y-2">
+              {savedWorkshops.map((workshop) => (
+                <div 
+                  key={workshop.id} 
+                  className="bg-white p-2 rounded-lg shadow-sm cursor-pointer hover:bg-gray-200"
+                  onClick={() => handleWorkshopClick(workshop.id_taller)}
+                >
+                  <h3 className="font-semibold">Taller {workshop.id_taller}</h3>
+                </div>
+              ))}
             </div>
-            <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
-              <h3 className="font-semibold">Proyecto Guardado 2</h3>
-            </div>
-            <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
-              <h3 className="font-semibold">Proyecto Guardado 3</h3>
-            </div>
-            <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
-              <h3 className="font-semibold">Proyecto Guardado 4</h3>
-            </div>
-            <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
-              <h3 className="font-semibold">Proyecto Guardado 5</h3>
-            </div>
-            <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
-              <h3 className="font-semibold">Proyecto Guardado 6</h3>
-            </div>
-            <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
-              <h3 className="font-semibold">Proyecto Guardado 7</h3>
-            </div>
-            <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
-              <h3 className="font-semibold">Proyecto Guardado 8</h3>
-            </div>
-          </div>
+          )}
         </div>
 
         {/* Desktop: Menú desplegable personalizado */}
         <div className={`hidden md:block fixed top-0 right-0 h-full w-64 bg-gray-100 shadow-lg transform transition-transform duration-300 ease-in-out z-50 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
           <div className="p-4">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-bold">Proyectos Guardados</h2>
+              <h2 className="text-lg font-bold">
+                {savedWorkshops.length > 0 ? "Proyectos Guardados" : "Aún no tienes proyectos guardados"}
+              </h2>
               <button onClick={toggleMenu} className="text-gray-500 hover:text-gray-700">
                 <FaTimes />
               </button>
             </div>
-            <div className="space-y-2">
-              <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
-                <h3 className="font-semibold">Proyecto Guardado 1</h3>
+            {savedWorkshops.length > 0 && (
+              <div className="space-y-2">
+                {savedWorkshops.map((workshop) => (
+                  <div 
+                    key={workshop.id} 
+                    className="bg-white p-2 rounded-lg shadow-sm cursor-pointer hover:bg-gray-200"
+                    onClick={() => handleWorkshopClick(workshop.id_taller)}
+                  >
+                    <h3 className="font-semibold">Taller {workshop.id_taller}</h3>
+                  </div>
+                ))}
               </div>
-              <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
-                <h3 className="font-semibold">Proyecto Guardado 2</h3>
-              </div>
-              <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
-                <h3 className="font-semibold">Proyecto Guardado 3</h3>
-              </div>
-              <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
-                <h3 className="font-semibold">Proyecto Guardado 4</h3>
-              </div>
-              <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
-                <h3 className="font-semibold">Proyecto Guardado 5</h3>
-              </div>
-              <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
-                <h3 className="font-semibold">Proyecto Guardado 6</h3>
-              </div>
-              <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
-                <h3 className="font-semibold">Proyecto Guardado 7</h3>
-              </div>
-              <div className="bg-white p-2 rounded-lg shadow-sm cursor-pointer">
-                <h3 className="font-semibold">Proyecto Guardado 8</h3>
-              </div>
-            </div>
+            )}
           </div>
         </div>
 

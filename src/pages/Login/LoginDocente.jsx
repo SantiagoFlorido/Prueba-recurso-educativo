@@ -132,7 +132,12 @@ const Login = () => {
             
             <div>
               <span className='m-4 text-black'>Nuevo aqui? 
-                <Link className='text-emerald-700 text-2xl' to='/Register/Teacher'> Crear una cuenta</Link>
+                <Link className='text-emerald-700 text-1xl' to='/Register/Teacher'> Crear una cuenta</Link>
+              </span>
+            </div>
+            <div>
+              <span className='m-4 text-black'>Rol equivocado? 
+                <Link className='text-emerald-700 text-1xl' to='/Login/Student'> Cambiar a estudiante</Link>
               </span>
             </div>
             {/*Borrar luego*/}

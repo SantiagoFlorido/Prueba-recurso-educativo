@@ -69,7 +69,7 @@ const Register = () => {
               type="text" 
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
-              className='block w-76 py-2.5 px-0 text-sm text-[#007b3e] bg-transparent border-0 border-b-2 border-black appearance-none dark:focus:border-[#007b3e] focus:outline-none focus:ring-0 focus:text-black focus:border-[#007b3e] peer' 
+              className='block w-73 py-2.5 px-0 text-sm text-[#007b3e] bg-transparent border-0 border-b-2 border-black appearance-none dark:focus:border-[#007b3e] focus:outline-none focus:ring-0 focus:text-black focus:border-[#007b3e] peer' 
               placeholder=''
             />
             <label htmlFor="" className='absolute text-sm text-black duration-300 transform -translate-y-6 scale-75 top-3 z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#007b3e] peer-focus:dark:text-[#007b3e] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>NOMBRE</label>
@@ -80,7 +80,7 @@ const Register = () => {
               type="password" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className='block w-76 py-2.5 px-0 text-sm text-[#007b3e] bg-transparent border-0 border-b-2 border-black appearance-none dark:focus:border-[#007b3e] focus:outline-none focus:ring-0 focus:text-black focus:border-[#007b3e] peer' 
+              className='block w-73 py-2.5 px-0 text-sm text-[#007b3e] bg-transparent border-0 border-b-2 border-black appearance-none dark:focus:border-[#007b3e] focus:outline-none focus:ring-0 focus:text-black focus:border-[#007b3e] peer' 
               placeholder=''
             />
             <label htmlFor="" className='absolute text-sm text-black duration-300 transform -translate-y-6 scale-75 top-3 z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#007b3e] peer-focus:dark:text-[#007b3e] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>CONTRASEÑA</label>
@@ -91,7 +91,7 @@ const Register = () => {
               type="password" 
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className='block w-76 py-2.5 px-0 text-sm text-[#007b3e] bg-transparent border-0 border-b-2 border-black appearance-none dark:focus:border-[#007b3e] focus:outline-none focus:ring-0 focus:text-black focus:border-[#007b3e] peer' 
+              className='block w-73 py-2.5 px-0 text-sm text-[#007b3e] bg-transparent border-0 border-b-2 border-black appearance-none dark:focus:border-[#007b3e] focus:outline-none focus:ring-0 focus:text-black focus:border-[#007b3e] peer' 
               placeholder=''
             />
             <label htmlFor="" className='absolute text-sm text-black duration-300 transform -translate-y-6 scale-75 top-3 z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#007b3e] peer-focus:dark:text-[#007b3e] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>CONFIRMAR CONTRASEÑA</label>
@@ -108,13 +108,18 @@ const Register = () => {
                 <AiOutlineLoading className="animate-spin" />
                 Procesando...
               </>
-            ) : 'Crear'}
+            ) : 'Crear cuenta'}
           </button>
           
           <div>
             <span className='m-4 text-black'>Ya tienes una cuenta? 
-              <Link className='text-emerald-700 text-2xl' to='/Login/Teacher'> Inicia sesión</Link>
+              <Link className='text-emerald-700 text-1x1' to='/Login/Teacher'> Inicia sesión</Link>
             </span>
+          </div>
+          <div>
+              <span className='m-4 text-black'>Rol equivocado? 
+                <Link className='text-emerald-700 text-1x1' to='/Register/Student'> Cambiar a estudiante</Link>
+              </span>
           </div>
           
         </form>
