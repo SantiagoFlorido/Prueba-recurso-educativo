@@ -1,9 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Pagina4Informacion6 = () => {
   const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
+  const [userTallerRelation, setUserTallerRelation] = useState(null);
+
+  // Verificar la relación usuario-taller al cargar el componente
+  useEffect(() => {
+    const checkUserTallerRelation = async () => {
+      try {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (!currentUser) {
+          console.log('Usuario no autenticado');
+          return;
+        }
+
+        const response = await fetch(`https://prueba-api-recurso-educativo.onrender.com/api/v1/usuarios-talleres?id_usuario=${currentUser.id}&id_taller=6`);
+        
+        if (!response.ok) {
+          throw new Error('Error al verificar la relación usuario-taller');
+        }
+
+        const relaciones = await response.json();
+        
+        // Filtrar para obtener solo la relación con id_taller = 6
+        const relacionTaller6 = relaciones.find(rel => rel.id_taller === 6);
+        
+        if (relacionTaller6) {
+          setUserTallerRelation(relacionTaller6);
+        } else {
+          console.log('No existe relación usuario-taller para el taller 6');
+        }
+      } catch (error) {
+        console.error('Error al verificar relación:', error);
+      }
+    };
+
+    checkUserTallerRelation();
+  }, []);
 
   // Datos para cada slide (imagen y texto)
   const slides = [
@@ -113,6 +148,59 @@ const Pagina4Informacion6 = () => {
     }
   };
 
+  // Función para manejar el clic en créditos
+  const handleCreditosClick = async () => {
+    try {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      if (!currentUser) {
+        throw new Error('Usuario no autenticado');
+      }
+
+      // Si ya existe la relación para el taller 6, actualizarla
+      if (userTallerRelation && userTallerRelation.id_taller === 6) {
+        const updateResponse = await fetch(`https://prueba-api-recurso-educativo.onrender.com/api/v1/usuarios-talleres/${userTallerRelation.id}/estado`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            estadoabierto: 'abierto',
+            estadofinal: 'finalizado'
+          })
+        });
+
+        if (!updateResponse.ok) {
+          throw new Error('Error al actualizar el estado');
+        }
+      } else {
+        // Si no existe la relación para el taller 6, crearla
+        const createResponse = await fetch('https://prueba-api-recurso-educativo.onrender.com/api/v1/usuarios-talleres', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            id_usuario: currentUser.id,
+            id_taller: 6, // Asegurando que solo se cree para el taller 6
+            estadoabierto: 'abierto',
+            estadofinal: 'finalizado',
+          })
+        });
+
+        if (!createResponse.ok) {
+          throw new Error('Error al crear la relación usuario-taller');
+        }
+      }
+
+      // Navegar a créditos después de actualizar/crear
+      navigate('/Creditos');
+    } catch (error) {
+      console.error('Error al manejar créditos:', error);
+      // Navegar a créditos incluso si hay error
+      navigate('/Creditos');
+    }
+  };
+
   return (
     <div className="w-full min-h-screen flex flex-col md:flex-row p-4 bg-white gap-4 relative">
       {/* Columna izquierda */}
@@ -146,9 +234,9 @@ const Pagina4Informacion6 = () => {
         Volver
       </button>
 
-      {/* Botón de créditos */}
+      {/* Botón de créditos (con la nueva función) */}
       <button
-        onClick={() => navigate('/Creditos')}
+        onClick={handleCreditosClick}
         className="fixed md:absolute bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors cursor-pointer"
       >
         Créditos

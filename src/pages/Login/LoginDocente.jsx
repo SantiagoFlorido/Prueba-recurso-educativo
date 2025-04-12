@@ -22,7 +22,6 @@ const Login = () => {
     setError('');
 
     try {
-      // Buscar al usuario por nombre
       const searchResponse = await fetch(`https://prueba-api-recurso-educativo.onrender.com/api/v1/users?nombre=${nombre}`);
       
       if (!searchResponse.ok) {
@@ -30,50 +29,43 @@ const Login = () => {
       }
 
       const users = await searchResponse.json();
-      console.log('Respuesta API:', users); // Para debugging
       
-      // Verificar si encontramos al usuario
       if (!users || users.length === 0) {
         throw new Error('Usuario no encontrado');
       }
 
-      const user = users.find(u => u.nombre === nombre); // Búsqueda exacta
+      const user = users.find(u => u.nombre === nombre);
       if (!user) {
         throw new Error('Credenciales incorrectas');
       }
 
-      // Verificación robusta del rol (insensible a mayúsculas/espacios)
       const normalizedRole = String(user.rol).toLowerCase().trim();
       if (normalizedRole !== 'docente') {
         throw new Error(`Acceso restringido. Rol actual: ${user.rol}`);
       }
 
-      // Verificar la contraseña
       if (user.contraseña !== password) {
         throw new Error('Contraseña incorrecta');
       }
 
-      // Guardar datos de usuario en localStorage (actualizado)
       localStorage.setItem('currentUser', JSON.stringify({
         id: user.id_usuario || user.id,
         nombre: user.nombre,
         rol: user.rol,
-        tipo: 'docente', // Identificador adicional
-        timestamp: new Date().getTime() // Para control de expiración
+        tipo: 'docente',
+        timestamp: new Date().getTime()
       }));
 
-      // Guardar también específicamente como docente
       localStorage.setItem('teacherUser', JSON.stringify({
         id: user.id_usuario || user.id,
         nombre: user.nombre,
         rol: user.rol
       }));
 
-      // Redirigir al dashboard de docentes
       navigate('/Principal');
       
     } catch (err) {
-      console.error('Error en login:', err); // Para debugging
+      console.error('Error en login:', err);
       setError(err.message || 'Error al iniciar sesión');
     } finally {
       setLoading(false);
@@ -81,9 +73,26 @@ const Login = () => {
   };
 
   return (
-    <div className='text-white h-[100vh] flex justify-center items-center bg-cover bg-center bg-gray-200'>
-      <div>
-        <div className="bg-gray-100 rounded-md p-7 shadow-lg">
+    <div className='relative text-white min-h-[100vh] bg-cover bg-center bg-gray-200' style={{"backgroundImage": "url('https://res.cloudinary.com/dufzsv87k/image/upload/v1744386560/WallpaperRED.png')"}}>
+      {/* Logos en posición absoluta (arriba a la izquierda) */}
+      <div className="absolute top-4 left-4 z-10">
+        <div className="flex items-center gap-4">
+          <img
+            src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305038/logo-titulo_gtcapj.png"
+            alt="Logo Universidad"
+            className="h-16 md:h-16"
+          />
+          <img
+            src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743288905/logoeludec_qcilsr.png"
+            alt="Logo Semillero"
+            className="h-16 md:h-16"
+          />
+        </div>
+      </div>
+
+      {/* Formulario centrado */}
+      <div className='flex justify-center items-center h-[100vh]' >
+        <div className="bg-gray-100 rounded-md p-7 shadow-lg ">
           <h1 className='text-4x1 text-[30px] text-[#009e4f] font-bold text-center mb-6'>Iniciar sesión</h1>
           
           {error && (
@@ -140,17 +149,17 @@ const Login = () => {
                 <Link className='text-emerald-700 text-1xl' to='/Login/Student'> Cambiar a estudiante</Link>
               </span>
             </div>
-            {/*Borrar luego*/}
+            {/* Borrar luego */}
             <div>
-            <span className='text-black'>
-              Nombre: Docente1
-            </span>
-          </div>
-          <div>
-            <span className='text-black'>
-              Contraseña: Docente1
-            </span>
-          </div>
+              <span className='text-black'>
+                Nombre: Docente1
+              </span>
+            </div>
+            <div>
+              <span className='text-black'>
+                Contraseña: Docente1
+              </span>
+            </div>
           </form>
         </div>
       </div>

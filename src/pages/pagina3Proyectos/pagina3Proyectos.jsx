@@ -16,8 +16,7 @@ const Pagina3Proyectos = () => {
         body: JSON.stringify({
           id_usuario: userId,
           id_taller: tallerId,
-          estadoabierto: 'abierto',
-          estadofinal: 'nofinalizado'
+          estadoabierto: 'abierto'
         }),
       });
 

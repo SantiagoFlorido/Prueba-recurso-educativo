@@ -40,11 +40,13 @@ const Pagina3 = () => {
           const finalizados = userWorkshops.filter(workshop => workshop.estadofinal === 'finalizado');
           setCompletedWorkshops(finalizados.length);
 
-          // Obtener talleres iniciados pero no finalizados (estadoabierto = 'abierto' y estadofinal = 'nofinalizado')
+          // Obtener talleres iniciados pero no finalizados (estadoabierto = 'abierto')
           const guardados = userWorkshops.filter(workshop => 
-            workshop.estadoabierto === 'abierto' && workshop.estadofinal === 'nofinalizado'
+            workshop.estadoabierto === 'abierto' 
           );
-          setSavedWorkshops(guardados);
+          // Ordenar los talleres por id_taller de forma ascendente
+          const guardadosOrdenados = [...guardados].sort((a, b) => a.id_taller - b.id_taller);
+          setSavedWorkshops(guardadosOrdenados);
         }
       } catch (error) {
         console.error('Error al obtener datos del usuario:', error);
@@ -136,7 +138,7 @@ const Pagina3 = () => {
       <div className="grid grid-cols-1 md:grid-cols-[minmax(200px,_1fr)_minmax(100px,_0.3fr)] gap-4 flex-grow relative">
         {/* Proyectos (Columna 1, Fila 1) */}
         <div className="flex items-center justify-center bg-gray-100 p-2 rounded-md hover:bg-gray-200 transition-colors min-h-[180px] cursor-pointer text-lg font-bold text-center" onClick={() => navigate('/Proyectos')}>
-          {showHelp ? "Banner que indica la funcion del boton" : `Proyectos terminados ${completedWorkshops} de 8`}
+          {showHelp ? "Banner que indica los proyectos" : `Proyectos terminados ${completedWorkshops} de 8`}
         </div>
 
         {/* Recursos (Columna 2, Fila 1) */}
@@ -155,7 +157,7 @@ const Pagina3 = () => {
           >
             <h2 className="text-lg text-center font-semibold">
               {showHelp 
-                ? "Banner que indica la funcion del boton" 
+                ? "Banner que indica los recursos de gestor" 
                 : userRole === 'docente' 
                   ? "Recursos Gestor" 
                   : "Restringido solo a Docentes"}
@@ -166,11 +168,11 @@ const Pagina3 = () => {
             onClick={() => window.open('https://drive.google.com/drive/folders/1_ziaHW8TNaqfAI8Tcc5e2UBrzhm8Gl6N?usp=sharing', '_blank', 'noopener,noreferrer')}
           >
             <h2 className="text-lg text-center font-semibold">
-              {showHelp ? "Banner que indica la funcion del boton" : "Recursos de apoyo"}
+              {showHelp ? "Banner que indica los recursos de apoyo" : "Recursos de apoyo"}
             </h2>
           </div>
           <div className="bg-gray-100 p-2 rounded-lg flex-grow flex items-center justify-center hover:bg-gray-200 cursor-pointer text-lg text-center font-semibold" onClick={() => navigate('/Conexión')}>
-            {showHelp ? "Banner que indica la funcion del boton" : "Formas de conexión"}
+            {showHelp ? "Banner que indica las formas de conexión" : "Formas de conexión"}
           </div>
         </div>
 

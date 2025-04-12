@@ -79,9 +79,24 @@ const LoginStudent = () => {
   };
 
   return (
-    <div className='text-white h-[100vh] flex justify-center items-center bg-cover bg-center bg-gray-200'>
-      <div>
-        <div className="bg-gray-100 rounded-md p-7 shadow-lg">
+    <div className='relative text-white min-h-[100vh] bg-cover bg-center bg-gray-200' style={{"backgroundImage": "url('https://res.cloudinary.com/dufzsv87k/image/upload/v1744386560/WallpaperRED.png')"}}>
+      {/* Logos en posición absoluta (arriba a la izquierda) */}
+      <div className="absolute top-4 left-4 z-10">
+        <div className="flex items-center gap-4">
+          <img
+            src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305038/logo-titulo_gtcapj.png"
+            alt="Logo Universidad"
+            className="h-16 md:h-16"
+          />
+          <img
+            src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743288905/logoeludec_qcilsr.png"
+            alt="Logo Semillero"
+            className="h-16 md:h-16"
+          />
+        </div>
+      </div>
+      <div className='flex justify-center items-center h-[100vh]' >
+        <div className="bg-gray-100 rounded-md p-7 shadow-lg ">
           <h1 className='text-4x1 text-[30px] text-[#009e4f] font-bold text-center mb-6'>Iniciar sesión</h1>
           
           {error && (
