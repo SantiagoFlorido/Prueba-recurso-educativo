@@ -32,7 +32,7 @@ const Creditos = () => {
       <div className="absolute bottom-8 right-8">
         <button
           onClick={() => navigate('/Principal')}
-          className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg shadow-md transition duration-300 cursor-pointer"
+          className="bg-[#007B3E] hover:bg-[#009e4f] text-white px-6 py-3 rounded-lg shadow-md transition duration-300 cursor-pointer"
         >
           Menú Principal
         </button>

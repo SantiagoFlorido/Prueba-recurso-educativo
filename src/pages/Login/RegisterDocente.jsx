@@ -60,20 +60,20 @@ const Register = () => {
       <div className="absolute top-4 left-4 z-10">
         <div className="flex items-center gap-4">
           <img
-            src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305038/logo-titulo_gtcapj.png"
+            src="https://res.cloudinary.com/dufzsv87k/image/upload/v1744508289/logoU_blanco.png"
             alt="Logo Universidad"
             className="h-16 md:h-16"
           />
           <img
             src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743288905/logoeludec_qcilsr.png"
             alt="Logo Semillero"
-            className="h-16 md:h-16"
+            className="h-16 md:h-17"
           />
         </div>
       </div>
       <div className='flex justify-center items-center h-[100vh]' >
       <div className="bg-gray-100 rounded-md p-7 shadow-lg ">
-        <h1 className='text-4x1 text-[30px] text-[#009e4f] font-bold text-center mb-6'>Registrar</h1>
+        <h1 className='text-4x1 text-[30px] text-[#007B3E] font-bold text-center mb-6'>Registrar</h1>
         {error && (
           <div className="mb-4 p-2 bg-red-100 text-red-700 rounded text-center">
             {error}
@@ -117,7 +117,7 @@ const Register = () => {
           <button 
             type='submit' 
             disabled={loading}
-            className='w-full mb-4 text-[18px] mt-6 rounded-full bg-emerald-700 text-white hover:bg-emerald-500 hover:text-white py-2 transition-colors duration-300 flex justify-center items-center gap-2'
+            className='w-full mb-4 text-[18px] mt-6 rounded-full bg-[#007B3E] text-white hover:bg-[#009e4f] hover:text-white py-2 transition-colors duration-300 flex justify-center items-center gap-2'
           >
             {loading ? (
               <>
@@ -129,12 +129,12 @@ const Register = () => {
           
           <div>
             <span className='m-4 text-black'>Ya tienes una cuenta? 
-              <Link className='text-emerald-700 text-1x1' to='/Login/Teacher'> Inicia sesión</Link>
+              <Link className='text-[#007B3E] text-1x1' to='/Login/Teacher'> Inicia sesión</Link>
             </span>
           </div>
           <div>
               <span className='m-4 text-black'>Rol equivocado? 
-                <Link className='text-emerald-700 text-1x1' to='/Register/Student'> Cambiar a estudiante</Link>
+                <Link className='text-[#007B3E] text-1x1' to='/Register/Student'> Cambiar a estudiante</Link>
               </span>
           </div>
           

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaQuestionCircle, FaBars, FaTimes } from 'react-icons/fa';
+import { FaQuestionCircle, FaBars, FaTimes, FaProjectDiagram, FaUserTie, FaHandsHelping, FaLink, FaHome } from 'react-icons/fa';
+import { MdOutlineWork } from "react-icons/md";
+import { FiFolder } from "react-icons/fi";
+
 import axios from 'axios';
 import { PulseLoader } from 'react-spinners';
 
@@ -83,7 +86,7 @@ const Pagina3 = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <PulseLoader color="#16a34a" size={15} margin={5} />
+        <PulseLoader color="#007B3E" size={17} margin={5} />
       </div>
     );
   }
@@ -110,26 +113,26 @@ const Pagina3 = () => {
         <div className="flex md:flex-row items-center gap-1 flex-col">
           <div className="flex flex-col md:flex-row gap-2 w-full">
             <button 
-              className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-700 cursor-pointer w-full md:w-27" 
+              className="bg-[#007B3E] text-white px-3 py-1 rounded-lg text-sm hover:bg-[#009e4f] transition-colors duration-300 cursor-pointer w-full md:w-28" 
               onClick={handleLogout}
             >
               Cerrar Sesión
             </button>
           </div>
-          <button className="bg-gray-200 px-3 py-1 rounded-lg text-sm hover:bg-gray-300 cursor-pointer w-full" onClick={() => navigate('/')}>
-            Inicio
+          <button className="flex justify-center items-center bg-gray-200 px-3 py-1 rounded-lg text-sm hover:bg-gray-300 transition-colors duration-300 cursor-pointer w-full" onClick={() => navigate('/')}>
+            <FaHome size={19} className="text-[#007B3E] flex justify-center items-center" /> 
           </button>
           <button 
-            className="bg-gray-100 px-3 py-2 rounded-lg text-sm hover:bg-gray-200 cursor-pointer w-full flex items-center justify-center"
+            className="bg-gray-200 px-3 py-2 rounded-lg text-sm hover:bg-gray-300 transition-colors duration-300 cursor-pointer w-full flex items-center justify-center"
             onClick={toggleHelp}
           >
-            <FaQuestionCircle className="text-green-600" />
+            <FaQuestionCircle size={18} className="text-[#007B3E]" />
           </button>
           <button 
-            className="bg-gray-100 px-3 py-2 rounded-lg text-sm hover:bg-gray-200 cursor-pointer w-full hidden items-center justify-center md:flex"
+            className="bg-gray-200 px-3 py-2 rounded-lg text-sm hover:bg-gray-300 transition-colors duration-300 cursor-pointer w-full hidden items-center justify-center md:flex"
             onClick={toggleMenu}
           >
-            <FaBars className="text-green-600" />
+            <FaBars size={18} className="text-[#007B3E]" />
           </button>
         </div>
       </div>
@@ -137,17 +140,22 @@ const Pagina3 = () => {
       {/* Contenedor con 3 columnas y 3 filas */}
       <div className="grid grid-cols-1 md:grid-cols-[minmax(200px,_1fr)_minmax(100px,_0.3fr)] gap-4 flex-grow relative">
         {/* Proyectos (Columna 1, Fila 1) */}
-        <div className="flex items-center justify-center bg-gray-100 p-2 rounded-md hover:bg-gray-200 transition-colors min-h-[180px] cursor-pointer text-lg font-bold text-center" onClick={() => navigate('/Proyectos')}>
-          {showHelp ? "Banner que indica los proyectos" : `Proyectos terminados ${completedWorkshops} de 8`}
+        <div className="flex items-center justify-center text-white text-lg bg-[#007B3E] p-2 rounded-md hover:bg-[#009e4f] transition-colors duration-300 min-h-[180px] cursor-pointer font-bold text-center" onClick={() => navigate('/Proyectos')}>
+          <div className="flex items-center gap-2">
+            {showHelp ? ("Banner que indica los proyectos") 
+			                : 
+			                  (<span className="flex items-center gap-2">Proyectos terminados {completedWorkshops} de 8 <MdOutlineWork size={60} className="text-[#00482B] text-2x1 rounded-xl" /></span>)}
+            		
+          </div>
         </div>
 
         {/* Recursos (Columna 2, Fila 1) */}
         <div className="flex flex-col space-y-2 min-h-[180px]">
           <div 
-            className={`p-2 rounded-lg flex-grow flex items-center justify-center cursor-pointer ${
+            className={`p-2 rounded-lg flex-grow flex items-center justify-center ${
               userRole === 'docente' 
-                ? 'bg-gray-100 hover:bg-gray-200' 
-                : 'bg-gray-300 cursor-not-allowed'
+                ? 'bg-[#00482B] text-white hover:bg-[#006341] transition-colors duration-300 cursor-pointer ' 
+                : 'cursor-not-allowed bg-gray-300 text-black'
             }`}
             onClick={() => {
               if (userRole === 'docente') {
@@ -155,38 +163,47 @@ const Pagina3 = () => {
               }
             }}   
           >
-            <h2 className="text-lg text-center font-semibold">
-              {showHelp 
-                ? "Banner que indica los recursos de gestor" 
-                : userRole === 'docente' 
-                  ? "Recursos Gestor" 
-                  : "Restringido solo a Docentes"}
-            </h2>
+            <div className="flex items-center gap-2">
+              <h2 className="text-lg text-center font-semibold">
+                {showHelp 
+                  ? ("Banner que indica los recursos de gestor") 
+                  : userRole === 'docente' 
+                    ? (<span className="flex items-center gap-2">Recursos Gestor <FaUserTie className="text-[#007B3E]" /></span>) 
+                    : "Restringido solo a Docentes"}
+              </h2>
+              
+            </div>
           </div>
           <div 
-            className="bg-gray-100 p-2 rounded-lg flex-grow flex items-center justify-center hover:bg-gray-200 cursor-pointer"
+            className="bg-[#00482B] hover:bg-[#006341] text-white p-2 rounded-lg flex-grow flex items-center justify-center cursor-pointer transition-colors duration-300"
             onClick={() => window.open('https://drive.google.com/drive/folders/1_ziaHW8TNaqfAI8Tcc5e2UBrzhm8Gl6N?usp=sharing', '_blank', 'noopener,noreferrer')}
           >
-            <h2 className="text-lg text-center font-semibold">
-              {showHelp ? "Banner que indica los recursos de apoyo" : "Recursos de apoyo"}
-            </h2>
+            <div className="flex items-center gap-2">
+              <h2 className="text-lg text-center font-semibold">
+                {showHelp ? ("Banner que indica los recursos de apoyo" ): (<span className="flex items-center gap-2">Recursos de apoyo <FaHandsHelping className="text-[#007B3E]" /></span>)}
+              </h2>
+              
+            </div>
           </div>
-          <div className="bg-gray-100 p-2 rounded-lg flex-grow flex items-center justify-center hover:bg-gray-200 cursor-pointer text-lg text-center font-semibold" onClick={() => navigate('/Conexión')}>
-            {showHelp ? "Banner que indica las formas de conexión" : "Formas de conexión"}
+          <div className="bg-[#00482B] hover:bg-[#006341] transition-colors duration-300 text-white p-2 rounded-lg flex-grow flex items-center justify-center cursor-pointer text-lg text-center font-semibold" onClick={() => navigate('/Conexión')}>
+            <div className="flex items-center gap-2">
+              {showHelp ? ("Banner que indica las formas de conexión") : (<>Formas de conexión <FaLink className="text-[#007B3E]" /></>)}
+              
+            </div>
           </div>
         </div>
 
         {/* Mobile: Proyectos Guardados (Debajo de los botones) */}
-        <div className="md:hidden bg-gray-100 p-2 rounded-lg">
+        <div className="md:hidden bg-gray-300 p-2 rounded-lg">
           <h2 className="text-lg font-bold mb-2 text-center">
             {savedWorkshops.length > 0 ? "Proyectos Guardados" : "Aún no tienes proyectos guardados"}
           </h2>
           {savedWorkshops.length > 0 && (
-            <div className="space-y-2">
+            <div className="space-y-2 ">
               {savedWorkshops.map((workshop) => (
                 <div 
                   key={workshop.id} 
-                  className="bg-white p-2 rounded-lg shadow-sm cursor-pointer hover:bg-gray-200"
+                  className="bg-[#00482B] p-2 rounded-lg shadow-sm cursor-pointer hover:bg-[#006341] text-white flex justify-center items-center"
                   onClick={() => handleWorkshopClick(workshop.id_taller)}
                 >
                   <h3 className="font-semibold">Taller {workshop.id_taller}</h3>
@@ -203,16 +220,16 @@ const Pagina3 = () => {
               <h2 className="text-lg font-bold">
                 {savedWorkshops.length > 0 ? "Proyectos Guardados" : "Aún no tienes proyectos guardados"}
               </h2>
-              <button onClick={toggleMenu} className="text-gray-500 hover:text-gray-700">
+              <button onClick={toggleMenu} className="text-red-400 hover:text-red-600 cursor-pointer">
                 <FaTimes />
               </button>
             </div>
             {savedWorkshops.length > 0 && (
-              <div className="space-y-2">
+              <div className="space-y-2 ">
                 {savedWorkshops.map((workshop) => (
                   <div 
                     key={workshop.id} 
-                    className="bg-white p-2 rounded-lg shadow-sm cursor-pointer hover:bg-gray-200"
+                    className="bg-[#00482B] p-2 rounded-lg shadow-sm cursor-pointer hover:bg-[#006341] text-white flex justify-center items-center"
                     onClick={() => handleWorkshopClick(workshop.id_taller)}
                   >
                     <h3 className="font-semibold">Taller {workshop.id_taller}</h3>
@@ -226,7 +243,7 @@ const Pagina3 = () => {
         {/* Contenedor combinado para Imagen y Créditos */}
         <div className="col-span-1 md:col-span-2">
           {/* Imagen Temas del Proyecto */}
-          <div className="bg-gray-100 p-2 rounded-lg">
+          <div className="bg-[#007B3E] p-2 rounded-lg">
             <img
               src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743284192/Imagenes%20Recurso%20Educativo/Banner%20menu%20principal/vr8kxu1robbc9h0jxef6.jpg"
               alt="Banner"
@@ -234,7 +251,7 @@ const Pagina3 = () => {
             />
           </div>
           {/* Créditos */}
-          <div className="bg-gray-100 p-2 rounded-lg mt-4">
+          <div className="bg-[#3d3d3b] text-white p-2 rounded-lg mt-4">
             <h2 className="text-lg font-bold text-center">Créditos</h2>
             <p className="text-sm text-center">Aquí puedes agregar los créditos relacionados con los temas y proyectos.</p>
           </div>

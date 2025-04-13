@@ -242,7 +242,7 @@ const Pagina4Informacion1 = () => {
       {/* Botón de volver */}
       <button
         onClick={() => navigate('/Tema1')}
-        className="fixed md:absolute bottom-4 left-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors cursor-pointer"
+        className="fixed md:absolute bottom-4 left-4 bg-[#007B3E] text-white px-4 py-2 rounded hover:bg-[#009e4f] transition-colors cursor-pointer"
       >
         Volver
       </button>
@@ -250,7 +250,7 @@ const Pagina4Informacion1 = () => {
       {/* Botón de créditos (ahora con la nueva función) */}
       <button
         onClick={handleCreditosClick}
-        className="fixed md:absolute bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors cursor-pointer"
+        className="fixed md:absolute bottom-4 right-4 bg-[#007B3E] text-white px-4 py-2 rounded hover:bg-[#009e4f] ransition-colors cursor-pointer duration-300"
       >
         Créditos
       </button>
@@ -263,7 +263,7 @@ const Pagina4Informacion1 = () => {
           className={`md:hidden px-4 py-2 rounded transition-colors  ${
             activeIndex === 0
               ? 'bg-gray-300 cursor-not-allowed'
-              : 'bg-green-500 hover:bg-green-700'
+              : 'bg-[#007B3E] hover:bg-[#009e4f] duration-300'
           } text-white`}
         >
           ←
@@ -275,8 +275,8 @@ const Pagina4Informacion1 = () => {
             <button
               key={slide.id}
               onClick={() => handleCircleClick(index)}
-              className={`w-4 h-4 rounded-full mx-1 hover:bg-gray-400 transition-colors ${
-                index === activeIndex ? 'bg-green-500 cursor-pointer' : 'bg-gray-300 cursor-pointer'
+              className={`w-4 h-4 rounded-full mx-1 hover:bg-[#009e4f] transition-colors ${
+                index === activeIndex ? 'bg-[#007B3E] cursor-pointer duration-300' : 'bg-gray-300 cursor-pointer duration-300'
               }`}
             ></button>
           ))}
@@ -288,7 +288,7 @@ const Pagina4Informacion1 = () => {
           className={`md:hidden px-4 py-2 rounded transition-colors left-[40%] transform -translate-x-1/4 ${
             activeIndex === slides.length - 1
               ? 'bg-gray-300 cursor-not-allowed'
-              : 'bg-green-500 hover:bg-green-700'
+              : 'bg-[#007B3E] hover:bg-[#009e4f] duration-300'
           } text-white`}
         >
           →

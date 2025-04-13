@@ -73,7 +73,7 @@ const Pagina3Proyectos = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-center content-center">
           {/* Tema 1 */}
           <div onClick={() => handleTopicClick(1)} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
-            <div className="h-10 flex items-center justify-center bg-gray-100">
+            <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
               <h2 className="text-xl font-semibold">Taller 1: El viaje de Pedro</h2>
             </div>
             <div className="h-64 flex items-center justify-center">
@@ -87,7 +87,7 @@ const Pagina3Proyectos = () => {
 
           {/* Tema 2 */}
           <div onClick={() => handleTopicClick(2)} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
-            <div className="h-10 flex items-center justify-center bg-gray-100">
+            <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
               <h2 className="text-xl font-semibold">Taller 2: Armando un Mbot</h2>
             </div>
             <div className="h-64 flex items-center justify-center">
@@ -101,7 +101,7 @@ const Pagina3Proyectos = () => {
 
           {/* Tema 3 */}
           <div onClick={() => handleTopicClick(3)} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
-            <div className="h-10 flex items-center justify-center bg-gray-100">
+            <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
               <h2 className="text-xl font-semibold">Taller 3: Conectar un Mbot al PC</h2>
             </div>
             <div className="h-64 flex items-center justify-center">
@@ -115,7 +115,7 @@ const Pagina3Proyectos = () => {
 
           {/* Tema 4 */}
           <div onClick={() => handleTopicClick(4)} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
-            <div className="h-10 flex items-center justify-center bg-gray-100">
+            <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
               <h2 className="text-xl font-semibold">Taller 4: Conectar un Mbot al Celular</h2>
             </div>
             <div className="h-64 flex items-center justify-center">
@@ -129,7 +129,7 @@ const Pagina3Proyectos = () => {
 
           {/* Tema 5 */}
           <div onClick={() => handleTopicClick(5)} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
-            <div className="h-10 flex items-center justify-center bg-gray-100">
+            <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
               <h2 className="text-xl font-semibold">Taller 5: Evitar objetos con el Mbot</h2>
             </div>
             <div className="h-64 flex items-center justify-center">
@@ -143,7 +143,7 @@ const Pagina3Proyectos = () => {
 
           {/* Tema 6 */}
           <div onClick={() => handleTopicClick(6)} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
-            <div className="h-10 flex items-center justify-center bg-gray-100">
+            <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
               <h2 className="text-xl font-semibold">Taller 6: Seguir lineas con el Mbot</h2>
             </div>
             <div className="h-64 flex items-center justify-center">
@@ -157,7 +157,7 @@ const Pagina3Proyectos = () => {
 
           {/* Tema 7 */}
           <div onClick={() => handleTopicClick(7)} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
-            <div className="h-10 flex items-center justify-center bg-gray-100">
+            <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
               <h2 className="text-xl font-semibold">Taller 7: </h2>
             </div>
             <div className="h-64 flex items-center justify-center">
@@ -171,7 +171,7 @@ const Pagina3Proyectos = () => {
 
           {/* Tema 8 */}
           <div onClick={() => handleTopicClick(8)} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
-            <div className="h-10 flex items-center justify-center bg-gray-100">
+            <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
               <h2 className="text-xl font-semibold">Taller 8: </h2>
             </div>
             <div className="h-64 flex items-center justify-center">
@@ -188,7 +188,7 @@ const Pagina3Proyectos = () => {
       {/* Botón "Regresar" */}
       <button
         onClick={() => navigate('/Principal')}
-        className="fixed bottom-4 left-4 right-4 md:left-4 md:right-auto bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-700 transition-colors w-[calc(100%-2rem)] md:w-80 mx-auto max-w-[384px]"
+        className="fixed bottom-4 left-4 right-4 md:left-4 md:right-auto bg-[#007B3E] text-white px-4 py-2 rounded-lg shadow-lg hover:bg-[#009e4f] transition-colors w-[calc(100%-2rem)] md:w-80 mx-auto max-w-[384px]"
       >
         Regresar
       </button>
