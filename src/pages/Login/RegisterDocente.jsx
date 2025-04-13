@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { AiOutlineUnlock, AiOutlineLoading } from 'react-icons/ai';
 import { BiUser } from 'react-icons/bi';
 import { Link, useNavigate } from 'react-router-dom';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -10,6 +11,8 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [recaptchaValue, setRecaptchaValue] = useState(null);
+  const recaptchaRef = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,6 +27,11 @@ const Register = () => {
       setError('Las contraseñas no coinciden');
       return;
     }
+
+    if (!recaptchaValue) {
+      setError('Por favor verifica que no eres un robot');
+      return;
+    }
     
     setLoading(true);
     setError('');
@@ -35,9 +43,10 @@ const Register = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          nombre: nombre,  // Asegúrate que coincida con el modelo de tu DB
+          nombre: nombre,
           contraseña: password,
-          rol: 'docente'
+          rol: 'docente',
+          recaptchaToken: recaptchaValue // Enviamos el token al backend para validación
         }),
       });
       
@@ -49,9 +58,16 @@ const Register = () => {
       navigate('/Principal');
     } catch (err) {
       setError(err.message || 'Error al conectar con el servidor');
+      // Resetear el captcha en caso de error
+      recaptchaRef.current.reset();
+      setRecaptchaValue(null);
     } finally {
       setLoading(false);
     }
+  };
+
+  const onRecaptchaChange = (value) => {
+    setRecaptchaValue(value);
   };
 
   return (
@@ -112,6 +128,15 @@ const Register = () => {
             />
             <label htmlFor="" className='absolute text-sm text-black duration-300 transform -translate-y-6 scale-75 top-3 z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#007b3e] peer-focus:dark:text-[#007b3e] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>CONFIRMAR CONTRASEÑA</label>
             <AiOutlineUnlock className='absolute top-4 right-4 text-black'/>
+          </div>
+          
+          {/* Componente reCAPTCHA */}
+          <div className="my-4 flex justify-center">
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey="6LdlVRcrAAAAALic1xMzSBFh3pUxK07Lmy9nV2KK" // Esta es una clave de prueba, reemplázala con tu clave real
+              onChange={onRecaptchaChange}
+            />
           </div>
           
           <button 
