@@ -132,7 +132,7 @@ const Register = () => {
           <div className="my-4 flex justify-center">
             <ReCAPTCHA
               ref={recaptchaRef}
-              sitekey="6Lc8VhcrAAAAAPIIy_33wp8q1jPcukElVRYuQqAK"
+              sitekey="6Lf2VxcrAAAAAE6u-LJdQPAWH8Vz-evnEp7LCKCS"
               onChange={onRecaptchaChange}
             />
           </div>
