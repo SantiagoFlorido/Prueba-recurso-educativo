@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { AiOutlineUnlock, AiOutlineLoading } from 'react-icons/ai';
 import { BiUser } from 'react-icons/bi';
 import { Link, useNavigate } from 'react-router-dom';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const RegisterStudent = () => {
   const navigate = useNavigate();
@@ -10,6 +11,8 @@ const RegisterStudent = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [recaptchaValue, setRecaptchaValue] = useState(null);
+  const recaptchaRef = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,6 +25,11 @@ const RegisterStudent = () => {
     
     if (password !== confirmPassword) {
       setError('Las contraseñas no coinciden');
+      return;
+    }
+
+    if (!recaptchaValue) {
+      setError('Por favor verifica que no eres un robot');
       return;
     }
     
@@ -37,7 +45,8 @@ const RegisterStudent = () => {
         body: JSON.stringify({
           nombre: nombre,
           contraseña: password,
-          rol: 'estudiante' // Rol específico para estudiantes
+          rol: 'estudiante',
+          recaptchaToken: recaptchaValue
         }),
       });
       
@@ -46,13 +55,18 @@ const RegisterStudent = () => {
         throw new Error(errorData.message || 'Error al registrar estudiante');
       }
       
-      // Si todo sale bien, redirige
       navigate('/Principal');
     } catch (err) {
       setError(err.message || 'Error al conectar con el servidor');
+      recaptchaRef.current.reset();
+      setRecaptchaValue(null);
     } finally {
       setLoading(false);
     }
+  };
+
+  const onRecaptchaChange = (value) => {
+    setRecaptchaValue(value);
   };
 
   return (
@@ -113,6 +127,15 @@ const RegisterStudent = () => {
             />
             <label htmlFor="" className='absolute text-sm text-black duration-300 transform -translate-y-6 scale-75 top-3 z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#007b3e] peer-focus:dark:text-[#007b3e] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>CONFIRMAR CONTRASEÑA</label>
             <AiOutlineUnlock className='absolute top-4 right-4 text-black'/>
+          </div>
+          
+          {/* Componente reCAPTCHA */}
+          <div className="my-4 flex justify-center">
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey="6Lf2VxcrAAAAAE6u-LJdQPAWH8Vz-evnEp7LCKCS"
+              onChange={onRecaptchaChange}
+            />
           </div>
           
           <button 
