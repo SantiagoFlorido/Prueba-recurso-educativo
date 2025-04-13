@@ -116,13 +116,13 @@ const Pagina1 = () => {
           {/* Botones de navegación */}
           <button
             onClick={handlePrev}
-            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[#79C000] text-white p-2 rounded-full shadow-lg hover:bg-[#94D34D] transition-colors duration-300 z-10 cursor-pointer"
+            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[#007B3E] text-white p-2 rounded-full shadow-lg hover:bg-[#009e4f] transition-colors duration-300 z-10 cursor-pointer"
           >
             &lt;
           </button>
           <button
             onClick={handleNext}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[#79C000] text-white p-2 rounded-full shadow-lg hover:bg-[#94D34D] transition-colors duration-300 z-10 cursor-pointer"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[#007B3E] text-white p-2 rounded-full shadow-lg hover:bg-[#009e4f] transition-colors duration-300 z-10 cursor-pointer"
           >
             &gt;
           </button>

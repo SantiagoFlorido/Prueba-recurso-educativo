@@ -275,7 +275,7 @@ const Pagina4Informacion1 = () => {
             <button
               key={slide.id}
               onClick={() => handleCircleClick(index)}
-              className={`w-4 h-4 rounded-full mx-1 hover:bg-[#009e4f] transition-colors ${
+              className={`w-4 h-4 rounded-full mx-1 hover:bg-[#009e4f] transition-colors duration-300 ${
                 index === activeIndex ? 'bg-[#007B3E] cursor-pointer duration-300' : 'bg-gray-300 cursor-pointer duration-300'
               }`}
             ></button>
