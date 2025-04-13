@@ -46,7 +46,7 @@ const Register = () => {
           nombre: nombre,
           contraseña: password,
           rol: 'docente',
-          recaptchaToken: recaptchaValue // Enviamos el token al backend para validación
+          recaptchaToken: recaptchaValue
         }),
       });
       
@@ -58,7 +58,6 @@ const Register = () => {
       navigate('/Principal');
     } catch (err) {
       setError(err.message || 'Error al conectar con el servidor');
-      // Resetear el captcha en caso de error
       recaptchaRef.current.reset();
       setRecaptchaValue(null);
     } finally {
@@ -72,7 +71,6 @@ const Register = () => {
 
   return (
     <div className='relative text-white min-h-[100vh] bg-cover bg-center bg-gray-200' style={{"backgroundImage": "url('https://res.cloudinary.com/dufzsv87k/image/upload/v1744386560/WallpaperRED.png')"}}>
-      {/* Logos en posición absoluta (arriba a la izquierda) */}
       <div className="absolute top-4 left-4 z-10">
         <div className="flex items-center gap-4">
           <img
@@ -130,11 +128,11 @@ const Register = () => {
             <AiOutlineUnlock className='absolute top-4 right-4 text-black'/>
           </div>
           
-          {/* Componente reCAPTCHA */}
+          {/* Componente reCAPTCHA con tu clave real */}
           <div className="my-4 flex justify-center">
             <ReCAPTCHA
               ref={recaptchaRef}
-              sitekey="6LdlVRcrAAAAALic1xMzSBFh3pUxK07Lmy9nV2KK" // Esta es una clave de prueba, reemplázala con tu clave real
+              sitekey="6LfsVxcrAAAAAGZ0EYTo9ZjOakDgAJEQGX9t_n5k"
               onChange={onRecaptchaChange}
             />
           </div>
@@ -162,7 +160,6 @@ const Register = () => {
                 <Link className='text-[#007B3E] text-1x1' to='/Register/Student'> Cambiar a estudiante</Link>
               </span>
           </div>
-          
         </form>
       </div>
       </div>
