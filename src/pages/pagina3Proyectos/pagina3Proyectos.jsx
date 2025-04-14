@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaPlus } from 'react-icons/fa';
 
 const Pagina3Proyectos = () => {
   const navigate = useNavigate();
@@ -58,6 +59,9 @@ const Pagina3Proyectos = () => {
       alert(`Error: ${error.message || 'No se pudo iniciar el taller'}`);
     }
   };
+
+  // Array de proyectos guardados (vacío por ahora)
+  const proyectosGuardados = [];
 
   return (
     <div className="bg-white flex flex-col md:flex-row">
@@ -180,6 +184,49 @@ const Pagina3Proyectos = () => {
                 alt="Animación 8"
                 className="w-full h-full object-cover"
               />
+            </div>
+          </div>
+
+          {/* Taller de proyectos guardados */}
+          {proyectosGuardados.length > 0 && (
+            proyectosGuardados.map((proyecto) => (
+              <div 
+                key={proyecto.id} 
+                onClick={() => handleTopicClick(proyecto.id)} 
+                className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70"
+              >
+                <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
+                  <h2 className="text-xl font-semibold">{proyecto.nombre}</h2>
+                </div>
+                <div className="h-64 flex items-center justify-center">
+                  {proyecto.imagenUrl ? (
+                    <img
+                      src={proyecto.imagenUrl}
+                      alt={proyecto.nombre}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                      <span>Sin imagen</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))
+          )}
+
+          {/* Botón para agregar nuevo proyecto - Estilizado como un taller */}
+          <div 
+            onClick={() => console.log('Agregar nuevo proyecto')}
+            className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70"
+          >
+            <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
+              <h2 className="text-xl font-semibold">Agregar un nuevo Proyecto</h2>
+            </div>
+            <div className="h-64 flex items-center justify-center bg-gray-100">
+              <div className="w-16 h-16 rounded-full bg-[#007B3E] flex items-center justify-center text-white hover:bg-[#009e4f] transition-colors">
+                <FaPlus size={24} />
+              </div>
             </div>
           </div>
         </div>
