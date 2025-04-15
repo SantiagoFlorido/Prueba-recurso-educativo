@@ -18,6 +18,7 @@ import Pagina1 from './pages/pagina1/pagina1';
 import Pagina2 from './pages/pagina2/pagina2';
 import Pagina3 from './pages/pagina3/pagina3';
 import PaginaProyectos from './pages/pagina3Proyectos/pagina3Proyectos';
+import NuevoTaller from './pages/agregar un taller/NuevoTaller';
 import Creditos from './pages/pagina5/Creditos';
 
 // Importar páginas de temas (solo docentes)
@@ -82,6 +83,7 @@ function App() {
             <Route path='/Tema6' element={<Pagina4Descripcion6 />} />
             <Route path='/Tema7' element={<Pagina4Descripcion7 />} />
             <Route path='/Tema8' element={<Pagina4Descripcion8 />} />
+            <Route path='/TallerNuevo' element={<NuevoTaller />} />
           </Route>
         </Route>
 

@@ -5,6 +5,10 @@ import { FaPlus } from 'react-icons/fa';
 const Pagina3Proyectos = () => {
   const navigate = useNavigate();
 
+  // Obtener datos del usuario del localStorage
+  const userData = JSON.parse(localStorage.getItem('studentUser') || localStorage.getItem('teacherUser') || '{}');
+  const isTeacher = userData?.rol?.toLowerCase() === 'docente';
+
   // Función para crear o actualizar la relación usuario-taller
   const handleTallerUsuario = async (userId, tallerId) => {
     try {
@@ -33,15 +37,11 @@ const Pagina3Proyectos = () => {
   };
 
   const handleTopicClick = async (topicNumber) => {
-    const userData = JSON.parse(localStorage.getItem('studentUser') || localStorage.getItem('teacherUser'));
-    
     if (!userData?.id) {
       console.error('No se encontró ID de usuario en los datos locales');
       alert('No se pudo identificar tu usuario. Por favor, inicia sesión nuevamente.');
       return;
     }
-  
-    const isTeacher = userData?.rol?.toLowerCase() === 'docente';
   
     try {
       // 1. Crear/actualizar la relación usuario-taller
@@ -222,20 +222,22 @@ const Pagina3Proyectos = () => {
             ))
           )}
 
-          {/* Botón para agregar nuevo proyecto - Estilizado como un taller */}
-          <div 
-            onClick={() => console.log('Agregar nuevo proyecto')}
-            className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70"
-          >
-            <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
-              <h2 className="text-xl font-semibold">Agregar un nuevo Proyecto</h2>
-            </div>  
-            <div className="h-64 flex items-center justify-center bg-gray-100">
-              <div className="w-16 h-16 rounded-full bg-[#007B3E] flex items-center justify-center text-white hover:bg-[#009e4f] transition-colors">
-                <FaPlus size={24} />
+          {/* Botón para agregar nuevo proyecto - SOLO PARA DOCENTES */}
+          {isTeacher && (
+            <div 
+              onClick={() => navigate('/TallerNuevo')}
+              className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70"
+            >
+              <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
+                <h2 className="text-xl font-semibold">Agregar un nuevo Proyecto</h2>
+              </div>  
+              <div className="h-64 flex items-center justify-center bg-gray-100">
+                <div className="w-16 h-16 rounded-full bg-[#007B3E] flex items-center justify-center text-white hover:bg-[#009e4f] transition-colors">
+                  <FaPlus size={24} />
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
       {/* Botón "Regresar" */}
