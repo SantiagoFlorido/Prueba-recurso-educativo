@@ -64,12 +64,19 @@ const Pagina3Proyectos = () => {
   const proyectosGuardados = [];
 
   return (
-    <div className="bg-white flex flex-col md:flex-row">
+    <div className="bg-white flex flex-col md:flex-row min-h-screen">
       {/* Rectángulo izquierdo con el texto "Proyectos" */}
-      <div className="w-full md:w-1/4 p-4 md:fixed md:left-0 md:top-0 md:h-screen">
-        <div className="border text-2xl font-bold w-full md:w-80 h-40 md:h-140 flex items-center justify-center bg-gray-200 rounded-lg">
+      <div className="w-full md:w-1/4 p-4 md:fixed md:left-0 md:top-0 md:h-full flex flex-col h-[100px]">
+        <div className="border text-2xl font-bold w-full h-full flex items-center justify-center bg-gray-200 rounded-lg">
           <h1>Proyectos</h1>
         </div>
+        {/* Botón "Regresar" dentro del contenedor izquierdo */}
+        <button
+          onClick={() => navigate('/Principal')}
+          className="hidden md:block mt-4 w-full bg-[#007B3E] text-white px-4 py-2 rounded-lg shadow-lg hover:bg-[#009e4f] transition-colors"
+        >
+          Regresar
+        </button>
       </div>
 
       {/* Contenedor de los temas con desplazamiento vertical */}
@@ -222,7 +229,7 @@ const Pagina3Proyectos = () => {
           >
             <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
               <h2 className="text-xl font-semibold">Agregar un nuevo Proyecto</h2>
-            </div>
+            </div>  
             <div className="h-64 flex items-center justify-center bg-gray-100">
               <div className="w-16 h-16 rounded-full bg-[#007B3E] flex items-center justify-center text-white hover:bg-[#009e4f] transition-colors">
                 <FaPlus size={24} />
@@ -231,11 +238,10 @@ const Pagina3Proyectos = () => {
           </div>
         </div>
       </div>
-
       {/* Botón "Regresar" */}
       <button
         onClick={() => navigate('/Principal')}
-        className="fixed bottom-4 left-4 right-4 md:left-4 md:right-auto bg-[#007B3E] text-white px-4 py-2 rounded-lg shadow-lg hover:bg-[#009e4f] transition-colors w-[calc(100%-2rem)] md:w-80 mx-auto max-w-[384px]"
+        className="md:hidden fixed bottom-4 left-4 right-4 md:left-4 md:right-[calc(25%+1rem)] bg-[#007B3E] text-white px-4 py-2 rounded-lg shadow-lg hover:bg-[#009e4f] transition-colors"
       >
         Regresar
       </button>
