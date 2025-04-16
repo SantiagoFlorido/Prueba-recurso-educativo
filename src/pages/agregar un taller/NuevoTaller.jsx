@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 const NuevoTaller = () => {
     const navigate = useNavigate();
     const [titulo, setTitulo] = useState('');
-    const [imagenUrl, setImagenUrl] = useState('');
+    const [imagenPortada, setImagenPortada] = useState(null);
     const [previewUrl, setPreviewUrl] = useState('');
     const [descripcion, setDescripcion] = useState('');
     const [duracion, setDuracion] = useState('');
@@ -14,22 +13,33 @@ const NuevoTaller = () => {
     const [objetivos, setObjetivos] = useState('');
     const [slides, setSlides] = useState([{ descripcion: '', imagen: null, preview: null }]);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [error, setError] = useState('');
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
-            setImagenUrl(file);
+            if (file.size > 10 * 1024 * 1024) {
+                setError('La imagen excede el tamaño máximo de 10MB');
+                return;
+            }
+            setImagenPortada(file);
             setPreviewUrl(URL.createObjectURL(file));
+            setError('');
         }
     };
 
     const handleSlideImageChange = (index, e) => {
         const file = e.target.files[0];
         if (file) {
+            if (file.size > 10 * 1024 * 1024) {
+                setError(`La imagen del slide ${index + 1} excede 10MB`);
+                return;
+            }
             const newSlides = [...slides];
             newSlides[index].imagen = file;
             newSlides[index].preview = URL.createObjectURL(file);
             setSlides(newSlides);
+            setError('');
         }
     };
 
@@ -51,54 +61,87 @@ const NuevoTaller = () => {
     };
 
     const handleSubmit = async () => {
-        if (!titulo || !descripcion || !imagenUrl) {
-            alert('Por favor completa al menos el título, descripción y sube una imagen de portada');
+        setError('');
+        
+        // Validación mejorada
+        if (!titulo.trim()) {
+            setError('El título es obligatorio');
+            return;
+        }
+        if (!descripcion.trim()) {
+            setError('La descripción es obligatoria');
+            return;
+        }
+        if (!imagenPortada) {
+            setError('La imagen de portada es obligatoria');
             return;
         }
 
         setIsSubmitting(true);
 
         try {
-            // Primero creamos el taller
-            const formData = new FormData();
-            formData.append('nombre', titulo);
-            formData.append('descripcion', descripcion);
-            formData.append('portada', imagenUrl);
-            if (duracion) formData.append('duracion', duracion);
-            if (nivelDificultad) formData.append('nivelDificultad', nivelDificultad);
-            if (materiales) formData.append('materiales', materiales);
-            if (objetivos) formData.append('objetivos', objetivos);
+            // 1. Crear el taller
+            const formDataTaller = new FormData();
+            formDataTaller.append('nombre', titulo.trim());
+            formDataTaller.append('descripcion', descripcion.trim());
+            formDataTaller.append('portada', imagenPortada);
+            
+            // Solo agregar campos si tienen valor
+            if (duracion.trim()) formDataTaller.append('duracion', duracion.trim());
+            if (nivelDificultad) formDataTaller.append('nivelDificultad', nivelDificultad);
+            if (materiales.trim()) formDataTaller.append('materiales', materiales.trim());
+            if (objetivos.trim()) formDataTaller.append('objetivos', objetivos.trim());
 
-            const tallerResponse = await axios.post('https://api-aws-ndou.onrender.com/talleres', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+            const tallerResponse = await fetch('https://api-aws-ndou.onrender.com/talleres', {
+                method: 'POST',
+                body: formDataTaller
             });
 
-            const tallerId = tallerResponse.data.id;
+            if (!tallerResponse.ok) {
+                const errorData = await tallerResponse.json().catch(() => ({}));
+                throw new Error(errorData.error || 'Error al crear el taller');
+            }
 
-            // Luego agregamos los slides
-            for (const slide of slides) {
-                if (slide.descripcion) {
-                    const slideFormData = new FormData();
-                    slideFormData.append('descripcion', slide.descripcion);
+            const tallerData = await tallerResponse.json();
+            
+            if (!tallerData.id) {
+                throw new Error('No se recibió ID del taller válido');
+            }
+
+            // 2. Agregar slides (solo si el taller se creó correctamente)
+            for (const [index, slide] of slides.entries()) {
+                if (slide.descripcion.trim()) {
+                    const formDataSlide = new FormData();
+                    formDataSlide.append('descripcion', slide.descripcion.trim());
+                    
                     if (slide.imagen) {
-                        slideFormData.append('imagen', slide.imagen);
+                        formDataSlide.append('imagen', slide.imagen);
                     }
 
-                    await axios.post(`https://api-aws-ndou.onrender.com/talleres/${tallerId}/slides`, slideFormData, {
-                        headers: {
-                            'Content-Type': 'multipart/form-data'
+                    try {
+                        const slideResponse = await fetch(
+                            `https://api-aws-ndou.onrender.com/talleres/${tallerData.id}/slides`,
+                            {
+                                method: 'POST',
+                                body: formDataSlide
+                            }
+                        );
+
+                        if (!slideResponse.ok) {
+                            console.error(`Error en slide ${index + 1}`);
                         }
-                    });
+                    } catch (slideError) {
+                        console.error(`Error al crear slide ${index + 1}:`, slideError);
+                    }
                 }
             }
 
             alert('Taller creado exitosamente!');
             navigate('/Proyectos');
         } catch (error) {
-            console.error('Error al crear el taller:', error);
-            alert('Hubo un error al crear el taller. Por favor intenta nuevamente.');
+            console.error('Error completo:', error);
+            setError(error.message);
+            alert(`Error: ${error.message}`);
         } finally {
             setIsSubmitting(false);
         }
@@ -106,7 +149,6 @@ const NuevoTaller = () => {
 
     return (
         <div className="min-h-screen bg-gray-100 p-4">
-            {/* Botón fijo en esquina superior izquierda */}
             <div className="fixed top-4 left-4">
                 <button 
                     onClick={() => navigate('/Proyectos')}
@@ -116,7 +158,6 @@ const NuevoTaller = () => {
                 </button>
             </div>
             
-            {/* Contenido principal centrado */}
             <div className="flex flex-col items-center justify-center min-h-screen">
                 <div className="w-full max-w-4xl">
                     <h1 className="text-2xl font-bold text-gray-800 mb-2 text-center mt-16 md:mt-0">
@@ -125,28 +166,30 @@ const NuevoTaller = () => {
                     <p className="text-sm text-gray-500 mb-6 text-center">
                         Las imágenes no deben superar los 10MB de tamaño
                     </p>
-                    
-                    {/* Formulario con estilo similar a las tarjetas de taller */}
+
+                    {error && (
+                        <div className="mb-4 p-3 bg-red-100 text-red-700 rounded border border-red-200">
+                            {error}
+                        </div>
+                    )}
+
                     <div className="border rounded-lg overflow-hidden bg-white shadow-lg mb-6">
-                        {/* Encabezado como en las tarjetas */}
                         <div className="h-12 flex items-center justify-center bg-[#007B3E] text-white">
                             <input
                                 type="text"
                                 value={titulo}
                                 onChange={(e) => setTitulo(e.target.value)}
-                                onFocus={(e) => e.target.placeholder = ''}
-                                onBlur={(e) => e.target.placeholder = 'Título del taller'}
                                 placeholder="Título del taller"
-                                className="w-full bg-transparent text-center text-white placeholder-white placeholder-opacity-70 focus:outline-none text-xl font-semibold px-4"
+                                className="w-full bg-transparent text-center placeholder-white placeholder-opacity-70 focus:outline-none text-xl font-semibold px-4"
+                                required
                             />
                         </div>
                         
-                        {/* Área de imagen (ahora más alta) */}
-                        <div className="h-100 flex flex-col items-center justify-center border-b">
+                        <div className="h-90 flex flex-col items-center justify-center border-b">
                             {previewUrl ? (
                                 <img
                                     src={previewUrl}
-                                    alt="Vista previa"
+                                    alt="Vista previa portada"
                                     className="w-full h-full object-cover"
                                 />
                             ) : (
@@ -159,6 +202,7 @@ const NuevoTaller = () => {
                                             onChange={handleImageChange}
                                             accept="image/*"
                                             className="hidden"
+                                            required
                                         />
                                     </label>
                                 </div>
@@ -166,7 +210,6 @@ const NuevoTaller = () => {
                         </div>
                     </div>
 
-                    {/* Sección de Descripción */}
                     <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
                         <h2 className="text-xl font-bold mb-4 text-[#007B3E]">Descripción del Taller</h2>
                         <textarea
@@ -174,6 +217,7 @@ const NuevoTaller = () => {
                             onChange={(e) => setDescripcion(e.target.value)}
                             placeholder="Describe el taller, su propósito y lo que los estudiantes aprenderán..."
                             className="w-full h-32 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007B3E] mb-4"
+                            required
                         />
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -210,7 +254,7 @@ const NuevoTaller = () => {
                                 placeholder="Lista los materiales necesarios."
                                 className="w-full h-24 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007B3E]"
                             />
-                            <p className="text-sm text-gray-500 mt-1">Separa cada material con un punto y salto de linea</p>
+                            <p className="text-sm text-gray-500 mt-1">Separa cada material con un salto de línea</p>
                         </div>
 
                         <div className="mt-4">
@@ -218,14 +262,13 @@ const NuevoTaller = () => {
                             <textarea
                                 value={objetivos}
                                 onChange={(e) => setObjetivos(e.target.value)}
-                                placeholder="Enumera los objetivos que los estudiantes alcanzarán con este taller"
+                                placeholder="Enumera los objetivos que los estudiantes alcanzarán"
                                 className="w-full h-24 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007B3E]"
                             />
-                            <p className="text-sm text-gray-500 mt-1">Separa cada objetivo con un punto y salto de linea</p>
+                            <p className="text-sm text-gray-500 mt-1">Separa cada objetivo con un salto de línea</p>
                         </div>
                     </div>
 
-                    {/* Sección para los slides */}
                     <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
                         <div className="flex justify-between items-center mb-4">
                             <h2 className="text-xl font-bold text-[#007B3E]">Slides del Taller</h2>
@@ -293,12 +336,15 @@ const NuevoTaller = () => {
                         ))}
                     </div>
 
-                    {/* Botón Guardar Taller */}
                     <div className="flex justify-center mt-6 mb-10">
                         <button
                             onClick={handleSubmit}
                             disabled={isSubmitting}
-                            className={`w-full max-w-md ${isSubmitting ? 'bg-gray-400' : 'bg-[#007B3E] hover:bg-[#009e4f]'} text-white font-bold py-3 px-6 rounded-lg transition duration-200 shadow-md cursor-pointer`}
+                            className={`w-full max-w-md cursor-pointer ${
+                                isSubmitting 
+                                ? 'bg-gray-400 cursor-not-allowed' 
+                                : 'bg-[#007B3E] hover:bg-[#009e4f]'
+                            } text-white font-bold py-3 px-6 rounded-lg transition duration-200 shadow-md`}
                         >
                             {isSubmitting ? 'Guardando...' : 'Guardar Taller'}
                         </button>

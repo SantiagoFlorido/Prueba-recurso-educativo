@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaPlus } from 'react-icons/fa';
+import { FaPlus, FaTimes } from 'react-icons/fa';
 
 const Pagina3Proyectos = () => {
   const navigate = useNavigate();
@@ -9,10 +9,52 @@ const Pagina3Proyectos = () => {
   const userData = JSON.parse(localStorage.getItem('studentUser') || localStorage.getItem('teacherUser') || '{}');
   const isTeacher = userData?.rol?.toLowerCase() === 'docente';
 
-  // Función para crear o actualizar la relación usuario-taller
+  // Estado para almacenar los talleres
+  const [talleres, setTalleres] = useState([]);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [tallerToDelete, setTallerToDelete] = useState(null);
+
+  // Función para obtener los talleres de la API
+  React.useEffect(() => {
+    const fetchTalleres = async () => {
+      try {
+        const response = await fetch('https://api-aws-ndou.onrender.com/talleres');
+        if (!response.ok) {
+          throw new Error('Error al obtener los talleres');
+        }
+        const data = await response.json();
+        setTalleres(data);
+      } catch (error) {
+        console.error('Error al cargar talleres:', error);
+      }
+    };
+
+    fetchTalleres();
+  }, []);
+
+  // Función para eliminar un taller
+  const handleDeleteTaller = async () => {
+    try {
+      const response = await fetch(`https://api-aws-ndou.onrender.com/talleres/${tallerToDelete.id}`, {
+        method: 'DELETE'
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al eliminar el taller');
+      }
+
+      // Actualizar la lista de talleres
+      setTalleres(talleres.filter(t => t.id !== tallerToDelete.id));
+      setShowDeleteModal(false);
+    } catch (error) {
+      console.error('Error al eliminar taller:', error);
+      alert('No se pudo eliminar el taller');
+    }
+  };
+
+  // Función para crear o actualizar la relación usuario-taller (solo para talleres 1-8)
   const handleTallerUsuario = async (userId, tallerId) => {
     try {
-      // Primero intentamos crear/actualizar la relación
       const response = await fetch('https://prueba-api-recurso-educativo.onrender.com/api/v1/usuarios-talleres', {
         method: 'POST',
         headers: {
@@ -36,6 +78,7 @@ const Pagina3Proyectos = () => {
     }
   };
 
+  // Manejo de click para talleres estáticos (1-8)
   const handleTopicClick = async (topicNumber) => {
     if (!userData?.id) {
       console.error('No se encontró ID de usuario en los datos locales');
@@ -44,24 +87,43 @@ const Pagina3Proyectos = () => {
     }
   
     try {
-      // 1. Crear/actualizar la relación usuario-taller
+      // Solo para talleres 1-8: crear/actualizar la relación usuario-taller
       await handleTallerUsuario(userData.id, topicNumber);
 
-      // 2. Navegar según el rol
+      // Navegar según el rol
       if (isTeacher) {
         navigate(`/Tema${topicNumber}`);
       } else {
         navigate(`/Contenido${topicNumber}`);
       }
-  
     } catch (error) {
       console.error('Error:', error);
       alert(`Error: ${error.message || 'No se pudo iniciar el taller'}`);
     }
   };
 
-  // Array de proyectos guardados (vacío por ahora)
-  const proyectosGuardados = [];
+  // Manejo de click para talleres dinámicos (de la API)
+  const handleTallerApiClick = (tallerId) => {
+    if (!userData?.id) {
+      console.error('No se encontró ID de usuario en los datos locales');
+      alert('No se pudo identificar tu usuario. Por favor, inicia sesión nuevamente.');
+      return;
+    }
+
+    // Navegar directamente sin verificar relación usuario-taller
+    if (isTeacher) {
+      navigate(`/Tema/${tallerId}`);
+    } else {
+      navigate(`/Contenido/${tallerId}`);
+    }
+  };
+
+  // Función para abrir el modal de confirmación de eliminación
+  const confirmDelete = (taller, e) => {
+    e.stopPropagation(); // Evitar que se active el click del contenedor padre
+    setTallerToDelete(taller);
+    setShowDeleteModal(true);
+  };
 
   return (
     <div className="bg-white flex flex-col md:flex-row min-h-screen">
@@ -194,22 +256,39 @@ const Pagina3Proyectos = () => {
             </div>
           </div>
 
+          {/* Comentario "Creados por docentes" */}
+          {talleres.length > 0 && (
+            <div className="col-span-1 md:col-span-2 text-gray-500 text-center italic">
+              Creados por docentes:
+            </div>
+          )}
+
           {/* Taller de proyectos guardados */}
-          {proyectosGuardados.length > 0 && (
-            proyectosGuardados.map((proyecto) => (
+          {talleres.length > 0 && (
+            talleres.map((taller) => (
               <div 
-                key={proyecto.id} 
-                onClick={() => handleTopicClick(proyecto.id)} 
-                className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70"
+                key={taller.id} 
+                onClick={() => handleTallerApiClick(taller.id)} 
+                className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70 relative"
               >
+                {/* Botón de eliminar (solo para docentes) */}
+                {isTeacher && (
+                  <button
+                    onClick={(e) => confirmDelete(taller, e)}
+                    className="absolute top-2 right-3 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 z-10 cursor-pointer"
+                  >
+                    <FaTimes size={14} />
+                  </button>
+                )}
+                
                 <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
-                  <h2 className="text-xl font-semibold">{proyecto.nombre}</h2>
+                  <h2 className="text-xl font-semibold">{taller.nombre}</h2>
                 </div>
                 <div className="h-64 flex items-center justify-center">
-                  {proyecto.imagenUrl ? (
+                  {taller.portadaUrl ? (
                     <img
-                      src={proyecto.imagenUrl}
-                      alt={proyecto.nombre}
+                      src={taller.portadaUrl}
+                      alt={taller.nombre}
                       className="w-full h-full object-cover"
                     />
                   ) : (
@@ -247,6 +326,30 @@ const Pagina3Proyectos = () => {
       >
         Regresar
       </button>
+
+      {/* Modal de confirmación para eliminar taller */}
+      {showDeleteModal && (
+        <div className="fixed inset-0 bg-transparent bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+            <h3 className="text-xl font-bold mb-4">¿Estás seguro de eliminar este taller?</h3>
+            <p className="mb-6">Quizás no lo vuelvas a ver, esto es mucho tiempo :(</p>
+            <div className="flex justify-end space-x-4">
+              <button
+                onClick={() => setShowDeleteModal(false)}
+                className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400 transition-colors cursor-pointer"
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={handleDeleteTaller}
+                className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors cursor-pointer"
+              >
+                Eliminar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

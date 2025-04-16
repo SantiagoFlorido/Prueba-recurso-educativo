@@ -41,6 +41,10 @@ import Pagina4Informacion6 from './pages/pagina4/tema6/pagina4Informacion6';
 import Pagina4Informacion7 from './pages/pagina4/tema7/pagina4Informacion7';
 import Pagina4Informacion8 from './pages/pagina4/tema8/pagina4Informacion8';
 
+// Rutas dinámicas
+import TallerDinamicoDescripcion from './pages/talleres agregados/tallerDinamicoDescripcion';
+import TallerDinamicoInformacion from './pages/talleres agregados/tallerDinamicoInformacion';
+
 function App() {
   return (
     <div className="App">
@@ -73,6 +77,9 @@ function App() {
           <Route path='/Contenido7' element={<Pagina4Informacion7 />} />
           <Route path='/Contenido8' element={<Pagina4Informacion8 />} />
 
+          {/* Rutas dinámicas para ver los slides de talleres agregados*/}
+          <Route path='/Contenido/:tallerId' element={<TallerDinamicoInformacion />} />
+
           {/* Rutas exclusivas para docentes */}
           <Route element={<ProtectedRoute allowedRoles={['docente']} />}>
             <Route path='/Tema1' element={<Pagina4Descripcion1 />} />
@@ -84,6 +91,9 @@ function App() {
             <Route path='/Tema7' element={<Pagina4Descripcion7 />} />
             <Route path='/Tema8' element={<Pagina4Descripcion8 />} />
             <Route path='/TallerNuevo' element={<NuevoTaller />} />
+            
+            {/* Rutas dinámicas para ver la descripcion de talleres agregados  EXCLUSIVA DOCENTES*/}
+            <Route path='/Tema/:tallerId' element={<TallerDinamicoDescripcion />} />
           </Route>
         </Route>
 
