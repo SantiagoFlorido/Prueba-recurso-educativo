@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useSound from 'use-sound';
 
 const Pagina4Informacion6 = () => {
   const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
   const [userTallerRelation, setUserTallerRelation] = useState(null);
+  const [playClick] = useSound(
+    'https://res.cloudinary.com/dufzsv87k/video/upload/v1744909247/ClickSound.mp3',
+    { volume: 1.0 }
+  );
 
   // Verificar la relación usuario-taller al cargar el componente
   useEffect(() => {
@@ -129,76 +134,81 @@ const Pagina4Informacion6 = () => {
     },
   ];
 
-  // Función para manejar el cambio de slide
   const handleCircleClick = (index) => {
+    playClick();
     setActiveIndex(index);
   };
 
-  // Función para ir al slide anterior (no retrocede más allá del primer slide)
   const handlePrevSlide = () => {
     if (activeIndex > 0) {
+      playClick();
       setActiveIndex((prevIndex) => prevIndex - 1);
     }
   };
 
-  // Función para ir al siguiente slide (no avanza más allá del último slide)
   const handleNextSlide = () => {
     if (activeIndex < slides.length - 1) {
+      playClick();
       setActiveIndex((prevIndex) => prevIndex + 1);
     }
   };
 
-  // Función para manejar el clic en créditos
   const handleCreditosClick = async () => {
-    try {
-      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      if (!currentUser) {
-        throw new Error('Usuario no autenticado');
-      }
-
-      // Si ya existe la relación para el taller 6, actualizarla
-      if (userTallerRelation && userTallerRelation.id_taller === 6) {
-        const updateResponse = await fetch(`https://prueba-api-recurso-educativo.onrender.com/api/v1/usuarios-talleres/${userTallerRelation.id}/estado`, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            estadoabierto: 'abierto',
-            estadofinal: 'finalizado'
-          })
-        });
-
-        if (!updateResponse.ok) {
-          throw new Error('Error al actualizar el estado');
+    playClick();
+    setTimeout(async () => {
+      try {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (!currentUser) {
+          throw new Error('Usuario no autenticado');
         }
-      } else {
-        // Si no existe la relación para el taller 6, crearla
-        const createResponse = await fetch('https://prueba-api-recurso-educativo.onrender.com/api/v1/usuarios-talleres', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            id_usuario: currentUser.id,
-            id_taller: 6, // Asegurando que solo se cree para el taller 6
-            estadoabierto: 'abierto',
-            estadofinal: 'finalizado',
-          })
-        });
 
-        if (!createResponse.ok) {
-          throw new Error('Error al crear la relación usuario-taller');
+        if (userTallerRelation && userTallerRelation.id_taller === 6) {
+          const updateResponse = await fetch(`https://prueba-api-recurso-educativo.onrender.com/api/v1/usuarios-talleres/${userTallerRelation.id}/estado`, {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              estadoabierto: 'abierto',
+              estadofinal: 'finalizado'
+            })
+          });
+
+          if (!updateResponse.ok) {
+            throw new Error('Error al actualizar el estado');
+          }
+        } else {
+          const createResponse = await fetch('https://prueba-api-recurso-educativo.onrender.com/api/v1/usuarios-talleres', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              id_usuario: currentUser.id,
+              id_taller: 6,
+              estadoabierto: 'abierto',
+              estadofinal: 'finalizado',
+            })
+          });
+
+          if (!createResponse.ok) {
+            throw new Error('Error al crear la relación usuario-taller');
+          }
         }
-      }
 
-      // Navegar a créditos después de actualizar/crear
-      navigate('/Creditos');
-    } catch (error) {
-      console.error('Error al manejar créditos:', error);
-      // Navegar a créditos incluso si hay error
-      navigate('/Creditos');
-    }
+        navigate('/Creditos');
+      } catch (error) {
+        console.error('Error al manejar créditos:', error);
+        navigate('/Creditos');
+      }
+    }, 200);
+  };
+
+  const handleNavigationWithSound = () => {
+    playClick();
+    setTimeout(() => {
+      navigate('/Tema6');
+    }, 200);
   };
 
   return (
@@ -210,7 +220,7 @@ const Pagina4Informacion6 = () => {
           <h2 className="text-2xl font-bold">Introducción</h2>
         </div>
 
-        {/* Texto debajo de Introducción, centrado en la columna izquierda */}
+        {/* Texto debajo de Introducción */}
         <div className="border flex-1 flex justify-center items-center rounded-md p-4 overflow-y-auto max-h-[400px] md:max-h-[480px]">
           <p className="text-gray-700 text-center">{slides[activeIndex].text}</p>
         </div>
@@ -218,9 +228,8 @@ const Pagina4Informacion6 = () => {
 
       {/* Columna derecha con la imagen */}
       <div className="w-full md:w-3/4 border flex justify-center items-center rounded-md p-4 max-h-[400px] md:max-h-[560px]">
-        {/* Imagen */}
         <img
-          src={slides[activeIndex].image} // Imagen correspondiente al slide activo
+          src={slides[activeIndex].image}
           alt={`Imagen ${activeIndex + 1}`}
           className="w-full h-auto max-h-[300px] md:max-h-[600px] object-fill rounded-md"
         />
@@ -228,13 +237,13 @@ const Pagina4Informacion6 = () => {
 
       {/* Botón de volver */}
       <button
-        onClick={() => navigate('/Tema6')}
+        onClick={handleNavigationWithSound}
         className="fixed md:absolute bottom-4 left-4 bg-[#007B3E] text-white px-4 py-2 rounded hover:bg-[#009e4f] transition-colors cursor-pointer"
       >
         Volver
       </button>
 
-      {/* Botón de créditos (con la nueva función) */}
+      {/* Botón de créditos */}
       <button
         onClick={handleCreditosClick}
         className="fixed md:absolute bottom-4 right-4 bg-[#007B3E] text-white px-4 py-2 rounded hover:bg-[#009e4f] transition-colors cursor-pointer"
@@ -243,21 +252,21 @@ const Pagina4Informacion6 = () => {
       </button>
 
       {/* Navegación: Círculos en PC y flechas en móvil */}
-      <div className="fixed md:absolute bottom-4 left-1/2 transform -translate-x-1/2 flex justify-center items-center gap-4">
+      <div className="fixed md:absolute bottom-4 left-1/2 transform -translate-x-1/2 flex justify-center items-center gap-4 ">
         {/* Flecha izquierda (solo en móvil) */}
         <button
           onClick={handlePrevSlide}
-          className={`md:hidden px-4 py-2 rounded transition-colors ${
+          className={`md:hidden px-4 py-2 rounded transition-colors  ${
             activeIndex === 0
-              ? 'bg-gray-300 cursor-not-allowed' // Deshabilitado en el primer slide
-              : 'bg-[#007B3E] hover:bg-[#009e4f]' // Habilitado en otros slides
+              ? 'bg-gray-300 cursor-not-allowed'
+              : 'bg-[#007B3E] hover:bg-[#009e4f]'
           } text-white`}
         >
           ←
         </button>
 
         {/* Círculos de navegación (solo en PC) */}
-        <div className="hidden md:flex">
+        <div className="hidden md:flex ">
           {slides.map((slide, index) => (
             <button
               key={slide.id}
@@ -274,8 +283,8 @@ const Pagina4Informacion6 = () => {
           onClick={handleNextSlide}
           className={`md:hidden px-4 py-2 rounded transition-colors left-[40%] transform -translate-x-1/4 ${
             activeIndex === slides.length - 1
-              ? 'bg-gray-300 cursor-not-allowed' // Deshabilitado en el último slide
-              : 'bg-[#007B3E] hover:bg-[#009e4f]' // Habilitado en otros slides
+              ? 'bg-gray-300 cursor-not-allowed'
+              : 'bg-[#007B3E] hover:bg-[#009e4f]'
           } text-white`}
         >
           →

@@ -1,8 +1,21 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import useSound from 'use-sound';
 
 const Pagina4Descripcion3 = () => {
   const navigate = useNavigate();
+  const [playClick] = useSound(
+    'https://res.cloudinary.com/dufzsv87k/video/upload/v1744909247/ClickSound.mp3',
+    { volume: 1.0 }
+  );
+
+  const handleNavigationWithSound = (path) => {
+    playClick();
+    setTimeout(() => {
+      navigate(path);
+    }, 200);
+  };
+
   return (
     <div className="bg-white w-full h-screen p-4 md:p-8 flex flex-col">
       {/* Título centrado en la parte superior */}
@@ -18,7 +31,7 @@ const Pagina4Descripcion3 = () => {
           <div className="mb-4 md:mb-6">
             <h2 className="text-lg md:text-xl mb-2 font-bold">Descripción</h2>
             <p className="text-gray-700 mb-4">
-            Este taller enseña a los estudiantes de 6to grado a programar el mBot para que se mueva utilizando las flechas del teclado. A través de actividades prácticas, los niños aprenderán a conectar el mBot a la computadora, programar movimientos básicos (adelante, atrás, izquierda, derecha) y ajustar el programa para mejorar el control del robot. El taller culmina con un desafío práctico en el que los estudiantes aplican lo aprendido para guiar el mBot a través de una pista o circuito.
+              Este taller enseña a los estudiantes de 6to grado a programar el mBot para que se mueva utilizando las flechas del teclado. A través de actividades prácticas, los niños aprenderán a conectar el mBot a la computadora, programar movimientos básicos (adelante, atrás, izquierda, derecha) y ajustar el programa para mejorar el control del robot. El taller culmina con un desafío práctico en el que los estudiantes aplican lo aprendido para guiar el mBot a través de una pista o circuito.
             </p>
             <ul className="list-disc pl-5 text-gray-700">
               <li><strong>Duración:</strong> 80 minutos (1 hora y 20 minutos).</li>
@@ -127,13 +140,13 @@ const Pagina4Descripcion3 = () => {
           {/* Botones en la parte inferior */}
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
             <button
-              onClick={() => navigate('/Proyectos')}
+              onClick={() => handleNavigationWithSound('/Proyectos')}
               className="bg-[#007B3E] text-white px-4 py-2 rounded shadow-lg hover:bg-[#009e4f] transition-colors w-full md:w-80 cursor-pointer"
             >
               Regresar
             </button>
             <button
-              onClick={() => navigate('/Contenido3')}
+              onClick={() => handleNavigationWithSound('/Contenido3')}
               className="bg-[#007B3E] text-white px-4 py-2 rounded shadow-lg hover:bg-[#009e4f] transition-colors w-full md:w-80 cursor-pointer"
             >
               Iniciar

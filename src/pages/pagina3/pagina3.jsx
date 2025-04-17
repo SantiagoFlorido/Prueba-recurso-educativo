@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaQuestionCircle, FaBars, FaTimes, FaProjectDiagram, FaUserTie, FaHandsHelping, FaLink, FaHome } from 'react-icons/fa';
+import { FaQuestionCircle, FaBars, FaTimes, FaUserTie, FaHandsHelping, FaLink, FaHome } from 'react-icons/fa';
 import { MdOutlineWork } from "react-icons/md";
-import { FiFolder } from "react-icons/fi";
 
 import axios from 'axios';
 import { PulseLoader } from 'react-spinners';
+
+import useSound from 'use-sound';
 
 const Pagina3 = () => {
   const navigate = useNavigate();
@@ -16,6 +17,12 @@ const Pagina3 = () => {
   const [completedWorkshops, setCompletedWorkshops] = useState(0);
   const [savedWorkshops, setSavedWorkshops] = useState([]);
   const [userId, setUserId] = useState(null);
+
+  // Importa el sonido (usa la URL proporcionada)
+  const [playClick] = useSound(
+    'https://res.cloudinary.com/dufzsv87k/video/upload/v1744909247/ClickSound.mp3',
+    { volume: 1.0 }
+  );
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -62,25 +69,33 @@ const Pagina3 = () => {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('studentUser');
-    localStorage.removeItem('teacherUser');
-    navigate('/');
+    playClick();
+    setTimeout(() => {
+      localStorage.removeItem('studentUser');
+      localStorage.removeItem('teacherUser');
+      navigate('/');
+    }, 200);
   };
 
   const toggleHelp = () => {
+    playClick();
     setShowHelp(!showHelp);
   };
 
   const toggleMenu = () => {
+    playClick();
     setIsMenuOpen(!isMenuOpen);
   };
 
   const handleWorkshopClick = (workshopId) => {
-    if (userRole === 'docente') {
-      navigate(`/Tema${workshopId}`);
-    } else {
-      navigate(`/Contenido${workshopId}`);
-    }
+    playClick();
+    setTimeout(() => {
+      if (userRole === 'docente') {
+        navigate(`/Tema${workshopId}`);
+      } else {
+        navigate(`/Contenido${workshopId}`);
+      }
+    }, 200);
   };
 
   if (loading) {
@@ -90,6 +105,21 @@ const Pagina3 = () => {
       </div>
     );
   }
+
+  // Función combinada para navegación + sonido
+  const handleNavigationWithSound = (path) => {
+    playClick();
+    setTimeout(() => {
+      navigate(path);
+    }, 200);
+  };
+
+  const handleExternalLinkWithSound = (url) => {
+    playClick();
+    setTimeout(() => {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }, 200);
+  };
 
   return (
     <div className="bg-white p-4 w-full min-h-screen flex flex-col">
@@ -119,7 +149,10 @@ const Pagina3 = () => {
               Cerrar Sesión
             </button>
           </div>
-          <button className="flex justify-center items-center bg-gray-200 px-3 py-1 rounded-lg text-sm hover:bg-gray-300 transition-colors duration-300 cursor-pointer w-full" onClick={() => navigate('/')}>
+          <button 
+            className="flex justify-center items-center bg-gray-200 px-3 py-1 rounded-lg text-sm hover:bg-gray-300 transition-colors duration-300 cursor-pointer w-full" 
+            onClick={() => handleNavigationWithSound('/')}
+          >
             <FaHome size={19} className="text-[#007B3E] flex justify-center items-center" /> 
           </button>
           <button 
@@ -140,7 +173,7 @@ const Pagina3 = () => {
       {/* Contenedor con 3 columnas y 3 filas */}
       <div className="grid grid-cols-1 md:grid-cols-[minmax(200px,_1fr)_minmax(100px,_0.3fr)] gap-4 flex-grow relative">
         {/* Proyectos (Columna 1, Fila 1) */}
-        <div className="flex items-center justify-center text-white text-lg bg-[#007B3E] p-2 rounded-md hover:bg-[#009e4f] transition-colors duration-300 min-h-[180px] cursor-pointer font-bold text-center" onClick={() => navigate('/Proyectos')}>
+        <div className="flex items-center justify-center text-white text-lg bg-[#007B3E] p-2 rounded-md hover:bg-[#009e4f] transition-colors duration-300 min-h-[180px] cursor-pointer font-bold text-center" onClick={() => handleNavigationWithSound('/Proyectos')}>
           <div className="flex items-center gap-2">
             {showHelp ? ("Banner que indica los proyectos") 
 			                : 
@@ -159,7 +192,7 @@ const Pagina3 = () => {
             }`}
             onClick={() => {
               if (userRole === 'docente') {
-                window.open('https://drive.google.com/drive/folders/1BRRCv8quGLVnSsB9ndCHO7cdWUf9sh3-?usp=sharing', '_blank', 'noopener,noreferrer');
+                handleExternalLinkWithSound('https://drive.google.com/drive/folders/1BRRCv8quGLVnSsB9ndCHO7cdWUf9sh3-?usp=sharing');
               }
             }}   
           >
@@ -176,7 +209,7 @@ const Pagina3 = () => {
           </div>
           <div 
             className="bg-[#00482B] hover:bg-[#006341] text-white p-2 rounded-lg flex-grow flex items-center justify-center cursor-pointer transition-colors duration-300"
-            onClick={() => window.open('https://drive.google.com/drive/folders/1_ziaHW8TNaqfAI8Tcc5e2UBrzhm8Gl6N?usp=sharing', '_blank', 'noopener,noreferrer')}
+            onClick={() => handleExternalLinkWithSound('https://drive.google.com/drive/folders/1_ziaHW8TNaqfAI8Tcc5e2UBrzhm8Gl6N?usp=sharing')}
           >
             <div className="flex items-center gap-2">
               <h2 className="text-lg text-center font-semibold">
@@ -185,7 +218,10 @@ const Pagina3 = () => {
               
             </div>
           </div>
-          <div className="bg-[#00482B] hover:bg-[#006341] transition-colors duration-300 text-white p-2 rounded-lg flex-grow flex items-center justify-center cursor-pointer text-lg text-center font-semibold" onClick={() => navigate('/Conexión')}>
+          <div 
+            className="bg-[#00482B] hover:bg-[#006341] transition-colors duration-300 text-white p-2 rounded-lg flex-grow flex items-center justify-center cursor-pointer text-lg text-center font-semibold" 
+            onClick={() => handleNavigationWithSound('/Conexión')}
+          >
             <div className="flex items-center gap-2">
               {showHelp ? ("Banner que indica las formas de conexión") : (<>Formas de conexión <FaLink className="text-[#007B3E]" /></>)}
               
@@ -220,7 +256,10 @@ const Pagina3 = () => {
               <h2 className="text-lg font-bold">
                 {savedWorkshops.length > 0 ? "Proyectos Guardados" : "Aún no tienes proyectos guardados"}
               </h2>
-              <button onClick={toggleMenu} className="text-red-400 hover:text-red-600 cursor-pointer">
+              <button 
+                onClick={toggleMenu} 
+                className="text-red-400 hover:text-red-600 cursor-pointer"
+              >
                 <FaTimes />
               </button>
             </div>

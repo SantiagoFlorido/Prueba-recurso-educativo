@@ -4,10 +4,17 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Autoplay, Navigation } from 'swiper/modules';
 import { useNavigate } from 'react-router-dom';
+import useSound from 'use-sound';
 
 const Pagina1 = () => {
   const navigate = useNavigate();
   const isLoggedIn = localStorage.getItem('studentUser') || localStorage.getItem('teacherUser');
+  
+  // Importa el sonido (usa la URL proporcionada)
+  const [playClick] = useSound(
+    'https://res.cloudinary.com/dufzsv87k/video/upload/v1744909247/ClickSound.mp3',
+    { volume: 1.0 }
+  );
 
   const slides = [
     {
@@ -51,16 +58,28 @@ const Pagina1 = () => {
   const swiperRef = useRef(null);
 
   const handleNext = () => {
+    playClick();
     swiperRef.current?.swiper?.isEnd 
       ? swiperRef.current.swiper.slideTo(0)
       : swiperRef.current?.swiper?.slideNext();
   };
 
   const handlePrev = () => {
+    playClick();
     swiperRef.current?.swiper?.isBeginning 
       ? swiperRef.current.swiper.slideTo(slides.length - 1)
       : swiperRef.current?.swiper?.slidePrev();
   };
+
+  // Función combinada para navegación + sonido
+  const handleNavigationWithSound = () => {
+    playClick();
+    setTimeout(() => {
+      isLoggedIn ? navigate('/Principal') : navigate('/Rol');
+    }, 200); // Pequeño delay para que suene antes de navegar
+  };
+
+  
 
   return (
     <div className="bg-white p-4 h-screen flex flex-col overflow-hidden">
@@ -80,7 +99,7 @@ const Pagina1 = () => {
         </div>
 
         <button
-          onClick={() => isLoggedIn ? navigate('/Principal') : navigate('/Rol')}
+          onClick={handleNavigationWithSound}
           className="bg-[#007B3E] text-white px-4 py-2 rounded-lg shadow-lg hover:bg-[#009e4f] transition-colors duration-300 cursor-pointer"
         >
           {isLoggedIn ? 'Continuar' : 'Iniciar sesión'}

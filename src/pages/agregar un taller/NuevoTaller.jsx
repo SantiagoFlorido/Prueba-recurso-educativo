@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useSound from 'use-sound';
 
 const NuevoTaller = () => {
     const navigate = useNavigate();
+    const [playClick] = useSound(
+        'https://res.cloudinary.com/dufzsv87k/video/upload/v1744909247/ClickSound.mp3',
+        { volume: 1.0 }
+    );
     const [titulo, setTitulo] = useState('');
     const [imagenPortada, setImagenPortada] = useState(null);
     const [previewUrl, setPreviewUrl] = useState('');
@@ -14,6 +19,13 @@ const NuevoTaller = () => {
     const [slides, setSlides] = useState([{ descripcion: '', imagen: null, preview: null }]);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState('');
+
+    const handleNavigationWithSound = (path) => {
+        playClick();
+        setTimeout(() => {
+            navigate(path);
+        }, 200);
+    };
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -50,10 +62,12 @@ const NuevoTaller = () => {
     };
 
     const addNewSlide = () => {
+        playClick();
         setSlides([...slides, { descripcion: '', imagen: null, preview: null }]);
     };
 
     const removeSlide = (index) => {
+        playClick();
         if (slides.length > 1) {
             const newSlides = slides.filter((_, i) => i !== index);
             setSlides(newSlides);
@@ -61,6 +75,7 @@ const NuevoTaller = () => {
     };
 
     const handleSubmit = async () => {
+        playClick();
         setError('');
         
         // Validación mejorada
@@ -137,7 +152,7 @@ const NuevoTaller = () => {
             }
 
             alert('Taller creado exitosamente!');
-            navigate('/Proyectos');
+            handleNavigationWithSound('/Proyectos');
         } catch (error) {
             console.error('Error completo:', error);
             setError(error.message);
@@ -147,11 +162,16 @@ const NuevoTaller = () => {
         }
     };
 
+    const sundclick = () => {
+        playClick();
+
+    };
+
     return (
         <div className="min-h-screen bg-gray-100 p-4">
             <div className="fixed top-4 left-4">
                 <button 
-                    onClick={() => navigate('/Proyectos')}
+                    onClick={() => handleNavigationWithSound('/Proyectos')}
                     className="bg-[#007B3E] hover:bg-[#009e4f] text-white font-medium py-2 px-4 rounded-lg transition duration-200 shadow-md"
                 >
                     Regresar
@@ -180,6 +200,7 @@ const NuevoTaller = () => {
                                 value={titulo}
                                 onChange={(e) => setTitulo(e.target.value)}
                                 placeholder="Título del taller"
+                                onClick={sundclick}
                                 className="w-full bg-transparent text-center placeholder-white placeholder-opacity-70 focus:outline-none text-xl font-semibold px-4"
                                 required
                             />
@@ -195,7 +216,7 @@ const NuevoTaller = () => {
                             ) : (
                                 <div className="text-gray-500 text-center p-4">
                                     <p>Imagen de portada del taller</p>
-                                    <label className="mt-4 cursor-pointer bg-[#007B3E] hover:bg-[#009e4f] text-white px-4 py-2 rounded-lg inline-block">
+                                    <label className="mt-4 cursor-pointer bg-[#007B3E] hover:bg-[#009e4f] text-white px-4 py-2 rounded-lg inline-block" onClick={sundclick}>
                                         Seleccionar imagen
                                         <input
                                             type="file"
@@ -215,6 +236,7 @@ const NuevoTaller = () => {
                         <textarea
                             value={descripcion}
                             onChange={(e) => setDescripcion(e.target.value)}
+                            onClick={sundclick}
                             placeholder="Describe el taller, su propósito y lo que los estudiantes aprenderán..."
                             className="w-full h-32 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007B3E] mb-4"
                             required
@@ -227,6 +249,7 @@ const NuevoTaller = () => {
                                     type="text"
                                     value={duracion}
                                     onChange={(e) => setDuracion(e.target.value)}
+                                    onClick={sundclick}
                                     placeholder="Ej: 60 minutos"
                                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007B3E]"
                                 />
@@ -237,6 +260,7 @@ const NuevoTaller = () => {
                                 <select
                                     value={nivelDificultad}
                                     onChange={(e) => setNivelDificultad(e.target.value)}
+                                    onClick={sundclick}
                                     className="cursor-pointer w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007B3E]"
                                 >
                                     <option value="FÁCIL">FÁCIL</option>
@@ -251,6 +275,7 @@ const NuevoTaller = () => {
                             <textarea
                                 value={materiales}
                                 onChange={(e) => setMateriales(e.target.value)}
+                                onClick={sundclick}
                                 placeholder="Lista los materiales necesarios."
                                 className="w-full h-24 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007B3E]"
                             />
@@ -262,6 +287,7 @@ const NuevoTaller = () => {
                             <textarea
                                 value={objetivos}
                                 onChange={(e) => setObjetivos(e.target.value)}
+                                onClick={sundclick}
                                 placeholder="Enumera los objetivos que los estudiantes alcanzarán"
                                 className="w-full h-24 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007B3E]"
                             />
@@ -302,6 +328,7 @@ const NuevoTaller = () => {
                                         <textarea
                                             value={slide.descripcion}
                                             onChange={(e) => handleSlideDescripcionChange(index, e)}
+                                            onClick={sundclick}
                                             placeholder="Describe este paso del taller..."
                                             className="w-full h-32 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007B3E]"
                                         />
@@ -323,6 +350,7 @@ const NuevoTaller = () => {
                                                         <input
                                                             type="file"
                                                             onChange={(e) => handleSlideImageChange(index, e)}
+                                                            onClick={sundclick}
                                                             accept="image/*"
                                                             className="hidden"
                                                         />

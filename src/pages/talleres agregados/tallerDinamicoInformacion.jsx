@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import useSound from 'use-sound';
 
 const TallerDinamicoInformacion = () => {
   const navigate = useNavigate();
@@ -8,6 +9,10 @@ const TallerDinamicoInformacion = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [playClick] = useSound(
+    'https://res.cloudinary.com/dufzsv87k/video/upload/v1744909247/ClickSound.mp3',
+    { volume: 1.0 }
+  );
 
   useEffect(() => {
     const fetchTaller = async () => {
@@ -29,22 +34,26 @@ const TallerDinamicoInformacion = () => {
   }, [tallerId]);
 
   const handleCircleClick = (index) => {
+    playClick();
     setActiveIndex(index);
   };
 
   const handlePrevSlide = () => {
+    playClick();
     if (activeIndex > 0) {
       setActiveIndex((prevIndex) => prevIndex - 1);
     }
   };
 
   const handleNextSlide = () => {
+    playClick();
     if (activeIndex < (taller?.slides?.length || 0) - 1) {
       setActiveIndex((prevIndex) => prevIndex + 1);
     }
   };
 
   const handleDownloadImage = async () => {
+    playClick();
     if (taller?.slides && activeIndex === taller.slides.length - 1) {
       try {
         const imageUrl = "https://res.cloudinary.com/dufzsv87k/image/upload/v1743292018/pueblo.png";
@@ -66,18 +75,28 @@ const TallerDinamicoInformacion = () => {
     }
   };
 
+  const handleNavigationWithSound = (path) => {
+    playClick();
+    setTimeout(() => {
+      navigate(path);
+    }, 200);
+  };
+
   const handleCreditosClick = async () => {
+    playClick();
     try {
       const currentUser = JSON.parse(localStorage.getItem('studentUser') || localStorage.getItem('teacherUser') || '{}');
       if (!currentUser?.id) {
         throw new Error('Usuario no autenticado');
       }
-
-      // Solo navegar a créditos, no actualizar relación para talleres dinámicos
-      navigate('/Creditos');
+      setTimeout(() => {
+        navigate('/Creditos');
+      }, 200);
     } catch (error) {
       console.error('Error al manejar créditos:', error);
-      navigate('/Creditos');
+      setTimeout(() => {
+        navigate('/Creditos');
+      }, 200);
     }
   };
 
@@ -136,7 +155,7 @@ const TallerDinamicoInformacion = () => {
 
       {/* Botón de volver */}
       <button
-        onClick={() => navigate(`/Tema/${tallerId}`)}
+        onClick={() => handleNavigationWithSound(`/Tema/${tallerId}`)}
         className="fixed md:absolute bottom-4 left-4 bg-[#007B3E] text-white px-4 py-2 rounded hover:bg-[#009e4f] transition-colors cursor-pointer"
       >
         Volver

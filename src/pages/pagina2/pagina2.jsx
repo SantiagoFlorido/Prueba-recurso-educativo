@@ -1,8 +1,24 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import useSound from 'use-sound';
 
 const Pagina2 = () => {
   const navigate = useNavigate();
+
+  // Importa el sonido (usa la URL proporcionada)
+  const [playClick] = useSound(
+    'https://res.cloudinary.com/dufzsv87k/video/upload/v1744909247/ClickSound.mp3',
+    { volume: 1.0 }
+  );
+
+  // Función combinada para navegación + sonido
+  const handleNavigationWithSound = () => {
+    playClick();
+    setTimeout(() => {
+      navigate('/Principal');
+    }, 200); // Pequeño delay para que suene antes de navegar
+  };
+
   return (
     <div className="bg-white p-4 h-screen flex flex-col">
       {/* Título */}
@@ -47,7 +63,7 @@ const Pagina2 = () => {
 
       {/* Botón "Regresar" */}
       <button
-        onClick={() => navigate('/Principal')}
+        onClick={handleNavigationWithSound}
         className="cursor-pointer mt-0 md:mt-0 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-700 transition-colors md:mx-auto md:w-200"
       >
         Regresar

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { BiUser } from "react-icons/bi";
 import { AiOutlineUnlock, AiOutlineLoading } from "react-icons/ai";
+import useSound from 'use-sound';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -9,9 +10,21 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [playClick] = useSound(
+    'https://res.cloudinary.com/dufzsv87k/video/upload/v1744909247/ClickSound.mp3',
+    { volume: 1.0 }
+  );
+
+  const handleNavigationWithSound = (path) => {
+    playClick();
+    setTimeout(() => {
+      navigate(path);
+    }, 200);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    playClick();
     
     if (!nombre || !password) {
       setError('Todos los campos son obligatorios');
@@ -62,7 +75,7 @@ const Login = () => {
         rol: user.rol
       }));
 
-      navigate('/Principal');
+      handleNavigationWithSound('/Principal');
       
     } catch (err) {
       console.error('Error en login:', err);
@@ -107,6 +120,7 @@ const Login = () => {
                 type="text" 
                 value={nombre}
                 onChange={(e) => setNombre(e.target.value)}
+                onClick={() => playClick()}
                 className='block w-73 py-2.5 px-0 text-sm text-[#007b3e] bg-transparent border-0 border-b-2 border-black appearance-none dark:focus:border-[#007b3e] focus:outline-none focus:ring-0 focus:text-black focus:border-[#007b3e] peer' 
                 placeholder=''
               />
@@ -119,6 +133,7 @@ const Login = () => {
                 type="password" 
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                onClick={() => playClick()}
                 className='block w-73 py-2.5 px-0 text-sm text-[#007b3e] bg-transparent border-0 border-b-2 border-black appearance-none dark:focus:border-[#007b3e] focus:outline-none focus:ring-0 focus:text-black focus:border-[#007b3e] peer' 
                 placeholder=''
               />
@@ -141,12 +156,20 @@ const Login = () => {
             
             <div>
               <span className='m-4 text-black'>Nuevo aqui? 
-                <Link className='text-[#007B3E] text-1xl' to='/Register/Teacher'> Crear una cuenta</Link>
+                <Link 
+                  className='text-[#007B3E] text-1xl' 
+                  to='/Register/Teacher'
+                  onClick={() => playClick()}
+                > Crear una cuenta</Link>
               </span>
             </div>
             <div>
               <span className='m-4 text-black'>Rol equivocado? 
-                <Link className='text-[#007B3E] text-1xl' to='/Login/Student'> Cambiar a estudiante</Link>
+                <Link 
+                  className='text-[#007B3E] text-1xl' 
+                  to='/Login/Student'
+                  onClick={() => playClick()}
+                > Cambiar a estudiante</Link>
               </span>
             </div>
             {/* Borrar luego */}

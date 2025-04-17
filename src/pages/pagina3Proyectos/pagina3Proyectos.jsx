@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaPlus, FaTimes } from 'react-icons/fa';
+import useSound from 'use-sound';
 
 const Pagina3Proyectos = () => {
   const navigate = useNavigate();
+  const [playClick] = useSound(
+    'https://res.cloudinary.com/dufzsv87k/video/upload/v1744909247/ClickSound.mp3',
+    { volume: 1.0 }
+  );
 
   // Obtener datos del usuario del localStorage
   const userData = JSON.parse(localStorage.getItem('studentUser') || localStorage.getItem('teacherUser') || '{}');
@@ -78,51 +83,82 @@ const Pagina3Proyectos = () => {
     }
   };
 
-  // Manejo de click para talleres estáticos (1-8)
+  // Manejo de click para talleres estáticos (1-8) con sonido
   const handleTopicClick = async (topicNumber) => {
-    if (!userData?.id) {
-      console.error('No se encontró ID de usuario en los datos locales');
-      alert('No se pudo identificar tu usuario. Por favor, inicia sesión nuevamente.');
-      return;
-    }
-  
-    try {
-      // Solo para talleres 1-8: crear/actualizar la relación usuario-taller
-      await handleTallerUsuario(userData.id, topicNumber);
-
-      // Navegar según el rol
-      if (isTeacher) {
-        navigate(`/Tema${topicNumber}`);
-      } else {
-        navigate(`/Contenido${topicNumber}`);
+    playClick();
+    setTimeout(async () => {
+      if (!userData?.id) {
+        console.error('No se encontró ID de usuario en los datos locales');
+        alert('No se pudo identificar tu usuario. Por favor, inicia sesión nuevamente.');
+        return;
       }
-    } catch (error) {
-      console.error('Error:', error);
-      alert(`Error: ${error.message || 'No se pudo iniciar el taller'}`);
-    }
+    
+      try {
+        // Solo para talleres 1-8: crear/actualizar la relación usuario-taller
+        await handleTallerUsuario(userData.id, topicNumber);
+
+        // Navegar según el rol
+        if (isTeacher) {
+          navigate(`/Tema${topicNumber}`);
+        } else {
+          navigate(`/Contenido${topicNumber}`);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert(`Error: ${error.message || 'No se pudo iniciar el taller'}`);
+      }
+    }, 200);
   };
 
-  // Manejo de click para talleres dinámicos (de la API)
+  // Manejo de click para talleres dinámicos (de la API) con sonido
   const handleTallerApiClick = (tallerId) => {
-    if (!userData?.id) {
-      console.error('No se encontró ID de usuario en los datos locales');
-      alert('No se pudo identificar tu usuario. Por favor, inicia sesión nuevamente.');
-      return;
-    }
+    playClick();
+    setTimeout(() => {
+      if (!userData?.id) {
+        console.error('No se encontró ID de usuario en los datos locales');
+        alert('No se pudo identificar tu usuario. Por favor, inicia sesión nuevamente.');
+        return;
+      }
 
-    // Navegar directamente sin verificar relación usuario-taller
-    if (isTeacher) {
-      navigate(`/Tema/${tallerId}`);
-    } else {
-      navigate(`/Contenido/${tallerId}`);
-    }
+      // Navegar directamente sin verificar relación usuario-taller
+      if (isTeacher) {
+        navigate(`/Tema/${tallerId}`);
+      } else {
+        navigate(`/Contenido/${tallerId}`);
+      }
+    }, 200);
   };
 
-  // Función para abrir el modal de confirmación de eliminación
+  // Función para abrir el modal de confirmación de eliminación con sonido
   const confirmDelete = (taller, e) => {
-    e.stopPropagation(); // Evitar que se active el click del contenedor padre
+    e.stopPropagation();
+    playClick();
     setTallerToDelete(taller);
     setShowDeleteModal(true);
+  };
+
+  // Función para navegación con sonido
+  const handleNavigationWithSound = (path) => {
+    playClick();
+    setTimeout(() => {
+      navigate(path);
+    }, 200);
+  };
+
+  // Función para eliminar con sonido
+  const handleDeleteWithSound = () => {
+    playClick();
+    setTimeout(() => {
+      handleDeleteTaller();
+    }, 200);
+  };
+
+  // Función para cancelar con sonido
+  const handleCancelWithSound = () => {
+    playClick();
+    setTimeout(() => {
+      setShowDeleteModal(false);
+    }, 200);
   };
 
   return (
@@ -134,7 +170,7 @@ const Pagina3Proyectos = () => {
         </div>
         {/* Botón "Regresar" dentro del contenedor izquierdo */}
         <button
-          onClick={() => navigate('/Principal')}
+          onClick={() => handleNavigationWithSound('/Principal')}
           className="hidden md:block mt-4 w-full bg-[#007B3E] text-white px-4 py-2 rounded-lg shadow-lg hover:bg-[#009e4f] transition-colors"
         >
           Regresar
@@ -304,7 +340,7 @@ const Pagina3Proyectos = () => {
           {/* Botón para agregar nuevo proyecto - SOLO PARA DOCENTES */}
           {isTeacher && (
             <div 
-              onClick={() => navigate('/TallerNuevo')}
+              onClick={() => handleNavigationWithSound('/TallerNuevo')}
               className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70"
             >
               <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
@@ -321,7 +357,7 @@ const Pagina3Proyectos = () => {
       </div>
       {/* Botón "Regresar" */}
       <button
-        onClick={() => navigate('/Principal')}
+        onClick={() => handleNavigationWithSound('/Principal')}
         className="md:hidden fixed bottom-4 left-4 right-4 md:left-4 md:right-[calc(25%+1rem)] bg-[#007B3E] text-white px-4 py-2 rounded-lg shadow-lg hover:bg-[#009e4f] transition-colors"
       >
         Regresar
@@ -330,18 +366,18 @@ const Pagina3Proyectos = () => {
       {/* Modal de confirmación para eliminar taller */}
       {showDeleteModal && (
         <div className="fixed inset-0 bg-transparent bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full border-1 border-black">
             <h3 className="text-xl font-bold mb-4">¿Estás seguro de eliminar este taller?</h3>
             <p className="mb-6">Quizás no lo vuelvas a ver, esto es mucho tiempo :(</p>
             <div className="flex justify-end space-x-4">
               <button
-                onClick={() => setShowDeleteModal(false)}
+                onClick={handleCancelWithSound}
                 className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400 transition-colors cursor-pointer"
               >
                 Cancelar
               </button>
               <button
-                onClick={handleDeleteTaller}
+                onClick={handleDeleteWithSound}
                 className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors cursor-pointer"
               >
                 Eliminar

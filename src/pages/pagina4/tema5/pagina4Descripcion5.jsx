@@ -1,8 +1,21 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import useSound from 'use-sound';
 
 const Pagina4Descripcion5 = () => {
   const navigate = useNavigate();
+  const [playClick] = useSound(
+    'https://res.cloudinary.com/dufzsv87k/video/upload/v1744909247/ClickSound.mp3',
+    { volume: 1.0 }
+  );
+
+  const handleNavigationWithSound = (path) => {
+    playClick();
+    setTimeout(() => {
+      navigate(path);
+    }, 200);
+  };
+
   return (
     <div className="bg-white w-full h-screen p-4 md:p-8 flex flex-col">
       {/* Título centrado en la parte superior */}
@@ -18,7 +31,7 @@ const Pagina4Descripcion5 = () => {
           <div className="mb-4 md:mb-6">
             <h2 className="text-lg md:text-xl mb-2 font-bold">Descripción</h2>
             <p className="text-gray-700 mb-4">
-            Este taller enseña a los estudiantes de 6to grado a programar el mBot para detectar y evitar obstáculos utilizando el sensor de ultrasonidos. A través de actividades prácticas, los niños aprenderán a configurar el sensor, programar comportamientos condicionales (como retroceder o girar al detectar un obstáculo) y mejorar el programa con funciones adicionales, como cambios de dirección, ajustes de velocidad y alertas sonoras. El taller culmina con una actividad práctica en la que los estudiantes ponen a prueba sus programas en un espacio con obstáculos.
+              Este taller enseña a los estudiantes de 6to grado a programar el mBot para detectar y evitar obstáculos utilizando el sensor de ultrasonidos. A través de actividades prácticas, los niños aprenderán a configurar el sensor, programar comportamientos condicionales (como retroceder o girar al detectar un obstáculo) y mejorar el programa con funciones adicionales, como cambios de dirección, ajustes de velocidad y alertas sonoras. El taller culmina con una actividad práctica en la que los estudiantes ponen a prueba sus programas en un espacio con obstáculos.
             </p>
             <ul className="list-disc pl-5 text-gray-700">
               <li><strong>Duración:</strong> 85 minutos (1 hora y 25 minutos).</li>
@@ -117,7 +130,7 @@ const Pagina4Descripcion5 = () => {
           <div className="border flex-1 mb-4 rounded-lg overflow-hidden">
             <div className="bg-gray-200 h-48 md:h-full flex items-center justify-center rounded-lg">
               <img
-                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743643140/taller5slide1_bmti5o.png" /*imagen*/
+                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743643140/taller5slide1_bmti5o.png"
                 alt="Imagen, video y guion"
                 className="w-full h-full object-fill rounded-md"
               />
@@ -127,13 +140,13 @@ const Pagina4Descripcion5 = () => {
           {/* Botones en la parte inferior */}
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
             <button
-              onClick={() => navigate('/Proyectos')}
+              onClick={() => handleNavigationWithSound('/Proyectos')}
               className="bg-[#007B3E] text-white px-4 py-2 rounded shadow-lg hover:bg-[#009e4f] transition-colors w-full md:w-80 cursor-pointer"
             >
               Regresar
             </button>
             <button
-              onClick={() => navigate('/Contenido5')}
+              onClick={() => handleNavigationWithSound('/Contenido5')}
               className="bg-[#007B3E] text-white px-4 py-2 rounded shadow-lg hover:bg-[#009e4f] transition-colors w-full md:w-80 cursor-pointer"
             >
               Iniciar

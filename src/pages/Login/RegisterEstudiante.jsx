@@ -3,6 +3,7 @@ import { AiOutlineUnlock, AiOutlineLoading } from 'react-icons/ai';
 import { BiUser } from 'react-icons/bi';
 import { Link, useNavigate } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
+import useSound from 'use-sound';
 
 const RegisterStudent = () => {
   const navigate = useNavigate();
@@ -13,9 +14,21 @@ const RegisterStudent = () => {
   const [loading, setLoading] = useState(false);
   const [recaptchaValue, setRecaptchaValue] = useState(null);
   const recaptchaRef = useRef();
+  const [playClick] = useSound(
+    'https://res.cloudinary.com/dufzsv87k/video/upload/v1744909247/ClickSound.mp3',
+    { volume: 1.0 }
+  );
+
+  const handleNavigationWithSound = (path) => {
+    playClick();
+    setTimeout(() => {
+      navigate(path);
+    }, 200);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    playClick();
     
     // Validaciones
     if (!nombre || !password || !confirmPassword) {
@@ -55,7 +68,7 @@ const RegisterStudent = () => {
         throw new Error(errorData.message || 'Error al registrar estudiante');
       }
       
-      navigate('/Principal');
+      handleNavigationWithSound('/Principal');
     } catch (err) {
       setError(err.message || 'Error al conectar con el servidor');
       recaptchaRef.current.reset();
@@ -66,6 +79,7 @@ const RegisterStudent = () => {
   };
 
   const onRecaptchaChange = (value) => {
+    playClick();
     setRecaptchaValue(value);
   };
 
@@ -100,6 +114,7 @@ const RegisterStudent = () => {
               type="text" 
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
+              onClick={() => playClick()}
               className='block w-69 py-2.5 px-0 text-sm text-[#007b3e] bg-transparent border-0 border-b-2 border-black appearance-none dark:focus:border-[#007b3e] focus:outline-none focus:ring-0 focus:text-black focus:border-[#007b3e] peer' 
               placeholder=''
             />
@@ -111,6 +126,7 @@ const RegisterStudent = () => {
               type="password" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              onClick={() => playClick()}
               className='block w-69 py-2.5 px-0 text-sm text-[#007b3e] bg-transparent border-0 border-b-2 border-black appearance-none dark:focus:border-[#007b3e] focus:outline-none focus:ring-0 focus:text-black focus:border-[#007b3e] peer' 
               placeholder=''
             />
@@ -122,6 +138,7 @@ const RegisterStudent = () => {
               type="password" 
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
+              onClick={() => playClick()}
               className='block w-69 py-2.5 px-0 text-sm text-[#007b3e] bg-transparent border-0 border-b-2 border-black appearance-none dark:focus:border-[#007b3e] focus:outline-none focus:ring-0 focus:text-black focus:border-[#007b3e] peer' 
               placeholder=''
             />
@@ -135,6 +152,7 @@ const RegisterStudent = () => {
               ref={recaptchaRef}
               sitekey="6Lf2VxcrAAAAAE6u-LJdQPAWH8Vz-evnEp7LCKCS"
               onChange={onRecaptchaChange}
+              onClick={() => playClick()}
             />
           </div>
           
@@ -153,12 +171,20 @@ const RegisterStudent = () => {
           
           <div>
             <span className='m-4 text-black'>Ya tienes una cuenta? 
-              <Link className='text-[#007B3E] text-1xl' to='/Login/Student'> Inicia sesión</Link>
+              <Link 
+                className='text-[#007B3E] text-1xl' 
+                to='/Login/Student'
+                onClick={() => playClick()}
+              > Inicia sesión</Link>
             </span>
           </div>
           <div>
               <span className='m-4 text-black'>Rol equivocado? 
-                <Link className='text-[#007B3E] text-1xl' to='/Register/Teacher'> Cambiar a docente</Link>
+                <Link 
+                  className='text-[#007B3E] text-1xl' 
+                  to='/Register/Teacher'
+                  onClick={() => playClick()}
+                > Cambiar a docente</Link>
               </span>
           </div>
         </form>

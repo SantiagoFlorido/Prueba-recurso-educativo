@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import useSound from 'use-sound';
 
 const TallerDinamicoDescripcion = () => {
   const navigate = useNavigate();
@@ -7,6 +8,10 @@ const TallerDinamicoDescripcion = () => {
   const [taller, setTaller] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [playClick] = useSound(
+    'https://res.cloudinary.com/dufzsv87k/video/upload/v1744909247/ClickSound.mp3',
+    { volume: 1.0 }
+  );
 
   useEffect(() => {
     const fetchTaller = async () => {
@@ -39,6 +44,13 @@ const TallerDinamicoDescripcion = () => {
       default:
         return 'text-blue-400';
     }
+  };
+
+  const handleNavigationWithSound = (path) => {
+    playClick();
+    setTimeout(() => {
+      navigate(path);
+    }, 200);
   };
 
   if (loading) {
@@ -135,13 +147,13 @@ const TallerDinamicoDescripcion = () => {
           {/* Botones en la parte inferior */}
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
             <button
-              onClick={() => navigate('/Proyectos')}
+              onClick={() => handleNavigationWithSound('/Proyectos')}
               className="bg-[#007B3E] text-white px-4 py-2 rounded shadow-lg hover:bg-[#009e4f] transition-colors w-full md:w-80 cursor-pointer"
             >
               Regresar
             </button>
             <button
-              onClick={() => navigate(`/Contenido/${tallerId}`)}
+              onClick={() => handleNavigationWithSound(`/Contenido/${tallerId}`)}
               className="bg-[#007B3E] text-white px-4 py-2 rounded shadow-lg hover:bg-[#009e4f] transition-colors w-full md:w-80 cursor-pointer"
             >
               Iniciar

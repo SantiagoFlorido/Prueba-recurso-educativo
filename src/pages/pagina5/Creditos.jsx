@@ -1,8 +1,20 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import useSound from 'use-sound';
 
 const Creditos = () => {
   const navigate = useNavigate();
+  const [playClick] = useSound(
+    'https://res.cloudinary.com/dufzsv87k/video/upload/v1744909247/ClickSound.mp3',
+    { volume: 1.0 }
+  );
+
+  const handleNavigationWithSound = () => {
+    playClick();
+    setTimeout(() => {
+      navigate('/Principal');
+    }, 200);
+  };
 
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center bg-white p-4 relative">
@@ -31,7 +43,7 @@ const Creditos = () => {
       {/* Botón de Menú Principal */}
       <div className="absolute bottom-8 right-8">
         <button
-          onClick={() => navigate('/Principal')}
+          onClick={handleNavigationWithSound}
           className="bg-[#007B3E] hover:bg-[#009e4f] text-white px-6 py-3 rounded-lg shadow-md transition duration-300 cursor-pointer"
         >
           Menú Principal

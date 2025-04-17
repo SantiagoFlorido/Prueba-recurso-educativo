@@ -1,8 +1,21 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import useSound from 'use-sound';
 
 const Pagina4Descripcion8 = () => {
   const navigate = useNavigate();
+  const [playClick] = useSound(
+    'https://res.cloudinary.com/dufzsv87k/video/upload/v1744909247/ClickSound.mp3',
+    { volume: 1.0 }
+  );
+
+  const handleNavigationWithSound = (route) => {
+    playClick();
+    setTimeout(() => {
+      navigate(route);
+    }, 200);
+  };
+
   return (
     <div className="bg-white w-full h-screen p-4 md:p-8 flex flex-col">
       {/* Título centrado en la parte superior */}
@@ -128,13 +141,13 @@ const Pagina4Descripcion8 = () => {
           {/* Botones en la parte inferior */}
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
             <button
-              onClick={() => navigate('/Proyectos')}
+              onClick={() => handleNavigationWithSound('/Proyectos')}
               className="bg-[#007B3E] text-white px-4 py-2 rounded shadow-lg hover:bg-[#009e4f] transition-colors w-full md:w-80 cursor-pointer"
             >
               Regresar
             </button>
             <button
-              onClick={() => navigate('/Contenido8')}
+              onClick={() => handleNavigationWithSound('/Contenido8')}
               className="bg-[#007B3E] text-white px-4 py-2 rounded shadow-lg hover:bg-[#009e4f] transition-colors w-full md:w-80 cursor-pointer"
             >
               Iniciar

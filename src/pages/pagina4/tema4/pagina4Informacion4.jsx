@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useSound from 'use-sound';
 
 const Pagina4Informacion4 = () => {
   const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
   const [userTallerRelation, setUserTallerRelation] = useState(null);
+  const [playClick] = useSound(
+    'https://res.cloudinary.com/dufzsv87k/video/upload/v1744909247/ClickSound.mp3',
+    { volume: 1.0 }
+  );
 
   // Verificar la relación usuario-taller al cargar el componente
   useEffect(() => {
@@ -95,72 +100,85 @@ const Pagina4Informacion4 = () => {
   ];
 
   const handleCircleClick = (index) => {
+    playClick();
     setActiveIndex(index);
   };
 
   const handlePrevSlide = () => {
     if (activeIndex > 0) {
+      playClick();
       setActiveIndex((prevIndex) => prevIndex - 1);
     }
   };
 
   const handleNextSlide = () => {
     if (activeIndex < slides.length - 1) {
+      playClick();
       setActiveIndex((prevIndex) => prevIndex + 1);
     }
   };
 
   // Función para manejar el clic en créditos
   const handleCreditosClick = async () => {
-    try {
-      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      if (!currentUser) {
-        throw new Error('Usuario no autenticado');
-      }
-
-      // Si ya existe la relación para el taller 4, actualizarla
-      if (userTallerRelation && userTallerRelation.id_taller === 4) {
-        const updateResponse = await fetch(`https://prueba-api-recurso-educativo.onrender.com/api/v1/usuarios-talleres/${userTallerRelation.id}/estado`, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            estadoabierto: 'abierto',
-            estadofinal: 'finalizado'
-          })
-        });
-
-        if (!updateResponse.ok) {
-          throw new Error('Error al actualizar el estado');
+    playClick();
+    setTimeout(async () => {
+      try {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (!currentUser) {
+          throw new Error('Usuario no autenticado');
         }
-      } else {
-        // Si no existe la relación para el taller 4, crearla
-        const createResponse = await fetch('https://prueba-api-recurso-educativo.onrender.com/api/v1/usuarios-talleres', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            id_usuario: currentUser.id,
-            id_taller: 4, // Asegurando que solo se cree para el taller 4
-            estadoabierto: 'abierto',
-            estadofinal: 'finalizado'
-          })
-        });
 
-        if (!createResponse.ok) {
-          throw new Error('Error al crear la relación usuario-taller');
+        // Si ya existe la relación para el taller 4, actualizarla
+        if (userTallerRelation && userTallerRelation.id_taller === 4) {
+          const updateResponse = await fetch(`https://prueba-api-recurso-educativo.onrender.com/api/v1/usuarios-talleres/${userTallerRelation.id}/estado`, {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              estadoabierto: 'abierto',
+              estadofinal: 'finalizado'
+            })
+          });
+
+          if (!updateResponse.ok) {
+            throw new Error('Error al actualizar el estado');
+          }
+        } else {
+          // Si no existe la relación para el taller 4, crearla
+          const createResponse = await fetch('https://prueba-api-recurso-educativo.onrender.com/api/v1/usuarios-talleres', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              id_usuario: currentUser.id,
+              id_taller: 4, // Asegurando que solo se cree para el taller 4
+              estadoabierto: 'abierto',
+              estadofinal: 'finalizado'
+            })
+          });
+
+          if (!createResponse.ok) {
+            throw new Error('Error al crear la relación usuario-taller');
+          }
         }
-      }
 
-      // Navegar a créditos después de actualizar/crear
-      navigate('/Creditos');
-    } catch (error) {
-      console.error('Error al manejar créditos:', error);
-      // Navegar a créditos incluso si hay error
-      navigate('/Creditos');
-    }
+        // Navegar a créditos después de actualizar/crear
+        navigate('/Creditos');
+      } catch (error) {
+        console.error('Error al manejar créditos:', error);
+        // Navegar a créditos incluso si hay error
+        navigate('/Creditos');
+      }
+    }, 200);
+  };
+
+  const handleNavigationWithSound = () => {
+    playClick();
+    setTimeout(() => {
+      navigate('/Tema4');
+    }, 200);
   };
 
   return (
@@ -189,7 +207,7 @@ const Pagina4Informacion4 = () => {
 
       {/* Botón de volver */}
       <button
-        onClick={() => navigate('/Tema4')}
+        onClick={handleNavigationWithSound}
         className="fixed md:absolute bottom-4 left-4 bg-[#007B3E] text-white px-4 py-2 rounded hover:bg-[#009e4f] transition-colors cursor-pointer"
       >
         Volver

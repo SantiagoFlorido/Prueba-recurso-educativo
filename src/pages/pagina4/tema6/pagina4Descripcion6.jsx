@@ -1,8 +1,21 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import useSound from 'use-sound';
 
 const Pagina4Descripcion6 = () => {
   const navigate = useNavigate();
+  const [playClick] = useSound(
+    'https://res.cloudinary.com/dufzsv87k/video/upload/v1744909247/ClickSound.mp3',
+    { volume: 1.0 }
+  );
+
+  const handleNavigationWithSound = (path) => {
+    playClick();
+    setTimeout(() => {
+      navigate(path);
+    }, 200);
+  };
+
   return (
     <div className="bg-white w-full h-screen p-4 md:p-8 flex flex-col">
       {/* Título centrado en la parte superior */}
@@ -18,7 +31,7 @@ const Pagina4Descripcion6 = () => {
           <div className="mb-4 md:mb-6">
             <h2 className="text-lg md:text-xl mb-2 font-bold">Descripción</h2>
             <p className="text-gray-700 mb-4">
-            Este taller enseña a los estudiantes de 6to grado a programar el mBot para seguir una línea utilizando sus sensores de infrarrojos. A través de actividades prácticas, los niños aprenderán a configurar los sensores, programar el comportamiento del mBot para seguir una pista y optimizar su rendimiento. El taller culmina con una actividad práctica en la que los estudiantes ponen a prueba sus programas en una pista con curvas y bifurcaciones.
+              Este taller enseña a los estudiantes de 6to grado a programar el mBot para seguir una línea utilizando sus sensores de infrarrojos. A través de actividades prácticas, los niños aprenderán a configurar los sensores, programar el comportamiento del mBot para seguir una pista y optimizar su rendimiento. El taller culmina con una actividad práctica en la que los estudiantes ponen a prueba sus programas en una pista con curvas y bifurcaciones.
             </p>
             <ul className="list-disc pl-5 text-gray-700">
               <li><strong>Duración:</strong> 85 minutos (1 hora y 25 minutos).</li>
@@ -128,13 +141,13 @@ const Pagina4Descripcion6 = () => {
           {/* Botones en la parte inferior */}
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
             <button
-              onClick={() => navigate('/Proyectos')}
+              onClick={() => handleNavigationWithSound('/Proyectos')}
               className="bg-[#007B3E] text-white px-4 py-2 rounded shadow-lg hover:bg-[#009e4f] transition-colors w-full md:w-80 cursor-pointer"
             >
               Regresar
             </button>
             <button
-              onClick={() => navigate('/Contenido6')}
+              onClick={() => handleNavigationWithSound('/Contenido6')}
               className="bg-[#007B3E] text-white px-4 py-2 rounded shadow-lg hover:bg-[#009e4f] transition-colors w-full md:w-80 cursor-pointer"
             >
               Iniciar

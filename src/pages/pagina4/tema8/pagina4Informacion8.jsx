@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useSound from 'use-sound';
 
 const Pagina4Informacion8 = () => {
   const navigate = useNavigate();
+  const [playClick] = useSound(
+    'https://res.cloudinary.com/dufzsv87k/video/upload/v1744909247/ClickSound.mp3',
+    { volume: 1.0 }
+  );
   const [activeIndex, setActiveIndex] = useState(0);
   const [userTallerRelation, setUserTallerRelation] = useState(null);
 
@@ -119,27 +124,45 @@ const Pagina4Informacion8 = () => {
     },
   ];
 
-  // Función para manejar el cambio de slide
+  // Función para manejar el cambio de slide con sonido
   const handleCircleClick = (index) => {
-    setActiveIndex(index);
+    playClick();
+    setTimeout(() => {
+      setActiveIndex(index);
+    }, 200);
   };
 
-  // Función para ir al slide anterior (no retrocede más allá del primer slide)
+  // Función para ir al slide anterior con sonido
   const handlePrevSlide = () => {
     if (activeIndex > 0) {
-      setActiveIndex((prevIndex) => prevIndex - 1);
+      playClick();
+      setTimeout(() => {
+        setActiveIndex((prevIndex) => prevIndex - 1);
+      }, 200);
     }
   };
 
-  // Función para ir al siguiente slide (no avanza más allá del último slide)
+  // Función para ir al siguiente slide con sonido
   const handleNextSlide = () => {
     if (activeIndex < slides.length - 1) {
-      setActiveIndex((prevIndex) => prevIndex + 1);
+      playClick();
+      setTimeout(() => {
+        setActiveIndex((prevIndex) => prevIndex + 1);
+      }, 200);
     }
   };
 
-  // Función para manejar el clic en créditos
+  // Función para navegación con sonido
+  const handleNavigationWithSound = (route) => {
+    playClick();
+    setTimeout(() => {
+      navigate(route);
+    }, 200);
+  };
+
+  // Función para manejar el clic en créditos con sonido
   const handleCreditosClick = async () => {
+    playClick();
     try {
       const currentUser = JSON.parse(localStorage.getItem('currentUser'));
       if (!currentUser) {
@@ -171,7 +194,7 @@ const Pagina4Informacion8 = () => {
           },
           body: JSON.stringify({
             id_usuario: currentUser.id,
-            id_taller: 8, // Asegurando que solo se cree para el taller 8
+            id_taller: 8,
             estadoabierto: 'abierto',
             estadofinal: 'finalizado',
           })
@@ -183,11 +206,15 @@ const Pagina4Informacion8 = () => {
       }
 
       // Navegar a créditos después de actualizar/crear
-      navigate('/Creditos');
+      setTimeout(() => {
+        navigate('/Creditos');
+      }, 200);
     } catch (error) {
       console.error('Error al manejar créditos:', error);
       // Navegar a créditos incluso si hay error
-      navigate('/Creditos');
+      setTimeout(() => {
+        navigate('/Creditos');
+      }, 200);
     }
   };
 
@@ -218,13 +245,13 @@ const Pagina4Informacion8 = () => {
 
       {/* Botón de volver */}
       <button
-        onClick={() => navigate('/Tema8')}
+        onClick={() => handleNavigationWithSound('/Tema8')}
         className="fixed md:absolute bottom-4 left-4 bg-[#007B3E] text-white px-4 py-2 rounded hover:bg-[#009e4f] transition-colors cursor-pointer"
       >
         Volver
       </button>
 
-      {/* Botón de créditos (con la nueva función) */}
+      {/* Botón de créditos */}
       <button
         onClick={handleCreditosClick}
         className="fixed md:absolute bottom-4 right-4 bg-[#007B3E] text-white px-4 py-2 rounded hover:bg-[#009e4f] transition-colors cursor-pointer"
