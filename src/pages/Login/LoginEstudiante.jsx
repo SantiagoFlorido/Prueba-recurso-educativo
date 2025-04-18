@@ -35,7 +35,7 @@ const LoginStudent = () => {
     setError('');
   
     try {
-      // Buscar al usuario por nombre
+      // Buscar usuario por nombre
       const searchResponse = await fetch(`https://prueba-api-recurso-educativo.onrender.com/api/v1/users?nombre=${nombre}`);
       
       if (!searchResponse.ok) {
@@ -44,39 +44,50 @@ const LoginStudent = () => {
   
       const users = await searchResponse.json();
       
-      // Verificar si encontramos al usuario
       if (!users || users.length === 0) {
         throw new Error('Usuario no encontrado');
       }
   
-      const user = users.find(u => u.nombre === nombre); // Búsqueda exacta
+      const user = users.find(u => u.nombre === nombre);
       if (!user) {
-        throw new Error('Usuario no existe');
+        throw new Error('Credenciales incorrectas');
       }
   
-      // Verificación robusta del rol (insensible a mayúsculas/espacios)
+      // Verificar rol
       const normalizedRole = String(user.rol).toLowerCase().trim();
       if (normalizedRole !== 'estudiante') {
         throw new Error(`Acceso restringido. Rol actual: ${user.rol}`);
       }
   
-      // Verificar la contraseña
-      if (user.contraseña !== password) {
+      // Verificar contraseña - ahora hacemos una petición al backend
+      const verifyResponse = await fetch('https://prueba-api-recurso-educativo.onrender.com/api/v1/users/verify', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: user.id,
+          password: password
+        })
+      });
+  
+      const verification = await verifyResponse.json();
+      
+      if (!verification.success) {
         throw new Error('Contraseña incorrecta');
       }
   
-      // Guardar datos de usuario en localStorage (actualizado)
+      // Guardar datos de usuario en localStorage
       localStorage.setItem('currentUser', JSON.stringify({
-        id: user.id_usuario || user.id,
+        id: user.id,
         nombre: user.nombre,
         rol: user.rol,
-        tipo: 'estudiante', // Identificador adicional
-        timestamp: new Date().getTime() // Para control de expiración
+        tipo: 'estudiante',
+        timestamp: new Date().getTime()
       }));
   
-      // Guardar también específicamente como estudiante
       localStorage.setItem('studentUser', JSON.stringify({
-        id: user.id_usuario || user.id,
+        id: user.id,
         nombre: user.nombre,
         rol: user.rol
       }));
@@ -84,7 +95,7 @@ const LoginStudent = () => {
       handleNavigationWithSound('/Principal');
       
     } catch (err) {
-      console.error('Error completo:', err); // Debug
+      console.error('Error en login:', err);
       setError(err.message || 'Error al iniciar sesión');
     } finally {
       setLoading(false);

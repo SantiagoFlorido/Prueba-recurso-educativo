@@ -33,48 +33,65 @@ const Login = () => {
     
     setLoading(true);
     setError('');
-
+  
     try {
+      // Buscar usuario por nombre
       const searchResponse = await fetch(`https://prueba-api-recurso-educativo.onrender.com/api/v1/users?nombre=${nombre}`);
       
       if (!searchResponse.ok) {
         throw new Error('Error al buscar usuario');
       }
-
+  
       const users = await searchResponse.json();
       
       if (!users || users.length === 0) {
         throw new Error('Usuario no encontrado');
       }
-
+  
       const user = users.find(u => u.nombre === nombre);
       if (!user) {
         throw new Error('Credenciales incorrectas');
       }
-
+  
+      // Verificar rol
       const normalizedRole = String(user.rol).toLowerCase().trim();
       if (normalizedRole !== 'docente') {
         throw new Error(`Acceso restringido. Rol actual: ${user.rol}`);
       }
-
-      if (user.contraseña !== password) {
+  
+      // Verificar contraseña - ahora hacemos una petición al backend
+      const verifyResponse = await fetch('https://prueba-api-recurso-educativo.onrender.com/api/v1/users/verify', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: user.id,
+          password: password
+        })
+      });
+  
+      const verification = await verifyResponse.json();
+      
+      if (!verification.success) {
         throw new Error('Contraseña incorrecta');
       }
-
+  
+      // Guardar datos de usuario en localStorage
       localStorage.setItem('currentUser', JSON.stringify({
-        id: user.id_usuario || user.id,
+        id: user.id,
         nombre: user.nombre,
         rol: user.rol,
         tipo: 'docente',
         timestamp: new Date().getTime()
       }));
-
+  
       localStorage.setItem('teacherUser', JSON.stringify({
-        id: user.id_usuario || user.id,
+        id: user.id,
         nombre: user.nombre,
         rol: user.rol
       }));
-
+  
       handleNavigationWithSound('/Principal');
       
     } catch (err) {
