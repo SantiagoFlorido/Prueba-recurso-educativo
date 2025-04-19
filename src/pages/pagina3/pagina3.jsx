@@ -192,7 +192,7 @@ const Pagina3 = () => {
             }`}
             onClick={() => {
               if (userRole === 'docente') {
-                handleExternalLinkWithSound('https://drive.google.com/drive/folders/1BRRCv8quGLVnSsB9ndCHO7cdWUf9sh3-?usp=sharing');
+                handleExternalLinkWithSound('https://mailunicundiedu-my.sharepoint.com/:f:/g/personal/dflorido_ucundinamarca_edu_co/EgspzyNMnq5JkvF7fJzfM0UBQMG5jLgJ6cgdT0N8Ld7gng?e=022Nfi');
               }
             }}   
           >
@@ -209,7 +209,7 @@ const Pagina3 = () => {
           </div>
           <div 
             className="bg-[#00482B] hover:bg-[#006341] text-white p-2 rounded-lg flex-grow flex items-center justify-center cursor-pointer transition-colors duration-300"
-            onClick={() => handleExternalLinkWithSound('https://drive.google.com/drive/folders/1_ziaHW8TNaqfAI8Tcc5e2UBrzhm8Gl6N?usp=sharing')}
+            onClick={() => handleExternalLinkWithSound('https://mailunicundiedu-my.sharepoint.com/:f:/g/personal/dflorido_ucundinamarca_edu_co/EhGTOrMGOSpPuXyMN00VCs4BBORPqg9dtIAs0fH-KFhvmw?e=Sw77tc')}
           >
             <div className="flex items-center gap-2">
               <h2 className="text-lg text-center font-semibold">

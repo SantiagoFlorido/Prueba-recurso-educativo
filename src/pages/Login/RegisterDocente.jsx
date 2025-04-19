@@ -151,7 +151,6 @@ const Register = () => {
               ref={recaptchaRef}
               sitekey="6Lf2VxcrAAAAAE6u-LJdQPAWH8Vz-evnEp7LCKCS"
               onChange={onRecaptchaChange}
-              onClick={() => playClick()}
             />
           </div>
           
