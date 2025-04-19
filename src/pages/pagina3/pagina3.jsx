@@ -282,11 +282,11 @@ const Pagina3 = () => {
         {/* Contenedor combinado para Imagen y Créditos */}
         <div className="col-span-1 md:col-span-2">
           {/* Imagen Temas del Proyecto */}
-          <div className="bg-[#007B3E] p-2 rounded-lg">
+          <div className="bg-gray-200 p-2 rounded-lg">
             <img
-              src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743284192/Imagenes%20Recurso%20Educativo/Banner%20menu%20principal/vr8kxu1robbc9h0jxef6.jpg"
+              src="https://res.cloudinary.com/dufzsv87k/image/upload/v1745096924/Banner%20RED%20Men%C3%BA%20Principal.png"
               alt="Banner"
-              className="w-full h-full object-fill rounded-md"
+              className="w-full h-full object-contain rounded-md"
             />
           </div>
           {/* Créditos */}

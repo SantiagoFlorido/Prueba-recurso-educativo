@@ -22,35 +22,35 @@ const Pagina1 = () => {
       description: 'Bienvenido a (Nombre del proyecto)',
     },
     {
-      image: 'https://res.cloudinary.com/dufzsv87k/image/upload/v1741305069/mapa_igu9fc.webp',
+      image: 'https://res.cloudinary.com/dufzsv87k/image/upload/v1745092380/Banner%20RED%201.png',
       description: 'Taller 1: El viaje de Pedro',
     },
     {
-      image: 'https://res.cloudinary.com/dufzsv87k/image/upload/v1741305069/piezas_nemtfi.webp',
+      image: 'https://res.cloudinary.com/dufzsv87k/image/upload/v1745092426/Banner%20RED%202.png',
       description: 'Taller 2: Armando un Mbot',
     },
     {
-      image: 'https://res.cloudinary.com/dufzsv87k/image/upload/v1741305067/conectar_iv5sdj.webp',
+      image: 'https://res.cloudinary.com/dufzsv87k/image/upload/v1745092451/Banner%20RED%203.png',
       description: 'Taller 3: Conectando un Mbot al PC',
     },
     {
-      image: '',
+      image: 'https://res.cloudinary.com/dufzsv87k/image/upload/v1745092457/Banner%20RED%204.png',
       description: 'Taller 4: Conectando un Mbot al celular',
     },
     {
-      image: 'https://res.cloudinary.com/dufzsv87k/image/upload/v1741305070/sensor4_yxeq9c.webp',
+      image: 'https://res.cloudinary.com/dufzsv87k/image/upload/v1745092490/Banner%20RED%205.png',
       description: 'Taller 5: Programando el sensor de ultrasonido de nuestro Mbot',
     },
     {
-      image: 'https://res.cloudinary.com/dufzsv87k/image/upload/v1741305068/linea5_ixd3hm.webp',
+      image: 'https://res.cloudinary.com/dufzsv87k/image/upload/v1745092518/Banner%20RED%206.png',
       description: 'Taller 6: Programando el seguidor de linea de nuestro Mbot',
     },
     {
-      image: '',
+      image: 'https://res.cloudinary.com/dufzsv87k/image/upload/v1745092542/Banner%20RED%207.png',
       description: 'Taller 7: ',
     },
     {
-      image: '',
+      image: 'https://res.cloudinary.com/dufzsv87k/image/upload/v1745092564/Banner%20RED%208.png',
       description: 'Taller 8: ',
     },
   ];
@@ -79,8 +79,6 @@ const Pagina1 = () => {
     }, 200); // Pequeño delay para que suene antes de navegar
   };
 
-  
-
   return (
     <div className="bg-white p-4 h-screen flex flex-col overflow-hidden">
       {/* Header con logos y botón */}
@@ -108,7 +106,7 @@ const Pagina1 = () => {
 
       {/* Contenedor principal con slider */}
       <div className="flex-1 flex flex-col">
-        <div className="relative flex-1 flex justify-center ">
+        <div className="relative flex-1 flex justify-center items-center md:px-20 md:py-0 max-h-50 top-1/3 md:top-0 md:max-h-[4000px]"> {/* Añadido items-center para centrar verticalmente en móvil */}
           <Swiper
             ref={swiperRef}
             spaceBetween={30}
@@ -120,13 +118,12 @@ const Pagina1 = () => {
           >
             {slides.map((slide, index) => (
               <SwiperSlide key={index}>
-                <div className="bg-gray-100 p-2 rounded-lg h-full flex flex-col justify-center">
+                <div className="bg-gray-100 md:p-5 md:py-1 rounded-lg md:h-full flex flex-col justify-center h-full"> {/* Cambiado h-50 por h-full */}
                   <img
                     src={slide.image}
                     alt={`Banner explicativo ${index + 1}`}
-                    className="w-full h-full max-h-[55vh] object-cover rounded-md md:max-h-[120vh] md:h-110"
-                  />
-                  <p className="mt-2 text-center text-sm md:text-base">{slide.description}</p>
+                    className="w-full h-full max-h-[55vh] object-contain md:object-contain rounded-md md:max-h-[140vh] md:h-125"
+                  /> 
                 </div>
               </SwiperSlide>
             ))}
@@ -135,13 +132,13 @@ const Pagina1 = () => {
           {/* Botones de navegación */}
           <button
             onClick={handlePrev}
-            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[#007B3E] text-white p-2 rounded-full shadow-lg hover:bg-[#009e4f] transition-colors duration-300 z-10 cursor-pointer"
+            className="absolute left-2 md:left-23 top-1/2 transform -translate-y-1/2 bg-[#007B3E] text-white p-2 rounded-full shadow-lg hover:bg-[#009e4f] transition-colors duration-300 z-10 cursor-pointer"
           >
             &lt;
           </button>
           <button
             onClick={handleNext}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[#007B3E] text-white p-2 rounded-full shadow-lg hover:bg-[#009e4f] transition-colors duration-300 z-10 cursor-pointer"
+            className="absolute right-2 md:right-23 top-1/2 transform -translate-y-1/2 bg-[#007B3E] text-white p-2 rounded-full shadow-lg hover:bg-[#009e4f] transition-colors duration-300 z-10 cursor-pointer"
           >
             &gt;
           </button>

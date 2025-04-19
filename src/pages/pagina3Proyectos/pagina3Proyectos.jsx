@@ -185,11 +185,11 @@ const Pagina3Proyectos = () => {
             <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
               <h2 className="text-xl font-semibold">Taller 1: El viaje de Pedro</h2>
             </div>
-            <div className="h-64 flex items-center justify-center">
+            <div className="md:h-64 flex items-center justify-center">
               <img
-                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305069/mapa_igu9fc.webp"
+                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1745092380/Banner%20RED%201.png"
                 alt="Animación 1"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain md:object-fill"
               />
             </div>
           </div>
@@ -199,11 +199,11 @@ const Pagina3Proyectos = () => {
             <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
               <h2 className="text-xl font-semibold">Taller 2: Armando un Mbot</h2>
             </div>
-            <div className="h-64 flex items-center justify-center">
+            <div className="md:h-64 flex items-center justify-center">
               <img
-                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305069/piezas_nemtfi.webp"
+                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1745092426/Banner%20RED%202.png"
                 alt="Animación 2"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain md:object-fill"
               />
             </div>
           </div>
@@ -213,11 +213,11 @@ const Pagina3Proyectos = () => {
             <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
               <h2 className="text-xl font-semibold">Taller 3: Conectar un Mbot al PC</h2>
             </div>
-            <div className="h-64 flex items-center justify-center">
+            <div className="md:h-64 flex items-center justify-center">
               <img
-                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305067/conectar_iv5sdj.webp"
+                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1745092451/Banner%20RED%203.png"
                 alt="Animación 3"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain md:object-fill"
               />
             </div>
           </div>
@@ -227,11 +227,11 @@ const Pagina3Proyectos = () => {
             <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
               <h2 className="text-xl font-semibold">Taller 4: Conectar un Mbot al Celular</h2>
             </div>
-            <div className="h-64 flex items-center justify-center">
+            <div className="md:h-64 flex items-center justify-center">
               <img
-                src=""
+                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1745092457/Banner%20RED%204.png"
                 alt="Animación 4"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain md:object-fill"
               />
             </div>
           </div>
@@ -241,11 +241,11 @@ const Pagina3Proyectos = () => {
             <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
               <h2 className="text-xl font-semibold">Taller 5: Evitar objetos con el Mbot</h2>
             </div>
-            <div className="h-64 flex items-center justify-center">
+            <div className="md:h-64 flex items-center justify-center">
               <img
-                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305070/sensor4_yxeq9c.webp"
+                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1745092490/Banner%20RED%205.png"
                 alt="Animación 4"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain md:object-fill"
               />
             </div>
           </div>
@@ -255,11 +255,11 @@ const Pagina3Proyectos = () => {
             <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
               <h2 className="text-xl font-semibold">Taller 6: Seguir lineas con el Mbot</h2>
             </div>
-            <div className="h-64 flex items-center justify-center">
+            <div className="md:h-64 flex items-center justify-center">
               <img
-                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305068/linea5_ixd3hm.webp"
+                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1745092518/Banner%20RED%206.png"
                 alt="Animación 5"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain md:object-fill"
               />
             </div>
           </div>
@@ -267,13 +267,13 @@ const Pagina3Proyectos = () => {
           {/* Tema 7 */}
           <div onClick={() => handleTopicClick(7)} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
             <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
-              <h2 className="text-xl font-semibold">Taller 7: </h2>
+              <h2 className="text-xl font-semibold">Taller 7: Seguir objetos con el Mbot</h2>
             </div>
-            <div className="h-64 flex items-center justify-center">
+            <div className="md:h-64 flex items-center justify-center">
               <img
-                src=""
+                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1745092542/Banner%20RED%207.png"
                 alt="Animación 7"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain md:object-fill"
               />
             </div>
           </div>
@@ -281,13 +281,13 @@ const Pagina3Proyectos = () => {
           {/* Tema 8 */}
           <div onClick={() => handleTopicClick(8)} className="cursor-pointer border rounded-lg overflow-hidden hover:opacity-70">
             <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
-              <h2 className="text-xl font-semibold">Taller 8: </h2>
+              <h2 className="text-xl font-semibold">Taller 8: Luces y sonidos con el Mbot</h2>
             </div>
-            <div className="h-64 flex items-center justify-center">
+            <div className="md:h-64 flex items-center justify-center">
               <img
-                src=""
+                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1745092564/Banner%20RED%208.png"
                 alt="Animación 8"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain md:object-fill" 
               />
             </div>
           </div>
@@ -320,12 +320,12 @@ const Pagina3Proyectos = () => {
                 <div className="h-10 flex items-center justify-center bg-[#007B3E] text-white">
                   <h2 className="text-xl font-semibold">{taller.nombre}</h2>
                 </div>
-                <div className="h-64 flex items-center justify-center">
+                <div className="md:h-64 flex items-center justify-center">
                   {taller.portadaUrl ? (
                     <img
                       src={taller.portadaUrl}
                       alt={taller.nombre}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain md:object-fill"
                     />
                   ) : (
                     <div className="w-full h-full bg-gray-200 flex items-center justify-center">

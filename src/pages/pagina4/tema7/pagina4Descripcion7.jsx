@@ -20,7 +20,7 @@ const Pagina4Descripcion7 = () => {
     <div className="bg-white w-full h-screen p-4 md:p-8 flex flex-col">
       {/* Título centrado en la parte superior */}
       <h1 className="border text-2xl md:text-3xl font-bold text-center mb-4 md:mb-6 rounded-lg">
-        Tema 7: 
+        Taller 7: Programación del Sensor de Ultrasonido para Seguimiento de Objetos
       </h1>
 
       {/* Contenedor principal */}
@@ -31,19 +31,19 @@ const Pagina4Descripcion7 = () => {
           <div className="mb-4 md:mb-6">
             <h2 className="text-lg md:text-xl mb-2 font-bold">Descripción</h2>
             <p className="text-gray-700 mb-4">
-            Este taller enseña a los estudiantes de 6to grado a programar el mBot para seguir una línea utilizando sus sensores de infrarrojos. A través de actividades prácticas, los niños aprenderán a configurar los sensores, programar el comportamiento del mBot para seguir una pista y optimizar su rendimiento. El taller culmina con una actividad práctica en la que los estudiantes ponen a prueba sus programas en una pista con curvas y bifurcaciones.
+              Este taller enseña a los estudiantes a programar el sensor de ultrasonido del mBot para que siga un objeto en movimiento, simulando que el robot sigue la mano de una persona. Los estudiantes aprenderán a configurar el sensor, programar las condiciones de seguimiento y ajustar el comportamiento del robot según la distancia detectada.
             </p>
             <ul className="list-disc pl-5 text-gray-700">
-              <li><strong>Duración:</strong> 85 minutos (1 hora y 25 minutos).</li>
+              <li><strong>Duración:</strong> 75 minutos (1 hora y 15 minutos).</li>
               
               <li>
                 <strong>Materiales:</strong>
                 <ul className="list-disc pl-5">
-                  <li>Computadoras con mBlock instalado.</li>
-                  <li>mBot con sensores de infrarrojos conectados.</li>
-                  <li>Cable USB o conexión Bluetooth para conectar el mBot a la computadora.</li>
-                  <li>Cinta adhesiva negra para crear la pista.</li>
-                  <li>Superficie blanca o clara para colocar la pista.</li>
+                  <li>Kit mBot ensamblado</li>
+                  <li>Computadoras con mBlock instalado</li>
+                  <li>Cables USB para conectar el mBot a la computadora</li>
+                  <li>Fuente de energía para el mBot (baterías o cable de alimentación)</li>
+                  <li>Objetos como una mano, pelota u otros para que el mBot siga</li>
                 </ul>
               </li>
             </ul>
@@ -52,25 +52,25 @@ const Pagina4Descripcion7 = () => {
           {/* Sección de Nivel de Dificultad, Objetivos y Finalidades */}
           <div className="mb-4 md:mb-6">
             <h2 className="text-lg md:text-xl font-semibold mb-2">
-              Nivel de dificultad: <span className="text-red-500">DIFICIL (esta informacion hay que cambiar)</span>
+              Nivel de dificultad: <span className="text-red-500">DIFÍCIL</span>
             </h2>
             <ul className="list-disc pl-5 text-gray-700">
               <li>
                 <strong>Objetivos:</strong>
                 <ul className="list-disc pl-5">
-                  <li>Enseñar a los estudiantes a configurar y utilizar los sensores de infrarrojos del mBot.</li>
-                  <li>Programar el mBot para seguir una línea negra en el suelo.</li>
-                  <li>Optimizar el programa para mejorar el rendimiento del mBot en la pista.</li>
-                  <li>Aplicar lo aprendido en una actividad práctica que simule un entorno con una pista de seguimiento.</li>
+                  <li>Configurar correctamente el sensor de ultrasonido en el mBot.</li>
+                  <li>Programar condiciones basadas en la distancia detectada por el sensor.</li>
+                  <li>Crear un comportamiento de seguimiento fluido del objeto.</li>
+                  <li>Ajustar los parámetros de distancia y velocidad para optimizar el seguimiento.</li>
                 </ul>
               </li>
               <li>
                 <strong>Finalidades:</strong>
                 <ul className="list-disc pl-5">
-                  <li>Desarrollar habilidades avanzadas de programación y uso de sensores en robótica.</li>
-                  <li>Fomentar el pensamiento lógico y la resolución de problemas mediante la programación condicional.</li>
-                  <li>Integrar conceptos de tecnología y robótica en actividades prácticas.</li>
-                  <li>Preparar a los estudiantes para programar funciones más complejas del mBot en futuras sesiones.</li>
+                  <li>Comprender el funcionamiento del sensor de ultrasonido y sus aplicaciones.</li>
+                  <li>Desarrollar habilidades de programación condicional con sensores.</li>
+                  <li>Fomentar la resolución de problemas mediante ajustes prácticos.</li>
+                  <li>Preparar a los estudiantes para programar interacciones más complejas entre sensores y actuadores.</li>
                 </ul>
               </li>
             </ul>
@@ -83,43 +83,37 @@ const Pagina4Descripcion7 = () => {
             <div className="mb-4">
               <h3 className="text-md font-semibold text-blue-600">Ciencia</h3>
               <p className="text-gray-700">
-               - Exploración de principios físicos, como la detección de luz infrarroja y su reflexión en superficies.
-              </p>
-              <p className="text-gray-700">
-                - Uso de sensores de infrarrojos para interactuar con el entorno.
+               - Principios del ultrasonido y cómo se mide la distancia mediante ondas sonoras.
               </p>
             </div>
             {/* Habilidad: Tecnología */}
             <div className="mb-4">
               <h3 className="text-md font-semibold text-blue-600">Tecnología</h3>
               <p className="text-gray-700">
-               - Uso de mBlock para programar el mBot.
+               - Programación del sensor de ultrasonido en mBlock.
               </p>
               <p className="text-gray-700">
-               - Configuración y uso de los sensores de infrarrojos.
-              </p>
-              <p className="text-gray-700">
-               - Conexión del mBot a la computadora (USB o Bluetooth).
+               - Configuración de hardware del mBot.
               </p>
             </div>
             {/* Habilidad: Ingeniería */}
             <div className="mb-4">
               <h3 className="text-md font-semibold text-blue-600">Ingeniería</h3>
               <p className="text-gray-700">
-               - Diseño de un programa que toma decisiones basadas en la detección de la línea.
+               - Diseño de un sistema de seguimiento basado en sensores.
               </p>
               <p className="text-gray-700">
-               - Resolución de problemas durante la programación y las pruebas.
+               - Optimización del comportamiento del robot mediante ajustes.
               </p>
             </div>
             {/* Habilidad: Matemáticas */}
             <div className="mb-4">
               <h3 className="text-md font-semibold text-blue-600">Matemáticas</h3>
               <p className="text-gray-700">
-               - Uso de condiciones lógicas (si... entonces) para programar comportamientos.
+               - Trabajo con rangos de distancia (menos de 10cm, 10-30cm, más de 30cm).
               </p>
               <p className="text-gray-700">
-                - Aplicación de conceptos de dirección y movimiento en la programación.
+                - Ajuste de parámetros numéricos para optimizar el seguimiento.
               </p>
             </div>
           </div>

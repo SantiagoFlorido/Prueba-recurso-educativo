@@ -8,7 +8,7 @@ export default defineConfig({
     tailwindcss()
   ],
   server: {
-    open: true,
+    //open: true,
     host: '0.0.0.0', // Permite conexiones desde cualquier IP
     port: 5173, // Puerto explícito
     strictPort: true, // Evita que Vite cambie el puerto automáticamente

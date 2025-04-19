@@ -125,11 +125,11 @@ const Pagina4Descripcion2 = () => {
         <div className="w-full md:w-1/2 pl-0 md:pl-4 flex flex-col">
           {/* Imagen o video */}
           <div className="border flex-1 mb-4 rounded-lg overflow-hidden">
-            <div className=" h-48 md:h-full flex items-center justify-center rounded-lg p-4">
+            <div className=" h-48 md:h-full flex items-center justify-center rounded-lg p-0">
               <img
                 src="https://res.cloudinary.com/dufzsv87k/image/upload/v1743642227/taller2slide1_dot4ii.png"
                 alt="Imagen, video y guion"
-                className="w-full h-auto max-h-[300px] md:max-h-[400px] object-fill rounded-md"
+                className="w-full h-auto object-contain rounded-md"
               />
             </div>
           </div>

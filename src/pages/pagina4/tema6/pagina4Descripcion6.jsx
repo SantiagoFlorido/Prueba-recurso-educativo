@@ -52,7 +52,7 @@ const Pagina4Descripcion6 = () => {
           {/* Sección de Nivel de Dificultad, Objetivos y Finalidades */}
           <div className="mb-4 md:mb-6">
             <h2 className="text-lg md:text-xl font-semibold mb-2">
-              Nivel de dificultad: <span className="text-red-500">DIFICIL</span>
+              Nivel de dificultad: <span className="text-orange-400">INTERMEDIO</span>
             </h2>
             <ul className="list-disc pl-5 text-gray-700">
               <li>

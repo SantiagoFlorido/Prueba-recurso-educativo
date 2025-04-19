@@ -20,7 +20,7 @@ const Pagina4Descripcion8 = () => {
     <div className="bg-white w-full h-screen p-4 md:p-8 flex flex-col">
       {/* Título centrado en la parte superior */}
       <h1 className="border text-2xl md:text-3xl font-bold text-center mb-4 md:mb-6 rounded-lg">
-        Tema 8: 
+        Taller 8: Programación de Luces y Sonidos en el mBot
       </h1>
 
       {/* Contenedor principal */}
@@ -31,7 +31,7 @@ const Pagina4Descripcion8 = () => {
           <div className="mb-4 md:mb-6">
             <h2 className="text-lg md:text-xl mb-2 font-bold">Descripción</h2>
             <p className="text-gray-700 mb-4">
-            Este taller enseña a los estudiantes de 6to grado a programar el mBot para seguir una línea utilizando sus sensores de infrarrojos. A través de actividades prácticas, los niños aprenderán a configurar los sensores, programar el comportamiento del mBot para seguir una pista y optimizar su rendimiento. El taller culmina con una actividad práctica en la que los estudiantes ponen a prueba sus programas en una pista con curvas y bifurcaciones.
+              Este taller enseña a los estudiantes a programar los LED de colores y los sonidos del mBot para crear secuencias de luces y melodías. Los estudiantes aprenderán a controlar los efectos visuales y auditivos del robot, desarrollando su creatividad mientras aplican conceptos de programación.
             </p>
             <ul className="list-disc pl-5 text-gray-700">
               <li><strong>Duración:</strong> 85 minutos (1 hora y 25 minutos).</li>
@@ -39,11 +39,10 @@ const Pagina4Descripcion8 = () => {
               <li>
                 <strong>Materiales:</strong>
                 <ul className="list-disc pl-5">
-                  <li>Computadoras con mBlock instalado.</li>
-                  <li>mBot con sensores de infrarrojos conectados.</li>
-                  <li>Cable USB o conexión Bluetooth para conectar el mBot a la computadora.</li>
-                  <li>Cinta adhesiva negra para crear la pista.</li>
-                  <li>Superficie blanca o clara para colocar la pista.</li>
+                  <li>Kit mBot ensamblado</li>
+                  <li>Computadoras con mBlock instalado</li>
+                  <li>Cables USB para conectar el mBot a la computadora</li>
+                  <li>Fuente de energía para el mBot (baterías o cable de alimentación)</li>
                 </ul>
               </li>
             </ul>
@@ -52,25 +51,25 @@ const Pagina4Descripcion8 = () => {
           {/* Sección de Nivel de Dificultad, Objetivos y Finalidades */}
           <div className="mb-4 md:mb-6">
             <h2 className="text-lg md:text-xl font-semibold mb-2">
-              Nivel de dificultad: <span className="text-red-500">DIFICIL (esta informacion hay que cambiar)</span>
+              Nivel de dificultad: <span className="text-red-500">DIFÍCIL</span>
             </h2>
             <ul className="list-disc pl-5 text-gray-700">
               <li>
                 <strong>Objetivos:</strong>
                 <ul className="list-disc pl-5">
-                  <li>Enseñar a los estudiantes a configurar y utilizar los sensores de infrarrojos del mBot.</li>
-                  <li>Programar el mBot para seguir una línea negra en el suelo.</li>
-                  <li>Optimizar el programa para mejorar el rendimiento del mBot en la pista.</li>
-                  <li>Aplicar lo aprendido en una actividad práctica que simule un entorno con una pista de seguimiento.</li>
+                  <li>Aprender a programar los LED del mBot para cambiar de color.</li>
+                  <li>Controlar los sonidos y melodías del mBot mediante programación.</li>
+                  <li>Crear secuencias sincronizadas de luces y sonidos.</li>
+                  <li>Desarrollar la creatividad mediante la personalización de efectos visuales y auditivos.</li>
                 </ul>
               </li>
               <li>
                 <strong>Finalidades:</strong>
                 <ul className="list-disc pl-5">
-                  <li>Desarrollar habilidades avanzadas de programación y uso de sensores en robótica.</li>
-                  <li>Fomentar el pensamiento lógico y la resolución de problemas mediante la programación condicional.</li>
-                  <li>Integrar conceptos de tecnología y robótica en actividades prácticas.</li>
-                  <li>Preparar a los estudiantes para programar funciones más complejas del mBot en futuras sesiones.</li>
+                  <li>Introducir conceptos básicos de programación de efectos visuales y auditivos.</li>
+                  <li>Fomentar la creatividad en el diseño de secuencias interactivas.</li>
+                  <li>Preparar a los estudiantes para programar interacciones más complejas en futuros talleres.</li>
+                  <li>Desarrollar habilidades de presentación y trabajo en equipo mediante la exhibición final.</li>
                 </ul>
               </li>
             </ul>
@@ -83,43 +82,37 @@ const Pagina4Descripcion8 = () => {
             <div className="mb-4">
               <h3 className="text-md font-semibold text-blue-600">Ciencia</h3>
               <p className="text-gray-700">
-               - Exploración de principios físicos, como la detección de luz infrarroja y su reflexión en superficies.
-              </p>
-              <p className="text-gray-700">
-                - Uso de sensores de infrarrojos para interactuar con el entorno.
+               - Comprensión de cómo funcionan los LED y los emisores de sonido en dispositivos electrónicos.
               </p>
             </div>
             {/* Habilidad: Tecnología */}
             <div className="mb-4">
               <h3 className="text-md font-semibold text-blue-600">Tecnología</h3>
               <p className="text-gray-700">
-               - Uso de mBlock para programar el mBot.
+               - Programación de efectos visuales y auditivos en mBlock.
               </p>
               <p className="text-gray-700">
-               - Configuración y uso de los sensores de infrarrojos.
-              </p>
-              <p className="text-gray-700">
-               - Conexión del mBot a la computadora (USB o Bluetooth).
+               - Manipulación de bloques específicos para luces y sonidos.
               </p>
             </div>
             {/* Habilidad: Ingeniería */}
             <div className="mb-4">
               <h3 className="text-md font-semibold text-blue-600">Ingeniería</h3>
               <p className="text-gray-700">
-               - Diseño de un programa que toma decisiones basadas en la detección de la línea.
+               - Diseño de secuencias sincronizadas de luces y sonidos.
               </p>
               <p className="text-gray-700">
-               - Resolución de problemas durante la programación y las pruebas.
+               - Solución de problemas durante la sincronización de efectos.
               </p>
             </div>
             {/* Habilidad: Matemáticas */}
             <div className="mb-4">
               <h3 className="text-md font-semibold text-blue-600">Matemáticas</h3>
               <p className="text-gray-700">
-               - Uso de condiciones lógicas (si... entonces) para programar comportamientos.
+               - Uso de intervalos de tiempo para coordinar secuencias.
               </p>
               <p className="text-gray-700">
-                - Aplicación de conceptos de dirección y movimiento en la programación.
+                - Patrones y secuencias en la programación de efectos.
               </p>
             </div>
           </div>
