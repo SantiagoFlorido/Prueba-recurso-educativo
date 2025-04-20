@@ -50,82 +50,82 @@ const Pagina4Informacion5 = () => {
     {
       id: 1,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643140/taller5slide1_bmti5o.png", 
-      text: "",
+      text: "Aprenderemos a programar el mBot para que evite obstáculos como un robot inteligente. ¡Usaremos su sensor de ultrasonidos como superpoder!",
     },
     {
       id: 2,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643142/taller5slide2_i7zdjd.png", 
-      text: "",
+      text: "Necesitamos: el mBot ensamblado, una computadora (con cable USB o Bluetooth) y obstáculos pequeños. ¡Pedro el Panda nos guiará!",
     },
     {
       id: 3,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643146/taller5slide3_ljubm2.png", 
-      text: "",
+      text: "Este sensor es el ‘anti-choques’ del mBot. ¡Detecta objetos y lo hace esquivar como un ninja! ⚡",
     },
     {
       id: 4,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643143/taller5slide4_qpknwe.png", 
-      text: "",
+      text: "¿Bluetooth o cable? ¡Ambos son geniales! Bluetooth es como magia sin cables, y el USB es como conectar una nave espacial. 🚀",
     },
     {
       id: 5,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643148/taller5slide5_wy0rzx.png", 
-      text: "",
+      text: "Paso 1: Conecta el USB al mBot → ¡CLICK! Paso 2: Al computador → ¡ZAS! Conexión lista. ✨",
     },
     {
       id: 6,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643149/taller5slide6_okro00.png", 
-      text: "",
+      text: "Pedro tiene los cables listos. ¡Sigamos sus pasos para conectar el mBot correctamente!",
     },
     {
       id: 7,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643127/taller5slide7_fqe8ty.png", 
-      text: "",
+      text: "En la computadora, busca la opción de dispositivos y… ¡selecciona el mBot! Es fácil como elegir un juego.",
     },
     {
       id: 8,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643128/taller5slide8_lmqkct.png", 
-      text: "",
+      text: "¡Clic en ‘Conectar’! No olvides encender el mBot antes. ¿Listos para la acción? 🤖",
     },
     {
       id: 9,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643128/taller5slide9_kxo9aq.png", 
-      text: "",
+      text: "Si aparece ‘conectado’, ¡éxito! Ahora el mBot obedecerá tus comandos. ¡A programar! 💻",
     },
     {
       id: 10,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643130/taller5slide10_bgisov.png", 
-      text: "",
+      text: "Antes de empezar, cambia el modo del robot a ‘Cargar’. Sin esto, no podrá moverse solo. ¡Pedro te lo recuerda!",
     },
     {
       id: 11,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643132/taller5slide11_e79imv.png", 
-      text: "",
+      text: "Usa bloques de ‘Eventos’ y ‘Control’ para crear tu código. ¡Arrastra, suelta y haz que el mBot cobre vida!",
     },
     {
       id: 12,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643133/taller5slide12_nmyzge.png", 
-      text: "",
+      text: "Si seguiste los pasos, tu código se verá así. ¡Buen trabajo! Ahora, añadiremos más habilidades al mBot.",
     },
     {
       id: 13,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643135/taller5slide13_ctnhkh.png", 
-      text: "",
+      text: "Programa al mBot para que reaccione ante obstáculos: ‘Si hay algo cerca → retrocede; si no → avanza’. ¡Fácil y divertido!",
     },
     {
       id: 14,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643135/taller5slide14_c18asj.png", 
-      text: "",
+      text: "¡Código listo! Ahora toca probarlo en el mBot. ¿Funcionará como un ninja? 🤖✨",
     },
     {
       id: 15,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643137/taller5slide15_dgdnmi.png", 
-      text: "",
+      text: "Sube el código al mBot y colócalo en un espacio libre. ¡Prepárate para verlo esquivar obstáculos como un campeón!",
     },
     {
       id: 16,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743643139/taller5slide16_wamvr4.png", 
-      text: "",
+      text: "Crea un circuito con obstáculos y programa al mBot para que los esquive. ¡El equipo más creativo gana! 🏆 ¿Listos?",
     },
   ];
 

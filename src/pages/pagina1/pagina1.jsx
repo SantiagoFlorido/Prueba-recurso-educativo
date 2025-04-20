@@ -10,7 +10,6 @@ const Pagina1 = () => {
   const navigate = useNavigate();
   const isLoggedIn = localStorage.getItem('studentUser') || localStorage.getItem('teacherUser');
   
-  // Importa el sonido (usa la URL proporcionada)
   const [playClick] = useSound(
     'https://res.cloudinary.com/dufzsv87k/video/upload/v1744909247/ClickSound.mp3',
     { volume: 1.0 }
@@ -71,12 +70,11 @@ const Pagina1 = () => {
       : swiperRef.current?.swiper?.slidePrev();
   };
 
-  // Función combinada para navegación + sonido
   const handleNavigationWithSound = () => {
     playClick();
     setTimeout(() => {
       isLoggedIn ? navigate('/Principal') : navigate('/Rol');
-    }, 200); // Pequeño delay para que suene antes de navegar
+    }, 200);
   };
 
   return (
@@ -106,7 +104,7 @@ const Pagina1 = () => {
 
       {/* Contenedor principal con slider */}
       <div className="flex-1 flex flex-col">
-        <div className="relative flex-1 flex justify-center items-center md:px-20 md:py-0 max-h-50 top-1/3 md:top-0 md:max-h-[4000px]"> {/* Añadido items-center para centrar verticalmente en móvil */}
+        <div className="relative flex-1 flex justify-center items-center w-full h-[45vh] min-h-[330px] max-h-[680px]">
           <Swiper
             ref={swiperRef}
             spaceBetween={30}
@@ -114,15 +112,15 @@ const Pagina1 = () => {
             loop={true}
             navigation={true}
             modules={[Autoplay, Navigation]}
-            className="h-full w-full"
+            className="h-full w-full max-w-[900px]"
           >
             {slides.map((slide, index) => (
               <SwiperSlide key={index}>
-                <div className="bg-gray-100 md:p-5 md:py-1 rounded-lg md:h-full flex flex-col justify-center h-full"> {/* Cambiado h-50 por h-full */}
+                <div className="h-full w-full flex justify-center items-center">
                   <img
                     src={slide.image}
                     alt={`Banner explicativo ${index + 1}`}
-                    className="w-full h-full max-h-[55vh] object-contain md:object-contain rounded-md md:max-h-[140vh] md:h-125"
+                    className="max-h-full w-auto object-contain"
                   /> 
                 </div>
               </SwiperSlide>
@@ -132,13 +130,13 @@ const Pagina1 = () => {
           {/* Botones de navegación */}
           <button
             onClick={handlePrev}
-            className="absolute left-2 md:left-23 top-1/2 transform -translate-y-1/2 bg-[#007B3E] text-white p-2 rounded-full shadow-lg hover:bg-[#009e4f] transition-colors duration-300 z-10 cursor-pointer"
+            className="absolute left-2 md:left-44 top-1/2 transform -translate-y-1/2 bg-[#007B3E] text-white p-2 rounded-full shadow-lg hover:bg-[#009e4f] transition-colors duration-300 z-10 cursor-pointer"
           >
             &lt;
           </button>
           <button
             onClick={handleNext}
-            className="absolute right-2 md:right-23 top-1/2 transform -translate-y-1/2 bg-[#007B3E] text-white p-2 rounded-full shadow-lg hover:bg-[#009e4f] transition-colors duration-300 z-10 cursor-pointer"
+            className="absolute right-2 md:right-44 top-1/2 transform -translate-y-1/2 bg-[#007B3E] text-white p-2 rounded-full shadow-lg hover:bg-[#009e4f] transition-colors duration-300 z-10 cursor-pointer"
           >
             &gt;
           </button>

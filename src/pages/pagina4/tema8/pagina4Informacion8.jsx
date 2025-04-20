@@ -50,77 +50,77 @@ const Pagina4Informacion8 = () => {
     {
       id: 1,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644552/taller8slide1_y62yir.png", 
-      text: "",
+      text: "Aprenderemos a programar las luces y sonidos del mBot. ¡Será como darle vida a tu robot! ✨🤖",
     },
     {
       id: 2,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644555/taller8slide2_bnvidx.png", 
-      text: "",
+      text: "Necesitas: tu mBot listo y conectado a la computadora (por USB o Bluetooth). ¡Manos a la obra! 🔧",
     },
     {
       id: 3,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644544/taller8slide3_i0md6z.png", 
-      text: "",
+      text: "Las luces son como semáforos 🚦 y los sonidos como claxons 🚗. ¡Aprende su lenguaje secreto!",
     },
     {
       id: 4,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644559/taller8slide4_qdkyo9.png", 
-      text: "",
+      text: "Elige: Bluetooth (magia sin cables) o USB (como nave espacial). ¡Ambos funcionan! 🚀",
     },
     {
       id: 5,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644551/taller8slide5_w47kmy.png", 
-      text: "",
+      text: "1. Conecta USB al mBot → ¡CLICK! 2. Al computador → ¡LISTO! Fácil, ¿no? ⚡",
     },
     {
       id: 6,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644546/taller8slide6_hoxnqa.png", 
-      text: "",
+      text: "Pedro te muestra cómo conectar los cables. ¡Es muy sencillo! 🔌",
     },
     {
       id: 7,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644533/taller8slide7_pgeeng.png", 
-      text: "",
+      text: "En la computadora, busca y selecciona tu mBot. ¡Como elegir un personaje en un juego! 🎮",
     },
     {
       id: 8,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644533/taller8slide8_tbh8lw.png", 
-      text: "",
+      text: "Haz clic en ‘Conectar’ y ¡no olvides encenderlo! Ahora obedece tus órdenes. 🤖",
     },
     {
       id: 9,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644535/taller8slide9_bslv2l.png", 
-      text: "",
+      text: "Si dice ‘conectado’, ¡perfecto! Ya podemos programar luces y sonidos. 🎉",
     },
     {
       id: 10,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644538/taller8slide10_uwmghx.png", 
-      text: "",
+      text: "Pon el mBot en modo ‘Cargar’. ¡Es como darle superpoderes! 💪",
     },
     {
       id: 11,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644538/taller8slide11_ugduaq.png", 
-      text: "",
+      text: "Elige colores, brillo y tiempo. ¡Haz que tu mBot brille como las estrellas! 🌟",
     },
     {
       id: 12,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644541/taller8slide12_v8ky6v.png", 
-      text: "",
+      text: "Personaliza los colores de las luces. ¡Rojo, azul, verde... tú decides! 🎨",
     },
     {
       id: 13,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644542/taller8slide13_tcgkab.png", 
-      text: "",
+      text: "Programa notas musicales (Do, Re, Mi...) o crea sonidos divertidos. ¡Es tu banda robot! 🎵",
     },
     {
       id: 14,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644548/taller8slide14_g7nbqy.png", 
-      text: "",
+      text: "¿Sabías que puedes programar canciones? ¡Intenta el Himno de la Alegría! 🎶",
     },
     {
       id: 15,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644557/taller8slide15_wt5lag.png", 
-      text: "",
+      text: "Reto: Convierte tu mBot en un DJ. ¡Luces, sonidos y baile! Gana el equipo más creativo. 🕺💃",
     },
   ];
 

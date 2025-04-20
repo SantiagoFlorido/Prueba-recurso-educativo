@@ -50,67 +50,67 @@ const Pagina4Informacion7 = () => {
     {
       id: 1,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644079/taller7slide1_b0jzxi.png", 
-      text: "",
+      text: "Vamos a programar el mBot para que siga objetos como tu mano o una pelota. ¡Será como un robot mascota! 🐶",
     },
     {
       id: 2,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644081/taller7slide2_dtba0g.png", 
-      text: "",
+      text: "Necesitas: tu mBot listo, una computadora (USB o Bluetooth) y objetos para seguir (como una pelota o tu mano). ✋🎾",
     },
     {
       id: 3,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644088/taller7slide3_kxa5o9.png", 
-      text: "",
+      text: "Este sensor es como los ojos del mBot: detecta objetos y los esquiva. ¡Parece un superhéroe robot! 🦸",
     },
     {
       id: 4,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644083/taller7slide4_oiat27.png", 
-      text: "",
+      text: "Elige: Bluetooth (magia sin cables) o USB (como una nave espacial). ¡Ambos son geniales! ✨",
     },
     {
       id: 5,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644085/taller7slide5_joqrhu.png", 
-      text: "",
+      text: "1. Conecta el USB al mBot → ¡CLICK! 2. Al computador → ¡LISTO! Ahora a programar. ⚡",
     },
     {
       id: 6,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644087/taller7slide6_rcawwj.png", 
-      text: "",
+      text: "Pedro te muestra cómo conectar los cables. ¡Es fácil como enchufar un juguete! 🔌",
     },
     {
       id: 7,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644069/taller7slide7_flijna.png", 
-      text: "",
+      text: "En la computadora, busca y selecciona tu mBot. ¡Es como elegir un personaje en un juego! 🎮",
     },
     {
       id: 8,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644070/taller7slide8_ijkefh.png", 
-      text: "",
+      text: "Haz clic en ‘Conectar’ y ¡no olvides encenderlo! El mBot está listo para obedecerte. 🤖",
     },
     {
       id: 9,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644071/taller7slide9_wyrods.png", 
-      text: "",
+      text: "Si dice ‘conectado’, ¡perfecto! Ahora el mBot escuchará tus órdenes. ¡Vamos! 🚀",
     },
     {
       id: 10,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644073/taller7slide10_tpvyov.png", 
-      text: "",
+      text: "Antes de empezar, pon el mBot en modo ‘Cargar’. ¡Es como darle pilas para pensar! 🔋",
     },
     {
       id: 11,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644074/taller7slide11_v1ukny.png", 
-      text: "",
+      text: "Programa el mBot para que siga tu mano (como un perrito robot). ¡Sin chocar! 🐶✨",
     },
     {
       id: 12,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644076/taller7slide12_usmblg.png", 
-      text: "",
+      text: "Pedro te muestra los bloques que necesitas. ¡Arma tu código como un rompecabezas! 🧩",
     },
     {
       id: 13,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743644078/taller7slide13_j3c8i7.png", 
-      text: "",
+      text: "Reto: Guía al mBot con tu mano por una pista. ¡El que mejor lo controle gana! 🏆 Reglas: \nUsa el sensor (15-30 cm de distancia). \nLuces de colores dan puntos extra. 💡",
     },
   ];
 
