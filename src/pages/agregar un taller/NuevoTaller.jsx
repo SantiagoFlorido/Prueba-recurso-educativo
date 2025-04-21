@@ -16,6 +16,11 @@ const NuevoTaller = () => {
     const [materiales, setMateriales] = useState('');
     const [nivelDificultad, setNivelDificultad] = useState('FÁCIL');
     const [objetivos, setObjetivos] = useState('');
+    const [finalidades, setFinalidades] = useState('');
+    const [ciencia, setCiencia] = useState('');
+    const [tecnologia, setTecnologia] = useState('');
+    const [ingenieria, setIngenieria] = useState('');
+    const [matematicas, setMatematicas] = useState('');
     const [slides, setSlides] = useState([{ descripcion: '', imagen: null, preview: null }]);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState('');
@@ -106,6 +111,11 @@ const NuevoTaller = () => {
             if (nivelDificultad) formDataTaller.append('nivelDificultad', nivelDificultad);
             if (materiales.trim()) formDataTaller.append('materiales', materiales.trim());
             if (objetivos.trim()) formDataTaller.append('objetivos', objetivos.trim());
+            if (finalidades.trim()) formDataTaller.append('finalidades', finalidades.trim());
+            if (ciencia.trim()) formDataTaller.append('ciencia', ciencia.trim());
+            if (tecnologia.trim()) formDataTaller.append('tecnologia', tecnologia.trim());
+            if (ingenieria.trim()) formDataTaller.append('ingenieria', ingenieria.trim());
+            if (matematicas.trim()) formDataTaller.append('matematicas', matematicas.trim());
 
             const tallerResponse = await fetch('https://api-aws-ndou.onrender.com/talleres', {
                 method: 'POST',
@@ -292,6 +302,70 @@ const NuevoTaller = () => {
                                 className="w-full h-24 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007B3E]"
                             />
                             <p className="text-sm text-gray-500 mt-1">Separa cada objetivo con un salto de línea</p>
+                        </div>
+
+                        <div className="mt-4">
+                            <label className="block text-gray-700 mb-2">Finalidades</label>
+                            <textarea
+                                value={finalidades}
+                                onChange={(e) => setFinalidades(e.target.value)}
+                                onClick={sundclick}
+                                placeholder="Describe las finalidades del taller..."
+                                className="w-full h-24 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007B3E]"
+                            />
+                            <p className="text-sm text-gray-500 mt-1">Separa cada finalidad con un salto de línea</p>
+                        </div>
+
+                        <div className="mt-6">
+                            <h3 className="text-lg font-semibold mb-2 text-[#007B3E]">
+                                Áreas STEM <span className="text-red-500">(No todas son necesarias de llenar)</span>
+                            </h3>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label className="block text-gray-700 mb-2">Ciencia</label>
+                                    <textarea
+                                        value={ciencia}
+                                        onChange={(e) => setCiencia(e.target.value)}
+                                        onClick={sundclick}
+                                        placeholder="Relación con la ciencia..."
+                                        className="w-full h-24 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007B3E]"
+                                    />
+                                </div>
+                                
+                                <div>
+                                    <label className="block text-gray-700 mb-2">Tecnología</label>
+                                    <textarea
+                                        value={tecnologia}
+                                        onChange={(e) => setTecnologia(e.target.value)}
+                                        onClick={sundclick}
+                                        placeholder="Relación con la tecnología..."
+                                        className="w-full h-24 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007B3E]"
+                                    />
+                                </div>
+                                
+                                <div>
+                                    <label className="block text-gray-700 mb-2">Ingeniería</label>
+                                    <textarea
+                                        value={ingenieria}
+                                        onChange={(e) => setIngenieria(e.target.value)}
+                                        onClick={sundclick}
+                                        placeholder="Relación con la ingeniería..."
+                                        className="w-full h-24 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007B3E]"
+                                    />
+                                </div>
+                                
+                                <div>
+                                    <label className="block text-gray-700 mb-2">Matemáticas</label>
+                                    <textarea
+                                        value={matematicas}
+                                        onChange={(e) => setMatematicas(e.target.value)}
+                                        onClick={sundclick}
+                                        placeholder="Relación con las matemáticas..."
+                                        className="w-full h-24 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007B3E]"
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
 

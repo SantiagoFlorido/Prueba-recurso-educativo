@@ -123,8 +123,65 @@ const TallerDinamicoDescripcion = () => {
                   ))}
                 </ul>
               </li>
+              {taller.finalidades && (
+                <li>
+                  <strong>Finalidades:</strong>
+                  <ul className="list-disc pl-5">
+                    {taller.finalidades.split('\n').map((finalidad, index) => (
+                      finalidad.trim() && <li key={index}>{finalidad.trim()}</li>
+                    ))}
+                  </ul>
+                </li>
+              )}
             </ul>
           </div>
+
+          {/* Sección de Resumen de habilidades STEM aplicadas */}
+          {(taller.ciencia || taller.tecnologia || taller.ingenieria || taller.matematicas) && (
+            <div className="mb-4 md:mb-6">
+              <h2 className="text-lg md:text-xl font-semibold mb-2">Resumen de habilidades STEM aplicadas:</h2>
+              
+              {/* Habilidad: Ciencia */}
+              {taller.ciencia && (
+                <div className="mb-4">
+                  <h3 className="text-md font-semibold text-blue-600">Ciencia</h3>
+                  <p className="text-gray-700">
+                    {taller.ciencia}
+                  </p>
+                </div>
+              )}
+              
+              {/* Habilidad: Tecnología */}
+              {taller.tecnologia && (
+                <div className="mb-4">
+                  <h3 className="text-md font-semibold text-blue-600">Tecnología</h3>
+                  <p className="text-gray-700">
+                    {taller.tecnologia}
+                  </p>
+                </div>
+              )}
+              
+              {/* Habilidad: Ingeniería */}
+              {taller.ingenieria && (
+                <div className="mb-4">
+                  <h3 className="text-md font-semibold text-blue-600">Ingeniería</h3>
+                  <p className="text-gray-700">
+                    {taller.ingenieria}
+                  </p>
+                </div>
+              )}
+              
+              {/* Habilidad: Matemáticas */}
+              {taller.matematicas && (
+                <div className="mb-4">
+                  <h3 className="text-md font-semibold text-blue-600">Matemáticas</h3>
+                  <p className="text-gray-700">
+                    {taller.matematicas}
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Contenedor derecho (imagen, video y botones) */}
