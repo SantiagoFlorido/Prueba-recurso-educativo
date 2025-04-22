@@ -290,9 +290,17 @@ const Pagina3 = () => {
             />
           </div>
           {/* Créditos */}
-          <div className="bg-[#3d3d3b] text-white p-2 rounded-lg mt-4">
-            <h2 className="text-lg font-bold text-center">Créditos</h2>
-            <p className="text-sm text-center">Aquí puedes agregar los créditos relacionados con los temas y proyectos.</p>
+          <div className="bg-[#3d3d3b] text-white p-4 rounded-lg mt-4">
+            <div className="text-sm text-center">
+              <p className="font-semibold">Docentes</p>
+              <p className="text-gray-300">Ana Esperanza Merchan Hernandez - anaesperanzamerchan@ucundinamarca.edu.co</p>
+              <p className="text-gray-300">Diego Orlando Méndez Pineda - dmendezp@ucundinamarca.edu.co</p>
+              <p className="text-gray-300">Jorge Enrique Quevedo Buitrago - jequevedo@ucundinamarca.edu.co</p>
+              <p className="text-gray-300">Eva Patricia Vasquez Gomez - evasquezgomez@ucundinamarca.edu.co</p>
+              <p className="font-semibold mt-2">Estudiantes</p>
+              <p className="text-gray-300">Cristian Mateo Velez Duran - cmvelez@ucundinamarca.edu.co</p>
+              <p className="text-gray-300">David Santiago Florido Ortiz - dflorido@ucundinamarca.edu.co</p>
+            </div>
           </div>
         </div>
       </div>

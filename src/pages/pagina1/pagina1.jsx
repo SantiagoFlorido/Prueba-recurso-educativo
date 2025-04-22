@@ -17,7 +17,7 @@ const Pagina1 = () => {
 
   const slides = [
     {
-      image: '',
+      image: 'https://res.cloudinary.com/dufzsv87k/image/upload/v1745330491/Banner%20RED%20presentaci%C3%B3n.png',
       description: 'Bienvenido a (Nombre del proyecto)',
     },
     {
@@ -78,7 +78,7 @@ const Pagina1 = () => {
   };
 
   return (
-    <div className="bg-white p-4 h-screen flex flex-col overflow-hidden">
+    <div className="bg-white p-4 h-screen flex flex-col ">
       {/* Header con logos y botón */}
       <div className="flex flex-row justify-between items-center mb-4">
         <div className="flex items-center gap-4">
@@ -144,11 +144,20 @@ const Pagina1 = () => {
       </div>
 
       {/* Pie de página */}
-      <div className="py-2 w-full">
-        <p className="text-sm text-[#007B3E] text-center">
-          www.ucundinamarca.edu.co | Vigilado minieducación (poner los contactos)
-        </p>
-      </div>
+        <div className="py-2 w-full">
+          <p className="text-sm text-[#007B3E] text-center">
+            www.ucundinamarca.edu.co | Vigilado minieducación<br />
+            <span className="text-black">Contactos:</span><br />
+            Docentes<br />
+            <span className="text-black">Ana Esperanza Merchan Hernandez - anaesperanzamerchan@ucundinamarca.edu.co</span> <br />
+            <span className="text-black">Diego Orlando Méndez Pineda - dmendezp@ucundinamarca.edu.co</span> <br />
+            <span className="text-black">Jorge Enrique Quevedo Buitrago - jequevedo@ucundinamarca.edu.co</span> <br />
+            <span className="text-black">Eva Patricia Vasquez Gomez - evasquezgomez@ucundinamarca.edu.co</span> <br />
+            Estudiantes<br />
+            <span className="text-black">Cristian Mateo Velez Duran - cmvelez@ucundinamarca.edu.co</span> <br />
+            <span className="text-black">David Santiago Florido Ortiz - dflorido@ucundinamarca.edu.co</span> 
+          </p>
+        </div>
     </div>
   );
 };

@@ -145,9 +145,11 @@ const TallerDinamicoDescripcion = () => {
               {taller.ciencia && (
                 <div className="mb-4">
                   <h3 className="text-md font-semibold text-blue-600">Ciencia</h3>
-                  <p className="text-gray-700">
-                    {taller.ciencia}
-                  </p>
+                  <ul className="list-disc pl-5 text-gray-700">
+                    {taller.ciencia.split('\n').map((linea, index) => (
+                      linea.trim() && <li key={index}>{linea.trim()}</li>
+                    ))}
+                  </ul>
                 </div>
               )}
               
@@ -155,9 +157,11 @@ const TallerDinamicoDescripcion = () => {
               {taller.tecnologia && (
                 <div className="mb-4">
                   <h3 className="text-md font-semibold text-blue-600">Tecnología</h3>
-                  <p className="text-gray-700">
-                    {taller.tecnologia}
-                  </p>
+                  <ul className="list-disc pl-5 text-gray-700">
+                    {taller.tecnologia.split('\n').map((linea, index) => (
+                      linea.trim() && <li key={index}>{linea.trim()}</li>
+                    ))}
+                  </ul>
                 </div>
               )}
               
@@ -165,9 +169,11 @@ const TallerDinamicoDescripcion = () => {
               {taller.ingenieria && (
                 <div className="mb-4">
                   <h3 className="text-md font-semibold text-blue-600">Ingeniería</h3>
-                  <p className="text-gray-700">
-                    {taller.ingenieria}
-                  </p>
+                  <ul className="list-disc pl-5 text-gray-700">
+                    {taller.ingenieria.split('\n').map((linea, index) => (
+                      linea.trim() && <li key={index}>{linea.trim()}</li>
+                    ))}
+                  </ul>
                 </div>
               )}
               
@@ -175,9 +181,11 @@ const TallerDinamicoDescripcion = () => {
               {taller.matematicas && (
                 <div className="mb-4">
                   <h3 className="text-md font-semibold text-blue-600">Matemáticas</h3>
-                  <p className="text-gray-700">
-                    {taller.matematicas}
-                  </p>
+                  <ul className="list-disc pl-5 text-gray-700">
+                    {taller.matematicas.split('\n').map((linea, index) => (
+                      linea.trim() && <li key={index}>{linea.trim()}</li>
+                    ))}
+                  </ul>
                 </div>
               )}
             </div>
