@@ -50,64 +50,64 @@ const Pagina4Informacion3 = () => {
     {
       id: 1,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642677/taller3slide1_mpouhp.png",
-      text: "En este taller Pedro el panda nos enseñara a como conectar el mbot a nuestra computadora y asi mismo nos enseñara a moverlo usando las flechas del teclado, ¿estas listo?",
+      text: "En este taller, Pedro el panda nos enseñará cómo conectar el mBot a nuestra computadora y, así mismo, nos enseñará a moverlo usando las flechas del teclado. ¿Estás listo?",
     },
     {
       id: 2,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642678/taller3slide2_l9alde.png",
-      text: "Pedros nos dijo que necesitariamos estas herramientas, tener nuestro Mbot armado como se hizo en el anterior taller y tener el cable usb o conector Bluetooth que viene dentro del kit del Mbot",
+      text: "Pedro nos dijo que necesitaríamos estas herramientas: tener nuestro mBot armado como se hizo en el anterior taller y tener el cable USB o conector Bluetooth que viene dentro del kit del mBot.",
     },
     {
       id: 3,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642679/taller3slide3_vh7h80.png",
-      text: "Ahora Pedro necesita que tengamos abierto nuestra aplicacion Mblock, ¿Ya la abriste?",
+      text: "Ahora, Pedro necesita que tengamos abierta nuestra aplicación mBlock. ¿Ya la abriste?",
     },
     {
       id: 4,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642680/taller3slide4_hfec3y.png",
-      text: "Pon mucha atencion a Pedro, nos esta enseñando como funcionan estas herramientas para conectar nuestro Mbot",
+      text: "Pon mucha atención a Pedro, nos está enseñando cómo funcionan estas herramientas para conectar nuestro mBot.",
     },
     {
       id: 5,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642660/taller3slide5_vfbkon.png",
-      text: "Escucha con atencion a pedro, nos esta indicando como conectar el cable usb al Mbot y a nuestro computador",
+      text: "Escucha con atención a Pedro, nos está indicando cómo conectar el cable USB al mBot y a nuestra computadora.",
     },
     {
       id: 6,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642661/taller3slide6_xggsyq.png",
-      text: "Mira como Pedro tomo el conector Bluetooth y lo conecto a su computadora, deberiamos de hacer lo mismo",
+      text: "Mira cómo Pedro tomó el conector Bluetooth y lo conectó a su computadora. Deberíamos de hacer lo mismo.",
     },
     {
       id: 7,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642661/taller3slide7_zksu5w.png",
-      text: "Observa con atencion, Pedro nos va a enseñar a conectar el Mbot",
+      text: "Observa con atención, Pedro nos va a enseñar a conectar el mBot.",
     },
     {
       id: 8,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642674/taller3slide8_bzqohe.png",
-      text: "En este caso parece que Pedro hara la conexion por cable, observa como seleciono la opcion por usb, y recuerda muy bien que nuestro Mbot debe estar encendido y daremos un click en conectar",
+      text: "En este caso, parece que Pedro hará la conexión por cable. Observa cómo seleccionó la opción por USB, y recuerda muy bien que nuestro mBot debe estar encendido y daremos un clic en conectar.",
     },
     {
       id: 9,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642675/taller3slide9_w1rddv.png",
-      text: "Observa como Pedro conecto con exito su Mbot, veamos si tambien nosotros podemos hacerlo como el y verificamos nuestra conexión.",
+      text: "Observa cómo Pedro conectó con éxito su mBot. Veamos si también nosotros podemos hacerlo como él y verificamos nuestra conexión.",
     },
     {
       id: 10,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642676/taller3slide10_wn19og.png",
-      text: "Pedro tomo unos bloques del area de bloques, observa con atencion que bloques hay que usar para mover nuestro Mbot.",
+      text: "Pedro tomó unos bloques del área de bloques. Observa con atención qué bloques hay que usar para mover nuestro mBot.",
     },
     {
       id: 11,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642682/taller3slide11_gydmq2.png",
-      text: "Mira como Pedro hizo mas de estos bloques y ahora su Mbot tiene muchas funciones para hacer con varios botones del teclado muchas cosas.",
+      text: "Mira cómo Pedro hizo más de estos bloques y ahora su mBot tiene muchas funciones para hacer con varios botones del teclado muchas cosas.",
     },
     {
       id: 12,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642681/taller3slide12_qqiqdx.png",
-      text: "Ya deberiamos de saber como programar nuestro Mbot, pon mucha atención ya que es hora de lograr un desafio con lo aprendido.",
+      text: "Ya deberíamos saber cómo programar nuestro mBot. Pon mucha atención, ya que es hora de lograr un desafío con lo aprendido.",
     },
-  ];
+  ];  
 
   const handleCircleClick = (index) => {
     playClick();
@@ -192,7 +192,7 @@ const Pagina4Informacion3 = () => {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col md:flex-row p-4 bg-white gap-4 relative">
+    <div className="w-full min-h-screen flex flex-col md:flex-row p-4 bg-white gap-4 relative md:items-stretch">
       {/* Columna izquierda */}
       <div className="w-full md:w-1/4 flex flex-col gap-4">
         {/* Introducción arriba a la izquierda */}
@@ -211,7 +211,7 @@ const Pagina4Informacion3 = () => {
         <img
           src={slides[activeIndex].image}
           alt={`Imagen ${activeIndex + 1}`}
-          className="w-full h-auto max-h-[300px] md:max-h-[600px] object-fill rounded-md"
+          className="w-full h-full max-h-[300px] md:max-h-[600px] object-fill rounded-md"
         />
       </div>
 

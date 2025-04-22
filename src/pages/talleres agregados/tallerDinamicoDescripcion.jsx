@@ -202,16 +202,16 @@ const TallerDinamicoDescripcion = () => {
           </div>
 
           {/* Botones en la parte inferior */}
-          <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
+          <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 w-full">
             <button
               onClick={() => handleNavigationWithSound('/Proyectos')}
-              className="bg-[#007B3E] text-white px-4 py-2 rounded shadow-lg hover:bg-[#009e4f] transition-colors w-full md:w-80 cursor-pointer"
+              className="bg-[#007B3E] text-white px-4 py-2 rounded shadow-lg hover:bg-[#009e4f] transition-colors w-full flex-1 cursor-pointer"
             >
               Regresar
             </button>
             <button
               onClick={() => handleNavigationWithSound(`/Contenido/${tallerId}`)}
-              className="bg-[#007B3E] text-white px-4 py-2 rounded shadow-lg hover:bg-[#009e4f] transition-colors w-full md:w-80 cursor-pointer"
+              className="bg-[#007B3E] text-white px-4 py-2 rounded shadow-lg hover:bg-[#009e4f] transition-colors w-full flex-1 cursor-pointer"
             >
               Iniciar
             </button>

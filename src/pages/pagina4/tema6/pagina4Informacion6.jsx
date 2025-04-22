@@ -212,7 +212,7 @@ const Pagina4Informacion6 = () => {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col md:flex-row p-4 bg-white gap-4 relative">
+    <div className="w-full min-h-screen flex flex-col md:flex-row p-4 bg-white gap-4 relative md:items-stretch">
       {/* Columna izquierda */}
       <div className="w-full md:w-1/4 flex flex-col gap-4">
         {/* Introducción arriba a la izquierda */}
@@ -231,7 +231,7 @@ const Pagina4Informacion6 = () => {
         <img
           src={slides[activeIndex].image}
           alt={`Imagen ${activeIndex + 1}`}
-          className="w-full h-auto max-h-[300px] md:max-h-[600px] object-fill rounded-md"
+          className="w-full h-full max-h-[300px] md:max-h-[600px] object-fill rounded-md"
         />
       </div>
 

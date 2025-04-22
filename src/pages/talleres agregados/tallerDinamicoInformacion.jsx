@@ -125,7 +125,7 @@ const TallerDinamicoInformacion = () => {
   }
 
   return (
-    <div className="w-full min-h-screen flex flex-col md:flex-row p-4 bg-white gap-4 relative">
+    <div className="w-full min-h-screen flex flex-col md:flex-row p-4 bg-white gap-4 relative md:items-stretch">
       {/* Columna izquierda */}
       <div className="w-full md:w-1/4 flex flex-col gap-4">
         {/* Introducción arriba a la izquierda */}
@@ -146,7 +146,7 @@ const TallerDinamicoInformacion = () => {
         <img
           src={taller.slides[activeIndex].imagenUrl}
           alt="imagen taller creado no encontrada o corrupta"
-          className={`w-full h-auto max-h-[300px] md:max-h-[600px] object-fill rounded-md ${
+          className={`w-full h-full max-h-[300px] md:max-h-[600px] object-fill rounded-md ${
             activeIndex === taller.slides.length - 1 ? 'cursor-pointer hover:opacity-80' : ''
           }`}
           onClick={handleDownloadImage}

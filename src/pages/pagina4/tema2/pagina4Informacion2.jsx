@@ -55,119 +55,120 @@ const Pagina4Informacion2 = () => {
     {
       id: 2,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642204/taller2slide2_v2wxz6.png",
-      text: "Exploraremos los componentes del mBot, como el chasis, los motores, la placa, la minirueda, las ruedas, el destorillador, etc. Aprenderemos la función de cada uno y cómo se conectan.",
+      text: "Exploraremos los componentes del mBot, como el chasis, los motores, la placa, la minirueda, las ruedas, el destornillador, etc. Aprenderemos la función de cada uno y cómo se conectan.",
     },
     {
       id: 3,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642206/taller2slide3_fh4qwh.png",
-      text: "Otras piezas mas como el Sensor de ultrasonido, los pernos, Sensor seguidor de linea, Cable RJ-25, cable USB y los tornillos. Aprenderemos la función de cada uno y cómo se conectan.",
+      text: "Otras piezas más, como el sensor de ultrasonido, los pernos, el sensor seguidor de línea, el cable RJ-25, el cable USB y los tornillos. Aprenderemos la función de cada uno y cómo se conectan.",
     },
     {
       id: 4,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642204/taller2slide4_u9zdsu.png",
-      text: "Otras piezas mas como ",
+      text: "Otras piezas más como...",
     },
     {
       id: 5,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642201/taller2slide5_g8qyhu.png",
-      text: "Seguiremos las instrucciones que nos indicara Pedro para armar el chasis y fijar las ruedas. Aseguraremos que los motores estén correctamente conectados. Instalaremos los sensores, como el seguidor de línea y el sensor de ultrasonido, en sus lugares correctos. Y por ultimo conectaremos los cables a la placa controladora.",
+      text: "Seguiremos las instrucciones que nos indicará Pedro para armar el chasis y fijar las ruedas. Aseguraremos que los motores estén correctamente conectados. Instalaremos los sensores, como el seguidor de línea y el sensor de ultrasonido, en sus lugares correctos. Y por último, conectaremos los cables a la placa controladora.",
     },
     {
       id: 6,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642214/taller2slide6_lcibup.png",
-      text: "Observa como Pedro nos indica como poner el motor izquierdo sobre el chasis.",
+      text: "Observa cómo Pedro nos indica cómo poner el motor izquierdo sobre el chasis.",
     },
     {
       id: 7,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642220/taller2slide7_u9gfee.png",
-      text: "Mira como Pedro coloco las tuercas y los tornillos para asegurar que el motor quede fijo en el chasis.",
+      text: "Mira cómo Pedro colocó las tuercas y los tornillos para asegurar que el motor quede fijo en el chasis.",
     },
     {
       id: 8,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642215/taller2slide8_kuaqak.png",
-      text: "Ahora solo es repetir de la misma manera con el motor derecho como lo hizo Pedro.",
+      text: "Ahora solo es repetir de la misma manera con el motor derecho, como lo hizo Pedro.",
     },
     {
       id: 9,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642217/taller2slide9_dmmiek.png",
-      text: "Mira como Pedro tomo la rueda izquierda y la coloco en el chasis.",
+      text: "Mira cómo Pedro tomó la rueda izquierda y la colocó en el chasis.",
     },
     {
       id: 10,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642224/taller2slide10_bmtvdm.png",
-      text: "Pedro repitio con la rueda derecha y se aseguro de colocar los tornillos y asegurarlos con las tuercas para que estas queden fijas al chasis.",
+      text: "Pedro repitió con la rueda derecha y se aseguró de colocar los tornillos y asegurarlos con las tuercas para que estas queden fijas al chasis.",
     },
     {
       id: 11,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642227/taller2slide11_qymiq9.png",
-      text: "Observa como Pedro tomo el seguidor de lineas y lo puso en el chasis del Mbot.",
+      text: "Observa cómo Pedro tomó el seguidor de líneas y lo puso en el chasis del mBot.",
     },
     {
       id: 12,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642200/taller2slide12_zryzja.png",
-      text: "Ahora Pedro puso la minirueda sobre el seguidor de lineas como lo indica la imagen.",
+      text: "Ahora Pedro puso la minirueda sobre el seguidor de líneas, como lo indica la imagen.",
     },
     {
       id: 13,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642200/taller2slide13_grtr2h.png",
-      text: "Pedro tomo el destornillador y aseguro el seguidor de lineas como nos lo muestra.",
+      text: "Pedro tomó el destornillador y aseguró el seguidor de líneas, como nos lo muestra.",
     },
     {
       id: 14,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642203/taller2slide14_rvskeu.png",
-      text: "Mira como Pedro tomo con sus patas el cable RJ-25 y lo conecto al seguidor de lineas.",
+      text: "Mira cómo Pedro tomó con sus patas el cable RJ-25 y lo conectó al seguidor de líneas.",
     },
     {
       id: 15,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642201/taller2slide15_cbfiav.png",
-      text: "Observa como Pedro tomo el sensor de ultrasonido y lo coloco sobre el chasis del Mbot.",
+      text: "Observa cómo Pedro tomó el sensor de ultrasonido y lo colocó sobre el chasis del mBot.",
     },
     {
       id: 16,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642231/taller2slide16_wm79nr.png",
-      text: "Ahora Pedro quiere indicarte como dejar fijo el sensor de ultrasonido al chasis utilizando los tornillos con el destornillador.",
+      text: "Ahora Pedro quiere indicarte cómo dejar fijo el sensor de ultrasonido al chasis utilizando los tornillos con el destornillador.",
     },
     {
       id: 17,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642210/taller2slide17_pvro1f.png",
-      text: "Pedro tomo otro cable RJ-25 y lo conecto al sensor de ultrasonido tal y como nos lo muestra.",
+      text: "Pedro tomó otro cable RJ-25 y lo conectó al sensor de ultrasonido, tal y como nos lo muestra.",
     },
     {
       id: 18,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642228/taller2slide18_r1zitl.png",
-      text: "Mira como Pedro con sus patas tomo los 4 pernos y los coloco sobre el chasis del Mbot.",
+      text: "Mira cómo Pedro con sus patas tomó los 4 pernos y los colocó sobre el chasis del mBot.",
     },
     {
       id: 19,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642207/taller2slide19_zkrzuz.png",
-      text: "Observa como Pedro tomo el velcro y lo puso en la caja de las baterias y el chasis del Mbot, por ultimo coloco la caja de las baterias sobre el chasis como se puede ver.",
+      text: "Observa cómo Pedro tomó el velcro y lo puso en la caja de las baterías y el chasis del mBot. Por último, colocó la caja de las baterías sobre el chasis, como se puede ver.",
     },
     {
       id: 20,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642220/taller2slide20_athtah.png",
-      text: "Ahora Pedro tomo la placa y la coloco sobre los pernos que anteriormente puso sobre el chasis del Mbot.",
+      text: "Ahora Pedro tomó la placa y la colocó sobre los pernos que anteriormente puso sobre el chasis del mBot.",
     },
     {
       id: 21,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642209/taller2slide21_w9wljq.png",
-      text: "Pedro se asegura que la placa quede fija al chasis poniendo los tornillos y conectandolo a los pernos, asegurandose que esta quede fija.",
+      text: "Pedro se asegura de que la placa quede fija al chasis, poniendo los tornillos y conectándola a los pernos, asegurándose de que esta quede fija.",
     },
     {
       id: 22,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642221/taller2slide22_s9jyaj.png",
-      text: "Como puedes ver Pedro noto que quedan algunos cables que conectar a la placa de los sensores, asi que el se tomo la molestia de mostrarte como conectarlos a la placa",
+      text: "Como puedes ver, Pedro notó que quedan algunos cables que conectar a la placa de los sensores, así que él se tomó la molestia de mostrarte cómo conectarlos a la placa.",
     },
     {
       id: 23,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642212/taller2slide23_hwvmwi.png",
-      text: "Pedro tomo los cables de los motores y los conecto a las placas para que funcione, aqui te muestra como deben ir conectados",
+      text: "Pedro tomó los cables de los motores y los conectó a las placas para que funcionen, aquí te muestra cómo deben ir conectados.",
     },
     {
       id: 24,
       image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1743642210/taller2slide24_aoiqra.png",
-      text: "Por ultimo aqui pedro te enseña como conectar el cable de las pilas a la placa para que nuestro Mbot funcione y estaria completamente armado",
+      text: "Por último, aquí Pedro te enseña cómo conectar el cable de las pilas a la placa para que nuestro mBot funcione y estaría completamente armado.",
     },
   ];
+  
 
   const handleCircleClick = (index) => {
     playClick();
@@ -252,7 +253,7 @@ const Pagina4Informacion2 = () => {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col md:flex-row p-4 bg-white gap-4 relative">
+    <div className="w-full min-h-screen flex flex-col md:flex-row p-4 bg-white gap-4 relative md:items-stretch">
       {/* Columna izquierda */}
       <div className="w-full md:w-1/4 flex flex-col gap-4">
         {/* Introducción arriba a la izquierda */}
@@ -271,7 +272,7 @@ const Pagina4Informacion2 = () => {
         <img
           src={slides[activeIndex].image}
           alt={`Imagen ${activeIndex + 1}`}
-          className="w-full h-auto max-h-[300px] md:max-h-[600px] object-fill rounded-md"
+          className="w-full h-full max-h-[300px] md:max-h-[600px] object-fill rounded-md"
         />
       </div>
 

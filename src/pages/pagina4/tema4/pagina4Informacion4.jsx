@@ -49,53 +49,53 @@ const Pagina4Informacion4 = () => {
   const slides = [
     {
       id: 1,
-      image: "", 
-      text: "",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1745279247/taller4slide1.png", 
+      text: "Aprenderemos a controlar el mBot desde tu celular con la app MakeBlock. ¡Como jugar con un robot de verdad! 🎮",
     },
     {
       id: 2,
-      image: "", 
-      text: "",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1745279296/taller4slide2.png", 
+      text: "Necesitas: tu mBot encendido y un celular con Bluetooth e internet para descargar la aplicación. ¡Listos para la acción! 📱",
     },
     {
       id: 3,
-      image: "", 
-      text: "",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1745279442/taller4slide3.png", 
+      text: "Con esta app, controlarás el mBot como si fuera un videojuego. ¡Superpoderes en tus manos! ⚡",
     },
     {
       id: 4,
-      image: "", 
-      text: "",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1745279683/taller4slide4.png", 
+      text: "Antes de empezar, elige tu mBot en la app. ¡Así empieza la diversión robótica! 🤖✨",
     },
     {
       id: 5,
-      image: "", 
-      text: "",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1745280284/taller4slide5.png", 
+      text: "Presiona el ícono de Bluetooth para conectar. ¡Es como saludar a tu robot! 👋",
     },
     {
       id: 6,
-      image: "", 
-      text: "",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1745279753/taller4slide6.png", 
+      text: "Acerca tu celular al mBot y ¡listo! Se conectarán automáticamente. 📶",
     },
     {
       id: 7,
-      image: "", 
-      text: "",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1745279807/taller4slide7.png", 
+      text: "¡Elige qué hacer con tu mBot! Manejar, dibujar rutas o crear música. 🎨🎵🚗",
     },
     {
       id: 8,
-      image: "", 
-      text: "",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1745279850/taller4slide8.png", 
+      text: "Usa la palanca en pantalla para mover el mBot. ¡Como un auto de carreras! 🏎️",
     },
     {
       id: 9,
-      image: "", 
-      text: "",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1745279890/taller4slide9.png", 
+      text: "Dibuja un camino con tu dedo y el mBot lo seguirá. ¡Arte robótico! 🖍️",
     },
     {
       id: 10,
-      image: "", 
-      text: "",
+      image: "https://res.cloudinary.com/dufzsv87k/image/upload/v1745279928/taller4slide10.png", 
+      text: "Crea melodías tocando la pantalla. ¡El mBot tocará tu canción! 🎶",
     },
   ];
 
@@ -182,7 +182,7 @@ const Pagina4Informacion4 = () => {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col md:flex-row p-4 bg-white gap-4 relative">
+    <div className="w-full min-h-screen flex flex-col md:flex-row p-4 bg-white gap-4 relative md:items-stretch">
       {/* Columna izquierda */}
       <div className="w-full md:w-1/4 flex flex-col gap-4">
         {/* Introducción arriba a la izquierda */}
@@ -201,7 +201,7 @@ const Pagina4Informacion4 = () => {
         <img
           src={slides[activeIndex].image}
           alt={`Imagen ${activeIndex + 1}`}
-          className="w-full h-auto max-h-[300px] md:max-h-[600px] object-fill rounded-md"
+          className="w-full h-full max-h-[300px] md:max-h-[600px] object-fill rounded-md"
         />
       </div>
 

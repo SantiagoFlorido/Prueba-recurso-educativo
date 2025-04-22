@@ -134,7 +134,7 @@ const Pagina4Descripcion4 = () => {
           <div className="border flex-1 mb-4 rounded-lg overflow-hidden">
             <div className="bg-gray-200 h-48 md:h-full flex items-center justify-center rounded-lg">
               <img
-                src="" /*imagen*/
+                src="https://res.cloudinary.com/dufzsv87k/image/upload/v1745279247/taller4slide1.png" /*imagen*/
                 alt="Imagen, video y guion"
                 className="w-full h-full object-cover rounded-md"
               />
@@ -142,16 +142,17 @@ const Pagina4Descripcion4 = () => {
           </div>
 
           {/* Botones en la parte inferior */}
-          <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
+          {/* Botones en la parte inferior */}
+          <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 w-full">
             <button
               onClick={() => handleNavigationWithSound('/Proyectos')}
-              className="bg-[#007B3E] text-white px-4 py-2 rounded shadow-lg hover:bg-[#009e4f] transition-colors w-full md:w-80 cursor-pointer"
+              className="bg-[#007B3E] text-white px-4 py-2 rounded shadow-lg hover:bg-[#009e4f] transition-colors w-full flex-1 cursor-pointer"
             >
               Regresar
             </button>
             <button
               onClick={() => handleNavigationWithSound('/Contenido4')}
-              className="bg-[#007B3E] text-white px-4 py-2 rounded shadow-lg hover:bg-[#009e4f] transition-colors w-full md:w-80 cursor-pointer"
+              className="bg-[#007B3E] text-white px-4 py-2 rounded shadow-lg hover:bg-[#009e4f] transition-colors w-full flex-1 cursor-pointer"
             >
               Iniciar
             </button>
