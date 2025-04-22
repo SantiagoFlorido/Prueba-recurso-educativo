@@ -189,17 +189,6 @@ const Login = () => {
                 > Cambiar a estudiante</Link>
               </span>
             </div>
-            {/* Borrar luego */}
-            <div>
-              <span className='text-black'>
-                Nombre: Docente1
-              </span>
-            </div>
-            <div>
-              <span className='text-black'>
-                Contraseña: Docente1
-              </span>
-            </div>
           </form>
         </div>
       </div>

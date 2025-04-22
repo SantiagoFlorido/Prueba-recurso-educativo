@@ -186,17 +186,6 @@ const LoginStudent = () => {
                   onClick={() => playClick()}
                 > Cambiar a docente</Link>
               </span>
-            </div>           
-            {/*Borrar luego*/}
-            <div>
-              <span className='text-black'>
-                Nombre: Estudiante1
-              </span>
-            </div>
-            <div>
-              <span className='text-black'>
-                Contraseña: Estudiante1
-              </span>
             </div>
           </form>
         </div>
