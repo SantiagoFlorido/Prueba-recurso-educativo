@@ -31,7 +31,7 @@ const Pagina2 = () => {
           {/* Imagen de la izquierda */}
           <div className="bg-gray-100 p-4 rounded-lg flex-1">
             <img
-              src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741304025/ConexionAnimacion_njz2gw.gif" // Ruta de la animación plug and play
+              src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741304025/ConexionAnimacion_njz2gw.gif"
               alt="Conexión Plug and Play animación"
               className="w-full h-40 md:h-70 object-cover rounded-md"
             />
@@ -40,7 +40,7 @@ const Pagina2 = () => {
           {/* Imagen de la derecha */}
           <div className="bg-gray-100 p-4 rounded-lg flex-1">
             <img
-              src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305003/proyectofuncionando_fyeqnh.gif" // Ruta de la animación proyecto funcionando
+              src="https://res.cloudinary.com/dufzsv87k/image/upload/v1741305003/proyectofuncionando_fyeqnh.gif"
               alt="Proyecto funcionando video"
               className="w-full h-40 md:h-70 object-cover rounded-md"
             />
@@ -54,10 +54,11 @@ const Pagina2 = () => {
 
         {/* Referencias y patterns */}
         <div className="bg-gray-100 p-4 rounded-lg w-full max-w-4xl mx-4 mb-4 md:mb-8">
-          <h2 className="text-lg md:text-xl font-bold text-center mb-0 md:mb-0">Referencias y patterns</h2>
-          <p className="text-center text-xs md:text-sm">
-            Aquí puedes agregar las referencias y patterns relacionados con la conexión Plug and Play. 
-          </p>
+          <h2 className="text-lg md:text-xl font-bold text-center mb-2">Referencias</h2>
+          <div className="text-center text-sm">
+            <p>Cristian Mateo Velez Duran - cmvelez@ucundinamarca.edu.co</p>
+            <p>David Santiago Florido Ortiz - dflorido@ucundinamarca.edu.co</p>
+          </div>
         </div>
       </div>
 

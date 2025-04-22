@@ -175,7 +175,7 @@ const Pagina3 = () => {
         {/* Proyectos (Columna 1, Fila 1) */}
         <div className="flex items-center justify-center text-white text-lg bg-[#007B3E] p-2 rounded-md hover:bg-[#009e4f] transition-colors duration-300 min-h-[180px] cursor-pointer font-bold text-center" onClick={() => handleNavigationWithSound('/Proyectos')}>
           <div className="flex items-center gap-2">
-            {showHelp ? ("Banner que indica los proyectos") 
+            {showHelp ? ("Este botón sirve para ingresar al contenido disponible de cada taller del recurso e incluso agregados por docentes") 
 			                : 
 			                  (<span className="flex items-center gap-2">Proyectos terminados {completedWorkshops} de 8 <MdOutlineWork size={60} className="text-[#00482B] text-2x1 rounded-xl" /></span>)}
             		
@@ -199,7 +199,7 @@ const Pagina3 = () => {
             <div className="flex items-center gap-2">
               <h2 className="text-lg text-center font-semibold">
                 {showHelp 
-                  ? ("Banner que indica los recursos de gestor") 
+                  ? ("Este botón sirve para redirigir a los recursos de apoyo que pueden usar docentes y estudiantes") 
                   : userRole === 'docente' 
                     ? (<span className="flex items-center gap-2">Recursos Gestor <FaUserTie className="text-[#007B3E]" /></span>) 
                     : "Restringido solo a Docentes"}
@@ -213,7 +213,7 @@ const Pagina3 = () => {
           >
             <div className="flex items-center gap-2">
               <h2 className="text-lg text-center font-semibold">
-                {showHelp ? ("Banner que indica los recursos de apoyo" ): (<span className="flex items-center gap-2">Recursos de apoyo <FaHandsHelping className="text-[#007B3E]" /></span>)}
+                {showHelp ? ("Este botón sirve para redirigir a los recursos de apoyo que pueden usar docentes y estudiantes"): (<span className="flex items-center gap-2">Recursos de apoyo <FaHandsHelping className="text-[#007B3E]" /></span>)}
               </h2>
               
             </div>
@@ -223,7 +223,7 @@ const Pagina3 = () => {
             onClick={() => handleNavigationWithSound('/Conexión')}
           >
             <div className="flex items-center gap-2">
-              {showHelp ? ("Banner que indica las formas de conexión") : (<>Formas de conexión <FaLink className="text-[#007B3E]" /></>)}
+              {showHelp ? ("Este botón sirve para acceder a los medios de conexión del MBot") : (<>Formas de conexión <FaLink className="text-[#007B3E]" /></>)}
               
             </div>
           </div>
