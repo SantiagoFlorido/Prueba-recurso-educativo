@@ -45,6 +45,9 @@ import Pagina4Informacion8 from './pages/pagina4/tema8/pagina4Informacion8';
 import TallerDinamicoDescripcion from './pages/talleres agregados/tallerDinamicoDescripcion';
 import TallerDinamicoInformacion from './pages/talleres agregados/tallerDinamicoInformacion';
 
+//datos
+import Datos from'./pages/Datos estadisticos/Datosestadisticos';
+
 function App() {
   return (
     <div className="App">
@@ -65,6 +68,7 @@ function App() {
           <Route path='/Principal' element={<Pagina3 />} />
           <Route path="/Conexión" element={<Pagina2 />} />
           <Route path='/Proyectos' element={<PaginaProyectos />} />
+          <Route path='/Datos' element={<Datos/>} />
           <Route path='/Creditos' element={<Creditos />} />
           
           {/* Rutas de contenido */}

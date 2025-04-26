@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaQuestionCircle, FaBars, FaTimes, FaUserTie, FaHandsHelping, FaLink, FaHome } from 'react-icons/fa';
+import { FaQuestionCircle, FaBars, FaTimes, FaUserTie, FaHandsHelping, FaLink, FaHome, FaChartBar } from 'react-icons/fa';
 import { MdOutlineWork } from "react-icons/md";
 
 import axios from 'axios';
@@ -155,14 +155,22 @@ const Pagina3 = () => {
           >
             <FaHome size={19} className="text-[#007B3E] flex justify-center items-center" /> 
           </button>
+          {userRole === 'docente' && (
+            <button 
+              className="flex justify-center items-center bg-gray-200 px-3 py-1 rounded-lg text-sm hover:bg-gray-300 transition-colors duration-300 cursor-pointer w-full" 
+              onClick={() => handleNavigationWithSound('/Datos')}
+            >
+              <FaChartBar size={19} className="text-[#007B3E] flex justify-center items-center" /> 
+            </button>
+          )}
           <button 
-            className="bg-gray-200 px-3 py-2 rounded-lg text-sm hover:bg-gray-300 transition-colors duration-300 cursor-pointer w-full flex items-center justify-center"
+            className="bg-gray-200 px-3 py-1 rounded-lg text-sm hover:bg-gray-300 transition-colors duration-300 cursor-pointer w-full flex items-center justify-center"
             onClick={toggleHelp}
           >
             <FaQuestionCircle size={18} className="text-[#007B3E]" />
           </button>
           <button 
-            className="bg-gray-200 px-3 py-2 rounded-lg text-sm hover:bg-gray-300 transition-colors duration-300 cursor-pointer w-full hidden items-center justify-center md:flex"
+            className="bg-gray-200 px-3 py-1 rounded-lg text-sm hover:bg-gray-300 transition-colors duration-300 cursor-pointer w-full hidden items-center justify-center md:flex"
             onClick={toggleMenu}
           >
             <FaBars size={18} className="text-[#007B3E]" />
