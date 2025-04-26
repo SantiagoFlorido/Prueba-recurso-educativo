@@ -32,6 +32,7 @@ const Datosestadisticos = () => {
   const [currentChartPage, setCurrentChartPage] = useState(1); 
   const [currentStudentPage, setCurrentStudentPage] = useState(1);
   const [currentTeacherPage, setCurrentTeacherPage] = useState(1);
+  const [selectedUser, setSelectedUser] = useState('all'); // Filtro por usuario
 
   // Importa el sonido
   const [playClick] = useSound(
@@ -153,33 +154,209 @@ const Datosestadisticos = () => {
     return userStats;
   };
 
-  // Función para paginar estudiantes
+  // Función para paginar estudiantes (con filtro)
   const paginatedStudents = () => {
     const startIndex = (currentStudentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    return stats.userProgress
-      .filter(user => user.role === 'estudiante')
-      .slice(startIndex, endIndex);
+    
+    let filteredUsers = stats.userProgress.filter(user => user.role === 'estudiante');
+    
+    if (selectedUser !== 'all') {
+      filteredUsers = filteredUsers.filter(user => user.id.toString() === selectedUser);
+    }
+    
+    return filteredUsers.slice(startIndex, endIndex);
   };
 
-  // Función para paginar docentes
+  // Función para paginar docentes (con filtro)
   const paginatedTeachers = () => {
     const startIndex = (currentTeacherPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    return stats.userProgress
-      .filter(user => user.role === 'docente')
-      .slice(startIndex, endIndex);
+    
+    let filteredUsers = stats.userProgress.filter(user => user.role === 'docente');
+    
+    if (selectedUser !== 'all') {
+      filteredUsers = filteredUsers.filter(user => user.id.toString() === selectedUser);
+    }
+    
+    return filteredUsers.slice(startIndex, endIndex);
   };
 
-  // Total páginas para estudiantes
+  // Total páginas para estudiantes (con filtro)
   const totalStudentPages = Math.ceil(
-    stats.userProgress.filter(user => user.role === 'estudiante').length / itemsPerPage
+    (selectedUser === 'all' 
+      ? stats.userProgress.filter(user => user.role === 'estudiante').length 
+      : stats.userProgress.filter(user => user.role === 'estudiante' && user.id.toString() === selectedUser).length) / itemsPerPage
   );
 
-  // Total páginas para docentes
+  // Total páginas para docentes (con filtro)
   const totalTeacherPages = Math.ceil(
-    stats.userProgress.filter(user => user.role === 'docente').length / itemsPerPage
+    (selectedUser === 'all' 
+      ? stats.userProgress.filter(user => user.role === 'docente').length 
+      : stats.userProgress.filter(user => user.role === 'docente' && user.id.toString() === selectedUser).length) / itemsPerPage
   );
+
+  // Datos para gráficos con filtro
+  const getFilteredUsers = () => {
+    if (selectedUser === 'all') {
+      return stats.userProgress.filter(u => activeTab === 'estudiantes' ? u.role === 'estudiante' : u.role === 'docente');
+    } else {
+      return stats.userProgress.filter(u => u.id.toString() === selectedUser);
+    }
+  };
+
+  // Datos para gráficos de estudiantes (paginados)
+  const studentProgressData = {
+    labels: getFilteredUsers()
+      .slice((currentChartPage - 1) * itemsPerPage, currentChartPage * itemsPerPage)
+      .map(u => u.name),
+    datasets: [
+      {
+        label: viewMode === 'finalizados' ? 'Talleres finalizados' : 'Talleres abiertos',
+        data: getFilteredUsers()
+          .slice((currentChartPage - 1) * itemsPerPage, currentChartPage * itemsPerPage)
+          .map(u => viewMode === 'finalizados' ? u.completed : u.opened),
+        backgroundColor: viewMode === 'finalizados' ? '#007B3E' : '#006341',
+      },
+      {
+        label: viewMode === 'finalizados' ? 'Talleres no finalizados' : 'Talleres no abiertos',
+        data: getFilteredUsers()
+          .slice((currentChartPage - 1) * itemsPerPage, currentChartPage * itemsPerPage)
+          .map(u => viewMode === 'finalizados' ? (u.total - u.completed) : (u.total - u.opened)),
+        backgroundColor: viewMode === 'finalizados' ? '#00482B' : '#003319',
+      },
+    ],
+  };
+  
+  // Datos para gráficos de docentes (paginados)
+  const teacherActivityData = {
+    labels: getFilteredUsers()
+      .slice((currentChartPage - 1) * itemsPerPage, currentChartPage * itemsPerPage)
+      .map(u => u.name),
+    datasets: [
+      {
+        label: viewMode === 'finalizados' ? 'Talleres finalizados' : 'Talleres abiertos',
+        data: getFilteredUsers()
+          .slice((currentChartPage - 1) * itemsPerPage, currentChartPage * itemsPerPage)
+          .map(u => viewMode === 'finalizados' ? u.completed : u.opened),
+        backgroundColor: viewMode === 'finalizados' ? '#007B3E' : '#006341',
+      },
+      {
+        label: viewMode === 'finalizados' ? 'Talleres no finalizados' : 'Talleres no abiertos',
+        data: getFilteredUsers()
+          .slice((currentChartPage - 1) * itemsPerPage, currentChartPage * itemsPerPage)
+          .map(u => viewMode === 'finalizados' ? (u.total - u.completed) : (u.total - u.opened)),
+        backgroundColor: viewMode === 'finalizados' ? '#00482B' : '#003319',
+      },
+    ],
+  };
+
+  const roleDistributionData = {
+    labels: ['Docentes', 'Estudiantes'],
+    datasets: [
+      {
+        data: [
+          stats.users.filter(u => u.rol === 'docente').length,
+          stats.users.filter(u => u.rol === 'estudiante').length
+        ],
+        backgroundColor: [
+          '#007B3E',
+          '#00482B'
+        ],
+        borderColor: [
+          '#ffffff'
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  // Datos de finalización por taller para estudiantes (con filtro)
+  const studentCompletionData = {
+    labels: stats.workshopCompletion.students.map(w => w.name),
+    datasets: [
+      {
+        label: 'Talleres completados por estudiantes (%)',
+        data: stats.workshopCompletion.students.map(w => {
+          if (selectedUser === 'all') return w.completionRate;
+          
+          // Calcular porcentaje para el usuario específico
+          const userWorkshops = stats.userWorkshops.filter(uw => 
+            uw.id_taller === w.id && 
+            uw.id_usuario.toString() === selectedUser &&
+            stats.users.find(u => u.id.toString() === selectedUser)?.rol === 'estudiante'
+          );
+          
+          const completed = userWorkshops.filter(uw => uw.estadofinal === 'finalizado').length;
+          return completed > 0 ? 100 : 0;
+        }),
+        backgroundColor: '#007B3E',
+        borderColor: '#ffffff',
+        borderWidth: 1,
+      },
+      {
+        label: 'Talleres abiertos por estudiantes (%)',
+        data: stats.workshopCompletion.students.map(w => {
+          if (selectedUser === 'all') return w.openedRate;
+          
+          const userWorkshops = stats.userWorkshops.filter(uw => 
+            uw.id_taller === w.id && 
+            uw.id_usuario.toString() === selectedUser &&
+            stats.users.find(u => u.id.toString() === selectedUser)?.rol === 'estudiante'
+          );
+          
+          const opened = userWorkshops.filter(uw => uw.estadoabierto === 'abierto').length;
+          return opened > 0 ? 100 : 0;
+        }),
+        backgroundColor: '#006341',
+        borderColor: '#ffffff',
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  // Datos de finalización por taller para docentes (con filtro)
+  const teacherCompletionData = {
+    labels: stats.workshopCompletion.teachers.map(w => w.name),
+    datasets: [
+      {
+        label: 'Talleres completados por docentes (%)',
+        data: stats.workshopCompletion.teachers.map(w => {
+          if (selectedUser === 'all') return w.completionRate;
+          
+          const userWorkshops = stats.userWorkshops.filter(uw => 
+            uw.id_taller === w.id && 
+            uw.id_usuario.toString() === selectedUser &&
+            stats.users.find(u => u.id.toString() === selectedUser)?.rol === 'docente'
+          );
+          
+          const completed = userWorkshops.filter(uw => uw.estadofinal === 'finalizado').length;
+          return completed > 0 ? 100 : 0;
+        }),
+        backgroundColor: '#007B3E',
+        borderColor: '#ffffff',
+        borderWidth: 1,
+      },
+      {
+        label: 'Talleres abiertos por docentes (%)',
+        data: stats.workshopCompletion.teachers.map(w => {
+          if (selectedUser === 'all') return w.openedRate;
+          
+          const userWorkshops = stats.userWorkshops.filter(uw => 
+            uw.id_taller === w.id && 
+            uw.id_usuario.toString() === selectedUser &&
+            stats.users.find(u => u.id.toString() === selectedUser)?.rol === 'docente'
+          );
+          
+          const opened = userWorkshops.filter(uw => uw.estadoabierto === 'abierto').length;
+          return opened > 0 ? 100 : 0;
+        }),
+        backgroundColor: '#006341',
+        borderColor: '#ffffff',
+        borderWidth: 1,
+      },
+    ],
+  };
 
   const handleLogout = () => {
     playClick();
@@ -211,11 +388,23 @@ const Datosestadisticos = () => {
   const switchTab = (tab) => {
     playClick();
     setActiveTab(tab);
+    setSelectedUser('all'); // Resetear filtro al cambiar de pestaña
+    setCurrentChartPage(1);
+    setCurrentStudentPage(1);
+    setCurrentTeacherPage(1);
   };
 
   const switchViewMode = (mode) => {
     playClick();
     setViewMode(mode);
+  };
+
+  const handleUserFilterChange = (e) => {
+    playClick();
+    setSelectedUser(e.target.value);
+    setCurrentChartPage(1);
+    setCurrentStudentPage(1);
+    setCurrentTeacherPage(1);
   };
 
   if (loading) {
@@ -225,120 +414,6 @@ const Datosestadisticos = () => {
       </div>
     );
   }
-
-  // Datos para gráficos de estudiantes (paginados)
-const studentProgressData = {
-    labels: stats.userProgress
-      .filter(u => u.role === 'estudiante')
-      .slice((currentChartPage - 1) * itemsPerPage, currentChartPage * itemsPerPage)
-      .map(u => u.name),
-    datasets: [
-      {
-        label: viewMode === 'finalizados' ? 'Talleres finalizados' : 'Talleres abiertos',
-        data: stats.userProgress
-          .filter(u => u.role === 'estudiante')
-          .slice((currentChartPage - 1) * itemsPerPage, currentChartPage * itemsPerPage)
-          .map(u => viewMode === 'finalizados' ? u.completed : u.opened),
-        backgroundColor: viewMode === 'finalizados' ? '#007B3E' : '#006341',
-      },
-      {
-        label: viewMode === 'finalizados' ? 'Talleres no finalizados' : 'Talleres no abiertos',
-        data: stats.userProgress
-          .filter(u => u.role === 'estudiante')
-          .slice((currentChartPage - 1) * itemsPerPage, currentChartPage * itemsPerPage)
-          .map(u => viewMode === 'finalizados' ? (u.total - u.completed) : (u.total - u.opened)),
-        backgroundColor: viewMode === 'finalizados' ? '#00482B' : '#003319',
-      },
-    ],
-  };
-  
-  // Datos para gráficos de docentes (paginados)
-  const teacherActivityData = {
-    labels: stats.userProgress
-      .filter(u => u.role === 'docente')
-      .slice((currentChartPage - 1) * itemsPerPage, currentChartPage * itemsPerPage)
-      .map(u => u.name),
-    datasets: [
-      {
-        label: viewMode === 'finalizados' ? 'Talleres finalizados' : 'Talleres abiertos',
-        data: stats.userProgress
-          .filter(u => u.role === 'docente')
-          .slice((currentChartPage - 1) * itemsPerPage, currentChartPage * itemsPerPage)
-          .map(u => viewMode === 'finalizados' ? u.completed : u.opened),
-        backgroundColor: viewMode === 'finalizados' ? '#007B3E' : '#006341',
-      },
-      {
-        label: viewMode === 'finalizados' ? 'Talleres no finalizados' : 'Talleres no abiertos',
-        data: stats.userProgress
-          .filter(u => u.role === 'docente')
-          .slice((currentChartPage - 1) * itemsPerPage, currentChartPage * itemsPerPage)
-          .map(u => viewMode === 'finalizados' ? (u.total - u.completed) : (u.total - u.opened)),
-        backgroundColor: viewMode === 'finalizados' ? '#00482B' : '#003319',
-      },
-    ],
-  };
-
-  const roleDistributionData = {
-    labels: ['Docentes', 'Estudiantes'],
-    datasets: [
-      {
-        data: [
-          stats.users.filter(u => u.rol === 'docente').length,
-          stats.users.filter(u => u.rol === 'estudiante').length
-        ],
-        backgroundColor: [
-          '#007B3E',
-          '#00482B'
-        ],
-        borderColor: [
-          '#ffffff'
-        ],
-        borderWidth: 1,
-      },
-    ],
-  };
-
-  // Datos de finalización por taller para estudiantes
-  const studentCompletionData = {
-    labels: stats.workshopCompletion.students.map(w => w.name),
-    datasets: [
-      {
-        label: 'Talleres completados por estudiantes (%)',
-        data: stats.workshopCompletion.students.map(w => w.completionRate),
-        backgroundColor: '#007B3E',
-        borderColor: '#ffffff',
-        borderWidth: 1,
-      },
-      {
-        label: 'Talleres abiertos por estudiantes (%)',
-        data: stats.workshopCompletion.students.map(w => w.openedRate),
-        backgroundColor: '#006341',
-        borderColor: '#ffffff',
-        borderWidth: 1,
-      },
-    ],
-  };
-
-  // Datos de finalización por taller para docentes
-  const teacherCompletionData = {
-    labels: stats.workshopCompletion.teachers.map(w => w.name),
-    datasets: [
-      {
-        label: 'Talleres completados por docentes (%)',
-        data: stats.workshopCompletion.teachers.map(w => w.completionRate),
-        backgroundColor: '#007B3E',
-        borderColor: '#ffffff',
-        borderWidth: 1,
-      },
-      {
-        label: 'Talleres abiertos por docentes (%)',
-        data: stats.workshopCompletion.teachers.map(w => w.openedRate),
-        backgroundColor: '#006341',
-        borderColor: '#ffffff',
-        borderWidth: 1,
-      },
-    ],
-  };
 
   return (
     <div className="bg-white p-4 w-full min-h-screen flex flex-col">
@@ -420,8 +495,8 @@ const studentProgressData = {
         </div>
 
         {/* Pestañas para cambiar entre estudiantes y docentes */}
-        <div className="flex justify-between items-center mb-6">
-          <div className="flex border-b border-gray-200">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+          <div className="flex border-b border-gray-200 w-full md:w-auto">
             <button
               className={`py-2 px-4 font-medium text-sm flex items-center gap-2 ${activeTab === 'estudiantes' ? 'text-[#007B3E] border-b-2 border-[#007B3E]' : 'text-gray-500'}`}
               onClick={() => switchTab('estudiantes')}
@@ -436,7 +511,48 @@ const studentProgressData = {
             </button>
           </div>
           
-          {/* Filtro de visualización */}
+          {/* Filtro de usuario */}
+          <div className="w-full md:w-64">
+            <label htmlFor="userFilter" className="block text-sm font-medium text-gray-700 mb-1">
+              Filtrar por usuario:
+            </label>
+            <select
+              id="userFilter"
+              value={selectedUser}
+              onChange={handleUserFilterChange}
+              className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#007B3E] focus:border-[#007B3E] text-sm"
+            >
+              <option value="all">Todos los usuarios</option>
+              {stats.userProgress
+                .filter(user => activeTab === 'estudiantes' ? user.role === 'estudiante' : user.role === 'docente')
+                .map(user => (
+                  <option key={user.id} value={user.id}>{user.name}</option>
+                ))}
+            </select>
+          </div>
+          
+          {/* Filtro de visualización (ahora en móvil aparece debajo) */}
+          <div className="hidden md:flex items-center gap-2 bg-gray-100 p-1 rounded-lg">
+            <span className="text-sm text-gray-600 flex items-center gap-1">
+              <FaFilter /> Ver:
+            </span>
+            <button
+              className={`px-3 py-1 text-sm rounded ${viewMode === 'finalizados' ? 'bg-[#007B3E] text-white' : 'bg-gray-200 text-gray-700'}`}
+              onClick={() => switchViewMode('finalizados')}
+            >
+              Finalizados
+            </button>
+            <button
+              className={`px-3 py-1 text-sm rounded ${viewMode === 'abiertos' ? 'bg-[#007B3E] text-white' : 'bg-gray-200 text-gray-700'}`}
+              onClick={() => switchViewMode('abiertos')}
+            >
+              Abiertos
+            </button>
+          </div>
+        </div>
+        
+        {/* Filtro de visualización para móvil (aparece debajo) */}
+        <div className="md:hidden flex justify-center mb-6">
           <div className="flex items-center gap-2 bg-gray-100 p-1 rounded-lg">
             <span className="text-sm text-gray-600 flex items-center gap-1">
               <FaFilter /> Ver:
@@ -472,7 +588,7 @@ const studentProgressData = {
                 </h3>
                 <div className="h-64 md:h-80">
                     <Bar 
-                    data={activeTab === 'estudiantes' ? studentProgressData : teacherActivityData} 
+                    data={studentProgressData} 
                     options={{ 
                         responsive: true, 
                         maintainAspectRatio: false,
@@ -493,11 +609,7 @@ const studentProgressData = {
                     />
                 </div>
                 {/* Controles de paginación para el gráfico */}
-                {Math.ceil(
-                    (activeTab === 'estudiantes' 
-                    ? stats.userProgress.filter(u => u.role === 'estudiante').length 
-                    : stats.userProgress.filter(u => u.role === 'docente').length) / itemsPerPage
-                ) > 1 && (
+                {Math.ceil(getFilteredUsers().length / itemsPerPage) > 1 && (
                     <div className="flex justify-between items-center p-2 bg-gray-50">
                     <button
                         onClick={() => {
@@ -510,29 +622,15 @@ const studentProgressData = {
                         Anterior
                     </button>
                     <span className="text-sm text-gray-600">
-                        Página {currentChartPage} de {
-                        Math.ceil(
-                            (activeTab === 'estudiantes' 
-                            ? stats.userProgress.filter(u => u.role === 'estudiante').length 
-                            : stats.userProgress.filter(u => u.role === 'docente').length) / itemsPerPage
-                        )
-                        }
+                        Página {currentChartPage} de {Math.ceil(getFilteredUsers().length / itemsPerPage)}
                     </span>
                     <button
                         onClick={() => {
                         playClick();
                         setCurrentChartPage(prev => prev + 1);
                         }}
-                        disabled={currentChartPage >= Math.ceil(
-                        (activeTab === 'estudiantes' 
-                            ? stats.userProgress.filter(u => u.role === 'estudiante').length 
-                            : stats.userProgress.filter(u => u.role === 'docente').length) / itemsPerPage
-                        )}
-                        className={`px-3 py-1 text-sm rounded-md ${currentChartPage >= Math.ceil(
-                        (activeTab === 'estudiantes' 
-                            ? stats.userProgress.filter(u => u.role === 'estudiante').length 
-                            : stats.userProgress.filter(u => u.role === 'docente').length) / itemsPerPage
-                        ) ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-[#007B3E] text-white hover:bg-[#009e4f]'}`}
+                        disabled={currentChartPage >= Math.ceil(getFilteredUsers().length / itemsPerPage)}
+                        className={`px-3 py-1 text-sm rounded-md ${currentChartPage >= Math.ceil(getFilteredUsers().length / itemsPerPage) ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-[#007B3E] text-white hover:bg-[#009e4f]'}`}
                     >
                         Siguiente
                     </button>
@@ -613,7 +711,10 @@ const studentProgressData = {
             {/* Gráfico de finalización por taller para estudiantes */}
             <div className="bg-white p-4 rounded-lg shadow border border-gray-200 mb-6">
               <h3 className="font-bold text-[#007B3E] mb-3 text-center flex items-center justify-center gap-2">
-                <MdOutlineWork /> Estado de Talleres (Estudiantes)
+                <MdOutlineWork /> 
+                {selectedUser === 'all' 
+                  ? 'Estado de Talleres (Estudiantes)' 
+                  : `Estado de Talleres (${stats.users.find(u => u.id.toString() === selectedUser)?.nombre || 'Usuario seleccionado'})`}
               </h3>
               <div className="h-64 md:h-96">
                 <Bar 
@@ -651,7 +752,7 @@ const studentProgressData = {
                 </h3>
                 <div className="h-64 md:h-80">
                     <Bar 
-                    data={activeTab === 'Docentes' ? studentProgressData : teacherActivityData} 
+                    data={teacherActivityData} 
                     options={{ 
                         responsive: true, 
                         maintainAspectRatio: false,
@@ -672,11 +773,7 @@ const studentProgressData = {
                     />
                 </div>
                 {/* Controles de paginación para el gráfico */}
-                {Math.ceil(
-                    (activeTab === 'estudiantes' 
-                    ? stats.userProgress.filter(u => u.role === 'estudiante').length 
-                    : stats.userProgress.filter(u => u.role === 'docente').length) / itemsPerPage
-                ) > 1 && (
+                {Math.ceil(getFilteredUsers().length / itemsPerPage) > 1 && (
                     <div className="flex justify-between items-center p-2 bg-gray-50">
                     <button
                         onClick={() => {
@@ -689,29 +786,15 @@ const studentProgressData = {
                         Anterior
                     </button>
                     <span className="text-sm text-gray-600">
-                        Página {currentChartPage} de {
-                        Math.ceil(
-                            (activeTab === 'estudiantes' 
-                            ? stats.userProgress.filter(u => u.role === 'estudiante').length 
-                            : stats.userProgress.filter(u => u.role === 'docente').length) / itemsPerPage
-                        )
-                        }
+                        Página {currentChartPage} de {Math.ceil(getFilteredUsers().length / itemsPerPage)}
                     </span>
                     <button
                         onClick={() => {
                         playClick();
                         setCurrentChartPage(prev => prev + 1);
                         }}
-                        disabled={currentChartPage >= Math.ceil(
-                        (activeTab === 'estudiantes' 
-                            ? stats.userProgress.filter(u => u.role === 'estudiante').length 
-                            : stats.userProgress.filter(u => u.role === 'docente').length) / itemsPerPage
-                        )}
-                        className={`px-3 py-1 text-sm rounded-md ${currentChartPage >= Math.ceil(
-                        (activeTab === 'estudiantes' 
-                            ? stats.userProgress.filter(u => u.role === 'estudiante').length 
-                            : stats.userProgress.filter(u => u.role === 'docente').length) / itemsPerPage
-                        ) ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-[#007B3E] text-white hover:bg-[#009e4f]'}`}
+                        disabled={currentChartPage >= Math.ceil(getFilteredUsers().length / itemsPerPage)}
+                        className={`px-3 py-1 text-sm rounded-md ${currentChartPage >= Math.ceil(getFilteredUsers().length / itemsPerPage) ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-[#007B3E] text-white hover:bg-[#009e4f]'}`}
                     >
                         Siguiente
                     </button>
@@ -792,7 +875,10 @@ const studentProgressData = {
             {/* Gráfico de finalización por taller para docentes */}
             <div className="bg-white p-4 rounded-lg shadow border border-gray-200 mb-6">
               <h3 className="font-bold text-[#007B3E] mb-3 text-center flex items-center justify-center gap-2">
-                <MdOutlineWork /> Estado de Talleres (Docentes)
+                <MdOutlineWork /> 
+                {selectedUser === 'all' 
+                  ? 'Estado de Talleres (Docentes)' 
+                  : `Estado de Talleres (${stats.users.find(u => u.id.toString() === selectedUser)?.nombre || 'Usuario seleccionado'})`}
               </h3>
               <div className="h-64 md:h-96">
                 <Bar 
