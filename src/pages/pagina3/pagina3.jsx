@@ -181,13 +181,17 @@ const Pagina3 = () => {
       {/* Contenedor con 3 columnas y 3 filas */}
       <div className="grid grid-cols-1 md:grid-cols-[minmax(200px,_1fr)_minmax(100px,_0.3fr)] gap-4 flex-grow relative">
         {/* Proyectos (Columna 1, Fila 1) */}
-        <div className="flex items-center justify-center text-white text-lg bg-[#007B3E] p-2 rounded-md hover:bg-[#009e4f] transition-colors duration-300 min-h-[180px] cursor-pointer font-bold text-center" onClick={() => handleNavigationWithSound('/Proyectos')}>
-          <div className="flex items-center gap-2">
-            {savedWorkshops.length > 0 ? "Proyectos Guardados (Este botón sirve para ingresar al contenido disponible de cada taller del recurso e incluso agregados por docentes)" 
-			                : 
-			                  (<span className="flex items-center gap-2">Proyectos terminados {completedWorkshops} de 8 <MdOutlineWork size={60} className="text-[#00482B] text-2x1 rounded-xl" /></span>)}
-            		
-          </div>
+          <div 
+            className="flex items-center justify-center text-white text-lg bg-[#007B3E] p-2 rounded-md hover:bg-[#009e4f] transition-colors duration-300 min-h-[180px] cursor-pointer font-bold text-center" 
+            onClick={() => handleNavigationWithSound('/Proyectos')}
+          >
+            <div className="flex items-center gap-2">
+              <span className="flex items-center gap-2">
+                Proyectos terminados {completedWorkshops} de 8 
+                <MdOutlineWork size={60} className="text-[#00482B] text-2xl rounded-xl" />
+              </span>
+              <span className="hidden md:inline">(Este botón sirve para ingresar al contenido disponible de cada taller del recurso, incluso a los agregados por docentes)</span>
+            </div>
         </div>
 
         {/* Recursos (Columna 2, Fila 1) */}
