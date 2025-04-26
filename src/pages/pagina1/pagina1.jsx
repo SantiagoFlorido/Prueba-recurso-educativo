@@ -148,6 +148,8 @@ const Pagina1 = () => {
           <p className="text-sm text-[#007B3E] text-center">
             www.ucundinamarca.edu.co | Vigilado minieducación<br />
             <span className="text-black">Contactos:</span><br />
+            Financiador<br />
+            <span className="text-black">Universidad de Cundinamarca</span> <br />
             Docentes<br />
             <span className="text-black">Ana Esperanza Merchan Hernandez - anaesperanzamerchan@ucundinamarca.edu.co</span> <br />
             <span className="text-black">Diego Orlando Méndez Pineda - dmendezp@ucundinamarca.edu.co</span> <br />
@@ -156,6 +158,7 @@ const Pagina1 = () => {
             Estudiantes<br />
             <span className="text-black">Cristian Mateo Velez Duran - cmvelez@ucundinamarca.edu.co</span> <br />
             <span className="text-black">David Santiago Florido Ortiz - dflorido@ucundinamarca.edu.co</span> 
+            
           </p>
         </div>
     </div>

@@ -47,10 +47,13 @@ const Pagina2 = () => {
           </div>
         </div>
 
-        {/* Texto descriptivo */}
-        <p className="text-center text-base md:text-lg mb-4 md:mb-2 px-4">
-          Conexión a dispositivos Plug and Play y un proyecto funcionando
-        </p>
+        {/* Texto descriptivo mejorado */}
+        <div className="text-center text-base md:text-lg mb-4 md:mb-2 px-4 space-y-2">
+          <p className="font-medium">Conexión del mBot:</p>
+          <p>• <span className="font-semibold">USB (PC):</span> Conecta el cable USB al puerto del mBot y al computador para programación directa</p>
+          <p>• <span className="font-semibold">Bluetooth (Mobile):</span> Empareja mediante la app mBlock usando el módulo Bluetooth integrado</p>
+          <p>• Ambos métodos permiten cargar programas y controlar el robot en tiempo real</p>
+        </div>
 
         {/* Referencias y patterns */}
         <div className="bg-gray-100 p-4 rounded-lg w-full max-w-4xl mx-4 mb-4 md:mb-8">

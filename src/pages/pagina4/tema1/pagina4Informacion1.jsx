@@ -224,24 +224,32 @@ const Pagina4Informacion1 = () => {
 
   return (
     <div className="w-full min-h-screen flex flex-col md:flex-row p-4 bg-white gap-4 relative md:items-stretch">
-      <div className="w-full md:w-1/4 flex flex-col gap-4">
-        <div className="border h-16 flex justify-center items-center rounded-md">
-          <h2 className="text-2xl font-bold">Introducción</h2>
-        </div>
-        <div className="border flex-1 flex justify-center items-center rounded-md p-4 overflow-y-auto max-h-[400px] md:max-h-[480px]">
-          <p className="text-gray-700 text-center">{slides[activeIndex].text}</p>
-        </div>
-      </div>
+      <div className="flex flex-col md:flex-row gap-4 flex-1 mb-14"> {/* Añadido flex-1 y mb-5 */}
+        
+        {/* Columna izquierda - Texto */}
+        <div className="w-full md:w-1/4 flex flex-col gap-4 h-full"> {/* Añadido h-full */}
+          {/* Título "Introducción" */}
+          <div className="border h-16 flex justify-center items-center rounded-md">
+            <h2 className="text-2xl font-bold">Introducción</h2>
+          </div>
 
-      <div className="w-full md:w-3/4 border flex justify-center items-center rounded-md p-4 max-h-[400px] md:max-h-[560px]">
-        <img
-          src={slides[activeIndex].image}
-          alt={`Imagen ${activeIndex + 1}`}
-          className={`w-full h-full max-h-[300px] md:max-h-[600px] object-fill rounded-md ${
-            activeIndex === slides.length - 1 ? 'cursor-pointer hover:opacity-80' : ''
-          }`}
-          onClick={handleDownloadImage}
-        />
+          {/* Contenedor del texto del slide (ahora ocupa el espacio restante) */}
+          <div className="border flex-1 flex justify-center items-center rounded-md p-4 overflow-y-auto">
+            <p className="text-gray-700 text-center">{slides[activeIndex].text}</p>
+          </div>
+        </div>
+
+        {/* Columna derecha - Imagen */}
+        <div className="w-full md:w-3/4 border flex justify-center items-center rounded-md p-0 h-full overflow-hidden">
+          <img
+            src={slides[activeIndex].image}
+            alt={`Imagen ${activeIndex + 1}`}
+            className={`w-full h-full max-h-[300px] md:max-h-[515px] object-contain rounded-md ${
+              activeIndex === slides.length - 1 ? 'cursor-pointer hover:opacity-80' : ''
+            }`}
+            onClick={handleDownloadImage}
+          />
+        </div>
       </div>
 
       <button
@@ -270,7 +278,7 @@ const Pagina4Informacion1 = () => {
           ←
         </button>
 
-        <div className="hidden md:flex ">
+        <div className="hidden md:flex mb-2">
           {slides.map((slide, index) => (
             <button
               key={slide.id}

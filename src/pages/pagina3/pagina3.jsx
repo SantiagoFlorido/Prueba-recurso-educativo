@@ -300,6 +300,8 @@ const Pagina3 = () => {
           {/* Créditos */}
           <div className="bg-[#3d3d3b] text-white p-4 rounded-lg mt-4">
             <div className="text-sm text-center">
+              <p className="font-semibold mt-2">Financiador</p>
+              <p className="text-gray-300">Universidad de Cundinamarca</p>
               <p className="font-semibold">Docentes</p>
               <p className="text-gray-300">Ana Esperanza Merchan Hernandez - anaesperanzamerchan@ucundinamarca.edu.co</p>
               <p className="text-gray-300">Diego Orlando Méndez Pineda - dmendezp@ucundinamarca.edu.co</p>
