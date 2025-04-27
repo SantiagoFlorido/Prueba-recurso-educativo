@@ -36,7 +36,7 @@ const NuevoTaller = () => {
         const file = e.target.files[0];
         if (file) {
             if (file.size > 10 * 1024 * 1024) {
-                setError('La imagen excede el tamaño máximo de 10MB');
+                showError('La imagen excede el tamaño máximo de 10MB');
                 return;
             }
             setImagenPortada(file);
@@ -49,7 +49,7 @@ const NuevoTaller = () => {
         const file = e.target.files[0];
         if (file) {
             if (file.size > 10 * 1024 * 1024) {
-                setError(`La imagen del slide ${index + 1} excede 10MB`);
+                showError(`La imagen del slide ${index + 1} excede 10MB`);
                 return;
             }
             const newSlides = [...slides];
@@ -79,21 +79,66 @@ const NuevoTaller = () => {
         }
     };
 
+    const showError = (message) => {
+        setError(message);
+        alert(`Error: ${message}`);
+    };
+
+    const showSuccess = (message) => {
+        alert(message);
+    };
+
+    const validateForm = () => {
+        if (!titulo.trim()) {
+            showError('El título es obligatorio');
+            return false;
+        }
+        if (!descripcion.trim()) {
+            showError('La descripción es obligatoria');
+            return false;
+        }
+        if (!imagenPortada) {
+            showError('La imagen de portada es obligatoria');
+            return false;
+        }
+        if (!duracion.trim()) {
+            showError('La duración es obligatoria');
+            return false;
+        }
+        if (!materiales.trim()) {
+            showError('Los materiales necesarios son obligatorios');
+            return false;
+        }
+        if (!objetivos.trim()) {
+            showError('Los objetivos de aprendizaje son obligatorios');
+            return false;
+        }
+        if (!finalidades.trim()) {
+            showError('Las finalidades son obligatorias');
+            return false;
+        }
+
+        // Validar slides
+        for (let i = 0; i < slides.length; i++) {
+            const slide = slides[i];
+            if (!slide.descripcion.trim()) {
+                showError(`La descripción del paso en el slide ${i + 1} es obligatoria`);
+                return false;
+            }
+            if (!slide.imagen) {
+                showError(`La imagen del paso en el slide ${i + 1} es obligatoria`);
+                return false;
+            }
+        }
+
+        return true;
+    };
+
     const handleSubmit = async () => {
         playClick();
         setError('');
         
-        // Validación mejorada
-        if (!titulo.trim()) {
-            setError('El título es obligatorio');
-            return;
-        }
-        if (!descripcion.trim()) {
-            setError('La descripción es obligatoria');
-            return;
-        }
-        if (!imagenPortada) {
-            setError('La imagen de portada es obligatoria');
+        if (!validateForm()) {
             return;
         }
 
@@ -105,13 +150,13 @@ const NuevoTaller = () => {
             formDataTaller.append('nombre', titulo.trim());
             formDataTaller.append('descripcion', descripcion.trim());
             formDataTaller.append('portada', imagenPortada);
+            formDataTaller.append('duracion', duracion.trim());
+            formDataTaller.append('nivelDificultad', nivelDificultad);
+            formDataTaller.append('materiales', materiales.trim());
+            formDataTaller.append('objetivos', objetivos.trim());
+            formDataTaller.append('finalidades', finalidades.trim());
             
-            // Solo agregar campos si tienen valor
-            if (duracion.trim()) formDataTaller.append('duracion', duracion.trim());
-            if (nivelDificultad) formDataTaller.append('nivelDificultad', nivelDificultad);
-            if (materiales.trim()) formDataTaller.append('materiales', materiales.trim());
-            if (objetivos.trim()) formDataTaller.append('objetivos', objetivos.trim());
-            if (finalidades.trim()) formDataTaller.append('finalidades', finalidades.trim());
+            // Campos opcionales STEAM
             if (ciencia.trim()) formDataTaller.append('ciencia', ciencia.trim());
             if (tecnologia.trim()) formDataTaller.append('tecnologia', tecnologia.trim());
             if (ingenieria.trim()) formDataTaller.append('ingenieria', ingenieria.trim());
@@ -133,40 +178,30 @@ const NuevoTaller = () => {
                 throw new Error('No se recibió ID del taller válido');
             }
 
-            // 2. Agregar slides (solo si el taller se creó correctamente)
-            for (const [index, slide] of slides.entries()) {
-                if (slide.descripcion.trim()) {
-                    const formDataSlide = new FormData();
-                    formDataSlide.append('descripcion', slide.descripcion.trim());
-                    
-                    if (slide.imagen) {
-                        formDataSlide.append('imagen', slide.imagen);
-                    }
+            // 2. Agregar slides
+            for (const slide of slides) {
+                const formDataSlide = new FormData();
+                formDataSlide.append('descripcion', slide.descripcion.trim());
+                formDataSlide.append('imagen', slide.imagen);
 
-                    try {
-                        const slideResponse = await fetch(
-                            `https://api-aws-ndou.onrender.com/talleres/${tallerData.id}/slides`,
-                            {
-                                method: 'POST',
-                                body: formDataSlide
-                            }
-                        );
-
-                        if (!slideResponse.ok) {
-                            console.error(`Error en slide ${index + 1}`);
-                        }
-                    } catch (slideError) {
-                        console.error(`Error al crear slide ${index + 1}:`, slideError);
+                const slideResponse = await fetch(
+                    `https://api-aws-ndou.onrender.com/talleres/${tallerData.id}/slides`,
+                    {
+                        method: 'POST',
+                        body: formDataSlide
                     }
+                );
+
+                if (!slideResponse.ok) {
+                    console.error('Error al crear slide:', await slideResponse.text());
                 }
             }
 
-            alert('Taller creado exitosamente!');
+            showSuccess('Taller creado exitosamente!');
             handleNavigationWithSound('/Proyectos');
         } catch (error) {
             console.error('Error completo:', error);
-            setError(error.message);
-            alert(`Error: ${error.message}`);
+            showError(error.message);
         } finally {
             setIsSubmitting(false);
         }
@@ -174,7 +209,6 @@ const NuevoTaller = () => {
 
     const sundclick = () => {
         playClick();
-
     };
 
     return (
@@ -194,7 +228,7 @@ const NuevoTaller = () => {
                         Crear Nuevo Taller
                     </h1>
                     <p className="text-sm text-gray-500 mb-6 text-center">
-                        Las imágenes no deben superar los 10MB de tamaño
+                        Todos los campos son obligatorios, excepto en las áreas STEM. Además, las imágenes, GIFs o videos no deben superar los 10 MB
                     </p>
 
                     {error && (
@@ -262,6 +296,7 @@ const NuevoTaller = () => {
                                     onClick={sundclick}
                                     placeholder="Ej: 60 minutos"
                                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007B3E]"
+                                    required
                                 />
                             </div>
 
@@ -288,6 +323,7 @@ const NuevoTaller = () => {
                                 onClick={sundclick}
                                 placeholder="Lista los materiales necesarios."
                                 className="w-full h-24 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007B3E]"
+                                required
                             />
                             <p className="text-sm text-gray-500 mt-1">Separa cada material con un salto de línea</p>
                         </div>
@@ -300,6 +336,7 @@ const NuevoTaller = () => {
                                 onClick={sundclick}
                                 placeholder="Enumera los objetivos que los estudiantes alcanzarán"
                                 className="w-full h-24 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007B3E]"
+                                required
                             />
                             <p className="text-sm text-gray-500 mt-1">Separa cada objetivo con un salto de línea</p>
                         </div>
@@ -312,13 +349,14 @@ const NuevoTaller = () => {
                                 onClick={sundclick}
                                 placeholder="Describe las finalidades del taller..."
                                 className="w-full h-24 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007B3E]"
+                                required
                             />
                             <p className="text-sm text-gray-500 mt-1">Separa cada finalidad con un salto de línea</p>
                         </div>
 
                         <div className="mt-6">
                             <h3 className="text-lg font-semibold mb-2 text-[#007B3E]">
-                                Áreas STEM <span className="text-red-500">(No todas son necesarias de llenar)</span>
+                                Áreas STEM <span className="text-red-500">(No todas son obligatorias)</span>
                             </h3>
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -405,6 +443,7 @@ const NuevoTaller = () => {
                                             onClick={sundclick}
                                             placeholder="Describe este paso del taller..."
                                             className="w-full h-32 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007B3E]"
+                                            required
                                         />
                                     </div>
 
@@ -427,6 +466,7 @@ const NuevoTaller = () => {
                                                             onClick={sundclick}
                                                             accept="image/*"
                                                             className="hidden"
+                                                            required
                                                         />
                                                     </label>
                                                 </div>
