@@ -4,6 +4,8 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom';  // Importa BrowserRouter
 
+//configurar rutas sin peticiones para acceso sin internet
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>  {/* Usa BrowserRouter en lugar de Router */}
