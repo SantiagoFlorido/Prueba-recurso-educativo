@@ -409,7 +409,7 @@ const Pagina4Informacion3 = () => {
                 {slides[activeIndex].videoUrl ? (
                   <video 
                     controls 
-                    className="w-full h-full max-h-[500px] object-contain"
+                    className="w-full h-full max-h-[470px] object-contain"
                   >
                     <source src={slides[activeIndex].videoUrl} type="video/mp4" />
                     Tu navegador no soporta el elemento de video.

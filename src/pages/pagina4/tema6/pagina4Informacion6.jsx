@@ -153,7 +153,7 @@ const Pagina4Informacion6 = () => {
     {
       id: 18,
       title: "🚀 Este es el resultado final del taller 🤖",
-      videoUrl: "",
+      videoUrl: "https://res.cloudinary.com/dufzsv87k/video/upload/v1745966499/TallerVideo6.mp4",
       text: "¡Aquí verás el resultado final del taller! 🎥✨ ¿Lograste que tu mBot siga la línea correctamente? ¡Compara tu solución con la nuestra! 🏆",
       isVideoSlide: true,
       isLastSlide: true
@@ -434,7 +434,7 @@ const Pagina4Informacion6 = () => {
                 {slides[activeIndex].videoUrl ? (
                   <video 
                     controls 
-                    className="w-full h-full max-h-[500px] object-contain"
+                    className="w-full h-full max-h-[470px] object-contain"
                   >
                     <source src={slides[activeIndex].videoUrl} type="video/mp4" />
                     Tu navegador no soporta el elemento de video.
