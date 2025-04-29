@@ -157,14 +157,28 @@ const Pagina4Informacion7 = () => {
 
   const handlePrevSlide = () => {
     if (isSoundPlaying || activeIndex === 0) return;
+    
     playClick();
-    setActiveIndex((prevIndex) => prevIndex - 1);
+    
+    if (activeIndex > 0) {
+      const randomIndex = Math.floor(Math.random() * motivationalMessages.length);
+      setRandomMessage(motivationalMessages[randomIndex]);
+      setShowConfirmationModal(true);
+      setTargetIndex(activeIndex - 1);
+    }
   };
-
+  
   const handleNextSlide = () => {
     if (isSoundPlaying || activeIndex === slides.length - 1) return;
+    
     playClick();
-    setActiveIndex((prevIndex) => prevIndex + 1);
+    
+    if (activeIndex >= 0) {
+      const randomIndex = Math.floor(Math.random() * motivationalMessages.length);
+      setRandomMessage(motivationalMessages[randomIndex]);
+      setShowConfirmationModal(true);
+      setTargetIndex(activeIndex + 1);
+    }
   };
 
   const handleConfirmNext = () => {

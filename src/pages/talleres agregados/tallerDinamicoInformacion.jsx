@@ -320,19 +320,27 @@ const TallerDinamicoInformacion = () => {
         <div className={`w-full md:w-3/4 border flex justify-center items-center rounded-md p-0 h-full overflow-hidden ${
           activeIndex === taller.slides.length - 1 ? 'bg-white border-black' : ''
         }`}>
-          {activeIndex === taller.slides.length - 1 && taller.slides[activeIndex].videoUrl ? (
+          {activeIndex === taller.slides.length - 1 ? (
             <div className="w-full h-full flex flex-col">
               <div className="w-full bg-red-500 p-2 text-center">
                 <h2 className="text-xl font-bold text-white">🚀 Este es el resultado final del taller 🤖</h2>
               </div>
               <div className="flex-1 flex items-center justify-center bg-white">
-                <video 
-                  controls 
-                  className="w-full h-full max-h-[500px] object-contain"
-                >
-                  <source src={taller.slides[activeIndex].videoUrl} type="video/mp4" />
-                  Tu navegador no soporta el elemento de video.
-                </video>
+                {taller.slides[activeIndex].videoUrl ? (
+                  <video 
+                    controls 
+                    className="w-full h-full max-h-[500px] md:max-h-[471px] object-contain"
+                  >
+                    <source src={taller.slides[activeIndex].videoUrl} type="video/mp4" />
+                    Tu navegador no soporta el elemento de video.
+                  </video>
+                ) : (
+                  <img
+                    src={taller.slides[activeIndex].imagenUrl}
+                    alt="Resultado final del taller"
+                    className="w-full h-full max-h-[500px] md:max-h-[471px] object-contain"
+                  />
+                )}
               </div>
             </div>
           ) : (
