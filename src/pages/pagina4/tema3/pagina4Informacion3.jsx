@@ -128,7 +128,7 @@ const Pagina4Informacion3 = () => {
     {
       id: 13,
       title: "🚀 Este es el resultado final del taller 🤖",
-      videoUrl: "",
+      videoUrl: "https://res.cloudinary.com/dufzsv87k/video/upload/v1745966379/TallerVideo5.mp4",
       text: "¡Aquí verás el resultado final del taller! 🎥✨ ¿Lograste controlar tu mBot correctamente? ¡Compara tu solución con la nuestra! 🏆",
       isVideoSlide: true,
       isLastSlide: true
