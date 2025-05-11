@@ -12,6 +12,7 @@ const Pagina4Informacion3 = () => {
     'https://res.cloudinary.com/dufzsv87k/video/upload/v1744909247/ClickSound.mp3',
     { volume: 1.0 }
   );
+  
   const [playCongratulations] = useSound(
     'https://res.cloudinary.com/dufzsv87k/video/upload/v1745779517/congratulationsSound.mp3',
     { volume: 0.8 }
