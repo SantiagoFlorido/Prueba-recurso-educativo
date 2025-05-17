@@ -48,6 +48,10 @@ import TallerDinamicoInformacion from './pages/talleres agregados/tallerDinamico
 //datos
 import Datos from'./pages/Datos estadisticos/Datosestadisticos';
 
+//recursos
+import Gestor from './pages/Recursos/recursosgestor'
+import Apoyo from './pages/Recursos/recursosapoyo'
+
 function App() {
   return (
     <div className="App">
@@ -69,6 +73,7 @@ function App() {
           <Route path="/Conexión" element={<Pagina2 />} />
           <Route path='/Proyectos' element={<PaginaProyectos />} />
           <Route path='/Datos' element={<Datos/>} />
+          <Route path='/RecursosApoyo' element={<Apoyo/>} />
           <Route path='/Creditos' element={<Creditos />} />
           
           {/* Rutas de contenido */}
@@ -95,6 +100,7 @@ function App() {
             <Route path='/Tema7' element={<Pagina4Descripcion7 />} />
             <Route path='/Tema8' element={<Pagina4Descripcion8 />} />
             <Route path='/TallerNuevo' element={<NuevoTaller />} />
+            <Route path='/RecursosGestor' element={<Gestor/>} />
             
             {/* Rutas dinámicas para ver la descripcion de talleres agregados  EXCLUSIVA DOCENTES*/}
             <Route path='/Tema/:tallerId' element={<TallerDinamicoDescripcion />} />

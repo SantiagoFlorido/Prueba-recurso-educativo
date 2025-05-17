@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaQuestionCircle, FaBars, FaTimes, FaUserTie, FaHandsHelping, FaLink, FaHome, FaChartBar } from 'react-icons/fa';
 import { MdOutlineWork } from "react-icons/md";
@@ -114,11 +114,19 @@ const Pagina3 = () => {
     }, 200);
   };
 
-  const handleExternalLinkWithSound = (url) => {
+  const handleExternalLinkWithSound = () => {
     playClick();
     setTimeout(() => {
-      window.open(url, '_blank', 'noopener,noreferrer');
+      
     }, 200);
+    navigate('/RecursosGestor');
+  };
+  const handleExternalLinkWithSound2 = () => {
+    playClick();
+    setTimeout(() => {
+      
+    }, 200);
+    navigate('/RecursosApoyo');
   };
 
   return (
@@ -200,7 +208,7 @@ const Pagina3 = () => {
             }`}
             onClick={() => {
               if (userRole === 'docente') {
-                handleExternalLinkWithSound('https://mailunicundiedu-my.sharepoint.com/:f:/g/personal/dflorido_ucundinamarca_edu_co/EgspzyNMnq5JkvF7fJzfM0UBQMG5jLgJ6cgdT0N8Ld7gng?e=022Nfi');
+                handleExternalLinkWithSound();
               }
             }}   
           >
@@ -217,7 +225,7 @@ const Pagina3 = () => {
           </div>
           <div 
             className="bg-[#00482B] hover:bg-[#006341] text-white p-2 rounded-lg flex-grow flex items-center justify-center cursor-pointer transition-colors duration-300"
-            onClick={() => handleExternalLinkWithSound('https://mailunicundiedu-my.sharepoint.com/:f:/g/personal/dflorido_ucundinamarca_edu_co/EhGTOrMGOSpPuXyMN00VCs4BBORPqg9dtIAs0fH-KFhvmw?e=Sw77tc')}
+            onClick={() => handleExternalLinkWithSound2()}
           >
             <div className="flex items-center gap-2">
               <h2 className="text-lg text-center font-semibold">
