@@ -100,7 +100,7 @@ const RecursosApoyo = () => {
 
       {/* Contenido principal */}
       <div className="flex-grow">
-        <h1 className="text-2xl font-bold text-[#007B3E] mb-6 text-center">Recursos de Gestor</h1>
+        <h1 className="text-2xl font-bold text-[#007B3E] mb-6 text-center">Recursos de Apoyo</h1>
         
         {/* Lista de recursos */}
         <div className="bg-white rounded-lg shadow border border-gray-200 overflow-hidden">
