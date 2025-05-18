@@ -54,27 +54,27 @@ const RecursosGestor = () => {
     },
     { 
       name: 'Taller 4 - Conectar un Mbot al Celular', 
-      path: 'public/Taller_4.pdf',
+      path: '/Taller_4.pdf',
       downloadName: 'Taller_4.pdf'
     },
     { 
       name: 'Taller 5 - Evitar objetos con el Mbot', 
-      path: 'public/Taller5.pdf',
+      path: '/Taller5.pdf',
       downloadName: 'Taller_5.pdf'
     },
     { 
       name: 'Taller 6 - Seguir lineas con el Mbot', 
-      path: 'public/Taller6.pdf',
+      path: '/Taller6.pdf',
       downloadName: 'Taller_6.pdf'
     },
     { 
       name: 'Taller 7 - Seguir objetos con el Mbot', 
-      path: 'public/Taller_7.pdf',
+      path: '/Taller_7.pdf',
       downloadName: 'Taller_7.pdf'
     },
     { 
       name: 'Taller 8 - Luces y sonidos con el Mbot', 
-      path: 'public/Taller_8.pdf',
+      path: '/Taller_8.pdf',
       downloadName: 'Taller_8.pdf'
     }
   ];
