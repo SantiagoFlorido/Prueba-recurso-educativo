@@ -38,29 +38,44 @@ const RecursosGestor = () => {
   // Lista de PDFs
   const pdfResources = [
     { 
-      name: 'Taller 1 - Introducción a app', 
+      name: 'Taller 1 - El viaje de Pedro', 
       path: '/Taller 1-Introducción a app.pdf',
       downloadName: 'Taller_1_Introduccion_app.pdf'
     },
     { 
-      name: 'Taller 2 - Ensamblado del mbot', 
+      name: 'Taller 2 - Armando un Mbot', 
       path: '/Taller 2 - Ensamblado del mBot.pdf',
       downloadName: 'Taller_2_Ensamblado_del_mbot.pdf'
     },
     { 
-      name: 'Taller 3 - Programar el Movimiento', 
+      name: 'Taller 3 - Conectar un Mbot al PC', 
       path: '/Taller 3 - Programar el Movimiento.pdf',
       downloadName: 'Taller_3_Programar_el_Movimiento.pdf'
     },
     { 
-      name: 'Taller 5', 
-      path: '/Taller 5.pdf',
+      name: 'Taller 4 - Conectar un Mbot al Celular', 
+      path: 'public/Taller_4.pdf',
+      downloadName: 'Taller_4.pdf'
+    },
+    { 
+      name: 'Taller 5 - Evitar objetos con el Mbot', 
+      path: 'public/Taller5.pdf',
       downloadName: 'Taller_5.pdf'
     },
     { 
-      name: 'Taller 6', 
-      path: '/Taller 6.pdf',
+      name: 'Taller 6 - Seguir lineas con el Mbot', 
+      path: 'public/Taller6.pdf',
       downloadName: 'Taller_6.pdf'
+    },
+    { 
+      name: 'Taller 7 - Seguir objetos con el Mbot', 
+      path: 'public/Taller_7.pdf',
+      downloadName: 'Taller_7.pdf'
+    },
+    { 
+      name: 'Taller 8 - Luces y sonidos con el Mbot', 
+      path: 'public/Taller_8.pdf',
+      downloadName: 'Taller_8.pdf'
     }
   ];
 
