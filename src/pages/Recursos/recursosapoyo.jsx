@@ -45,6 +45,13 @@ const RecursosApoyo = () => {
       icon: <FaFilePdf size={24} className="text-red-600 flex-shrink-0" />
     },
     { 
+      name: 'Manual de usuario y técnico', 
+      path: '/MANUAL DE USUARIO Y TECNICO.pdf',
+      downloadName: 'Manual_de_usuario_y_tecnico.pdf',
+      type: 'pdf',
+      icon: <FaFilePdf size={24} className="text-red-600 flex-shrink-0" />
+    },
+    { 
       name: 'Recurso Educativo Digital MBot Setup 1.0.0 win-x64', 
       path: '/Recurso Educativo Digital MBot Setup 1.0.0 win-x64.exe',
       downloadName: 'Recurso_Educativo_Digital_MBot_Setup.exe',
