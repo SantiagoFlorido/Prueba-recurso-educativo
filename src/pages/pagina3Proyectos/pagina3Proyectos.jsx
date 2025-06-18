@@ -60,7 +60,7 @@ const Pagina3Proyectos = () => {
   // Función para crear o actualizar la relación usuario-taller (solo para talleres 1-8)
   const handleTallerUsuario = async (userId, tallerId) => {
     try {
-      const response = await fetch('https://prueba-api-recurso-educativo.onrender.com/api/v1/usuarios-talleres', {
+      const response = await fetch('https://prueba-api-recurso-educativo-9x4o.onrender.com/api/v1/usuarios-talleres', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -36,7 +36,7 @@ const LoginStudent = () => {
   
     try {
       // Buscar usuario por nombre
-      const searchResponse = await fetch(`https://prueba-api-recurso-educativo.onrender.com/api/v1/users?nombre=${nombre}`);
+      const searchResponse = await fetch(`https://prueba-api-recurso-educativo-9x4o.onrender.com/api/v1/users?nombre=${nombre}`);
       
       if (!searchResponse.ok) {
         throw new Error('Error al buscar usuario');
@@ -60,7 +60,7 @@ const LoginStudent = () => {
       }
   
       // Verificar contraseña - ahora hacemos una petición al backend
-      const verifyResponse = await fetch('https://prueba-api-recurso-educativo.onrender.com/api/v1/users/verify', {
+      const verifyResponse = await fetch('https://prueba-api-recurso-educativo-9x4o.onrender.com/api/v1/users/verify', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

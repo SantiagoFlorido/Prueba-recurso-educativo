@@ -42,7 +42,7 @@ const Pagina4Informacion8 = () => {
           return;
         }
 
-        const response = await fetch(`https://prueba-api-recurso-educativo.onrender.com/api/v1/usuarios-talleres?id_usuario=${currentUser.id}&id_taller=8`);
+        const response = await fetch(`https://prueba-api-recurso-educativo-9x4o.onrender.com/api/v1/usuarios-talleres?id_usuario=${currentUser.id}&id_taller=8`);
         
         if (!response.ok) {
           throw new Error('Error al verificar la relación usuario-taller');
@@ -232,7 +232,7 @@ const Pagina4Informacion8 = () => {
         }
 
         if (userTallerRelation && userTallerRelation.id_taller === 8) {
-          const updateResponse = await fetch(`https://prueba-api-recurso-educativo.onrender.com/api/v1/usuarios-talleres/${userTallerRelation.id}/estado`, {
+          const updateResponse = await fetch(`https://prueba-api-recurso-educativo-9x4o.onrender.com/api/v1/usuarios-talleres/${userTallerRelation.id}/estado`, {
             method: 'PATCH',
             headers: {
               'Content-Type': 'application/json',
@@ -247,7 +247,7 @@ const Pagina4Informacion8 = () => {
             throw new Error('Error al actualizar el estado');
           }
         } else {
-          const createResponse = await fetch('https://prueba-api-recurso-educativo.onrender.com/api/v1/usuarios-talleres', {
+          const createResponse = await fetch('https://prueba-api-recurso-educativo-9x4o.onrender.com/api/v1/usuarios-talleres', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

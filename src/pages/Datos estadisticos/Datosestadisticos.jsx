@@ -55,9 +55,9 @@ const Datosestadisticos = () => {
 
         // Obtener todos los datos necesarios
         const [workshopsRes, usersRes, userWorkshopsRes] = await Promise.all([
-          axios.get('https://prueba-api-recurso-educativo.onrender.com/api/v1/talleres'),
-          axios.get('https://prueba-api-recurso-educativo.onrender.com/api/v1/users'),
-          axios.get('https://prueba-api-recurso-educativo.onrender.com/api/v1/usuarios-talleres')
+          axios.get('https://prueba-api-recurso-educativo-9x4o.onrender.com/api/v1/talleres'),
+          axios.get('https://prueba-api-recurso-educativo-9x4o.onrender.com/api/v1/users'),
+          axios.get('https://prueba-api-recurso-educativo-9x4o.onrender.com/api/v1/usuarios-talleres')
         ]);
 
         // Procesar datos para estadísticas

@@ -43,7 +43,7 @@ const Pagina3 = () => {
           setUserId(userData.id);
           
           // Obtener todos los talleres del usuario
-          const response = await axios.get(`https://prueba-api-recurso-educativo.onrender.com/api/v1/usuarios-talleres`);
+          const response = await axios.get(`https://prueba-api-recurso-educativo-9x4o.onrender.com/api/v1/usuarios-talleres`);
           const userWorkshops = response.data.filter(workshop => workshop.id_usuario === userData.id);
           
           // Contar talleres finalizados (estadofinal = 'finalizado')
